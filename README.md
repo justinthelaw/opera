@@ -56,11 +56,17 @@ Below are some GitOps rules for contributing to this repository. As time moves f
 
 1. Fork and/or clone this repository
 2. Create a new file called `.env.local` using the `.env.example` as a guide
-3. In the root of this repository, run the following:
+3. In the root of this repository, run the following to start a Docker container with the application:
 
 ```bash
-docker build --tag smarter-bullets ./
-docker run --name smarter-bullets --env-file ./config/.env.local smarter-bullets-client
+chmod +x ./scripts/dockerize.sh
+./scripts/dockerize.sh
+```
+4. To run it without Docker, run the following:
+
+```bash
+npm install
+npm start
 ```
 
 4. Go to the `PORT` specified in your `.env.local` file
