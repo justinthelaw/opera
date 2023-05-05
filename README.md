@@ -1,6 +1,6 @@
-# _smarter_-pdf-bullets
+# _smarter_-bullets
 
-This is a re-work of the original [pdf-bullets](https://github.com/AF-VCD/pdf-bullets) project, created and maintained by Christopher Kodama ad the members of the Air Force Volunteer Cyber Depository group.
+This is a hard-fork of the original [pdf-bullets](https://github.com/AF-VCD/pdf-bullets) project, created and maintained by Christopher Kodama and the members of the Air Force Volunteer Cyber Depository group.
 
 ## What are "Bullets"
 
@@ -13,7 +13,7 @@ These bullets follow a few formatting rules:
 - Each bullet must be exactly one line, with the width of the line depending on the form (performance reports, award packages, etc).
 - Acronyms and abbreviations can be force-wide, organization, and/or commander-specific, with major inconsistencies with their abbreviation/acronym policies.
 
-## How are Bullets Formatted
+## How are "Bullets" Formatted
 
 Those bullet formatting rules lead to the following:
 
@@ -26,6 +26,10 @@ Those bullet formatting rules lead to the following:
 The purpose of _smarter_-pdf-bullets is to develop a set of tools to automate the pointless aspects of bullet-writing so that an officer and/or enlisted members can focus more on writing actual content rather than worry about irrelevant formatting.
 
 ## Application Usage
+
+### Bullet Writing
+
+The application provides instructions within the landing page for usage. The User Interface (UI) should be relatively easy to navigate. If the UI is not intuitive to you, then feedback can be submitted using the To-Be-Built feedback form or an Issue can be posted to this Github repository.
 
 ### Acronym List Imports
 
@@ -48,9 +52,18 @@ Will cause "United States Air Force Academy" to be abbreviated as "USAF Academy"
 
 Below are some GitOps rules for contributing to this repository. As time moves forward, more formalized pull request and issue templates will be established.
 
-### Github CI Pipeline
+### Local Development
 
-The Github workflow will automatically fire a build and test for the repository upon successful merging or pushing to the main branch.
+1. Fork and/or clone this repository
+2. Create a new file called `.env.local` using the `.env.example` as a guide
+3. In the root of this repository, run the following:
+
+```bash
+docker build --tag smarter-bullets ./
+docker run --name smarter-bullets --env-file ./config/.env.local smarter-bullets-client
+```
+
+4. Go to the `PORT` specified in your `.env.local` file
 
 ### Pull Requests
 
