@@ -1,6 +1,10 @@
 # pull latest official node image
 FROM node:latest
 
+LABEL AUTHOR=AF-VCD
+LABEL AUTHOR=justinthelaw
+LABEL VERSION=${VERSION}
+
 # point to container working directory
 WORKDIR /client
 
