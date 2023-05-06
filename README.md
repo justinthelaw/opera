@@ -32,7 +32,7 @@ Those bullet formatting rules lead to the following:
   - Any sort of repetition = bad
   - Bullets near flush with page boundaries = good
 
-The purpose of _smarter_-pdf-bullets is to develop a set of tools to automate the pointless aspects of bullet-writing so that an officer and/or enlisted members can focus more on writing actual content rather than worry about irrelevant formatting.
+The purpose of _smarter_-bullets is to develop a set of tools to automate the pointless aspects of bullet-writing so that an officer and/or enlisted members can focus more on writing actual content rather than worry about irrelevant formatting.
 
 ## Application Usage
 
