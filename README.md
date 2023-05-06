@@ -7,7 +7,7 @@ This is a hard-fork of the original [pdf-bullets](https://github.com/AF-VCD/pdf-
 The purpose of hard-forking this particular tool's repository is as follows:
 1. Refactor the codebase to modern TypeScript, and eliminate Create-React-App (CRA) overhead
 2. Provide more GitOps and open-source developer direction/instructions
-3. Add OpenAI GPT4 prompt engineering to create new a "bullet forge" feature
+3. Add OpenAI GPT4 prompt engineering to create new "bullet forge" feature
 4. Revamp the user interface and experience using modern Material UI standards
 5. Rearchitect to a client-server application to provide persistence, security, and improvement insights
 
@@ -126,3 +126,7 @@ Spaces are allowed within the description, e.g., `Feature(DSR): This revolves ar
 | Build       | Commits, that affect build components like build tool, ci pipeline, dependencies, project version, ... |
 | Ops         | Commits, that affect operational components like infrastructure, deployment, backup, recovery, ...     |
 | Chore       | Miscellaneous commits e.g. modifying .gitignore                                                        |
+
+## Licensing
+
+_smarter_-bullets is licensed under the [MIT license](./LICENSE).
