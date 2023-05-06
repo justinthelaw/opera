@@ -1,6 +1,15 @@
 # _smarter_-bullets
 
-This is a hard-fork of the original [pdf-bullets](https://github.com/AF-VCD/pdf-bullets) project, created and maintained by Christopher Kodama and the members of the Air Force Volunteer Cyber Depository group.
+This is a hard-fork of the original [pdf-bullets](https://github.com/AF-VCD/pdf-bullets) project, created and maintained by Christopher Kodama and the members of the Air Force Volunteer Cyber Depository (AF-VCD) group.
+
+## Why the Hard Fork
+
+The purpose of hard-forking this particular tool's repository is as follows:
+1. Refactor the codebase to modern TypeScript, and eliminate Create-React-App (CRA) overhead
+2. Provide more GitOps and open-source developer direction/instructions
+3. Add OpenAI GPT4 prompt engineering to create new a "bullet forge" feature
+4. Revamp the user interface and experience using modern Material UI standards
+5. Rearchitect to a client-server application to provide persistence, security, and improvement insights
 
 ## What are "Bullets"
 
