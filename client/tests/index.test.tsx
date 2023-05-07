@@ -3,8 +3,8 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 
 
-describe("React and Jest Functionality", () => {
-  it("Renders JSX HTML and produces the correct text", () => {
+describe("React and Jest are functioning", () => {
+  it("renders HTML correctly using React", () => {
     // Render the App component in a test container
     render(<div>Hello World</div>);
 
