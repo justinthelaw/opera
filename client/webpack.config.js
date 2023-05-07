@@ -2,9 +2,9 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const dotenv = require("dotenv");
 
-dotenv.config({ path: "./config/.env.local" });
+dotenv.config({ path: "../config/.env.local" });
 
-const { PORT } = process.env;
+const { CLIENT_HTTPS, CLIENT_HOST, CLIENT_PORT } = process.env;
 
 module.exports = {
   mode: "development",
@@ -18,9 +18,9 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     static: "./dist",
-    https: false,
-    host: "localhost",
-    port: PORT,
+    https: CLIENT_HTTPS === "true" || false,
+    host: CLIENT_HOST || "localhost",
+    port: CLIENT_PORT || 3000,
   },
   module: {
     rules: [

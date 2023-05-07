@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "author": "justinthelaw",
   "license": "MIT",
-  "main": "index.js",
+  "main": "index.tsx",
   "scripts": {
-    "start": "NODE_ENV=development webpack-dev-server --config ./config/webpack.config.js",
-    "build": "NODE_ENV=production webpack --config ./config/webpack.config.js",
+    "start": "NODE_ENV=development webpack-dev-server --config webpack.config.js",
+    "build": "NODE_ENV=production webpack --config webpack.config.js",
     "test": "jest --watchAll"
   },
   "dependencies": {

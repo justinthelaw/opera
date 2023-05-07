@@ -5,11 +5,12 @@ This is a hard-fork of the original [pdf-bullets](https://github.com/AF-VCD/pdf-
 ## Why the Hard Fork
 
 The purpose of hard-forking this particular tool's repository is as follows:
+
 1. Refactor the codebase to modern TypeScript, and eliminate Create-React-App (CRA) overhead
 2. Provide more GitOps and open-source developer direction/instructions
 3. Add OpenAI GPT4 prompt engineering to create new "bullet forge" feature
 4. Revamp the user interface and experience using modern Material UI standards
-5. Rearchitect to a client-server application to provide persistence, security, and improvement insights
+5. Re-architect to a client-server application to provide persistence, security, and improvement insights
 
 ## What are "Bullets"
 
@@ -65,20 +66,12 @@ Below are some GitOps rules for contributing to this repository. As time moves f
 
 1. Fork and/or clone this repository
 2. Create a new file called `.env.local` using the `.env.example` as a guide
-3. In the root of this repository, run the following to start a Docker container with the application:
+3. Start your Docker daemon
+4. In `client/`, execute the following to start the client:
 
 ```bash
-chmod +x ./scripts/dockerize.sh
-./scripts/dockerize.sh
+cd client && npm install && npm start
 ```
-4. To run it without Docker, run the following:
-
-```bash
-npm install
-npm start
-```
-
-4. Go to the `PORT` specified in your `.env.local` file
 
 ### Pull Requests
 
