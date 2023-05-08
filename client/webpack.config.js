@@ -1,8 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const dotenv = require("dotenv");
 
-dotenv.config({ path: "../config/.env.local" });
+const dotenv = require("dotenv");
+dotenv.config({ path: "../../config/.env.local" });
 
 const { CLIENT_HTTPS, CLIENT_HOST, CLIENT_PORT } = process.env;
 
