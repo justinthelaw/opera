@@ -1,23 +1,20 @@
 import fastify, { FastifyInstance } from "fastify";
 import { Server, IncomingMessage, ServerResponse } from "http";
 
-const dotenv = require("dotenv");
-dotenv.config({ path: "../../config/.env.local" });
+import { loggerConfiguration } from "./logging/logger.config";
+import { loggerConfigurationInterface } from "./logging/logger.interface";
 
-const { SERVER_HOST, SERVER_PORT } = process.env;
+import { ENV, HOST, PORT } from "./constants/server.constants";
 
 const server: FastifyInstance<Server, IncomingMessage, ServerResponse> =
   fastify({
-    logger: true,
+    logger: loggerConfiguration[ENV as keyof loggerConfigurationInterface],
   });
 
-server.listen(
-  { host: SERVER_HOST || "localhost", port: parseInt(SERVER_PORT || "8080") },
-  function (err, address) {
-    if (err) {
-      server.log.error(err);
-      process.exit(1);
-    }
-    server.log.info(`Server is now listening on ${address}`);
+server.listen({ host: HOST, port: PORT }, function (err, address) {
+  if (err) {
+    server.log.error(err);
+    process.exit(1);
   }
-);
+  server.log.info(`Server is now listening on ${address}`);
+});

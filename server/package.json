@@ -10,7 +10,8 @@
   "author": "justinthelaw",
   "license": "MIT",
   "dependencies": {
-    "fastify": "^4.17.0"
+    "fastify": "^4.17.0",
+    "pino-pretty": "^10.0.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
