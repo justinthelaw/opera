@@ -72,8 +72,7 @@ Below are some GitOps rules for contributing to this repository. As time moves f
 #### Client
 
 1. Open a new terminal
-2. Go to the `client/config/` directory and create a `.env.client.local` using the `.env.client.example` as a reference
-3. In `client/`, execute the following to start the client:
+2. In `client/`, execute the following to start the client:
 
 ```bash
 npm install && npm start
@@ -82,10 +81,11 @@ npm install && npm start
 #### Server
 
 1. Open a new terminal
-2. Go to the `server/config/` directory and create a `.env.server.local` using the `.env.server.example` as a reference
+2. Go to the `server/src/constants/` directory and ensure you are okay with defaults sans environment variable
 3. In `server/`, execute the following to start the server:
 
 ```bash
+# npm start wraps a build-step that includes tsc build
 npm install && npm start
 ```
 
