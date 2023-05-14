@@ -1,15 +1,16 @@
 import fastify, { FastifyInstance } from "fastify";
 import { Server, IncomingMessage, ServerResponse } from "http";
-
 import { loggerConfiguration } from "./logging/logger.config";
 import { loggerConfigurationInterface } from "./logging/logger.interface";
-
 import { ENV, HOST, PORT } from "./constants/server.constants";
+import { healthRoutes } from "./health/health.routes";
 
-const server: FastifyInstance<Server, IncomingMessage, ServerResponse> =
+export const server: FastifyInstance<Server, IncomingMessage, ServerResponse> =
   fastify({
     logger: loggerConfiguration[ENV as keyof loggerConfigurationInterface],
   });
+
+server.register(healthRoutes, { prefix: "/health" });
 
 server.listen({ host: HOST, port: PORT }, function (err, address) {
   if (err) {

@@ -85,8 +85,8 @@ npm install && npm start
 3. In `server/`, execute the following to start the server:
 
 ```bash
-# npm start wraps a build-step that includes tsc build
-npm install && npm start
+# npm run start:dev wraps a build-step that includes tsc build and nodemon for hot-reload
+npm install && npm run start:dev
 ```
 
 ### Pull Requests

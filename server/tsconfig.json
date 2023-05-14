@@ -21,5 +21,5 @@
   },
   "include": [
     "src"
-, "tests/index.test.tsx"  ]
+, "tests/index.test.tsx", "src/routes.index.ts"  ]
 }
