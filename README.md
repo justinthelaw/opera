@@ -69,14 +69,32 @@ Below are some GitOps rules for contributing to this repository. As time moves f
 1. Fork and/or clone this repository
 2. Go to the root `config/` directory and create a `.env.local` using the `.env.example` as a reference
 
-#### Client
+#### Database
 
 1. Open a new terminal
-2. In `client/`, execute the following to start the client:
+2. Execute the following to start a PostgreSQL database:
 
 ```bash
-npm install && npm start
+# set execution permissions to file
+chmod +x ./database.dev.sh
+# run docker command for configured postgresql image and container
+./database.dev.sh
 ```
+
+3. To access the PostgreSQL container, execute the following:
+
+```bash
+# get the docker container ID for smarter-bullets postgresql
+docker ps -a
+# open docker shell for container
+docker exec -it <CONTAINER_ID> bash
+# enter as the default user identified in .env.local
+psql -U postgres
+# postgres command to see all databases
+\l
+```
+
+4. For more PostgreSQL commands, you can reference this guide: [PostgreSQL Cheat Sheet](https://www.postgresqltutorial.com/postgresql-cheat-sheet/)
 
 #### Server
 
@@ -87,6 +105,15 @@ npm install && npm start
 ```bash
 # npm run start:dev wraps a build-step that includes tsc build and nodemon for hot-reload
 npm install && npm run start:dev
+```
+
+#### Client
+
+1. Open a new terminal
+2. In `client/`, execute the following to start the client:
+
+```bash
+npm install && npm start
 ```
 
 ### Pull Requests
