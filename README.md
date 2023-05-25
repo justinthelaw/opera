@@ -68,6 +68,13 @@ Below are some GitOps rules for contributing to this repository. As time moves f
 
 1. Fork and/or clone this repository
 2. Go to the root `config/` directory and create a `.env.local` using the `.env.example` as a reference
+3. Execute the following at the root of the repository:
+
+```bash
+npm install
+# next line may not be necessary depending on dev environment
+npx install-peerdeps --dev eslint-config-react-app
+```
 
 #### Database
 
