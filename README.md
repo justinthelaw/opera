@@ -20,18 +20,18 @@ Air and Space Force personnel typically are required to write bullets for perfor
 
 These bullets follow a few formatting rules:
 
-- Each bullet must be exactly one line, with the width of the line depending on the form (performance reports, award packages, etc).
-- Acronyms and abbreviations can be force-wide, organization, and/or commander-specific, with major inconsistencies with their abbreviation/acronym policies.
+-   Each bullet must be exactly one line, with the width of the line depending on the form (performance reports, award packages, etc).
+-   Acronyms and abbreviations can be force-wide, organization, and/or commander-specific, with major inconsistencies with their abbreviation/acronym policies.
 
 ## How are "Bullets" Formatted
 
 Those bullet formatting rules lead to the following:
 
-- Information compression is prioritized over legibility
-- Time is wasted on acronym and/or abbreviation revisions
-- Bullet "appearance" becomes highly valued; some examples of arbitrary bullet appearance rules:
-  - Any sort of repetition = bad
-  - Bullets near flush with page boundaries = good
+-   Information compression is prioritized over legibility
+-   Time is wasted on acronym and/or abbreviation revisions
+-   Bullet "appearance" becomes highly valued; some examples of arbitrary bullet appearance rules:
+    -   Any sort of repetition = bad
+    -   Bullets near flush with page boundaries = good
 
 The purpose of _smarter_-bullets is to develop a set of tools to automate the pointless aspects of bullet-writing so that an officer and/or enlisted members can focus more on writing actual content rather than worry about irrelevant formatting.
 
@@ -129,7 +129,7 @@ When describing an issue, please provide the following:
 
 1. A title or summary of the issues
 2. Did the issue occur in the Local Development Environment or Production Environment?
-   - If Local, describe the operating system and any other relevant information
+    - If Local, describe the operating system and any other relevant information
 3. Describe the expected behavior vs. the observed behavior
 4. Provide all available error logs and network activity
 5. Provide a recommended fix or area of concern
@@ -141,6 +141,20 @@ When creating a branch, we like to follow the naming template:
 `<STATEMENT OF BRANCH PURPOSE>`
 
 Use a dash, `-`, as the delimiter, e.g., `this-is-a-feature-branch`
+
+### Code Conventions and Standards
+
+Prior to attempting a push to a branch or submitting of a merge request to a branch and/or main, do the following:
+
+1. Run a formatter on all files in accordance with the `.prettierrc` at the root of this repository
+2. Run the eslint linter on all files in accordance with the `.eslint.yaml`, `security.eslintrc.yaml`, and the `package.json` at the root of this repository
+    
+```bash
+npm run lint
+npm run security-lint
+```
+
+3. Run all client (jest, testing-library), server (jest, testing-library), and integration (cypress) tests
 
 ### Committing and Merging
 

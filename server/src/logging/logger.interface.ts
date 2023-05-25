@@ -1,5 +1,5 @@
 export interface loggerConfigurationInterface {
-  development: any;
-  test: boolean;
-  production: any;
+	development: any
+	test: boolean
+	production: any
 }

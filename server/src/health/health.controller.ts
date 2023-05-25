@@ -1,12 +1,11 @@
-import HealthService from "./health.service";
-import { HealthResponse } from "./health.model";
-import { server } from "../index";
+import HealthService from './health.service'
+import { HealthResponse } from './health.model'
 
-const healthService = new HealthService();
+const healthService = new HealthService()
 
 export class HealthController {
-  async getOverallHealth(): Promise<HealthResponse> {
-    const response: HealthResponse = await healthService.getOverallHealth();
-    return response;
-  }
+	async getOverallHealth(): Promise<HealthResponse> {
+		const response: HealthResponse = await healthService.getOverallHealth()
+		return response
+	}
 }

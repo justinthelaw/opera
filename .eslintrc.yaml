@@ -1,0 +1,12 @@
+extends: 
+  - react-app
+  - plugin:prettier/recommended
+rules:
+  prettier/prettier: 
+    - warn
+  semi:
+    - warn
+    - never
+settings:
+  react:
+    version: detect
