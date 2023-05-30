@@ -6,8 +6,10 @@
     "client": "cd ./client && npm start",
     "server": "cd ./server && npm run start:dev",
     "database": "chmod +x ./data/database.dev.sh && ./data/database.dev.sh",
+    "test:client": "cd ./client && npm test",
+    "test:server": "cd ./server && npm test",
     "lint": "eslint ./ --ext '.ts,.tsx' --fix",
-    "security-lint": "eslint ./ --ext '.ts,.tsx --fix'"
+    "lint:security": "eslint ./ --ext '.ts,.tsx --fix'"
   },
   "eslintConfig": {
     "extends": "react-app"
