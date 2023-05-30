@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  all-checks:
+  build:
     runs-on: ubuntu-latest
 
     strategy:
@@ -22,14 +22,23 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Install Dependencies
+    - name: install:dependencies
       run: npm run install-all
 
-    - name: Run Lint
+    - name: lint
       run: npm run lint
-    - name: Run Security Lint
+
+    - name: security:lint
       run: npm run lint:security
-    - name: Run Client Tests
+
+    - name: test:client
       run: npm run test:client
-    - name: Run Server Tests
+
+    - name: test:server
       run: npm run test:server
+
+    - name: build:client
+      run: npm run build:client
+
+    - name: build:server
+      run: npm run build:server
