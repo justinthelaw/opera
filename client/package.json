@@ -7,7 +7,7 @@
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --config webpack.config.js",
     "build": "NODE_ENV=production webpack --config webpack.config.js",
-    "test": "jest --watchAll"
+    "test": "jest"
   },
   "dependencies": {
     "@types/react": "^18.0.28",

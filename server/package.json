@@ -6,7 +6,7 @@
     "start": "npm run build && node build/index.js",
     "start:dev": "nodemon",
     "build": "tsc --outDir ./build",
-    "test": "jest --watchAll"
+    "test": "jest"
   },
   "author": "justinthelaw",
   "license": "MIT",
