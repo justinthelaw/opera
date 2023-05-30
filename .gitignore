@@ -22,3 +22,7 @@ yarn-error.log*
 debug.log
 .nyc_output
 .vscode
+
+# database
+db/
+.mongodb

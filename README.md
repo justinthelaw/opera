@@ -105,9 +105,9 @@ npm run server
 
 ```bash
 # set execution permissions to file
-chmod +x ./database.dev.sh
+chmod +x ./data/database.dev.sh
 # run docker command for configured postgresql image and container
-./database.dev.sh
+./data/database.dev.sh
 ```
 
 3. To access the PostgreSQL container, execute the following:
@@ -115,12 +115,8 @@ chmod +x ./database.dev.sh
 ```bash
 # get the docker container ID for smarter-bullets postgresql
 docker ps -a
-# open docker shell for container
-docker exec -it <CONTAINER_ID> bash
-# enter as the default user identified in .env.local
-psql -U postgres
-# postgres command to see all databases
-\l
+# open mongo shell for container
+docker exec -it <CONTAINER_ID> mongosh
 ```
 
 4. For more PostgreSQL commands, you can reference this guide: [PostgreSQL Cheat Sheet](https://www.postgresqltutorial.com/postgresql-cheat-sheet/)
