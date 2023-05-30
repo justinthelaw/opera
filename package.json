@@ -2,7 +2,10 @@
   "name": "smarter-bullets",
   "version": "0.1.0",
   "scripts": {
-    "start": "echo 'hello world'",
+    "install-all": "cd ./client && npm install && cd ../server && npm install",
+    "client": "cd ./client && npm start",
+    "server": "cd ./server && npm run start:dev",
+    "database": "chmod +x ./database.dev.sh && ./database.dev.sh",
     "lint": "eslint ./ --ext '.ts,.tsx' --fix",
     "security-lint": "eslint ./ --ext '.ts,.tsx --fix'"
   },

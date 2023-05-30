@@ -64,6 +64,11 @@ Below are some GitOps rules for contributing to this repository. As time moves f
 
 ### Local Development
 
+The two options developers have for starting the application in development mode is as follows:
+
+1. (RECOMMENDED) [Root Directory Run](#root-directory-run): running and installing using the NPM project at the root of the directory
+2. [Individual Directory Run](#individual-directory-run): going into each sub-directory to run each individual sub-stack/service
+
 #### General
 
 1. Fork and/or clone this repository
@@ -76,7 +81,24 @@ npm install
 npx install-peerdeps --dev eslint-config-react-app
 ```
 
-#### Database
+#### Root Directory Run
+
+When running with these instructions, run each sub-stack command in a new terminal.
+
+```bash
+# installs all dependencies in the sub-stacks
+npm run install-all
+# see database access instructions in Individual Directory Run
+npm run database
+# new terminal
+npm run client
+# new terminal
+npm run server
+```
+
+#### Individual Directory Run
+
+##### Database
 
 1. Open a new terminal
 2. Execute the following to start a PostgreSQL database:
@@ -103,7 +125,7 @@ psql -U postgres
 
 4. For more PostgreSQL commands, you can reference this guide: [PostgreSQL Cheat Sheet](https://www.postgresqltutorial.com/postgresql-cheat-sheet/)
 
-#### Server
+##### Server
 
 1. Open a new terminal
 2. Go to the `server/src/constants/` directory and ensure you are okay with defaults sans environment variable
@@ -114,7 +136,7 @@ psql -U postgres
 npm install && npm run start:dev
 ```
 
-#### Client
+##### Client
 
 1. Open a new terminal
 2. In `client/`, execute the following to start the client:
