@@ -6,13 +6,14 @@ export default class HealthService {
 		const overallHealth: HealthResponse = {
 			name: 'smarter-bullets',
 			status: true,
-			timeStamp: Date.now().toString(),
+			timeStamp: dateBuilder(),
 			serviceStatuses: this.getAllServicesHealth()
 		}
 		return overallHealth
 	}
 
 	private getAllServicesHealth(): Array<ServiceHealth> {
+		// TODO: Check services as needed based on environment, e.g., database host is up
 		return [{ name: 'thisIsAnExample', status: true, timeStamp: dateBuilder() }]
 	}
 }
