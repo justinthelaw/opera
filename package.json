@@ -7,14 +7,14 @@
     "server": "cd ./server && npm run start:dev",
     "database": "chmod +x ./server/data/database.dev.sh && ./server/data/database.dev.sh",
     "fullstack": "npm run install:all && npm run database & npm run server & npm run client",
-    "lint": "eslint ./ --ext '.ts,.tsx' --fix",
+    "lint:general": "eslint ./ --ext '.ts,.tsx' --fix",
     "lint:security": "eslint --no-eslintrc --config security.eslintrc.yaml ./ --ext '.ts,.tsx --fix'",
     "test:client": "cd ./client && npm test",
     "test:server": "cd ./server && npm test",
+    "test:fullstack": "test:server && test:client",
     "build:client": "cd ./client && npm run build",
     "build:server": "cd ./server && npm run build",
-    "build:integrate": "cp ./client/dist/bundle.js ./server/public && cp ./client/dist/index.html ./server/public",
-    "build:deploy": ""
+    "build:integrate": "cp ./client/dist/bundle.js ./server/public && cp ./client/dist/index.html ./server/public"
   },
   "eslintConfig": {
     "extends": "react-app"

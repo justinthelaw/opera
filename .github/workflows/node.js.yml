@@ -23,12 +23,12 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: install:dependencies
-      run: npm run install-all
+      run: npm run install:all
 
-    - name: lint
-      run: npm run lint
+    - name: lint:general
+      run: npm run lint:general
 
-    - name: security:lint
+    - name: lint:security
       run: npm run lint:security
 
     - name: test:client
@@ -42,3 +42,6 @@ jobs:
 
     - name: build:server
       run: npm run build:server
+
+    - name: build:integrate
+      run: npm run build:integrate

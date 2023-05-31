@@ -175,16 +175,22 @@ When creating a branch, we like to follow the naming template:
 
 Use a dash, `-`, as the delimiter, e.g., `this-is-a-feature-branch`
 
-### Code Conventions and Standards
+### Coding Conventions and Standards
 
 Prior to attempting a push to a branch or submitting of a merge request to a branch and/or main, do the following:
 
 1. Run a formatter on all files in accordance with the `.prettierrc` at the root of this repository
-2. Run the eslint linter on all files in accordance with the `.eslint.yaml`, `security.eslintrc.yaml`, and the `package.json` at the root of this repository
+2. Run the eslint linter on all files in accordance with the `.eslint.yaml`, `security.eslintrc.yaml`, and the `package.json` at the root of this repository by executing the following:
     
 ```bash
-npm run lint
+npm run lint:general
 npm run lint:security
+```
+
+3. Run all tests on all sub-stacks by executing the following at the root of the repository:
+
+```bash
+npm run test:fullstack
 ```
 
 3. Run all client (jest, testing-library), server (jest, testing-library), and integration (cypress) tests
