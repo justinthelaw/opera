@@ -1,4 +1,4 @@
-name: smarter-bullets
+name: smarter-bullets-pipeline
 
 on:
   push:

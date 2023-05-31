@@ -1,6 +1,10 @@
 # _smarter_-bullets
 
-![example event parameter](https://github.com/justinthelaw/smarter-bullets/actions/workflows/node.js.yml/badge.svg?event=push)
+<div align="center">
+
+[![smarter-bullets-pipeline](https://github.com/justinthelaw/smarter-bullets/actions/workflows/node.js.yml/badge.svg)](https://github.com/justinthelaw/smarter-bullets/actions)
+
+</div>
 
 This is a hard-fork of the original [pdf-bullets](https://github.com/AF-VCD/pdf-bullets) project, created and maintained by Christopher Kodama and the members of the Air Force Volunteer Cyber Depository (AF-VCD) group.
 
