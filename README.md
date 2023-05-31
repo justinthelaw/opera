@@ -79,17 +79,23 @@ The two options developers have for starting the application in development mode
 
 ```bash
 npm install
-# next line may not be necessary depending on dev environment
+# next line is for linting dependencies
 npx install-peerdeps --dev eslint-config-react-app
 ```
 
 #### Root Directory Run
 
-When running with these instructions, run each sub-stack command in a new terminal.
+To run each sub-stack in one terminal (logs are preserved), execute the following:
+
+```bash
+npm run fullstack
+```
+
+To run each sub-stack in a new terminal, execute the following:
 
 ```bash
 # installs all dependencies in the sub-stacks
-npm run install-all
+npm run install:all
 # see database access instructions in Individual Directory Run
 npm run database
 # new terminal
@@ -100,16 +106,16 @@ npm run server
 
 #### Individual Directory Run
 
-##### Database
+#### _Database_
 
 1. Open a new terminal
 2. Execute the following to start a PostgreSQL database:
 
 ```bash
 # set execution permissions to file
-chmod +x ./data/database.dev.sh
+chmod +x ./server/data/database.dev.sh
 # run docker command for configured postgresql image and container
-./data/database.dev.sh
+./server/data/database.dev.sh
 ```
 
 3. To access the PostgreSQL container, execute the following:
@@ -123,7 +129,7 @@ docker exec -it <CONTAINER_ID> mongosh
 
 4. For more PostgreSQL commands, you can reference this guide: [PostgreSQL Cheat Sheet](https://www.postgresqltutorial.com/postgresql-cheat-sheet/)
 
-##### Server
+#### _Server_
 
 1. Open a new terminal
 2. Go to the `server/src/constants/` directory and ensure you are okay with defaults sans environment variable
@@ -134,7 +140,7 @@ docker exec -it <CONTAINER_ID> mongosh
 npm install && npm run start:dev
 ```
 
-##### Client
+#### _Client_
 
 1. Open a new terminal
 2. In `client/`, execute the following to start the client:
@@ -178,7 +184,7 @@ Prior to attempting a push to a branch or submitting of a merge request to a bra
     
 ```bash
 npm run lint
-npm run security-lint
+npm run lint:security
 ```
 
 3. Run all client (jest, testing-library), server (jest, testing-library), and integration (cypress) tests

@@ -12,6 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "fastify": "^4.17.0",
+    "fastify-static": "^4.7.0",
     "pino-pretty": "^10.0.0"
   },
   "devDependencies": {
