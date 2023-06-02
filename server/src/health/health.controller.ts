@@ -1,5 +1,5 @@
 import HealthService from './health.service'
-import { HealthResponse } from './health.model'
+import { HealthResponse } from './health.response'
 
 const healthService = new HealthService()
 

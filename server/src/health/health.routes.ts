@@ -1,10 +1,9 @@
-import { FastifyInstance, RouteShorthandOptions } from 'fastify'
+import { FastifyInstance } from 'fastify'
 import { HealthController } from './health.controller'
-import { HealthResponse } from './health.model'
+import { HealthResponse } from './health.response'
 
 const healthController = new HealthController()
-// TODO: move logic to HealthController
-export const healthRoutes = async (app: FastifyInstance, options: RouteShorthandOptions) => {
+export const healthRoutes = async (app: FastifyInstance) => {
 	app.get('/', (_, res) => {
 		healthController.getOverallHealth().then((result: HealthResponse) => res.send(result).status(200))
 	})
