@@ -34,14 +34,14 @@ jobs:
     - name: test:client
       run: npm run test:client
 
-    - name: test:server
-      run: npm run test:server
+    - name: test:api
+      run: npm run test:api
 
     - name: build:client
       run: npm run build:client
       
-    - name: build:server
-      run: npm run build:server
+    - name: build:api
+      run: npm run build:api
 
     - name: build:integrate
       run: npm run build:integrate
