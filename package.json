@@ -14,7 +14,7 @@
     "test:fullstack": "test:api && test:client",
     "build:client": "cd ./client && npm run build",
     "build:api": "cd ./api && npm run build",
-    "build:integrate": "cp ./client/dist/bundle.js ./server/public && cp ./client/dist/index.html ./server/public"
+    "build:integrate": "cp ./client/dist/bundle.js ./api/public && cp ./client/dist/index.html ./api/public"
   },
   "eslintConfig": {
     "extends": "react-app"
