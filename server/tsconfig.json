@@ -15,11 +15,10 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
     "noEmit": false,
     "jsx": "react"
   },
   "include": [
     "src"
-, "tests/index.test.tsx", "src/routes.index.ts"  ]
+  ]
 }

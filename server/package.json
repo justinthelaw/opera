@@ -5,14 +5,13 @@
   "scripts": {
     "start": "npm run build && node build/index.js",
     "start:dev": "nodemon",
-    "build": "tsc --outDir ./build",
-    "test": "jest --passWithNoTests"
+    "build": "tsc --outDir ./build --project tsconfig.build.json",
+    "test": "jest"
   },
   "author": "justinthelaw",
   "license": "MIT",
   "dependencies": {
     "fastify": "^4.17.0",
-    "fastify-static": "^4.7.0",
     "pino-pretty": "^10.0.0"
   },
   "devDependencies": {

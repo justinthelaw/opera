@@ -21,5 +21,6 @@
   },
   "include": [
     "src"
-, "tests/index.test.tsx"  ]
+  ],
+  "exclude": [ "*.test*" ]
 }
