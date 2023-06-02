@@ -6,17 +6,39 @@
 
 </div>
 
-This is a hard-fork of the original [pdf-bullets](https://github.com/AF-VCD/pdf-bullets) project, created and maintained by Christopher Kodama and the members of the Air Force Volunteer Cyber Depository (AF-VCD) group.
+This is a hard-fork of the original [pdf-bullets](https://github.com/AF-VCD/pdf-bullets) project, a web-application affectionately named the [**AIR FORCE BULL**et **SH**aping & **I**teration **T**ool](https://ea-pods-team.github.io/pdf-bullets/), created and maintained by Christopher Kodama and the members of the Air Force Volunteer Cyber Depository (AF-VCD) group.
+
+## Table of Contents
+
+1. [Why the Hard Fork](#why-the-hard-fork)
+2. [What are "Bullets"](#what-are-bullets)
+3. [How are "Bullets" Formatted](#how-are-bullets-formatted)
+4. [Application Usage](#application-usage)
+    - [Bullet Writing](#bullet-writing)
+    - [Acronym List Imports](#acronym-list-imports)
+5. [Contributing](#contributing)
+    - [Local Development](#local-development)
+        - [General](#general)
+        - [Root Directory Run](#root-directory-run)
+        - [Individual Directory Run](#individual-directory-run)
+    - [Pull Requests](#pull-requests)
+    - [Issues](#issues)
+    - [Branching](#branching)
+    - [Coding Conventions and Standards](#coding-conventions-and-standards)
+    - [Committing and Merging](#committing-and-merging)
+6. [Licensing](#licensing)
 
 ## Why the Hard Fork
 
-The purpose of hard-forking this particular tool's repository is as follows:
+The purpose of hard-forking this tool is as follows:
 
-1. Refactor the codebase to modern TypeScript, and eliminate Create-React-App (CRA) overhead
-2. Provide more GitOps and open-source developer direction/instructions
-3. Add OpenAI GPT4 prompt engineering to create new "bullet forge" feature
-4. Revamp the user interface and experience using modern Material UI standards
-5. Re-architect to a client-server application to provide persistence, security, and improvement insights
+1. Refactor the frontend codebase to modern TypeScript, and eliminate Create-React-App (CRA) overhead
+2. Provide more GitOps and open-source developer workflows and instructions
+3. Add OpenAI GPT4 prompt engineering to create a new "Bullet Forge" feature
+4. Revamp the UI/UX using modern Astro UXDS components and styling
+5. Re-architect to a client-api, Open API-compliant, application to provide persistence and security
+
+The above also happens to be the minimum viable product goal for this project as well!
 
 ## What are "Bullets"
 
@@ -92,7 +114,7 @@ npx install-peerdeps --dev eslint-config-react-app
 To run each sub-stack in one terminal (logs are preserved), execute the following:
 
 ```bash
-npm run fullstack
+npm run start:fullstack
 ```
 
 To run each sub-stack in a new terminal, execute the following:
@@ -101,11 +123,11 @@ To run each sub-stack in a new terminal, execute the following:
 # installs all dependencies in the sub-stacks
 npm run install:all
 # see database access instructions in Individual Directory Run
-npm run database
+npm run start:database
 # new terminal
-npm run client
+npm run start:client
 # new terminal
-npm run server
+npm run start:api
 ```
 
 #### Individual Directory Run
@@ -117,9 +139,9 @@ npm run server
 
 ```bash
 # set execution permissions to file
-chmod +x ./server/data/database.dev.sh
+chmod +x ./api/data/start:database
 # run docker command for configured postgresql image and container
-./server/data/database.dev.sh
+./api/data/start:database
 ```
 
 3. To access the PostgreSQL container, execute the following:
@@ -133,11 +155,11 @@ docker exec -it <CONTAINER_ID> mongosh
 
 4. For more PostgreSQL commands, you can reference this guide: [PostgreSQL Cheat Sheet](https://www.postgresqltutorial.com/postgresql-cheat-sheet/)
 
-#### _Server_
+#### _API_
 
 1. Open a new terminal
-2. Go to the `server/src/constants/` directory and ensure you are okay with defaults sans environment variable
-3. In `server/`, execute the following to start the server:
+2. Go to the `api/src/constants/` directory and ensure you are okay with defaults sans environment variable
+3. In `api/`, execute the following to start the api:
 
 ```bash
 # npm run start:dev wraps a build-step that includes tsc build and nodemon for hot-reload
@@ -185,7 +207,7 @@ Prior to attempting a push to a branch or submitting of a merge request to a bra
 
 1. Run a formatter on all files in accordance with the `.prettierrc` at the root of this repository
 2. Run the eslint linter on all files in accordance with the `.eslint.yaml`, `security.eslintrc.yaml`, and the `package.json` at the root of this repository by executing the following:
-    
+
 ```bash
 npm run lint:general
 npm run lint:security
@@ -197,7 +219,7 @@ npm run lint:security
 npm run test:fullstack
 ```
 
-3. Run all client (jest, testing-library), server (jest, testing-library), and integration (cypress) tests
+3. Run all client (jest, testing-library), api (jest), and integration (cypress) tests
 
 ### Committing and Merging
 
