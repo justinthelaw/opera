@@ -9,6 +9,8 @@ coverage
 # production
 build
 dist
+api/public/*.js
+api/public/*.html
 
 # misc
 .DS_Store
