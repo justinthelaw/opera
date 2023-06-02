@@ -11,8 +11,7 @@ updates:
       interval: "monthly"
     commit-message:
       # Prefix all commit messages with "npm: "
-      prefix: "Build(Dependencies): Prod,"
-      prefix-development: "Build(Dependencies): Dev,"
+      prefix: "Build"
       include: "scope"
     pull-request-branch-name:
       separator: "-"
