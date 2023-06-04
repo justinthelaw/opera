@@ -11,6 +11,7 @@
   "author": "justinthelaw",
   "license": "MIT",
   "dependencies": {
+    "@fastify/static": "^6.10.2",
     "fastify": "^4.17.0",
     "pino-pretty": "^10.0.0"
   },

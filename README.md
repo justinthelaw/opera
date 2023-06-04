@@ -29,6 +29,7 @@ This is a hard-fork of the original [pdf-bullets](https://github.com/AF-VCD/pdf-
     - [Coding Conventions and Standards](#coding-conventions-and-standards)
     - [Committing and Merging](#committing-and-merging)
     - [Local Development](#local-development)
+        - [Client-Server](#client-server)
         - [General](#general)
         - [Root Directory Run](#root-directory-run)
         - [Individual Directory Run](#individual-directory-run)
@@ -44,7 +45,7 @@ The purpose of hard-forking this tool is as follows:
 2. Provide more GitOps and open-source developer workflows and instructions
 3. Add OpenAI GPT4 prompt engineering to create a new "Bullet Forge" feature
 4. Revamp the UI/UX using modern Astro UXDS components and styling
-5. Re-architect to a client-api, Open API-compliant, application to provide persistence and security
+5. Re-architect to a client-server application to provide persistence and security
 
 ## What are "Bullets"
 
@@ -180,6 +181,8 @@ The two options developers have for starting the application in development mode
 
 ### General
 
+Do the following prior to moving on to any further instructions below this section.
+
 1. Fork and/or clone this repository
 2. Go to the root `config/` directory and create a `.env.local` using the `.env.example` as a reference
 3. Execute the following at the root of the repository:
@@ -188,6 +191,31 @@ The two options developers have for starting the application in development mode
 npm install
 # next line is for linting dependencies
 npx install-peerdeps --dev eslint-config-react-app
+```
+
+### Client-Server
+
+The Fastify Server within the API is the main server of both the Smarter Bullets API and Client. As it currently stands, the production build of the application and the development environment have the API serving a static `bundle.js` and `index.html` to the user's browser.
+
+In development, the API watches and serves whatever client build resides within the `/api/build/dist` directory using nodemon. A new client can be built, integrated, and served by the API using the instructions seen in the [Building](#building) section of this README.
+
+### Building
+
+The two options developers have for building the full-stack application in development mode is as follows:
+
+1. (RECOMMENDED) Use the automated process through the execution of the following commands at the root of this project:
+
+```bash
+npm run build:all
+```
+
+2. Build individual portions of the application and integrate through the execution of the following commands at the root of this project:
+
+```bash
+npm run build:client
+npm run build:api
+# moves client bundle and index over to api
+npm run build:integrate
 ```
 
 ### Root Directory Run
@@ -203,7 +231,7 @@ To run each sub-stack in a new terminal, execute the following:
 ```bash
 # installs all dependencies in the sub-stacks
 npm run install:all
-# see database access instructions in Individual Directory Run
+# see database access instructions in individual directory run section
 npm run start:database
 # new terminal
 npm run start:client

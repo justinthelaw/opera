@@ -12,6 +12,10 @@ dist
 api/public/*.js
 api/public/*.html
 
+# database
+db/
+.mongodb
+
 # misc
 .DS_Store
 .env.*local
@@ -26,6 +30,4 @@ debug.log
 .nyc_output
 .vscode
 
-# database
-db/
-.mongodb
+archive/
