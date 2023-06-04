@@ -1,12 +1,13 @@
 import dateBuilder from '../utils/dateBuilder'
 import {
+	HealthCustomFetch,
 	HealthResponse,
 	ServiceHealthResponse,
 	OpenAiApiResponse,
 	OpenAiApiHealthResponseComponentsArray
-} from './health.response'
-import { server } from '../index'
+} from './health.models'
 import { OPENAI_API_STATUS_URL, DATABASE_URL, CLIENT_URL } from '../constants/api.constants'
+import { healthCustomFetch } from './health.fetch'
 
 export default class HealthService {
 	async getOverallHealth() {
@@ -28,91 +29,74 @@ export default class HealthService {
 	}
 
 	private async getDatabaseHealth(): Promise<ServiceHealthResponse> {
-		let databaseHealth: ServiceHealthResponse = {
-			name: 'Smarter Bullets Database',
-			description: 'Health and status of Smarter Bullets Database',
-			status: 'down',
-			degradedReason: `${DATABASE_URL} is unreachable`,
-			timeStamp: dateBuilder()
+		const name = 'Smarter Bullets Database'
+
+		const databaseHealthFetchHandler = (response: any, serviceHealthResponse: ServiceHealthResponse) => {
+			const status = response.status
+			if (status >= 200 && status < 300) {
+				serviceHealthResponse.status = 'healthy'
+				delete serviceHealthResponse.degradedReason
+			}
 		}
 
-		await fetch(DATABASE_URL)
-			.then((res) => res.status)
-			.then((status) => {
-				if (status >= 200 && status < 300) {
-					databaseHealth.status = 'healthy'
-					delete databaseHealth.degradedReason
-				}
-				console.log(databaseHealth)
-			})
-			.catch((err) => {
-				server.log.error(err)
-				server.log.error(`${DATABASE_URL} is unreachable`)
-			})
+		const databaseHealthFetch: HealthCustomFetch = {
+			name: name,
+			endPoint: DATABASE_URL,
+			fetchHandler: databaseHealthFetchHandler
+		}
 
-		return databaseHealth
+		return healthCustomFetch(databaseHealthFetch)
 	}
 
 	private async getClientHealth(): Promise<ServiceHealthResponse> {
-		let clientHealth: ServiceHealthResponse = {
-			name: 'Smarter Bullets Client',
-			description: 'Health and status of Smarter Bullets Client',
-			status: 'down',
-			degradedReason: `${CLIENT_URL} is unreachable`,
-			timeStamp: dateBuilder()
+		const name = 'Smarter Bullets Client'
+
+		const clientHealthFetchHandler = (response: any, serviceHealthResponse: ServiceHealthResponse) => {
+			const status = response.status
+			if (status >= 200 && status < 300) {
+				serviceHealthResponse.status = 'healthy'
+				delete serviceHealthResponse.degradedReason
+			}
 		}
 
-		await fetch(CLIENT_URL)
-			.then((res) => res.status)
-			.then((status) => {
-				if (status >= 200 && status < 300) {
-					clientHealth.status = 'healthy'
-					delete clientHealth.degradedReason
-				}
-				console.log(clientHealth)
-			})
-			.catch((err) => {
-				server.log.error(err)
-				server.log.error(`${CLIENT_URL} is unreachable`)
-			})
+		const clientHealthFetch: HealthCustomFetch = {
+			name: name,
+			endPoint: CLIENT_URL,
+			fetchHandler: clientHealthFetchHandler
+		}
 
-		return clientHealth
+		return healthCustomFetch(clientHealthFetch)
 	}
 
 	private async getOpenAiApiHealth(): Promise<ServiceHealthResponse> {
-		let openAiApiHealth: ServiceHealthResponse = {
-			name: 'OpenAI API',
-			description: "Health and status of OpenAI's API services",
-			status: 'down',
-			degradedReason: `${OPENAI_API_STATUS_URL} is unreachable`,
-			timeStamp: dateBuilder()
+		const name = 'OpenAI API'
+
+		const openAiApiHealthFetchHandler = async (response: any, serviceHealthResponse: ServiceHealthResponse) => {
+			const json: OpenAiApiResponse = await response.json()
+			const components: OpenAiApiHealthResponseComponentsArray = json.components
+			const component = components[0]
+			switch (component.status) {
+				case 'operational':
+					serviceHealthResponse.status = 'healthy'
+					break
+				case 'degraded_performance':
+				case 'partial_outage':
+					serviceHealthResponse.status = 'degraded'
+					break
+				default:
+					serviceHealthResponse.status = 'down'
+					break
+			}
+			serviceHealthResponse.timeStamp = dateBuilder(component.updated_at)
+			delete serviceHealthResponse.degradedReason
 		}
 
-		await fetch('https://status.openai.com/api/v2/components.json')
-			.then((json) => json.json())
-			.then((res: OpenAiApiResponse) => res.components)
-			.then((components: OpenAiApiHealthResponseComponentsArray) => components[0])
-			.then((openAiApiHealthResponse) => {
-				switch (openAiApiHealthResponse.status) {
-					case 'operational':
-						openAiApiHealth.status = 'healthy'
-						break
-					case 'degraded_performance':
-					case 'partial_outage':
-						openAiApiHealth.status = 'degraded'
-						break
-					default:
-						openAiApiHealth.status = 'down'
-						break
-				}
-				openAiApiHealth.timeStamp = dateBuilder(openAiApiHealthResponse.updated_at)
-				delete openAiApiHealth.degradedReason
-			})
-			.catch((err) => {
-				server.log.error(err)
-				server.log.error(`${OPENAI_API_STATUS_URL} is unreachable`)
-			})
+		const openAiApiHealthFetch: HealthCustomFetch = {
+			name: name,
+			endPoint: OPENAI_API_STATUS_URL || '[URL NOT AVAILABLE]',
+			fetchHandler: openAiApiHealthFetchHandler
+		}
 
-		return openAiApiHealth
+		return healthCustomFetch(openAiApiHealthFetch)
 	}
 }

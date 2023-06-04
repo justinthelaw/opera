@@ -4,6 +4,8 @@ import { loggerConfiguration } from './logging/logger.config'
 import { loggerConfigurationInterface } from './logging/logger.interface'
 import { ENV, HOST, PORT } from './constants/api.constants'
 import { healthRoutes } from './health/health.routes'
+import fastifyStatic from '@fastify/static'
+import path from 'path'
 
 // TODO: Reformat according to https://www.youtube.com/watch?v=Lk-uVEVGxOA
 
@@ -11,7 +13,12 @@ export const server: FastifyInstance<Server, IncomingMessage, ServerResponse> = 
 	logger: loggerConfiguration[ENV as keyof loggerConfigurationInterface]
 })
 
-server.register(healthRoutes, { prefix: '/health' })
+server.register(fastifyStatic, {
+	root: path.join(__dirname, 'dist'),
+	prefix: '/'
+})
+
+server.register(healthRoutes, { prefix: '/api/health' })
 
 const start = () => {
 	try {

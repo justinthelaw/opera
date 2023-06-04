@@ -1,5 +1,14 @@
 type Status = 'healthy' | 'degraded' | 'down' | 'maintenance'
 
+export interface HealthCustomFetch {
+	name: string
+	description?: string
+	defaultStatus?: Status
+	endPoint: string
+	fetchHandler: (res: any, serviceHealthResponse: ServiceHealthResponse) => void
+	defaultDegradedReason?: string
+}
+
 export interface HealthResponse {
 	name: string
 	status: Status
