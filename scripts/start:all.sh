@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cleanup() {
-    echo -e "\n==> Running Smarter Bullets cleanup..."
+    echo -ne "\r==> Running Smarter Bullets cleanup..."
     if [[ $1 == "--check" ]]; then
         npm run stop:all:check
     else
@@ -12,16 +12,17 @@ cleanup() {
 
 trap cleanup SIGINT
 
-echo -e "\n==> Smarter Bullets Development Environment is spinning up..."
+echo -ne "==> Smarter Bullets Development Environment is spinning up..."
 
 if [[ $1 == "--check" ]]; then
     source ./config/.env.example
+    npm run start:database:check &
+    database_pid=$!
 else
     source ./config/.env.local
+    npm run start:database &
+    database_pid=$!
 fi
-
-npm run start:database &
-database_pid=$!
 
 while ! nc -z localhost $MONGO_PORT; do sleep 1; done
 
@@ -47,7 +48,7 @@ if [[ $1 == "--check" ]]; then
         response=$(curl -s -o /dev/null -w "%{http_code}" "$url")
     done
 
-    echo -e "\n==> Performing final \"check:all\" cleanup..."
+    echo -e "\r==> Performing final \"check:all\" cleanup..."
     cleanup
 fi
 

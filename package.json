@@ -15,6 +15,7 @@
     "start:api": "cd ./api && npm run start:dev",
     "start:api:check": "cd ./api && npm start",
     "start:database": "chmod +x ./api/data/start:database.sh && ./api/data/start:database.sh",
+    "start:database:check": "chmod +x ./api/data/start:database.sh && ./api/data/start:database.sh --check",
     "lint:general": "eslint ./ --ext '.ts,.tsx' --fix",
     "lint:security": "eslint --no-eslintrc --config security.eslintrc.yaml ./ --ext '.ts,.tsx --fix'",
     "test:client": "cd ./client && npm test",
