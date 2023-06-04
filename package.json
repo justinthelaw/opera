@@ -16,14 +16,13 @@
     "start:api": "cd ./api && npm run start:dev",
     "start:api:check": "cd ./api && npm start",
     "start:database": "chmod +x ./api/data/start:database.sh && ./api/data/start:database.sh",
-    "start:database:check": "chmod +x ./api/data/start:database.sh && ./api/data/start:database.sh --check",
     "lint:general": "eslint ./ --ext '.ts,.tsx' --fix",
     "lint:security": "eslint --no-eslintrc --config security.eslintrc.yaml ./ --ext '.ts,.tsx --fix'",
     "test:client": "cd ./client && npm test",
     "test:api": "cd ./api && npm test",
     "build:client": "cd ./client && npm run build",
     "build:api": "cd ./api && npm run build",
-    "build:integrate": "cp ./client/dist/bundle.js ./api/public && cp ./client/dist/index.html ./api/public"
+    "build:integrate": "cp -r ./client/dist ./api/build"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -18,12 +18,12 @@ if [[ $1 == "--check" ]]; then
     source ./config/.env.example
 else
     source ./config/.env.local
+
+    npm run start:database &
+    database_pid=$!
+
+    while ! nc -z localhost $MONGO_PORT; do sleep 1; done
 fi
-
-npm run start:database${1:+:check} &
-database_pid=$!
-
-while ! nc -z localhost $MONGO_PORT; do sleep 1; done
 
 npm run start:api${1:+:check} &
 api_pid=$!
@@ -45,6 +45,8 @@ if [[ $1 == "--check" ]]; then
     cleanup --check
 fi
 
-wait $database_pid
+if [[ $1 != "--check" ]]; then
+    wait $database_pid
+fi
 wait $api_pid
 wait $client_pid
