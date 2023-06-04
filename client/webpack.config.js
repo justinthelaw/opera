@@ -2,7 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 
-const { CLIENT_HTTPS, CLIENT_HOST, CLIENT_PORT } = process.env
+const { CLIENT_HTTPS, CLIENT_HOST, CLIENT_PORT, CHECK } = process.env
 
 module.exports = {
 	mode: 'development',
@@ -40,7 +40,7 @@ module.exports = {
 			template: './src/index.html'
 		}),
 		new Dotenv({
-			path: '../config/.env.local'
+			path: CHECK ? '../config/.env.example' : '../config/.env.local'
 		})
 	]
 }

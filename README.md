@@ -46,8 +46,6 @@ The purpose of hard-forking this tool is as follows:
 4. Revamp the UI/UX using modern Astro UXDS components and styling
 5. Re-architect to a client-api, Open API-compliant, application to provide persistence and security
 
-The above also happens to be the minimum viable product goal for this project as well!
-
 ## What are "Bullets"
 
 One of the most pointless and time-consuming things that Air and Space Force officer and enlisted personnel do all the time is bullet-writing.
@@ -57,7 +55,7 @@ Air and Space Force personnel typically are required to write bullets for perfor
 These bullets follow a few formatting rules:
 
 -   Each bullet must be exactly one line, with the width of the line depending on the form (performance reports, award packages, etc).
--   Acronyms and abbreviations can be force-wide, organization, and/or commander-specific, with major inconsistencies with their abbreviation/acronym policies.
+-   Acronyms and abbreviations can be force-wide, organization, and/or commander-specific, with major inconsistencies in their abbreviation/acronym policies.
 
 ## How are "Bullets" Formatted
 

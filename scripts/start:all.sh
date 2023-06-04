@@ -16,40 +16,33 @@ echo -ne "==> Smarter Bullets Development Environment is spinning up..."
 
 if [[ $1 == "--check" ]]; then
     source ./config/.env.example
-    npm run start:database:check &
-    database_pid=$!
 else
     source ./config/.env.local
-    npm run start:database &
-    database_pid=$!
 fi
+
+npm run start:database${1:+:check} &
+database_pid=$!
 
 while ! nc -z localhost $MONGO_PORT; do sleep 1; done
 
-if [[ $1 == "--check" ]]; then
-    npm run start:api:check &
-    api_pid=$!
-else
-    npm run start:api &
-    api_pid=$!
-fi
+npm run start:api${1:+:check} &
+api_pid=$!
 
 while ! nc -z localhost $API_PORT; do sleep 1; done
 
-npm run start:client &
+npm run start:client${1:+:check} &
 client_pid=$!
 
 if [[ $1 == "--check" ]]; then
     url="http://$CLIENT_HOST:$CLIENT_PORT"
-    response=$(curl -s -o /dev/null -w "%{http_code}" "$url")
-
-    while [[ $response -ne 200 ]]; do
-        sleep 1
+    while true; do
         response=$(curl -s -o /dev/null -w "%{http_code}" "$url")
+        [[ $response -eq 200 ]] && break
+        sleep 1
     done
 
     echo -e "\r==> Performing final \"check:all\" cleanup..."
-    cleanup
+    cleanup --check
 fi
 
 wait $database_pid

@@ -23,6 +23,6 @@ if nc -z localhost $CLIENT_PORT; then
     echo -ne "\r==> Smarter Bullets Client has gracefully stopped.\n"
 fi && \
 
-sleep 3 && echo -ne "\r==> All sub-stacks of Smarter Bullets have gracefully stopped.\n" && \
+sleep 1 && echo -ne "\r==> All sub-stacks of Smarter Bullets have gracefully stopped.\n" && \
 
 exit 0

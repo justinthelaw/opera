@@ -12,6 +12,7 @@
     "lint:all": "npm run lint:general && npm run lint:security",
     "build:all": "npm run build:api && npm run build:client && npm run build:integrate",
     "start:client": "cd ./client && npm start",
+    "start:client:check": "cd ./client && npm run start:check",
     "start:api": "cd ./api && npm run start:dev",
     "start:api:check": "cd ./api && npm start",
     "start:database": "chmod +x ./api/data/start:database.sh && ./api/data/start:database.sh",
