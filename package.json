@@ -7,6 +7,7 @@
     "start:all": "npm run stop:all && chmod +x scripts/start:all.sh && scripts/start:all.sh",
     "start:all:check": "npm run stop:all && chmod +x scripts/start:all.sh && scripts/start:all.sh --check",
     "stop:all": "chmod +x scripts/stop:all.sh && scripts/stop:all.sh",
+    "stop:all:check": "chmod +x scripts/stop:all.sh && scripts/stop:all.sh --check",
     "test:all": "npm run test:api && npm run test:client",
     "lint:all": "npm run lint:general && npm run lint:security",
     "build:all": "npm run build:api && npm run build:client && npm run build:integrate",

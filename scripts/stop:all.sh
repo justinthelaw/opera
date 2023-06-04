@@ -2,7 +2,11 @@
 
 echo -e "\n==> Smarter Bullets Development Environment is spinning down...\n"
 
-source ./config/.env.local
+if [[ $1 == "--check" ]]; then
+    source ./config/.env.example
+else
+    source ./config/.env.local
+fi
 
 if nc -z localhost $MONGO_PORT; then
     docker stop mongodb >/dev/null 2>&1 && \
