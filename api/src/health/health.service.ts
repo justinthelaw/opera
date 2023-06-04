@@ -6,7 +6,7 @@ import {
 	OpenAiApiHealthResponseComponentsArray
 } from './health.response'
 import { server } from '../index'
-import { OPENAI_API_STATUS_URL } from '../constants/server.constants'
+import { OPENAI_API_STATUS_URL, DATABASE_URL, CLIENT_URL } from '../constants/api.constants'
 
 export default class HealthService {
 	async getOverallHealth() {
@@ -22,7 +22,61 @@ export default class HealthService {
 
 	private async getAllServicesHealth(): Promise<ServiceHealthResponse[]> {
 		const openAiApiHealth = await this.getOpenAiApiHealth()
-		return [openAiApiHealth]
+		const databaseHealth = await this.getDatabaseHealth()
+		const clientHealth = await this.getClientHealth()
+		return [clientHealth, databaseHealth, openAiApiHealth]
+	}
+
+	private async getDatabaseHealth(): Promise<ServiceHealthResponse> {
+		let databaseHealth: ServiceHealthResponse = {
+			name: 'Smarter Bullets Database',
+			description: 'Health and status of Smarter Bullets Database',
+			status: 'down',
+			degradedReason: `${DATABASE_URL} is unreachable`,
+			timeStamp: dateBuilder()
+		}
+
+		await fetch(DATABASE_URL)
+			.then((res) => res.status)
+			.then((status) => {
+				if (status >= 200 && status < 300) {
+					databaseHealth.status = 'healthy'
+					delete databaseHealth.degradedReason
+				}
+				console.log(databaseHealth)
+			})
+			.catch((err) => {
+				server.log.error(err)
+				server.log.error(`${DATABASE_URL} is unreachable`)
+			})
+
+		return databaseHealth
+	}
+
+	private async getClientHealth(): Promise<ServiceHealthResponse> {
+		let clientHealth: ServiceHealthResponse = {
+			name: 'Smarter Bullets Client',
+			description: 'Health and status of Smarter Bullets Client',
+			status: 'down',
+			degradedReason: `${CLIENT_URL} is unreachable`,
+			timeStamp: dateBuilder()
+		}
+
+		await fetch(CLIENT_URL)
+			.then((res) => res.status)
+			.then((status) => {
+				if (status >= 200 && status < 300) {
+					clientHealth.status = 'healthy'
+					delete clientHealth.degradedReason
+				}
+				console.log(clientHealth)
+			})
+			.catch((err) => {
+				server.log.error(err)
+				server.log.error(`${CLIENT_URL} is unreachable`)
+			})
+
+		return clientHealth
 	}
 
 	private async getOpenAiApiHealth(): Promise<ServiceHealthResponse> {

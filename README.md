@@ -139,10 +139,14 @@ npm run lint:security
 3. Run all tests on all sub-stacks by executing the following at the root of the repository:
 
 ```bash
-npm run test:fullstack
+npm run test:all
 ```
 
-3. Run all client (jest, testing-library), api (jest), and integration (cypress) tests
+4. Run the check all command to ensure all pipeline steps will run locally:
+
+```bash
+npm run check:all
+```
 
 ## Committing and Merging
 
@@ -189,7 +193,7 @@ npx install-peerdeps --dev eslint-config-react-app
 To run each sub-stack in one terminal (logs are preserved), execute the following:
 
 ```bash
-npm run start:fullstack
+npm run start:all
 ```
 
 To run each sub-stack in a new terminal, execute the following:

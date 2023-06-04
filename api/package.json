@@ -4,7 +4,7 @@
   "main": "index.ts",
   "scripts": {
     "start": "npm run build && node build/index.js",
-    "start:dev": "nodemon",
+    "start:dev": "NODE_ENV=development nodemon",
     "build": "tsc --outDir ./build --project tsconfig.build.json",
     "test": "jest"
   },

@@ -1,10 +1,14 @@
 import { useEffect } from 'react'
 
-const Favicon = () => {
+export interface FaviconProps {
+	faviconUrl: string
+}
+
+const Favicon: React.FC<FaviconProps> = (props) => {
 	useEffect(() => {
-		const favicon: Element | null = document.querySelector('link[rel="icon"]')
-		if (favicon) favicon.setAttribute('href', 'https://github.com/justinthelaw/smarter-bullets/tree/main/public/favicon.ico')
-	}, [])
+		const faviconElement: Element | null = document.querySelector('link[rel="icon"]')
+		if (faviconElement && props.faviconUrl) faviconElement.setAttribute('href', props.faviconUrl)
+	}, [props.faviconUrl])
 
 	return null
 }

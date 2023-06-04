@@ -45,3 +45,6 @@ jobs:
 
     - name: build:integrate
       run: npm run build:integrate
+
+    - name: start:all:check
+      run: npm run start:all:check

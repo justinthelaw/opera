@@ -2,7 +2,7 @@ import fastify, { FastifyInstance } from 'fastify'
 import { Server, IncomingMessage, ServerResponse } from 'http'
 import { loggerConfiguration } from './logging/logger.config'
 import { loggerConfigurationInterface } from './logging/logger.interface'
-import { ENV, HOST, PORT } from './constants/server.constants'
+import { ENV, HOST, PORT } from './constants/api.constants'
 import { healthRoutes } from './health/health.routes'
 
 // TODO: Reformat according to https://www.youtube.com/watch?v=Lk-uVEVGxOA
