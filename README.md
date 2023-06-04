@@ -12,25 +12,29 @@
 
 This is a hard-fork of the original [pdf-bullets](https://github.com/AF-VCD/pdf-bullets) project, a web-application affectionately named the [**AIR FORCE BULL**et **SH**aping & **I**teration **T**ool](https://ea-pods-team.github.io/pdf-bullets/), created and maintained by Christopher Kodama and the members of the Air Force Volunteer Cyber Depository (AF-VCD) group.
 
-## Table of Contents
+# Table of Contents
 
-1. [Why the Hard Fork](#why-the-hard-fork)
-2. [What are "Bullets"](#what-are-bullets)
-3. [How are "Bullets" Formatted](#how-are-bullets-formatted)
-4. [Application Usage](#application-usage)
+1. [Background](#background)
+    - [Why the Hard Fork](#why-the-hard-fork)
+    - [What are "Bullets"](#what-are-bullets)
+    - [How are "Bullets" Formatted](#how-are-bullets-formatted)
+2. [Application Usage](#application-usage)
     - [Bullet Writing](#bullet-writing)
     - [Acronym List Imports](#acronym-list-imports)
-5. [Contributing](#contributing)
-    - [Local Development](#local-development)
-        - [General](#general)
-        - [Root Directory Run](#root-directory-run)
-        - [Individual Directory Run](#individual-directory-run)
+3. [Contributing](#contributing)
+    - [Feedback Form](#feedback-form)
     - [Pull Requests](#pull-requests)
     - [Issues](#issues)
     - [Branching](#branching)
     - [Coding Conventions and Standards](#coding-conventions-and-standards)
     - [Committing and Merging](#committing-and-merging)
-6. [Licensing](#licensing)
+    - [Local Development](#local-development)
+        - [General](#general)
+        - [Root Directory Run](#root-directory-run)
+        - [Individual Directory Run](#individual-directory-run)
+4. [Licensing](#licensing)
+
+# Background
 
 ## Why the Hard Fork
 
@@ -44,7 +48,7 @@ The purpose of hard-forking this tool is as follows:
 
 The above also happens to be the minimum viable product goal for this project as well!
 
-# What are "Bullets"
+## What are "Bullets"
 
 One of the most pointless and time-consuming things that Air and Space Force officer and enlisted personnel do all the time is bullet-writing.
 
@@ -55,7 +59,7 @@ These bullets follow a few formatting rules:
 -   Each bullet must be exactly one line, with the width of the line depending on the form (performance reports, award packages, etc).
 -   Acronyms and abbreviations can be force-wide, organization, and/or commander-specific, with major inconsistencies with their abbreviation/acronym policies.
 
-# How are "Bullets" Formatted
+## How are "Bullets" Formatted
 
 Those bullet formatting rules lead to the following:
 
@@ -96,7 +100,7 @@ Below are some GitOps rules for contributing to this repository. As time moves f
 
 ## Feedback Form
 
-A feedback form is built into the live web application, and all users can submit feature requests or defect reports via that route.
+A feedback form is built into the live web application, and all users can submit feature requests or defect reports via that form.
 
 ## Pull Requests
 
@@ -190,7 +194,7 @@ npx install-peerdeps --dev eslint-config-react-app
 
 ### Root Directory Run
 
-To run each sub-stack in one terminal (logs are preserved), execute the following:
+To run each sub-stack in one terminal, execute the following:
 
 ```bash
 npm run start:all
