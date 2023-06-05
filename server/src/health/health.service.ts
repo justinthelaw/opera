@@ -6,7 +6,7 @@ import {
 	OpenAiApiResponse,
 	OpenAiApiHealthResponseComponentsArray
 } from './health.models'
-import { OPENAI_API_STATUS_URL, DATABASE_URL, CLIENT_URL } from '../constants/api.constants'
+import { OPENAI_API_STATUS_URL, DATABASE_URL, CLIENT_URL } from '../constants/server.constants'
 import { healthCustomFetch } from './health.fetch'
 
 export default class HealthService {

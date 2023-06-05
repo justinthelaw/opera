@@ -15,9 +15,9 @@ This is a hard-fork of the original [pdf-bullets](https://github.com/AF-VCD/pdf-
 # Table of Contents
 
 1. [Background](#background)
-    - [Why the Hard Fork](#why-the-hard-fork)
     - [What are "Bullets"](#what-are-bullets)
     - [How are "Bullets" Formatted](#how-are-bullets-formatted)
+    - [Why the Hard Fork](#why-the-hard-fork)
 2. [Application Usage](#application-usage)
     - [Bullet Writing](#bullet-writing)
     - [Acronym List Imports](#acronym-list-imports)
@@ -36,16 +36,6 @@ This is a hard-fork of the original [pdf-bullets](https://github.com/AF-VCD/pdf-
 4. [Licensing](#licensing)
 
 # Background
-
-## Why the Hard Fork
-
-The purpose of hard-forking this tool is as follows:
-
-1. Refactor the frontend codebase to modern TypeScript, and eliminate Create-React-App (CRA) overhead
-2. Provide more GitOps and open-source developer workflows and instructions
-3. Add OpenAI GPT4 prompt engineering to create a new "Bullet Forge" feature
-4. Revamp the UI/UX using modern Astro UXDS components and styling
-5. Re-architect to a client-server application to provide persistence and security
 
 ## What are "Bullets"
 
@@ -70,11 +60,21 @@ Those bullet formatting rules lead to the following:
 
 The purpose of _smarter_-bullets is to develop a set of tools to automate the pointless aspects of bullet-writing so that an officer and/or enlisted members can focus more on writing actual content rather than worry about irrelevant formatting.
 
+## Why the Hard Fork
+
+The purpose of hard-forking this tool is as follows:
+
+1. Refactor the frontend codebase to modern TypeScript, and eliminate Create-React-App (CRA) overhead
+2. Provide more GitOps and open-source developer workflows and instructions
+3. Add OpenAI GPT4 prompt engineering to create a new "Bullet Forge" feature
+4. Revamp the UI/UX using modern Astro UXDS components and styling
+5. Re-architect to a client-server application to provide persistence and security
+
 # Application Usage
 
 ## Bullet Writing
 
-The application provides instructions within the landing page for usage. The User Interface (UI) should be relatively easy to navigate. If the UI is not intuitive to you, then feedback can be submitted using the To-Be-Built feedback form or an Issue can be posted to this Github repository.
+The application provides instructions within the application for usage. The User Interface (UI) should be relatively easy to navigate. If the UI is not intuitive to you, then feedback can be submitted using the To-Be-Built feedback form or an Issue can be posted to this Github repository.
 
 ## Acronym List Imports
 
@@ -195,9 +195,9 @@ npx install-peerdeps --dev eslint-config-react-app
 
 ### Client-Server
 
-The Fastify Server within the API is the main server of both the Smarter Bullets API and Client. As it currently stands, the production build of the application and the development environment have the API serving a static `bundle.js` and `index.html` to the user's browser.
+The Fastify Server within the Server is the main server of both the Smarter Bullets Server and Client. As it currently stands, the production build of the application and the development environment have the Server serving a static `bundle.js` and `index.html` to the user's browser.
 
-In development, the API watches and serves whatever client build resides within the `/api/build/dist` directory using nodemon. A new client can be built, integrated, and served by the API using the instructions seen in the [Building](#building) section of this README.
+In development, the Server watches and serves whatever client build resides within the `/server/build/dist` directory using nodemon. A new client can be built, integrated, and served by the Server using the instructions seen in the [Building](#building) section of this README.
 
 ### Building
 
@@ -213,8 +213,8 @@ npm run build:all
 
 ```bash
 npm run build:client
-npm run build:api
-# moves client bundle and index over to api
+npm run build:server
+# moves client bundle and index over to server
 npm run build:integrate
 ```
 
@@ -236,7 +236,7 @@ npm run start:database
 # new terminal
 npm run start:client
 # new terminal
-npm run start:api
+npm run start:server
 ```
 
 ### Individual Directory Run
@@ -248,9 +248,9 @@ npm run start:api
 
 ```bash
 # set execution permissions to file
-chmod +x ./api/data/start:database
+chmod +x ./server/data/start:database
 # run docker command for configured postgresql image and container
-./api/data/start:database
+./server/data/start:database
 ```
 
 3. To access the PostgreSQL container, execute the following:
@@ -264,11 +264,11 @@ docker exec -it <CONTAINER_ID> mongosh
 
 4. For more PostgreSQL commands, you can reference this guide: [PostgreSQL Cheat Sheet](https://www.postgresqltutorial.com/postgresql-cheat-sheet/)
 
-#### _API_
+#### _Server_
 
 1. Open a new terminal
-2. Go to the `api/src/constants/` directory and ensure you are okay with defaults sans environment variable
-3. In `api/`, execute the following to start the api:
+2. Go to the `server/src/constants/` directory and ensure you are okay with defaults sans environment variable
+3. In `server/`, execute the following to start the server:
 
 ```bash
 # npm run start:dev wraps a build-step that includes tsc build and nodemon for hot-reload

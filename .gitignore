@@ -9,8 +9,8 @@ coverage
 # production
 build
 dist
-api/public/*.js
-api/public/*.html
+server/public/*.js
+server/public/*.html
 
 # database
 db/

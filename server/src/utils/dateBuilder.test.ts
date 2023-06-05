@@ -1,5 +1,5 @@
 import dateBuilder from './dateBuilder'
-import { TIMEZONE } from '../constants/api.constants'
+import { TIMEZONE } from '../constants/server.constants'
 
 describe('dateBuilder', () => {
 	const mockCurrentTime = new Date(Date.UTC(2023, 5, 1, 12, 0, 0)).toISOString()

@@ -1,4 +1,4 @@
-import { TIMEZONE } from '../constants/api.constants'
+import { TIMEZONE } from '../constants/server.constants'
 
 export default function dateBuilder(dateString?: string): string {
 	const time = dateString || new Date().toISOString()
