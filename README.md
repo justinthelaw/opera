@@ -244,25 +244,25 @@ npm run start:server
 #### _Database_
 
 1. Open a new terminal
-2. Execute the following to start a PostgreSQL database:
+2. Execute the following to start a MongoDB database:
 
 ```bash
 # set execution permissions to file
 chmod +x ./server/data/start:database
-# run docker command for configured postgresql image and container
+# run docker command for configured mongodb image and container
 ./server/data/start:database
 ```
 
-3. To access the PostgreSQL container, execute the following:
+3. To access the MongoDB container, execute the following:
 
 ```bash
-# get the docker container ID for smarter-bullets postgresql
+# get the docker container ID for smarter-bullets mongodb
 docker ps -a
 # open mongo shell for container
 docker exec -it <CONTAINER_ID> mongosh
 ```
 
-4. For more PostgreSQL commands, you can reference this guide: [PostgreSQL Cheat Sheet](https://www.postgresqltutorial.com/postgresql-cheat-sheet/)
+4. For more MongoDB commands, you can reference this guide: [MongoDB Cheat Sheet](https://www.mongodbtutorial.com/mongodb-cheat-sheet/)
 
 #### _Server_
 
