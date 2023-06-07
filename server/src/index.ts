@@ -1,13 +1,12 @@
 import fastify, { FastifyInstance } from 'fastify'
 import { Server, IncomingMessage, ServerResponse } from 'http'
-import { loggerConfiguration } from './logging/logger.config'
-import { loggerConfigurationInterface } from './logging/logger.interface'
-import { ENV, HOST, PORT } from './constants/server.constants'
-import { healthRoutes } from './health/health.routes'
+import { loggerConfiguration } from './logging/LoggerConfig'
+import { loggerConfigurationInterface } from './logging/LoggerInterface'
+import { ENV, HOST, PORT } from './utils/Constants'
+import { healthRoutes } from './health/HealthRoutes'
+import { RegisterApiRoute } from './utils/RegisterApiRoute'
 import fastifyStatic from '@fastify/static'
 import path from 'path'
-
-// TODO: Reformat according to https://www.youtube.com/watch?v=Lk-uVEVGxOA
 
 export const server: FastifyInstance<Server, IncomingMessage, ServerResponse> = fastify({
 	logger: loggerConfiguration[ENV as keyof loggerConfigurationInterface]
@@ -18,7 +17,7 @@ server.register(fastifyStatic, {
 	prefix: '/'
 })
 
-server.register(healthRoutes, { prefix: '/api/health' })
+RegisterApiRoute(healthRoutes, '/health')
 
 const start = () => {
 	try {

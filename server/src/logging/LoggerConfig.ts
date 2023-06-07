@@ -1,4 +1,4 @@
-import { loggerConfigurationInterface } from './logger.interface'
+import { loggerConfigurationInterface } from './LoggerInterface'
 
 export const loggerConfiguration: loggerConfigurationInterface = {
 	development: {

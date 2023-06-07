@@ -1,29 +1,29 @@
-type Status = 'healthy' | 'degraded' | 'down' | 'maintenance'
+export type Status = 'healthy' | 'degraded' | 'down' | 'maintenance'
+export type PossibleHealthServices = 'server' | 'api' | 'client' | 'database' | 'openai' | 'openaiapi' | 'open-ai-api'
 
-export interface HealthCustomFetch {
-	name: string
-	description?: string
-	defaultStatus?: Status
-	endPoint: string
-	fetchHandler: (res: any, serviceHealthResponse: ServiceHealthResponse) => void
-	defaultDegradedReason?: string
+export interface RequestedServiceParams {
+	service: PossibleHealthServices
 }
 
-export interface HealthResponse {
+export interface HealthCustomFetchObject {
 	name: string
-	status: Status
-	description: string
+	endPoint: string
+	fetchHandler?: (res: any, serviceHealthResponse: ServiceHealthResponse) => void
+	description?: string
+	status?: Status
 	degradedReason?: string
+}
+
+export interface HealthResponse extends ServiceHealthResponse {
 	serviceStatuses?: Array<ServiceHealthResponse>
-	timeStamp: string
 }
 
 export interface ServiceHealthResponse {
 	name: string
 	status: Status
 	description: string
-	degradedReason?: string
 	timeStamp: string
+	degradedReason?: string
 }
 
 export interface OpenAiApiHealthResponseComponent {
