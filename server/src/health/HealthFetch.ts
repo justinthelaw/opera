@@ -1,6 +1,6 @@
 import { HealthCustomFetchObject, ServiceHealthResponse, Status } from './HealthModels'
 import { server } from '../index'
-import dateBuilder from '../utils/DateBuilder'
+import DateBuilder from '../utils/DateBuilder'
 
 const defaultStatus: Status = 'down'
 
@@ -25,21 +25,21 @@ const defaultFetchHandler = (
 	}
 }
 
-export const HealthCustomFetch = async (fetchParams: HealthCustomFetchObject): Promise<ServiceHealthResponse> => {
+const healthCustomFetch = async (fetchParams: HealthCustomFetchObject): Promise<ServiceHealthResponse> => {
 	const serviceHealthResponse: ServiceHealthResponse = {
 		name: fetchParams.name,
 		description: fetchParams.description || defaultDescription(fetchParams),
 		status: fetchParams.status || defaultStatus,
 		degradedReason: fetchParams.degradedReason || defaultDegradedReason(fetchParams),
-		timeStamp: dateBuilder()
+		timeStamp: DateBuilder()
 	}
 
 	await fetch(fetchParams.endPoint)
-		.then((response) => {
+		.then(async (response) => {
 			if (fetchParams.fetchHandler !== undefined) {
-				fetchParams.fetchHandler(response, serviceHealthResponse)
+				return fetchParams.fetchHandler(response, serviceHealthResponse)
 			} else {
-				defaultFetchHandler(response, serviceHealthResponse, fetchParams)
+				return defaultFetchHandler(response, serviceHealthResponse, fetchParams)
 			}
 		})
 		.catch(() => {
@@ -48,3 +48,5 @@ export const HealthCustomFetch = async (fetchParams: HealthCustomFetchObject): P
 
 	return serviceHealthResponse
 }
+
+export default healthCustomFetch

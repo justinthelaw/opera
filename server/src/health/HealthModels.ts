@@ -26,7 +26,7 @@ export interface ServiceHealthResponse {
 	degradedReason?: string
 }
 
-export interface OpenAiApiHealthResponseComponent {
+export interface OpenAIHealthResponseComponent {
 	id: string
 	name: string
 	status: string
@@ -42,11 +42,11 @@ export interface OpenAiApiHealthResponseComponent {
 	only_show_if_degraded: boolean
 }
 
-export interface OpenAiApiHealthResponseComponentsArray {
-	[index: number]: OpenAiApiHealthResponseComponent
+export interface OpenAIHealthResponseComponentsArray {
+	[index: number]: OpenAIHealthResponseComponent
 }
 
-export interface OpenAiApiResponse {
+export interface OpenAIResponse {
 	page: {
 		id: string
 		name: string
@@ -54,5 +54,5 @@ export interface OpenAiApiResponse {
 		time_zone: string
 		updated_at: string
 	}
-	components: OpenAiApiHealthResponseComponentsArray
+	components: OpenAIHealthResponseComponentsArray
 }

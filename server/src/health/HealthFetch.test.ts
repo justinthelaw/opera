@@ -1,16 +1,18 @@
 import { HealthCustomFetchObject, ServiceHealthResponse } from './HealthModels'
-import { HealthCustomFetch } from './HealthFetch'
-import DateBuilder from '../utils/DateBuilder'
+import healthCustomFetch from './HealthFetch'
+import dateBuilder from '../utils/DateBuilder'
+
+jest.mock('../index', () => ({
+	server: {
+		log: {
+			warn: jest.fn()
+		}
+	}
+}))
 
 describe('healthCustomFetch', () => {
 	afterEach(() => {
-		jest.clearAllTimers()
-		jest.clearAllMocks()
-	})
-
-	afterAll(() => {
-		jest.clearAllTimers()
-		jest.clearAllMocks()
+		jest.restoreAllMocks()
 	})
 
 	test('should fetch health data successfully and set status as healthy', async () => {
@@ -25,14 +27,14 @@ describe('healthCustomFetch', () => {
 
 		jest.spyOn(global, 'fetch').mockResolvedValueOnce(mockFetchResponse as Response)
 
-		const result: ServiceHealthResponse = await HealthCustomFetch(fetchParams)
-
-		expect(global.fetch).toHaveBeenCalledWith(fetchParams.endPoint)
-		expect(result).toEqual({
-			name: 'Service1',
-			description: 'Health and status of Service1',
-			status: 'healthy',
-			timeStamp: DateBuilder()
+		return healthCustomFetch(fetchParams).then((result) => {
+			expect(global.fetch).toHaveBeenCalledWith(fetchParams.endPoint)
+			expect(result).toEqual({
+				name: 'Service1',
+				description: 'Health and status of Service1',
+				status: 'healthy',
+				timeStamp: dateBuilder()
+			})
 		})
 	})
 
@@ -48,15 +50,15 @@ describe('healthCustomFetch', () => {
 
 		jest.spyOn(global, 'fetch').mockRejectedValueOnce(mockFetchResponse)
 
-		const result: ServiceHealthResponse = await HealthCustomFetch(fetchParams)
-
-		expect(global.fetch).toHaveBeenCalledWith(fetchParams.endPoint)
-		expect(result).toEqual({
-			name: 'Service2',
-			description: 'Health and status of Service2',
-			status: 'down',
-			degradedReason: 'Service2 at http://example.com/service2 is unreachable',
-			timeStamp: DateBuilder()
+		return healthCustomFetch(fetchParams).then((result) => {
+			expect(global.fetch).toHaveBeenCalledWith(fetchParams.endPoint)
+			expect(result).toEqual({
+				name: 'Service2',
+				description: 'Health and status of Service2',
+				status: 'down',
+				degradedReason: 'Service2 at http://example.com/service2 is unreachable',
+				timeStamp: dateBuilder()
+			})
 		})
 	})
 
@@ -76,15 +78,15 @@ describe('healthCustomFetch', () => {
 
 		jest.spyOn(global, 'fetch').mockResolvedValueOnce(mockFetchResponse as Response)
 
-		const result: ServiceHealthResponse = await HealthCustomFetch(fetchParams)
-
-		expect(global.fetch).toHaveBeenCalledWith(fetchParams.endPoint)
-		expect(result).toEqual({
-			name: 'Service3',
-			description: 'Health and status of Service3',
-			status: 'degraded',
-			degradedReason: 'Custom fetch handler',
-			timeStamp: DateBuilder()
+		return healthCustomFetch(fetchParams).then((result) => {
+			expect(global.fetch).toHaveBeenCalledWith(fetchParams.endPoint)
+			expect(result).toEqual({
+				name: 'Service3',
+				description: 'Health and status of Service3',
+				status: 'degraded',
+				degradedReason: 'Custom fetch handler',
+				timeStamp: dateBuilder()
+			})
 		})
 	})
 })

@@ -2,12 +2,12 @@ import {
 	HealthCustomFetchObject,
 	HealthResponse,
 	ServiceHealthResponse,
-	OpenAiApiResponse,
-	OpenAiApiHealthResponseComponentsArray,
+	OpenAIResponse,
+	OpenAIHealthResponseComponentsArray,
 	PossibleHealthServices
 } from './HealthModels'
 import { OPENAI_API_STATUS_URL, DATABASE_URL, CLIENT_URL } from '../utils/Constants'
-import { HealthCustomFetch } from './HealthFetch'
+import HealthCustomFetch from './HealthFetch'
 import dateBuilder from '../utils/DateBuilder'
 
 export default class HealthService {
@@ -31,7 +31,7 @@ export default class HealthService {
 			case 'openai':
 			case 'openaiapi':
 			case 'open-ai-api':
-				response = await this.getOpenAiApiHealth()
+				response = await this.getOpenAIHealth()
 				break
 			case 'server':
 			case 'api':
@@ -54,10 +54,10 @@ export default class HealthService {
 	}
 
 	async getThirdPartyServicesHealth(): Promise<ServiceHealthResponse[]> {
-		const openAiApiHealth = await this.getOpenAiApiHealth()
+		const openAIHealth = await this.getOpenAIHealth()
 		const databaseHealth = await this.getDatabaseHealth()
 		const clientHealth = await this.getClientHealth()
-		return [clientHealth, databaseHealth, openAiApiHealth]
+		return [clientHealth, databaseHealth, openAIHealth]
 	}
 
 	async getDatabaseHealth(): Promise<ServiceHealthResponse> {
@@ -82,12 +82,12 @@ export default class HealthService {
 		return HealthCustomFetch(clientHealthFetch)
 	}
 
-	async getOpenAiApiHealth(): Promise<ServiceHealthResponse> {
+	async getOpenAIHealth(): Promise<ServiceHealthResponse> {
 		const name = 'OpenAI API'
 
-		const openAiApiHealthFetchHandler = async (response: any, serviceHealthResponse: ServiceHealthResponse) => {
-			const json: OpenAiApiResponse = await response.json()
-			const components: OpenAiApiHealthResponseComponentsArray = json.components
+		const openAIHealthFetchHandler = async (response: any, serviceHealthResponse: ServiceHealthResponse) => {
+			const json: OpenAIResponse = await response.json()
+			const components: OpenAIHealthResponseComponentsArray = json.components
 			const component = components[0]
 			switch (component.status) {
 				case 'operational':
@@ -105,12 +105,12 @@ export default class HealthService {
 			delete serviceHealthResponse.degradedReason
 		}
 
-		const openAiApiHealthFetch: HealthCustomFetchObject = {
+		const openAIHealthFetch: HealthCustomFetchObject = {
 			name: name,
 			endPoint: OPENAI_API_STATUS_URL || '[URL NOT AVAILABLE]',
-			fetchHandler: openAiApiHealthFetchHandler
+			fetchHandler: openAIHealthFetchHandler
 		}
 
-		return HealthCustomFetch(openAiApiHealthFetch)
+		return HealthCustomFetch(openAIHealthFetch)
 	}
 }

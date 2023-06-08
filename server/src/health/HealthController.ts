@@ -3,7 +3,7 @@ import { HealthResponse, PossibleHealthServices, ServiceHealthResponse } from '.
 
 const healthService = new HealthService()
 
-export class HealthController {
+export default class HealthController {
 	async getOverallHealth(): Promise<HealthResponse> {
 		const response: HealthResponse = await healthService.getOverallHealth()
 		return response

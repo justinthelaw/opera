@@ -2,15 +2,15 @@ import dateBuilder from './DateBuilder'
 import { TIMEZONE } from './Constants'
 
 describe('dateBuilder', () => {
-	const mockCurrentTime = new Date(Date.UTC(2023, 5, 1, 12, 0, 0)).toISOString()
-
 	beforeEach(() => {
+		const mockCurrentTime = new Date(Date.UTC(2023, 5, 1, 12, 0, 0)).toISOString()
 		jest.spyOn(global.Date.prototype, 'toISOString').mockReturnValue(mockCurrentTime)
 		jest.spyOn(global.Date.prototype, 'toLocaleString').mockReturnValue('6/1/2023, 12:00:00 PM')
 	})
 
 	afterEach(() => {
 		jest.restoreAllMocks()
+		jest.clearAllTimers()
 	})
 
 	it('returns the current date and time in the specified timezone if no dateString is provided', () => {

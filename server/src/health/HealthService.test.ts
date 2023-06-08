@@ -1,8 +1,9 @@
 import HealthService from './HealthService'
-import { HealthCustomFetch } from './HealthFetch'
+import healthCustomFetch from './HealthFetch'
 
 jest.mock('./HealthFetch', () => ({
-	HealthCustomFetch: jest.fn()
+	__esModule: true,
+	default: jest.fn()
 }))
 
 describe('HealthService', () => {
@@ -10,7 +11,8 @@ describe('HealthService', () => {
 
 	beforeEach(() => {
 		healthService = new HealthService()
-		;(HealthCustomFetch as jest.Mock).mockResolvedValueOnce({
+		// Mock the implementation of healthCustomFetch
+		;(healthCustomFetch as jest.Mock).mockResolvedValue({
 			name: 'Mock Service',
 			status: 'healthy',
 			description: 'Mock Service Health',
@@ -19,7 +21,7 @@ describe('HealthService', () => {
 	})
 
 	afterEach(() => {
-		jest.clearAllMocks()
+		jest.restoreAllMocks()
 	})
 
 	describe('getOverallHealth', () => {
@@ -41,21 +43,21 @@ describe('HealthService', () => {
 			expect(serverHealthSpy).toHaveBeenCalledTimes(1)
 		})
 		it('should call the getClientHealth method when given argument, "client"', async () => {
-			const serverHealthSpy = jest.spyOn(healthService, 'getClientHealth')
+			const clientHealthSpy = jest.spyOn(healthService, 'getClientHealth')
 			await healthService.getRequestedServiceHealth('client')
-			expect(serverHealthSpy).toHaveBeenCalledTimes(1)
+			expect(clientHealthSpy).toHaveBeenCalledTimes(1)
 		})
 		it('should call the getDatabaseHealth method when given argument, "database"', async () => {
-			const serverHealthSpy = jest.spyOn(healthService, 'getDatabaseHealth')
+			const databaseHealthSpy = jest.spyOn(healthService, 'getDatabaseHealth')
 			await healthService.getRequestedServiceHealth('database')
-			expect(serverHealthSpy).toHaveBeenCalledTimes(1)
+			expect(databaseHealthSpy).toHaveBeenCalledTimes(1)
 		})
 		it('should call the getOpenAiApiHealth method when given argument, "openai"', async () => {
-			const serverHealthSpy = jest.spyOn(healthService, 'getOpenAiApiHealth')
+			const openAIAPIHealthSpy = jest.spyOn(healthService, 'getOpenAIHealth')
 			await healthService.getRequestedServiceHealth('openai')
 			await healthService.getRequestedServiceHealth('openaiapi')
 			await healthService.getRequestedServiceHealth('open-ai-api')
-			expect(serverHealthSpy).toHaveBeenCalledTimes(3)
+			expect(openAIAPIHealthSpy).toHaveBeenCalledTimes(3)
 		})
 	})
 })
