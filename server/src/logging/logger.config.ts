@@ -1,6 +1,6 @@
-import LoggerConfigurationInterface from './LoggerInterface'
+import LoggerConfigurationInterface from './LoggerConfigurationModel'
 
-const LoggerConfiguration: LoggerConfigurationInterface = {
+const loggerConfiguration: LoggerConfigurationInterface = {
 	development: {
 		transport: {
 			target: 'pino-pretty',
@@ -14,4 +14,4 @@ const LoggerConfiguration: LoggerConfigurationInterface = {
 	test: false
 }
 
-export default LoggerConfiguration
+export default loggerConfiguration

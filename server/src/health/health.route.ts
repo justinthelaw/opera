@@ -1,10 +1,10 @@
 import { FastifyInstance, FastifyRequest } from 'fastify'
 
 import HealthController from './HealthController'
-import { HealthResponse, RequestedServiceParams } from './HealthModels'
+import { HealthResponse, RequestedServiceParams } from './HealthModel'
 
 const healthController = new HealthController()
-const HealthRoutes = async (app: FastifyInstance) => {
+const healthRoutes = async (app: FastifyInstance) => {
 	app.get('/', (_, res) => {
 		healthController.getOverallHealth().then((result: HealthResponse) => res.send(result).status(200))
 	})
@@ -15,4 +15,4 @@ const HealthRoutes = async (app: FastifyInstance) => {
 	})
 }
 
-export default HealthRoutes
+export default healthRoutes

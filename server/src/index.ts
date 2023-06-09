@@ -3,14 +3,14 @@ import fastify, { FastifyInstance } from 'fastify'
 import fastifyStatic from '@fastify/static'
 import path from 'path'
 
-import LoggerConfigurationInterface from './logging/LoggerInterface'
-import { ENV, HOST, PORT } from './utils/Constants'
-import LoggerConfiguration from './logging/LoggerConfig'
-import HealthRoutes from './health/HealthRoutes'
-import registerAPIRoute from './utils/RegisterAPIRoute'
+import LoggerConfigurationInterface from './logging/LoggerConfigurationModel'
+import { ENV, HOST, PORT } from './utils/server.constants'
+import loggerConfiguration from './logging/logger.config'
+import healthRoutes from './health/health.route'
+import registerAPIRoute from './utils/register.api'
 
 export const server: FastifyInstance<Server, IncomingMessage, ServerResponse> = fastify({
-	logger: LoggerConfiguration[ENV as keyof LoggerConfigurationInterface]
+	logger: loggerConfiguration[ENV as keyof LoggerConfigurationInterface]
 })
 
 server.register(fastifyStatic, {
@@ -18,7 +18,7 @@ server.register(fastifyStatic, {
 	prefix: '/'
 })
 
-registerAPIRoute(HealthRoutes, '/health')
+registerAPIRoute(healthRoutes, '/health')
 
 const start = () => {
 	try {

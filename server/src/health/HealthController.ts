@@ -1,5 +1,5 @@
 import HealthService from './HealthService'
-import { HealthResponse, PossibleHealthServices, ServiceHealthResponse } from './HealthModels'
+import { HealthResponse, PossibleHealthServices, ServiceHealthResponse } from './HealthModel'
 
 const healthService = new HealthService()
 

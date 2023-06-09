@@ -5,10 +5,10 @@ import {
 	OpenAIResponse,
 	OpenAIHealthResponseComponentsArray,
 	PossibleHealthServices
-} from './HealthModels'
-import { OPENAI_API_STATUS_URL, DATABASE_URL, CLIENT_URL } from '../utils/Constants'
-import HealthCustomFetch from './HealthFetch'
-import dateBuilder from '../utils/DateBuilder'
+} from './HealthModel'
+import { OPENAI_API_STATUS_URL, DATABASE_URL, CLIENT_URL } from '../utils/server.constants'
+import HealthCustomFetch from './health.fetch'
+import dateBuilder from '../utils/date.builder'
 
 export default class HealthService {
 	async getOverallHealth() {

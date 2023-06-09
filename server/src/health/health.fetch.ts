@@ -1,6 +1,6 @@
-import { HealthCustomFetchObject, ServiceHealthResponse, Status } from './HealthModels'
+import { HealthCustomFetchObject, ServiceHealthResponse, Status } from './HealthModel'
 import { server } from '../index'
-import DateBuilder from '../utils/DateBuilder'
+import DateBuilder from '../utils/date.builder'
 
 const defaultStatus: Status = 'down'
 

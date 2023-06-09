@@ -1,12 +1,12 @@
 import HealthService from './HealthService'
-import healthCustomFetch from './HealthFetch'
+import healthCustomFetch from './health.fetch'
 
-jest.mock('./HealthFetch', () => ({
+jest.mock('./health.fetch', () => ({
 	__esModule: true,
 	default: jest.fn()
 }))
 
-describe('HealthService', () => {
+describe('health.service', () => {
 	let healthService: HealthService
 
 	beforeEach(() => {

@@ -1,6 +1,6 @@
-import { HealthCustomFetchObject, ServiceHealthResponse } from './HealthModels'
-import healthCustomFetch from './HealthFetch'
-import dateBuilder from '../utils/DateBuilder'
+import { HealthCustomFetchObject, ServiceHealthResponse } from './HealthModel'
+import healthCustomFetch from './health.fetch'
+import dateBuilder from '../utils/date.builder'
 
 jest.mock('../index', () => ({
 	server: {
@@ -10,7 +10,7 @@ jest.mock('../index', () => ({
 	}
 }))
 
-describe('healthCustomFetch', () => {
+describe('health.fetch', () => {
 	afterEach(() => {
 		jest.restoreAllMocks()
 	})

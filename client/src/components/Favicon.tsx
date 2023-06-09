@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 export interface FaviconProps {
-	faviconUrl: string
+	faviconUrl?: string
 }
 
 const Favicon: React.FC<FaviconProps> = (props) => {
