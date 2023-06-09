@@ -218,7 +218,7 @@ npm run build:integrate
 
 ### Root Directory Run
 
-To run each sub-stack in one terminal, execute the following:
+(RECOMMENDED) To run each sub-stack in one terminal, execute the following:
 
 ```bash
 npm run start:all
