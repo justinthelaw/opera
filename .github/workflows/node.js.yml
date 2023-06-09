@@ -86,9 +86,6 @@ jobs:
         key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
 
     - name: start:server
-      run: cd server && npm start
-
-    - name: stop:all
-      run: npm run stop:all
+      run: cd server && npm start & cd ../ && npm run stop:all
 
         
