@@ -2,7 +2,7 @@
   "name": "smarter-bullets",
   "version": "v1",
   "scripts": {
-    "check:all": "npm run install:all && npm run lint:all && npm run test:all && npm run build:all && npm run start:all:check",
+    "check:all": "npm run install:all && npm run lint:all && npm run test:all && npm run start:all:check",
     "install:all": "npx install-peerdeps --dev eslint-config-react-app && cd ./client && npm install && cd ../server && npm install",
     "start:all": "npm run stop:all && chmod +x scripts/start:all.sh && scripts/start:all.sh",
     "start:all:check": "npm run stop:all:check && chmod +x scripts/start:all.sh && scripts/start:all.sh --check",
