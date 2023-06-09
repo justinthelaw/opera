@@ -72,7 +72,7 @@ The purpose of hard-forking this tool is as follows:
 
 ## Bullet Writing
 
-The application provides instructions within the application for usage. The User Interface (UI) should be relatively easy to navigate. If the UI is not intuitive to you, then feedback can be submitted using the To-Be-Built feedback form or an Issue can be posted to this Github repository.
+(TODO:) The application provides instructions within the application for usage. The User Interface (UI) should be relatively easy to navigate. If the UI is not intuitive to you, then feedback can be submitted using the To-Be-Built feedback form or an Issue can be posted to this Github repository.
 
 ## Acronym List Imports
 
@@ -97,7 +97,7 @@ Below are some GitOps rules for contributing to this repository. As time moves f
 
 ## Feedback Form
 
-A feedback form is built into the live web application, and all users can submit feature requests or defect reports via that form.
+(TODO:) A feedback form is built into the live web application, and all users can submit feature requests or defect reports via that form.
 
 ## Pull Requests
 
@@ -108,7 +108,7 @@ When describing a pull request, please provide the following:
 
 ## Issues
 
-When describing an issue, please provide the following:
+(TODO:) An issue template will be built to provide fields for the following. When describing an issue, please provide the following:
 
 1. A title or summary of the issues
 2. Did the issue occur in the Local Development Environment or Production Environment?
@@ -127,23 +127,7 @@ Use a dash, `-`, as the delimiter, e.g., `this-is-a-feature-branch`
 
 ## Coding Conventions and Standards
 
-Prior to attempting a push to a branch or submitting of a merge request to a branch and/or main, do the following:
-
-1. Run a formatter on all files in accordance with the `.prettierrc` at the root of this repository
-2. Run the eslint linter on all files in accordance with the `.eslint.yaml`, `security.eslintrc.yaml`, and the `package.json` at the root of this repository by executing the following:
-
-```bash
-npm run lint:general
-npm run lint:security
-```
-
-3. Run all tests on all sub-stacks by executing the following at the root of the repository:
-
-```bash
-npm run test:all
-```
-
-4. Run the check all command to ensure all pipeline steps will run locally:
+Prior to attempting a push to a branch or submitting of a merge request to a branch and/or main, run the check all command to ensure all pipeline steps will run locally:
 
 ```bash
 npm run check:all
@@ -191,12 +175,6 @@ npm install
 npx install-peerdeps --dev eslint-config-react-app
 ```
 
-### Client-Server
-
-The Fastify Server within the Server is the main server of both the Smarter Bullets Server and Client. As it currently stands, the production build of the application and the development environment have the Server serving a static `bundle.js` and `index.html` to the user's browser.
-
-In development, the Server watches and serves whatever client build resides within the `/server/build/dist` directory using nodemon. A new client can be built, integrated, and served by the Server using the instructions seen in the [Building](#building) section of this README.
-
 ### Building
 
 The two options developers have for building the full-stack application in development mode is as follows:
@@ -216,15 +194,24 @@ npm run build:server
 npm run build:integrate
 ```
 
+#### Client-Server
+
+The Fastify Server within the Server is the main server of both the Smarter Bullets Server and Client. As it currently stands, the production build of the application and the development environment have the Server serving a static `bundle.js` and `index.html` to the user's browser.
+
+In development, the Server watches and serves whatever client build resides within the `/server/build/dist` directory using nodemon. A new client can be built, integrated, and served by the Server using the instructions seen in the [Building](#building) section of this README.
+
+
 ### Root Directory Run
 
-(RECOMMENDED) To run each sub-stack in one terminal, execute the following:
+There are two options to run the full-stack application from the root directory:
+
+1. (RECOMMENDED) To run each sub-stack in one terminal, execute the following:
 
 ```bash
 npm run start:all
 ```
 
-To run each sub-stack in a new terminal, execute the following:
+2. To run each sub-stack in a new terminal, execute the following:
 
 ```bash
 # installs all dependencies in the sub-stacks
@@ -280,6 +267,26 @@ npm install && npm run start:dev
 
 ```bash
 npm install && npm start
+```
+
+#### _Testing_
+
+When testing the client or server in development execute the following to get hot-reload testing:
+
+```bash
+npm run test:dev
+```
+
+ (TODO:) When running acceptance (cypress) tests, execute the one of the following:
+
+```bash
+# this opens cypress with the UI
+npm run acceptance-open
+```
+
+```bash
+# this opens cypress headless
+npm run acceptance-run
 ```
 
 # Licensing

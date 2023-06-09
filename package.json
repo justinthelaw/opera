@@ -20,6 +20,7 @@
     "lint:security": "eslint --no-eslintrc --config security.eslintrc.yaml ./ --ext '.ts,.tsx --fix'",
     "test:client": "cd ./client && npm test",
     "test:server": "cd ./server && npm test",
+    "test:acceptance": "echo TODO: test:acceptance",
     "build:client": "cd ./client && npm run build",
     "build:server": "cd ./server && npm run build",
     "build:integrate": "cp -r ./client/dist ./server/build"

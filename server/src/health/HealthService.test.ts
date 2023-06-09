@@ -6,12 +6,11 @@ jest.mock('./health.fetch', () => ({
 	default: jest.fn()
 }))
 
-describe('health.service', () => {
+describe('HealthService', () => {
 	let healthService: HealthService
 
 	beforeEach(() => {
 		healthService = new HealthService()
-		// Mock the implementation of healthCustomFetch
 		;(healthCustomFetch as jest.Mock).mockResolvedValue({
 			name: 'Mock Service',
 			status: 'healthy',
