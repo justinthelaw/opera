@@ -1,6 +1,6 @@
 {
   "name": "smarter-bullets",
-  "version": "0.1.0",
+  "version": "0.1.v1",
   "author": "justinthelaw",
   "license": "MIT",
   "main": "index.tsx",
@@ -8,7 +8,8 @@
     "start": "NODE_ENV=development webpack-dev-server --config webpack.config.js",
     "start:check": "NODE_ENV=development CHECK=true webpack-dev-server --config webpack.config.js",
     "build": "NODE_ENV=production webpack --config webpack.config.js",
-    "test": "jest"
+    "test": "jest",
+    "test:dev": "jest --watchAll --detectOpenHandles --verbose"
   },
   "dependencies": {
     "@types/react": "^18.0.28",

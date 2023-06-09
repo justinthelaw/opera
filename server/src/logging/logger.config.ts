@@ -1,6 +1,6 @@
-import { loggerConfigurationInterface } from './logger.interface'
+import LoggerConfigurationInterface from './LoggerConfigurationModel'
 
-export const loggerConfiguration: loggerConfigurationInterface = {
+const loggerConfiguration: LoggerConfigurationInterface = {
 	development: {
 		transport: {
 			target: 'pino-pretty',
@@ -13,3 +13,5 @@ export const loggerConfiguration: loggerConfigurationInterface = {
 	production: true,
 	test: false
 }
+
+export default loggerConfiguration

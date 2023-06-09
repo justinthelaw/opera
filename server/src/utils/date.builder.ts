@@ -1,6 +1,6 @@
-import { TIMEZONE } from '../constants/server.constants'
+import { TIMEZONE } from './server.constants'
 
-export default function dateBuilder(dateString?: string): string {
+function dateBuilder(dateString?: string): string {
 	const time = dateString || new Date().toISOString()
 
 	const timeString = new Date(time).toLocaleString('en-US', {
@@ -10,3 +10,5 @@ export default function dateBuilder(dateString?: string): string {
 
 	return `${timeString} (${TIMEZONE})`
 }
+
+export default dateBuilder

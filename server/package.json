@@ -1,12 +1,13 @@
 {
   "name": "server",
-  "version": "0.1.0",
+  "version": "v1",
   "main": "index.ts",
   "scripts": {
     "start": "npm run build && node build/index.js",
     "start:dev": "NODE_ENV=development nodemon",
     "build": "tsc --outDir ./build --project tsconfig.build.json",
-    "test": "jest"
+    "test": "jest",
+    "test:dev": "jest --watchAll --detectOpenHandles --verbose"
   },
   "author": "justinthelaw",
   "license": "MIT",

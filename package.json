@@ -1,6 +1,6 @@
 {
   "name": "smarter-bullets",
-  "version": "0.1.0",
+  "version": "v1",
   "scripts": {
     "check:all": "npm run install:all && npm run lint:all && npm run test:all && npm run build:all && npm run start:all:check",
     "install:all": "npx install-peerdeps --dev eslint-config-react-app && cd ./client && npm install && cd ../server && npm install",
