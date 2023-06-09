@@ -85,7 +85,10 @@ jobs:
           server/
         key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
 
-    - name: check:artifacts
-      run: cd server/ && ls -la && cd build && ls -la
+    - name: start:server
+      run: cd server && npm start
+
+    - name: stop:all
+      run: npm run stop:all
 
         
