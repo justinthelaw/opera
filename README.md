@@ -1,7 +1,5 @@
 <div align="center">
-
-![smarter-bullets-title](./public/smarter-bullets-title.png)
-
+    <img src="./public/smarter-bullets-title-small.png" style="width: 60%" alt="smarter-bullets-title">
 </div>
 
 <div align="center">
