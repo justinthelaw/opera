@@ -14,7 +14,8 @@ jobs:
         node-version: [20.x]
         
     steps:
-    - uses: actions/checkout@v3
+    - name: checkout:code
+      uses: actions/checkout@v3
 
     - name: install:node@${{ matrix.node-version }}
       uses: actions/setup-node@v3
@@ -27,16 +28,35 @@ jobs:
     - name: check:all
       run: npm run check:all
 
+  scans:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout:code
+        uses: actions/checkout@v3
+
+      - name: snyk:scan
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --sarif-file-output=snyk.sarif --severity-threshold=high
+
+      - name: snyk:upload-results
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: snyk.sarif
+
   build:
     runs-on: ubuntu-latest
-    needs: [tests]
+    needs: [tests, scans]
 
     strategy:
       matrix:
         node-version: [20.x]
         
     steps:
-    - uses: actions/checkout@v3
+    - name: checkout:code
+      uses: actions/checkout@v3
 
     - name: install:node@${{ matrix.node-version }}
       uses: actions/setup-node@v3
