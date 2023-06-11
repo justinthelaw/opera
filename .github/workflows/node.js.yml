@@ -15,10 +15,10 @@ jobs:
         
     steps:
     - name: checkout:code
-      uses: actions/checkout@master
+      uses: actions/checkout@v3
 
     - name: install:node@${{ matrix.node-version }}
-      uses: actions/setup-node@master
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
 
@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout:code
-        uses: actions/checkout@master
+        uses: actions/checkout@v3
 
       - name: snyk:scan
         uses: snyk/actions/node@master
@@ -56,10 +56,10 @@ jobs:
         
     steps:
     - name: checkout:code
-      uses: actions/checkout@master
+      uses: actions/checkout@v3
 
     - name: install:node@${{ matrix.node-version }}
-      uses: actions/setup-node@master
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
 
@@ -76,7 +76,7 @@ jobs:
       run: npm run build:integrate
 
     - name: cache:artifacts
-      uses: actions/cache
+      uses: actions/cache@v3
       with:
         path: |
           server/
@@ -94,12 +94,12 @@ jobs:
 
     steps:
     - name: install:node@${{ matrix.node-version }}
-      uses: actions/setup-node@master
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
 
     - name: restore:artifacts
-      uses: actions/cache@master
+      uses: actions/cache@v3
       with:
         path: |
           server/
