@@ -1,11 +1,12 @@
 <div align="center">
     <img src="./public/smarter-bullets-title-small.png" style="width: 70%" alt="smarter-bullets-title">
 </div>
-
+<br/>
 <div align="center">
     
 [![smarter-bullets-pipeline](https://github.com/justinthelaw/smarter-bullets/actions/workflows/node.js.yml/badge.svg)](https://github.com/justinthelaw/smarter-bullets/actions)
-    
+![smarter-bullets-vulnerabilities](https://snyk.io/test/github/justinthelaw/smarter-bullets/badge.svg)
+
 </div>
 
 ---
