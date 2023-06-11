@@ -1,12 +1,14 @@
 <div align="center">
-    <img src="./public/smarter-bullets-title-small.png" style="width: 60%" alt="smarter-bullets-title">
+    <img src="./public/smarter-bullets-title-small.png" style="width: 70%" alt="smarter-bullets-title">
 </div>
 
 <div align="center">
-
+    
 [![smarter-bullets-pipeline](https://github.com/justinthelaw/smarter-bullets/actions/workflows/node.js.yml/badge.svg)](https://github.com/justinthelaw/smarter-bullets/actions)
-
+    
 </div>
+
+---
 
 This is a hard-fork of the original [pdf-bullets](https://github.com/AF-VCD/pdf-bullets) project, a web-application affectionately named the [**AIR FORCE BULL**et **SH**aping & **I**teration **T**ool](https://ea-pods-team.github.io/pdf-bullets/), created and maintained by Christopher Kodama and the members of the Air Force Volunteer Cyber Depository (AF-VCD) group.
 
