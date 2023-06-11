@@ -86,6 +86,6 @@ jobs:
         key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
 
     - name: start:server
-      run: cd server/build/ && ls -la
+      run: ls -la server/build server/build/dist
 
         
