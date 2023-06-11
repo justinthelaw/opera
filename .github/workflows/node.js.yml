@@ -6,7 +6,7 @@ on:
     branches: [ main ]
 
 jobs:
-  check:
+  tests:
     runs-on: ubuntu-latest
 
     strategy:
@@ -29,7 +29,7 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    needs: [check]
+    needs: [tests]
 
     strategy:
       matrix:
@@ -56,7 +56,7 @@ jobs:
       run: npm run build:integrate
 
     - name: cache:artifacts
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
           server/
@@ -79,7 +79,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: restore:artifacts
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
           server/
