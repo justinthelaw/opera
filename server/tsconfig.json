@@ -15,8 +15,10 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "noEmit": false,
-    "jsx": "react"
+    "noEmit": false
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "tests"
+]
 }

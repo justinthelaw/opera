@@ -34,5 +34,9 @@ fi && \
 
 echo -ne "\r==> All sub-stacks of Smarter Bullets have gracefully stopped.\n" && \
 
+if [[ $1 == "--check" ]]; then
+    sleep 1 && echo -ne "\r==> All check:all steps have completed successfully!\n"
+fi && \
+
 # Exit the script with a success status
 exit 0
