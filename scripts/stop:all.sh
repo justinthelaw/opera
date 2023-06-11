@@ -32,8 +32,7 @@ if nc -z localhost $CLIENT_PORT; then
     echo -ne "\r==> Smarter Bullets Client has gracefully stopped.\n"
 fi && \
 
-# Wait for 1 second before displaying the final message
-sleep 1 && echo -ne "\r==> All sub-stacks of Smarter Bullets have gracefully stopped.\n" && \
+echo -ne "\r==> All sub-stacks of Smarter Bullets have gracefully stopped.\n" && \
 
 # Exit the script with a success status
 exit 0

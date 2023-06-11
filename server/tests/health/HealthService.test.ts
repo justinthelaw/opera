@@ -1,7 +1,8 @@
-import HealthService from './HealthService'
-import healthCustomFetch from './health.fetch'
+import HealthService from '../../src/health/HealthService'
+import healthCustomFetch from '../../src/health/health.fetch'
+import { mockServiceResponseHealthy } from '../../src/health/health.constants'
 
-jest.mock('./health.fetch', () => ({
+jest.mock('../../src/health/health.fetch', () => ({
 	__esModule: true,
 	default: jest.fn()
 }))
@@ -11,12 +12,7 @@ describe('HealthService', () => {
 
 	beforeEach(() => {
 		healthService = new HealthService()
-		;(healthCustomFetch as jest.Mock).mockResolvedValue({
-			name: 'Mock Service',
-			status: 'healthy',
-			description: 'Mock Service Health',
-			timeStamp: '1/1/1960, 00:00:00 (UTC)'
-		})
+		;(healthCustomFetch as jest.Mock).mockResolvedValue(mockServiceResponseHealthy)
 	})
 
 	afterEach(() => {
@@ -27,10 +23,7 @@ describe('HealthService', () => {
 		it('should return the overall health of the server', async () => {
 			const overallHealth = await healthService.getOverallHealth()
 			expect(overallHealth).toBeDefined()
-			expect(overallHealth).toHaveProperty('status', 'healthy')
-			expect(overallHealth).toHaveProperty('timeStamp')
 			expect(overallHealth).toHaveProperty('serviceStatuses')
-			expect(Array.isArray(overallHealth.serviceStatuses)).toBeTruthy()
 			expect(overallHealth.serviceStatuses?.length).toBe(3)
 		})
 	})

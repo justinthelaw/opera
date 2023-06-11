@@ -6,9 +6,10 @@ import {
 	OpenAIHealthResponseComponentsArray,
 	PossibleHealthServices
 } from './HealthModel'
-import { OPENAI_API_STATUS_URL, DATABASE_URL, CLIENT_URL } from '../utils/server.constants'
+import { OPENAI_API_STATUS_URL, DATABASE_URL, CLIENT_URL } from '../server.constants'
 import HealthCustomFetch from './health.fetch'
 import dateBuilder from '../utils/date.builder'
+import { baseServerHealth } from './health.constants'
 
 export default class HealthService {
 	async getOverallHealth() {
@@ -43,14 +44,7 @@ export default class HealthService {
 	}
 
 	getServerHealth(): ServiceHealthResponse {
-		const serverHealth: ServiceHealthResponse = {
-			name: 'Smarter Bullets Server (API)',
-			status: 'healthy',
-			description: 'Health and status of the Smarter Bullets Server (API) and third-party services',
-			timeStamp: dateBuilder()
-		}
-
-		return serverHealth
+		return baseServerHealth
 	}
 
 	async getThirdPartyServicesHealth(): Promise<ServiceHealthResponse[]> {
@@ -107,7 +101,7 @@ export default class HealthService {
 
 		const openAIHealthFetch: HealthCustomFetchObject = {
 			name: name,
-			endPoint: OPENAI_API_STATUS_URL || '[URL NOT AVAILABLE]',
+			endPoint: OPENAI_API_STATUS_URL as string,
 			fetchHandler: openAIHealthFetchHandler
 		}
 

@@ -1,8 +1,15 @@
-import { HealthCustomFetchObject, ServiceHealthResponse } from './HealthModel'
-import healthCustomFetch from './health.fetch'
-import dateBuilder from '../utils/date.builder'
+import dateBuilder from '../../src/utils/date.builder'
+import { HealthCustomFetchObject, HealthResponse, ServiceHealthResponse } from '../../src/health/HealthModel'
+import healthCustomFetch from '../../src/health/health.fetch'
+import {
+	mockHealthCustomFetchObject,
+	mockServiceResponseDegraded,
+	mockServiceResponseDown,
+	mockServiceResponseHealthy,
+	mockDate
+} from '../../src/health/health.constants'
 
-jest.mock('../index', () => ({
+jest.mock('../../src/index', () => ({
 	server: {
 		log: {
 			warn: jest.fn()
@@ -10,17 +17,24 @@ jest.mock('../index', () => ({
 	}
 }))
 
+jest.mock('../../src/utils/date.builder', () => ({
+	__esModule: true,
+	default: jest.fn()
+}))
+
 describe('health.fetch', () => {
+	const fetchParams: HealthCustomFetchObject = mockHealthCustomFetchObject
+
+	beforeEach(() => {
+		;(dateBuilder as jest.Mock).mockReturnValue(mockDate)
+	})
+
 	afterEach(() => {
 		jest.restoreAllMocks()
 	})
 
 	test('should fetch health data successfully and set status as healthy', async () => {
-		const fetchParams: HealthCustomFetchObject = {
-			name: 'Service1',
-			endPoint: 'http://example.com/service1'
-		}
-
+		jest.mock('../../src/health/HealthController', () => Promise.resolve(mockServiceResponseHealthy))
 		const mockFetchResponse = {
 			status: 200
 		}
@@ -29,21 +43,12 @@ describe('health.fetch', () => {
 
 		return healthCustomFetch(fetchParams).then((result) => {
 			expect(global.fetch).toHaveBeenCalledWith(fetchParams.endPoint)
-			expect(result).toEqual({
-				name: 'Service1',
-				description: 'Health and status of Service1',
-				status: 'healthy',
-				timeStamp: dateBuilder()
-			})
+			expect(result).toEqual(mockServiceResponseHealthy)
 		})
 	})
 
 	test('should handle fetch error and set status as down', async () => {
-		const fetchParams: HealthCustomFetchObject = {
-			name: 'Service2',
-			endPoint: 'http://example.com/service2'
-		}
-
+		jest.mock('../../src/health/HealthController', () => Promise.resolve(mockServiceResponseDown))
 		const mockFetchResponse = {
 			status: 400
 		}
@@ -52,26 +57,25 @@ describe('health.fetch', () => {
 
 		return healthCustomFetch(fetchParams).then((result) => {
 			expect(global.fetch).toHaveBeenCalledWith(fetchParams.endPoint)
-			expect(result).toEqual({
-				name: 'Service2',
-				description: 'Health and status of Service2',
-				status: 'down',
-				degradedReason: 'Service2 at http://example.com/service2 is unreachable',
-				timeStamp: dateBuilder()
-			})
+			expect(result).toEqual(mockServiceResponseDown)
 		})
 	})
 
 	test('should use custom fetch handler when provided', async () => {
 		const fetchParams: HealthCustomFetchObject = {
-			name: 'Service3',
-			endPoint: 'http://example.com/service3',
+			name: 'Mock Service',
+			endPoint: 'http://example.com/service',
 			fetchHandler: (_, serviceHealthResponse: ServiceHealthResponse) => {
 				serviceHealthResponse.status = 'degraded'
 				serviceHealthResponse.degradedReason = 'Custom fetch handler'
 			}
 		}
 
+		const customFetchResponse: HealthResponse = {
+			...mockServiceResponseDegraded,
+			degradedReason: 'Custom fetch handler'
+		}
+		jest.mock('../../src/health/HealthController', () => Promise.resolve(customFetchResponse))
 		const mockFetchResponse = {
 			status: 200
 		}
@@ -80,13 +84,7 @@ describe('health.fetch', () => {
 
 		return healthCustomFetch(fetchParams).then((result) => {
 			expect(global.fetch).toHaveBeenCalledWith(fetchParams.endPoint)
-			expect(result).toEqual({
-				name: 'Service3',
-				description: 'Health and status of Service3',
-				status: 'degraded',
-				degradedReason: 'Custom fetch handler',
-				timeStamp: dateBuilder()
-			})
+			expect(result).toEqual(customFetchResponse)
 		})
 	})
 })

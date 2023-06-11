@@ -1,5 +1,5 @@
-import dateBuilder from './date.builder'
-import { TIMEZONE } from './server.constants'
+import dateBuilder from '../../src/utils/date.builder'
+import { TIMEZONE } from '../../src/server.constants'
 
 describe('date.builder', () => {
 	beforeEach(() => {

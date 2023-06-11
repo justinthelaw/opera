@@ -4,7 +4,7 @@ import fastifyStatic from '@fastify/static'
 import path from 'path'
 
 import LoggerConfigurationInterface from './logging/LoggerConfigurationModel'
-import { ENV, HOST, PORT } from './utils/server.constants'
+import { ENV, HOST, PORT } from './server.constants'
 import loggerConfiguration from './logging/logger.config'
 import healthRoutes from './health/health.route'
 import registerAPIRoute from './utils/register.api'
