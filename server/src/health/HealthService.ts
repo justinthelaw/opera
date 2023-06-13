@@ -36,9 +36,10 @@ export default class HealthService {
 				break
 			case 'server':
 			case 'api':
-			default:
 				response = this.getServerHealth()
 				break
+			default:
+				throw new Error(`${requestedHealthService} is not a Smarter Bullets service`)
 		}
 		return response
 	}

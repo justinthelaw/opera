@@ -53,21 +53,6 @@ export const mockServiceResponseDegraded: ServiceHealthResponse = {
 	status: 'degraded'
 }
 
-export const mockOverallHealthResponseHealthy: HealthResponse = {
-	...mockServiceResponseHealthy,
-	serviceStatuses: Array(3).fill(mockServiceResponseHealthy)
-}
-
-export const mockOverallHealthResponseDown: HealthResponse = {
-	...mockOverallHealthResponseHealthy,
-	status: 'down'
-}
-
-export const mockOverallHealthResponseDegraded: HealthResponse = {
-	...mockOverallHealthResponseHealthy,
-	status: 'degraded'
-}
-
 export const mockHealthCustomFetchObject: HealthCustomFetchObject = {
 	name: mockName,
 	endPoint: mockURL

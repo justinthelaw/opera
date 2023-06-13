@@ -20,8 +20,9 @@ const healthCustomFetch = async (fetchParams: HealthCustomFetchObject): Promise<
 				return defaultFetchHandler(response, serviceHealthResponse, fetchParams.name, fetchParams.endPoint)
 			}
 		})
-		.catch(() => {
+		.catch((error) => {
 			server.log.warn(serviceHealthResponse.degradedReason)
+			server.log.warn(error)
 		})
 
 	return serviceHealthResponse

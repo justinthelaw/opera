@@ -14,11 +14,12 @@
   "dependencies": {
     "@fastify/static": "^6.10.2",
     "fastify": "^4.17.0",
-    "pino-pretty": "^10.0.0"
+    "pino-pretty": "^10.0.0",
+    "xss": "^1.0.14"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
-    "@types/jest": "^29.4.0",
+    "@types/jest": "^29.5.2",
     "@types/node": "^18.13.0",
     "dotenv": "^16.0.3",
     "jest": "^29.4.3",
