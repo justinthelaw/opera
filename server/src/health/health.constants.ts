@@ -1,5 +1,5 @@
 import dateBuilder from '../utils/date.builder'
-import { HealthCustomFetchObject, HealthResponse, ServiceHealthResponse, Status } from './HealthModel'
+import { HealthCustomFetchObject, ServiceHealthResponse, Status } from './HealthModel'
 
 export const baseServerHealth: ServiceHealthResponse = {
 	name: 'Smarter Bullets Server (API)',
