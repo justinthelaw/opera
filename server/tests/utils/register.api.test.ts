@@ -28,4 +28,25 @@ describe('register.api', () => {
 		expect(server.register).toHaveBeenCalledTimes(4)
 		expect(server.register).toHaveBeenCalledWith(mockRoute, { prefix: `/api/${API_VERSION}/${mockRouteName}` })
 	})
+
+	test('should not register route if route name is not provided', async () => {
+		const mockRoute = jest.fn()
+
+		registerAPIRoute(mockRoute, '')
+
+		expect(server.register).not.toHaveBeenCalled()
+	})
+
+	test('should not register route if route function is not provided', async () => {
+		registerAPIRoute(null, `/${mockRouteName}`)
+
+		expect(server.register).not.toHaveBeenCalled()
+	})
+
+	test('should not register route if both route name and route function are not provided', async () => {
+		registerAPIRoute(null, '')
+
+		expect(server.register).not.toHaveBeenCalled()
+	})
 })
+```
