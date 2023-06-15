@@ -93,11 +93,6 @@ _EXAMPLE OF INCORRECT USAGE_:
 United States Air Force: USAF  
 United States Air Force Academy: USAFA  
 Will cause "United States Air Force Academy" to be abbreviated as "USAF Academy"
-
-# Contributing
-
-Below are some GitOps rules for contributing to this repository. As time moves forward, more formalized pull request and issue templates will be established.
-
 ## Feedback Form
 
 A feedback form is built into the live web application, and all users can submit feature requests or defect reports via that form. Users and developers can also submit issues through this Github repository.
@@ -151,9 +146,7 @@ Spaces are allowed within the description, e.g., `Feature(DSR): This revolves ar
 | Docs        | Commits, that affect documentation only                                                                |
 | Build       | Commits, that affect build components like build tool, ci pipeline, dependencies, project version, ... |
 | Ops         | Commits, that affect operational components like infrastructure, deployment, backup, recovery, ...     |
-| Chore       | Miscellaneous commits e.g. modifying .gitignore                                                        |
-
-# Local Development
+| Chore       | Miscellaneous commits e.g. modifying .gitignore
 
 The two options developers have for starting the application in development mode is as follows:
 
@@ -284,6 +277,7 @@ npm run acceptance-open
 ```bash
 # this opens cypress headless
 npm run acceptance-run
+```
 ```
 
 # Licensing
