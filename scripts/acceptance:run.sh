@@ -5,7 +5,9 @@
 
 echo -ne "==> Running acceptance tests in headless mode...\n"
 
-source ./config/.env.example && \
+$(npm run start:all) </dev/null &>/dev/null & \
+
+source ./config/.env.local && \
 
 # Wait for the database to be accessible
 while ! nc -z localhost $MONGO_PORT; do echo "==> Waiting on Database..." && sleep 1; done

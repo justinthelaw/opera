@@ -4,10 +4,11 @@
   "author": "justinthelaw",
   "license": "MIT",
   "scripts": {
-    "cypress:open": "cypress open --config baseUrl='https://localhost:3000'",
-    "cypress:run": "cypress run --config baseUrl='https://localhost:3000' --browser chrome"
+    "cypress:open": "cypress open --config baseUrl='http://localhost:3000'",
+    "cypress:run": "cypress run --config baseUrl='http://localhost:3000' --browser chrome"
   },
   "devDependencies": {
-    "cypress": "^9.7.0"
+    "cypress": "^9.7.0",
+    "@testing-library/cypress": "^8.0.2"
   }
 }

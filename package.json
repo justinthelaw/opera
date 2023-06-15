@@ -4,19 +4,15 @@
   "author": "justinthelaw",
   "license": "MIT",
   "scripts": {
-    "check:all": "npm run install:all && npm run lint:all && npm run test:all && npm run build:all && npm run start:all:check",
+    "check:all": "npm run install:all && npm run lint:all && npm run test:all && npm run build:all",
     "install:all": "npx install-peerdeps --dev eslint-config-react-app && cd ./client && npm install && cd ../server && npm install",
     "start:all": "npm run stop:all && chmod +x scripts/start:all.sh && scripts/start:all.sh",
-    "start:all:check": "npm run stop:all:check && chmod +x scripts/start:all.sh && scripts/start:all.sh --check",
     "stop:all": "chmod +x scripts/stop:all.sh && scripts/stop:all.sh",
-    "stop:all:check": "chmod +x scripts/stop:all.sh && scripts/stop:all.sh --check",
-    "test:all": "npm run test:server && npm run test:client",
+    "test:all": "npm run test:server && npm run test:client && npm run acceptance:run",
     "lint:all": "npm run lint:general && npm run lint:security",
     "build:all": "npm run build:server && npm run build:client && npm run build:integrate",
     "start:client": "cd ./client && npm start",
-    "start:client:check": "cd ./client && npm run start:check",
     "start:server": "cd ./server && npm run start:dev",
-    "start:server:check": "cd ./server && npm start",
     "start:database": "chmod +x ./server/data/start:database.sh && ./server/data/start:database.sh",
     "lint:general": "eslint ./ --ext '.ts,.tsx' --fix",
     "lint:security": "eslint --no-eslintrc --config security.eslintrc.yaml ./ --ext '.ts,.tsx --fix'",
@@ -26,7 +22,8 @@
     "acceptance:open": "chmod +x scripts/acceptance:open.sh && scripts/acceptance:open.sh",
     "build:client": "cd ./client && npm run build",
     "build:server": "cd ./server && npm run build",
-    "build:integrate": "cp -r ./client/dist ./server/build"
+    "build:integrate": "cp -r ./client/dist ./server/build",
+    "env:copy": "cp ./config/.env.example ./config/.env.local"
   },
   "eslintConfig": {
     "extends": "react-app"
