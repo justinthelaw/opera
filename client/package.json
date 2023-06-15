@@ -9,7 +9,8 @@
     "start:check": "NODE_ENV=development CHECK=true webpack-dev-server --config webpack.config.js",
     "build": "NODE_ENV=production webpack --config webpack.config.js",
     "test": "jest",
-    "test:dev": "jest --runInBand --watchAll --detectOpenHandles --verbose"
+    "test:dev": "jest --runInBand --watchAll --detectOpenHandles --verbose",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@types/react": "^18.0.28",
@@ -41,3 +42,4 @@
     "webpack-dev-server": "^4.11.1"
   }
 }
+```
