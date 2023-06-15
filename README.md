@@ -278,6 +278,7 @@ npm run acceptance-open
 # this opens cypress headless
 npm run acceptance-run
 ```
+
 ```
 
 # Licensing
