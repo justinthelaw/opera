@@ -6,8 +6,8 @@
     "start": "npm run build && node build/index.js",
     "start:dev": "NODE_ENV=development nodemon",
     "build": "tsc --outDir ./build --project tsconfig.build.json",
-    "test": "jest",
-    "test:dev": "jest --watchAll --detectOpenHandles --verbose"
+    "test": "jest --runInBand",
+    "test:dev": "jest --runInBand --watchAll --detectOpenHandles --verbose"
   },
   "author": "justinthelaw",
   "license": "MIT",

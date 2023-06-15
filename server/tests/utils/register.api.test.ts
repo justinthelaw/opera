@@ -14,8 +14,9 @@ jest.mock('../../src/index', () => ({
 describe('register.api', () => {
 	const mockRouteName = 'route'
 
-	beforeEach(() => {
+	afterEach(() => {
 		jest.restoreAllMocks()
+		jest.clearAllTimers()
 	})
 
 	test('should register route with prefix `/api`', async () => {
@@ -27,7 +28,7 @@ describe('register.api', () => {
 		expect(server.register).toHaveBeenCalledWith(mockRoute, { prefix: '/api/route' })
 	})
 
-	test('should register route with prefix `/api/{API_VERSION}`', async () => {
+	test('should register route with prefix `/api/{API_VERSION}`', () => {
 		const mockRoute = jest.fn()
 
 		registerAPIRoute(mockRoute, `/${mockRouteName}`)
@@ -36,7 +37,7 @@ describe('register.api', () => {
 		expect(server.register).toHaveBeenCalledWith(mockRoute, { prefix: `/api/${API_VERSION}/${mockRouteName}` })
 	})
 
-	test('should not register route if route name is not provided', async () => {
+	test('should not register route if route name is not provided', () => {
 		const mockRoute = jest.fn()
 
 		registerAPIRoute(mockRoute, null as unknown as string)
@@ -44,13 +45,13 @@ describe('register.api', () => {
 		expect(server.register).not.toHaveBeenCalled()
 	})
 
-	test('should not register route if route function is not provided', async () => {
+	test('should not register route if route function is not provided', () => {
 		registerAPIRoute(null as unknown as jest.Mock<any, any, any>, `/${mockRouteName}`)
 
 		expect(server.register).not.toHaveBeenCalled()
 	})
 
-	test('should not register route if both route name and route function are not provided', async () => {
+	test('should not register route if both route name and route function are not provided', () => {
 		registerAPIRoute(null as unknown as jest.Mock<any, any, any>, null as unknown as string)
 
 		expect(server.register).not.toHaveBeenCalled()

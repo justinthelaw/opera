@@ -20,12 +20,11 @@ server.register(fastifyStatic, {
 
 registerAPIRoute(healthRoutes, '/health')
 
-const start = () => {
+export function start() {
 	try {
 		server.listen({ host: HOST, port: PORT }, function (err, address) {
 			if (err) {
 				server.log.error(err)
-				process.exit(1)
 			}
 			server.log.info(`Server is now listening on ${address}`)
 		})
