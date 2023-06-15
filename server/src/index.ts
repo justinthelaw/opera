@@ -1,6 +1,7 @@
 import { Server, IncomingMessage, ServerResponse } from 'http'
 import fastify, { FastifyInstance } from 'fastify'
 import fastifyStatic from '@fastify/static'
+import fastifySwagger from 'fastify-swagger'
 import path from 'path'
 
 import LoggerConfigurationInterface from './logging/LoggerConfigurationModel'
@@ -16,6 +17,26 @@ export const server: FastifyInstance<Server, IncomingMessage, ServerResponse> = 
 server.register(fastifyStatic, {
 	root: path.join(__dirname, 'dist'),
 	prefix: '/'
+})
+
+server.register(fastifySwagger, {
+	routePrefix: '/documentation',
+	swagger: {
+		info: {
+			title: 'Smarter Bullets API',
+			description: 'API documentation for the Smarter Bullets project',
+			version: '1.0.0'
+		},
+		externalDocs: {
+			url: 'https://github.com/justinthelaw/smarter-bullets',
+			description: 'Find more info here'
+		},
+		host: HOST,
+		schemes: ['http'],
+		consumes: ['application/json'],
+		produces: ['application/json']
+	},
+	exposeRoute: true
 })
 
 registerAPIRoute(healthRoutes, '/health')
