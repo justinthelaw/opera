@@ -56,3 +56,31 @@ export interface OpenAIResponse {
 	}
 	components: OpenAIHealthResponseComponentsArray
 }
+
+export interface SchemaResponse {
+	description: string
+	type: string
+	properties: {
+		name: { type: string }
+		status: { type: string }
+		description: { type: string }
+		timeStamp: { type: string }
+		degradedReason: { type: string }
+	}
+}
+
+export interface SchemaParams {
+	type: string
+	properties: {
+		service: { type: string }
+	}
+}
+
+export interface RouteSchema {
+	description: string
+	summary: string
+	params: SchemaParams
+	response: {
+		200: SchemaResponse
+	}
+}
