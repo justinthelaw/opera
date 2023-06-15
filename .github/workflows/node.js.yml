@@ -26,7 +26,7 @@ jobs:
       run: npm run install:all && npm run env:copy
 
     - name: start:database
-      run: docker system prune -f && npm run start:database
+      run: npm run start:database
 
     - name: lint:all
       run: npm run lint:all
