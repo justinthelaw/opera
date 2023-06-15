@@ -25,9 +25,6 @@ jobs:
     - name: install:dependencies
       run: npm run install:all && npm run env:copy
 
-    - name: start:database
-      run: npm run start:database
-
     - name: lint:all
       run: npm run lint:all
 
