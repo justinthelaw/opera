@@ -18,7 +18,7 @@ cleanup() {
 # Register the cleanup function to be called on SIGINT
 trap cleanup SIGINT
 
-echo -ne "==> Smarter Bullets Development Environment is spinning up..."
+echo "==> Smarter Bullets Development Environment is spinning up..."
 
 if [[ $1 == "--check" ]]; then
     # Source the environment file for checking

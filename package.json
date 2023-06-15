@@ -1,6 +1,8 @@
 {
   "name": "smarter-bullets",
-  "version": "v1",
+  "version": "1.0.0",
+  "author": "justinthelaw",
+  "license": "MIT",
   "scripts": {
     "check:all": "npm run install:all && npm run lint:all && npm run test:all && npm run build:all && npm run start:all:check",
     "install:all": "npx install-peerdeps --dev eslint-config-react-app && cd ./client && npm install && cd ../server && npm install",
@@ -20,7 +22,8 @@
     "lint:security": "eslint --no-eslintrc --config security.eslintrc.yaml ./ --ext '.ts,.tsx --fix'",
     "test:client": "cd ./client && npm test",
     "test:server": "cd ./server && npm test",
-    "test:acceptance": "echo TODO: test:acceptance",
+    "acceptance:run": "chmod +x scripts/acceptance:run.sh && scripts/acceptance:run.sh",
+    "acceptance:open": "chmod +x scripts/acceptance:open.sh && scripts/acceptance:open.sh",
     "build:client": "cd ./client && npm run build",
     "build:server": "cd ./server && npm run build",
     "build:integrate": "cp -r ./client/dist ./server/build"
