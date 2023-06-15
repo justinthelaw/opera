@@ -27,14 +27,14 @@ database_pid=$!
 source ./config/.env.local && \
 
 # Wait for the database to be accessible
-while ! nc -z localhost $MONGO_PORT; do sleep 1; done
+while ! nc -z localhost $MONGO_PORT; do echo "==> Waiting on Database..." && sleep 3; done
 
 # Start the server with optional ":check" suffix
 npm run start:server${1:+:check} &
 server_pid=$!
 
 # Wait for the server to be accessible
-while ! nc -z localhost $SERVER_PORT; do sleep 1; done
+while ! nc -z localhost $SERVER_PORT; do echo "==> Waiting on Server..." && sleep 3; done
 
 # Start the client with optional ":check" suffix
 npm run start:client${1:+:check} &
