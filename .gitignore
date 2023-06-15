@@ -31,3 +31,8 @@ debug.log
 .vscode
 
 archive/
+
+# acceptance
+videos/
+screenshots/
+downloads/

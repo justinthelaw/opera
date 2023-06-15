@@ -1,0 +1,14 @@
+{
+  "name": "smarter-bullets-acceptance",
+  "version": "1.0.0",
+  "author": "justinthelaw",
+  "license": "MIT",
+  "scripts": {
+    "cypress:open": "cypress open --config baseUrl='http://localhost:3000'",
+    "cypress:run": "cypress run --config baseUrl='http://localhost:3000' --browser chrome"
+  },
+  "devDependencies": {
+    "cypress": "^9.7.0",
+    "@testing-library/cypress": "^8.0.2"
+  }
+}

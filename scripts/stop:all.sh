@@ -6,13 +6,8 @@
 
 echo -ne "==> Smarter Bullets Development Environment is spinning down...\n"
 
-if [[ $1 == "--check" ]]; then
-    # Source the environment file for checking
-    source ./config/.env.example
-else
-    # Source the local environment file
-    source ./config/.env.local
-fi
+# Source the environment file for checking
+source ./config/.env.local && \
 
 if nc -z localhost $MONGO_PORT; then
     # Stop MongoDB gracefully
@@ -33,10 +28,6 @@ if nc -z localhost $CLIENT_PORT; then
 fi && \
 
 echo -ne "\r==> All sub-stacks of Smarter Bullets have gracefully stopped.\n" && \
-
-if [[ $1 == "--check" ]]; then
-    sleep 1 && echo -ne "\r==> All check:all steps have completed successfully!\n"
-fi && \
 
 # Exit the script with a success status
 exit 0

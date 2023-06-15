@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { FAVICON_URL } from '../client.constants'
+import { FAVICON_URL } from './client.constants'
 
 const App: React.FC = () => {
 	useEffect(() => {

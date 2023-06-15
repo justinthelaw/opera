@@ -1,6 +1,8 @@
 {
-  "name": "server",
-  "version": "v1",
+  "name": "smarter-bullets-server",
+  "version": "1.0.0",
+  "author": "justinthelaw",
+  "license": "MIT",
   "main": "index.ts",
   "scripts": {
     "start": "npm run build && node build/index.js",
@@ -9,8 +11,6 @@
     "test": "jest --runInBand",
     "test:dev": "jest --runInBand --watchAll --detectOpenHandles --verbose"
   },
-  "author": "justinthelaw",
-  "license": "MIT",
   "dependencies": {
     "@fastify/static": "^6.10.2",
     "fastify": "^4.17.0",

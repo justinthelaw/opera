@@ -6,6 +6,10 @@
       "dom.iterable",
       "esnext"
     ],
+    "types": [
+      "cypress", 
+      "@testing-library/cypress"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -15,11 +19,9 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "noEmit": false,
-    "jsx": "react"
+    "noEmit": false
   },
-  "include": ["src"],
-  "exclude": [
-    "dist"
+  "include": [
+    "**/*.ts"
   ]
 }

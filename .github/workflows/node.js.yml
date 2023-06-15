@@ -23,13 +23,21 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: install:dependencies
-      run: npm run install:all
+      run: npm run install:all && npm run env:copy
 
-    - name: check:all
-      run: npm run check:all
+    - name: lint:all
+      run: npm run lint:all
+
+    - name: test:all
+      run: npm run test:all
 
   scans:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
     steps:
       - name: checkout:code
         uses: actions/checkout@v3
@@ -64,7 +72,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: install:dependencies
-      run: npm run install:all
+      run: npm run install:all && npm run env:copy
 
     - name: build:client
       run: npm run build:client
