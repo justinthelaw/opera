@@ -25,8 +25,8 @@ jobs:
     - name: install:dependencies
       run: npm run install:all && npm run env:copy
 
-    - name: testing the database
-      run: npm run start:database
+    - name: start:database
+      run: docker system prune -f && npm run start:database
 
     - name: lint:all
       run: npm run lint:all
