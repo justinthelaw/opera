@@ -104,11 +104,9 @@ When describing a pull request, please provide the following:
 1. Merge request title or summary as outlined in the [Committing and Merging](#committing-and-merging) section
 2. High-level description of what was changed or been added/deleted
 3. Attachment and/or linking to an existing issue or project task
+For bugs, follow the [bug report template](./.github/ISSUE_TEMPLATE/bug_report.md) as closely as possible so that developers can reproduce and debug the issue. Include information about the type of information to include in the issue description, how to reproduce the issue, and how to assign labels.
 
-## Issues
-
-For bugs, follow the [bug report template](./.github/ISSUE_TEMPLATE/bug_report.md) as closely as possible so that developers can reproduce and debug the issue.
-
+For feature requests, follow the [feature request template](./.github/ISSUE_TEMPLATE/feature_request.md) as closely as possible, providing detail (imagery, notes, etc.) as necessary to describe the desired end-state. Include information about the type of information to include in the issue description, how to reproduce the issue, and how to assign labels.
 For feature requests, follow the [feature request template](./.github/ISSUE_TEMPLATE/feature_request.md) as closely as possible, providing detail (imagery, notes, etc.) as necessary to describe the desired end-state.
 
 ## Branching
