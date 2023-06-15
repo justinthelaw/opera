@@ -75,7 +75,7 @@ The purpose of hard-forking this tool is as follows:
 
 ## Bullet Writing
 
-(TODO:) The application provides instructions within the application for usage. The User Interface (UI) should be relatively easy to navigate. If the UI is not intuitive to you, then feedback can be submitted using the To-Be-Built feedback form or an Issue can be posted to this Github repository.
+The application provides instructions within the application for usage. The User Interface (UI) should be relatively easy to navigate. If the UI is not intuitive to you, then feedback can be submitted using the To-Be-Built feedback form or an Issue can be posted to this Github repository.
 
 ## Acronym List Imports
 
@@ -100,25 +100,21 @@ Below are some GitOps rules for contributing to this repository. As time moves f
 
 ## Feedback Form
 
-(TODO:) A feedback form is built into the live web application, and all users can submit feature requests or defect reports via that form.
+A feedback form is built into the live web application, and all users can submit feature requests or defect reports via that form. Users and developers can also submit issues through this Github repository.
 
 ## Pull Requests
 
 When describing a pull request, please provide the following:
 
-1. A title or summary as outlined in the [Committing and Merging](#committing-and-merging) section
-2. A description of what was changed and whether it was attached to an existing issue
+1. Merge request title or summary as outlined in the [Committing and Merging](#committing-and-merging) section
+2. High-level description of what was changed or been added/deleted
+3. Attachment and/or linking to an existing issue or project task
 
 ## Issues
 
-(TODO:) An issue template will be built to provide fields for the following. When describing an issue, please provide the following:
+For bugs, follow the [bug report template](./.github/ISSUE_TEMPLATE/bug_report.md) as closely as possible so that developers can reproduce and debug the issue.
 
-1. A title or summary of the issues
-2. Did the issue occur in the Local Development Environment or Production Environment?
-    - If Local, describe the operating system and any other relevant information
-3. Describe the expected behavior vs. the observed behavior
-4. Provide all available error logs and network activity
-5. Provide a recommended fix or area of concern
+For feature requests, follow the [feature request template](./.github/ISSUE_TEMPLATE/feature_request.md) as closely as possible, providing detail (imagery, notes, etc.) as necessary to describe the desired end-state.
 
 ## Branching
 
@@ -279,8 +275,6 @@ When testing the client or server in development execute the following to get ho
 ```bash
 npm run test:dev
 ```
-
- (TODO:) When running acceptance (cypress) tests, execute the one of the following:
 
 ```bash
 # this opens cypress with the UI
