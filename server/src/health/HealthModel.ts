@@ -1,3 +1,4 @@
+import { getOverallHealthSchema, getRequestedServiceHealthSchema } from './HealthModel.swagger.ts'
 export type Status = 'healthy' | 'degraded' | 'down' | 'maintenance'
 export type PossibleHealthServices = 'server' | 'api' | 'client' | 'database' | 'openai' | 'openaiapi' | 'open-ai-api'
 
@@ -56,3 +57,4 @@ export interface OpenAIResponse {
 	}
 	components: OpenAIHealthResponseComponentsArray
 }
+export { getOverallHealthSchema, getRequestedServiceHealthSchema }
