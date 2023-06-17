@@ -1,3 +1,4 @@
+import { getOverallHealthSchema, getRequestedServiceHealthSchema } from './HealthModel.ts'
 import xss from 'xss'
 import { FastifyInstance, FastifyRequest } from 'fastify'
 
@@ -8,7 +9,7 @@ import { server } from '..'
 const healthController = new HealthController()
 
 const healthRoutes = async (app: FastifyInstance) => {
-	app.get('/', async (_, res) => {
+app.get('/', { schema: getOverallHealthSchema }, async (_, res) => {
 		try {
 			const result: HealthResponse = await healthController.getOverallHealth()
 			res.send(result).status(200)
@@ -17,8 +18,9 @@ const healthRoutes = async (app: FastifyInstance) => {
 			res.status(500)
 		}
 	})
+	})
 
-	app.get('/:service', async (req: FastifyRequest<{ Params: RequestedServiceParams }>, res) => {
+app.get('/:service', { schema: getRequestedServiceHealthSchema }, async (req: FastifyRequest<{ Params: RequestedServiceParams }>, res) => {
 		try {
 			const sanitizeInput = xss(req.params.service) as PossibleHealthServices
 			const result: HealthResponse = await healthController.getRequestedServiceHealth(sanitizeInput)
@@ -27,6 +29,7 @@ const healthRoutes = async (app: FastifyInstance) => {
 			server.log.warn(error)
 			res.status(400).send(error)
 		}
+	})
 	})
 }
 
