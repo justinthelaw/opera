@@ -1,5 +1,9 @@
 import dateBuilder from '../../src/utils/date.builder'
+<<<<<<< Updated upstream
 import { HealthCustomFetchObject, HealthResponse, ServiceHealthResponse } from '../../src/health/HealthModel'
+=======
+import { HealthFetch, HealthResponse, ServiceHealth } from '../../src/health/HealthModels'
+>>>>>>> Stashed changes
 import healthCustomFetch from '../../src/health/health.fetch'
 import {
 	mockHealthCustomFetchObject,
@@ -23,7 +27,7 @@ jest.mock('../../src/utils/date.builder', () => ({
 }))
 
 describe('health.fetch', () => {
-	const fetchParams: HealthCustomFetchObject = mockHealthCustomFetchObject
+	const fetchParams: HealthFetch = mockHealthCustomFetchObject
 
 	beforeEach(() => {
 		;(dateBuilder as jest.Mock).mockReturnValue(mockDate)
@@ -62,10 +66,10 @@ describe('health.fetch', () => {
 	})
 
 	test('should use custom fetch handler when provided', async () => {
-		const fetchParams: HealthCustomFetchObject = {
+		const fetchParams: HealthFetch = {
 			name: 'Mock Service',
 			endPoint: 'http://example.com/service',
-			fetchHandler: (_, serviceHealthResponse: ServiceHealthResponse) => {
+			fetchHandler: (_, serviceHealthResponse: ServiceHealth) => {
 				serviceHealthResponse.status = 'degraded'
 				serviceHealthResponse.degradedReason = 'Custom fetch handler'
 			}

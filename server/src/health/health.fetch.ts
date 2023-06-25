@@ -1,10 +1,14 @@
+<<<<<<< Updated upstream
 import { HealthCustomFetchObject, ServiceHealthResponse } from './HealthModel'
+=======
+import { HealthFetch, ServiceHealth } from './HealthModels'
+>>>>>>> Stashed changes
 import { server } from '../index'
 import dateBuilder from '../utils/date.builder'
 import { defaultDegradedReason, defaultDescription, defaultFetchHandler, defaultStatus } from './health.constants'
 
-const healthCustomFetch = async (fetchParams: HealthCustomFetchObject): Promise<ServiceHealthResponse> => {
-	const serviceHealthResponse: ServiceHealthResponse = {
+const healthCustomFetch = async (fetchParams: HealthFetch): Promise<ServiceHealth> => {
+	const serviceHealthResponse: ServiceHealth = {
 		name: fetchParams.name,
 		description: fetchParams.description || defaultDescription(fetchParams.name),
 		status: fetchParams.status || defaultStatus,

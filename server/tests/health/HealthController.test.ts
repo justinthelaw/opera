@@ -1,5 +1,9 @@
 import HealthController from '../../src/health/HealthController'
+<<<<<<< Updated upstream
 import { HealthResponse, PossibleHealthServices, ServiceHealthResponse } from '../../src/health/HealthModel'
+=======
+import { HealthResponse, PossibleHealthServices, ServiceHealth } from '../../src/health/HealthModels'
+>>>>>>> Stashed changes
 import { baseServerHealth } from '../../src/health/health.constants'
 
 jest.mock('../../src/health/health.fetch', () => ({
@@ -23,7 +27,7 @@ describe('HealthController', () => {
 			const overallHealthResponse = await healthController.getOverallHealth()
 			expect(overallHealthResponse).toEqual({
 				...baseServerHealth,
-				serviceStatuses: Array(3).fill(undefined) as ServiceHealthResponse[]
+				serviceStatuses: Array(3).fill(undefined) as ServiceHealth[]
 			} as HealthResponse)
 		})
 	})

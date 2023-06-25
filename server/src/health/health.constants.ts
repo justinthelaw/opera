@@ -1,7 +1,11 @@
 import dateBuilder from '../utils/date.builder'
+<<<<<<< Updated upstream
 import { HealthCustomFetchObject, ServiceHealthResponse, Status } from './HealthModel'
+=======
+import { HealthFetch, ServiceHealth, Status } from './HealthModels'
+>>>>>>> Stashed changes
 
-export const baseServerHealth: ServiceHealthResponse = {
+export const baseServerHealth: ServiceHealth = {
 	name: 'Smarter Bullets Server (API)',
 	status: 'healthy',
 	description: 'Health and status of the Smarter Bullets Server (API) and third-party services',
@@ -16,7 +20,7 @@ export const defaultDescription = (name: string): string => `Health and status o
 
 export const defaultFetchHandler = (
 	response: any,
-	serviceHealthResponse: ServiceHealthResponse,
+	serviceHealthResponse: ServiceHealth,
 	name: string,
 	endPoint: string
 ) => {
@@ -35,25 +39,25 @@ const mockName = 'Mock Service'
 const mockURL = 'http://example.com/service'
 export const mockDate = '1/1/1960, 00:00:00 (UTC)'
 
-export const mockServiceResponseHealthy: ServiceHealthResponse = {
+export const mockServiceResponseHealthy: ServiceHealth = {
 	name: mockName,
 	status: 'healthy',
 	description: defaultDescription(mockName),
 	timeStamp: mockDate
 }
 
-export const mockServiceResponseDown: ServiceHealthResponse = {
+export const mockServiceResponseDown: ServiceHealth = {
 	...mockServiceResponseHealthy,
 	status: 'down',
 	degradedReason: defaultDegradedReason(mockName, mockURL)
 }
 
-export const mockServiceResponseDegraded: ServiceHealthResponse = {
+export const mockServiceResponseDegraded: ServiceHealth = {
 	...mockServiceResponseHealthy,
 	status: 'degraded'
 }
 
-export const mockHealthCustomFetchObject: HealthCustomFetchObject = {
+export const mockHealthCustomFetchObject: HealthFetch = {
 	name: mockName,
 	endPoint: mockURL
 }

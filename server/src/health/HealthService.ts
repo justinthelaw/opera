@@ -1,11 +1,15 @@
 import {
-	HealthCustomFetchObject,
+	HealthFetch,
 	HealthResponse,
-	ServiceHealthResponse,
-	OpenAIResponse,
-	OpenAIHealthResponseComponentsArray,
+	ServiceHealth,
+	OpenAIHealth,
+	OpenAIHealthComponentsArray,
 	PossibleHealthServices
+<<<<<<< Updated upstream
 } from './HealthModel'
+=======
+} from './HealthModels'
+>>>>>>> Stashed changes
 import { OPENAI_API_STATUS_URL, DATABASE_URL, CLIENT_URL } from '../server.constants'
 import HealthCustomFetch from './health.fetch'
 import dateBuilder from '../utils/date.builder'
@@ -20,8 +24,8 @@ export default class HealthService {
 		return overallHealth
 	}
 
-	async getRequestedServiceHealth(requestedHealthService: PossibleHealthServices): Promise<ServiceHealthResponse> {
-		let response: ServiceHealthResponse
+	async getRequestedServiceHealth(requestedHealthService: PossibleHealthServices): Promise<ServiceHealth> {
+		let response: ServiceHealth
 		switch (requestedHealthService) {
 			case 'client':
 				response = await this.getClientHealth()
@@ -44,21 +48,21 @@ export default class HealthService {
 		return response
 	}
 
-	getServerHealth(): ServiceHealthResponse {
+	getServerHealth(): ServiceHealth {
 		return baseServerHealth
 	}
 
-	async getThirdPartyServicesHealth(): Promise<ServiceHealthResponse[]> {
+	async getThirdPartyServicesHealth(): Promise<ServiceHealth[]> {
 		const openAIHealth = await this.getOpenAIHealth()
 		const databaseHealth = await this.getDatabaseHealth()
 		const clientHealth = await this.getClientHealth()
 		return [clientHealth, databaseHealth, openAIHealth]
 	}
 
-	async getDatabaseHealth(): Promise<ServiceHealthResponse> {
+	async getDatabaseHealth(): Promise<ServiceHealth> {
 		const name = 'Smarter Bullets Database'
 
-		const databaseHealthFetch: HealthCustomFetchObject = {
+		const databaseHealthFetch: HealthFetch = {
 			name: name,
 			endPoint: DATABASE_URL
 		}
@@ -66,10 +70,10 @@ export default class HealthService {
 		return HealthCustomFetch(databaseHealthFetch)
 	}
 
-	async getClientHealth(): Promise<ServiceHealthResponse> {
+	async getClientHealth(): Promise<ServiceHealth> {
 		const name = 'Smarter Bullets Client'
 
-		const clientHealthFetch: HealthCustomFetchObject = {
+		const clientHealthFetch: HealthFetch = {
 			name: name,
 			endPoint: CLIENT_URL
 		}
@@ -77,12 +81,12 @@ export default class HealthService {
 		return HealthCustomFetch(clientHealthFetch)
 	}
 
-	async getOpenAIHealth(): Promise<ServiceHealthResponse> {
+	async getOpenAIHealth(): Promise<ServiceHealth> {
 		const name = 'OpenAI API'
 
-		const openAIHealthFetchHandler = async (response: any, serviceHealthResponse: ServiceHealthResponse) => {
-			const json: OpenAIResponse = await response.json()
-			const components: OpenAIHealthResponseComponentsArray = json.components
+		const openAIHealthFetchHandler = async (response: any, serviceHealthResponse: ServiceHealth) => {
+			const json: OpenAIHealth = await response.json()
+			const components: OpenAIHealthComponentsArray = json.components
 			const component = components[0]
 			switch (component.status) {
 				case 'operational':
@@ -100,7 +104,7 @@ export default class HealthService {
 			delete serviceHealthResponse.degradedReason
 		}
 
-		const openAIHealthFetch: HealthCustomFetchObject = {
+		const openAIHealthFetch: HealthFetch = {
 			name: name,
 			endPoint: OPENAI_API_STATUS_URL as string,
 			fetchHandler: openAIHealthFetchHandler
