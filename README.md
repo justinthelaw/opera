@@ -100,7 +100,13 @@ Will cause "United States Air Force Academy" to be abbreviated as "USAF Academy"
 
 # Bullet Forge
 
-Bullet Forge is the name of the bullet generation
+Bullet Forge is a bullet generation tool that harnesses the power of Natural Language Processing (NLP) through OpenAI's GPT technologies, specifically Large Language Models (LLM).
+
+The primary objective of this tool is to streamline the process of listing accomplishments and achievements by:
+
+1. Offloading the cognitive and administrative burden of transforming factual information into effective bullets to the Smarter Bullets model.
+2. Offering suggestions to rephrase verbs, impacts, and outcomes to enhance variety and avoid repetition throughout the document.
+3. Intelligently incorporating acronyms to optimize spacing and enhance the readability of bullets, while maintaining consistency across the document.
 
 ## OpenAI GPT-3
 
