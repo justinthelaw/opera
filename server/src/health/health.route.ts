@@ -2,11 +2,7 @@ import xss from 'xss'
 import { FastifyInstance, FastifyRequest } from 'fastify'
 
 import HealthController from './HealthController'
-<<<<<<< Updated upstream
-import { HealthResponse, PossibleHealthServices, RequestedServiceParams } from './HealthModel'
-=======
 import { HealthResponse, PossibleHealthServices, RequestedServiceParams } from './HealthModels'
->>>>>>> Stashed changes
 import { server } from '..'
 
 const healthController = new HealthController()

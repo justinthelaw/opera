@@ -1,9 +1,5 @@
 import HealthController from '../../src/health/HealthController'
-<<<<<<< Updated upstream
-import { HealthResponse, PossibleHealthServices, ServiceHealthResponse } from '../../src/health/HealthModel'
-=======
 import { HealthResponse, PossibleHealthServices, ServiceHealth } from '../../src/health/HealthModels'
->>>>>>> Stashed changes
 import { baseServerHealth } from '../../src/health/health.constants'
 
 jest.mock('../../src/health/health.fetch', () => ({

@@ -1,9 +1,5 @@
 import HealthService from './HealthService'
-<<<<<<< Updated upstream
-import { HealthResponse, PossibleHealthServices, ServiceHealthResponse } from './HealthModel'
-=======
 import { HealthResponse, PossibleHealthServices, ServiceHealth } from './HealthModels'
->>>>>>> Stashed changes
 
 const healthService = new HealthService()
 

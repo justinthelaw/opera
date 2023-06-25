@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-import { HealthCustomFetchObject, ServiceHealthResponse } from './HealthModel'
-=======
 import { HealthFetch, ServiceHealth } from './HealthModels'
->>>>>>> Stashed changes
 import { server } from '../index'
 import dateBuilder from '../utils/date.builder'
 import { defaultDegradedReason, defaultDescription, defaultFetchHandler, defaultStatus } from './health.constants'

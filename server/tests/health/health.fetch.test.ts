@@ -1,9 +1,5 @@
 import dateBuilder from '../../src/utils/date.builder'
-<<<<<<< Updated upstream
-import { HealthCustomFetchObject, HealthResponse, ServiceHealthResponse } from '../../src/health/HealthModel'
-=======
 import { HealthFetch, HealthResponse, ServiceHealth } from '../../src/health/HealthModels'
->>>>>>> Stashed changes
 import healthCustomFetch from '../../src/health/health.fetch'
 import {
 	mockHealthCustomFetchObject,

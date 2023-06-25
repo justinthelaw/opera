@@ -1,9 +1,5 @@
 import dateBuilder from '../utils/date.builder'
-<<<<<<< Updated upstream
-import { HealthCustomFetchObject, ServiceHealthResponse, Status } from './HealthModel'
-=======
 import { HealthFetch, ServiceHealth, Status } from './HealthModels'
->>>>>>> Stashed changes
 
 export const baseServerHealth: ServiceHealth = {
 	name: 'Smarter Bullets Server (API)',

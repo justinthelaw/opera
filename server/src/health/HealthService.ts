@@ -5,11 +5,7 @@ import {
 	OpenAIHealth,
 	OpenAIHealthComponentsArray,
 	PossibleHealthServices
-<<<<<<< Updated upstream
-} from './HealthModel'
-=======
 } from './HealthModels'
->>>>>>> Stashed changes
 import { OPENAI_API_STATUS_URL, DATABASE_URL, CLIENT_URL } from '../server.constants'
 import HealthCustomFetch from './health.fetch'
 import dateBuilder from '../utils/date.builder'
