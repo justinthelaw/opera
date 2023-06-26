@@ -57,15 +57,26 @@ These bullets follow a few formatting rules:
 
 Those bullet formatting rules lead to the following:
 
--   Information compression is prioritized over legibility
--   Time is wasted on acronym and/or abbreviation revisions
--   Bullet "appearance" becomes highly valued; some examples of arbitrary bullet appearance rules:
-    -   Any sort of repetition = bad
-    -   Bullets near flush with page boundaries = good
+- Information compression is prioritized over legibility
+- Time is wasted on acronym and/or abbreviation revisions
+- Bullet "appearance" becomes highly valued; some examples of arbitrary bullet appearance rules:
+    - Any sort of repetition = bad
+    - Bullets near flush with page boundaries = good
+- Ending bullets (push statements) are generic but need to be varied enough to catch attention
+
+In Awards Packages, Enlisted Performance Reports (EPRs), and most other evaluation documents, the length of a bullet must be exactly 202.321mm. Whereas in Officer Performance Reports (OPRs), the length of a bullet must be exactly 201.041mm. The goal of this application is to be adaptable enough to shift to any length and/or format (e.g., character based count from myEval v1.0).
 
 The purpose of _smarter_-bullets is to develop a set of tools to automate the pointless aspects of bullet-writing so that an officer and/or enlisted members can focus more on writing actual content rather than worry about irrelevant formatting.
 
-## Why the Hard Fork
+## Example Bullets
+
+Below are examples of UNCLASSIFIED Air and Space Force bullets:
+
+- Delivered enterprise network s/w cert; adv'd 3 docs thru 5 orgs--guaranteed vital rqmts s/w accessibility DAF-wide
+- Justin embraces challenges with vigor; #1 choice to tackle big problems--perfect fit for NRO--send to PDE 1st look!
+- Streamlined 3-ktr proposal rvw; resolved 277 elements in <5 wks--trailblazed $900M resilient POTUS/CCMD comms
+
+# Why the Hard Fork
 
 The purpose of hard-forking this tool is as follows:
 
@@ -104,9 +115,9 @@ Bullet Forge is a bullet generation tool that harnesses the power of Natural Lan
 
 The primary objective of this tool is to streamline the process of listing accomplishments and achievements by:
 
-1. Offloading the cognitive and administrative burden of transforming factual information into effective bullets to the Smarter Bullets model.
-2. Offering suggestions to rephrase verbs, impacts, and outcomes to enhance variety and avoid repetition throughout the document.
-3. Intelligently incorporating acronyms to optimize spacing and enhance the readability of bullets, while maintaining consistency across the document.
+1. Offloading the cognitive and administrative burden of transforming factual information into effective bullets to the Smarter Bullets model
+2. Offering suggestions to rephrase verbs, impacts, and outcomes to enhance variety and avoid repetition throughout the document
+3. Intelligently incorporating acronyms to optimize spacing and enhance the readability of bullets, while maintaining consistency across the document
 
 ## OpenAI GPT-3
 
@@ -116,7 +127,7 @@ The usage of the OpenAI API is documented on the [OpenAI API documentation websi
 
 To run your own fine-tuning, you can use the Jupyter Notebook within the model directory. Please note that the notebook can only be executed if Jupyter Notebook, python, and the `openai` CLI tool and its dependencies have been installed on your device:
 
-#### Training Data
+### Training Data
 
 Example data that has been prepared for fine-tuning can be seen within this repository, but does not represent the full-set of data used to create Bullet Forge. This example data can be found within in the file: [model/example-data.jsonl](./model/example-data.jsonl). The [OpenAI API fine-tuning documentation](https://platform.openai.com/docs/guides/fine-tuning/preparing-your-dataset) can provide more details on the data preparation.
 
@@ -230,7 +241,7 @@ npm run build:server
 npm run build:integrate
 ```
 
-#### Client-Server
+**_NOTE_**: Client-Server Architecture
 
 The Fastify Server within the Server is the main server of both the Smarter Bullets Server and Client. As it currently stands, the production build of the application and the development environment have the Server serving a static `bundle.js` and `index.html` to the user's browser.
 
