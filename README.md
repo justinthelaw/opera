@@ -114,11 +114,11 @@ The usage of the OpenAI API is documented on the [OpenAI API documentation websi
 
 ### Fine Tuning
 
-To run your own fine-tuning, you can use the Jupyter Notebook within the model directory. Please note that the following can only be executed if Jupyter Notebook and the `openai` CLI tool and its dependencies have been installed on your device:
+To run your own fine-tuning, you can use the Jupyter Notebook within the model directory. Please note that the notebook can only be executed if Jupyter Notebook, python, and the `openai` CLI tool and its dependencies have been installed on your device:
 
 #### Training Data
 
-Example data that has been prepared for fine-tuning can be seen within this repository, but does not represent the full-set of data used to create Bullet Forge. This example data can be found within in the file: [model/example-data.jsonl](./model/example-data.jsonl). The [OpenAI API fine-tuning documentation](https://platform.openai.com/docs/guides/fine-tuning/preparing-your-dataset) can provide more details on the data's setup.
+Example data that has been prepared for fine-tuning can be seen within this repository, but does not represent the full-set of data used to create Bullet Forge. This example data can be found within in the file: [model/example-data.jsonl](./model/example-data.jsonl). The [OpenAI API fine-tuning documentation](https://platform.openai.com/docs/guides/fine-tuning/preparing-your-dataset) can provide more details on the data preparation.
 
 #### Open AI Models
 
