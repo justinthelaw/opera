@@ -118,19 +118,11 @@ The usage of the OpenAI API is documented on the [OpenAI API documentation websi
 
 Due to the limitations placed on users of OpenAI's API, the GPT-3 model is being used for its fine-tuning features. For more details on fine-tuning and best practices, please go to the aforementioned OpenAI API documentation page.
 
-To run your own fine-tuning, you can use the bash script within this repository. Please note that the following can only be executed if the `openai` CLI tool has been installed on your device:
-
-```bash
-# install the openai CLI tool
-pip install openai
-# provide execution permissions for the script
-# fill-in the 2 arguments following instructions seen in the OpenAI API documentation
-chmod +x ./model/fine-tune-model.sh && ./model/fine-tune-model.sh <TRAINING DATA IN JSON FORMAT> <OPEN AI MODEL TYPE / SYMBOL>
-```
+To run your own fine-tuning, you can use the Jupyter Notebook within the model directory. Please note that the following can only be executed if the `openai` CLI tool and its dependencies have been installed on your device:
 
 #### Training Data
 
-Example data that has been prepared for fine-tuning can be seen within this repository, but does not represent the full-set of data used to create Bullet Forge. This example data can be found within in the file: [model/example-data.json](./model/example-data.json). The [OpenAI API fine-tuning documentation](https://platform.openai.com/docs/guides/fine-tuning/preparing-your-dataset) can provide more details on the data's setup.
+Example data that has been prepared for fine-tuning can be seen within this repository, but does not represent the full-set of data used to create Bullet Forge. This example data can be found within in the file: [model/example-data.jsonl](./model/example-data.jsonl). The [OpenAI API fine-tuning documentation](https://platform.openai.com/docs/guides/fine-tuning/preparing-your-dataset) can provide more details on the data's setup.
 
 #### Open AI Models
 
