@@ -1,6 +1,7 @@
 
 
 
+
 <div align="center">
     <img src="./public/smarter-bullets-title-small.png" style="width: 70%" alt="smarter-bullets-title">
 </div>
@@ -334,30 +335,7 @@ npm run acceptance:open
 # this opens cypress headless
 npm run acceptance:run
 ```
-
-#### _Testing_
-
-When testing the client or server in development, make sure you are in the correct directory (client or server) before running the following command to get hot-reload testing:
-
-```bash
-npm run test:dev
-```
-#### _Testing_
-
-When testing the client or server in development execute the following to get hot-reload testing:
-
-```bash
-npm run test:dev
-```
-
-```bash
-# this opens cypress with the UI
-npm run acceptance:open
-```
-
-```bash
-# this opens cypress headless
-npm run acceptance:run
 ```
 
 _smarter_-bullets is licensed under the [MIT license](./LICENSE).
+
