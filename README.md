@@ -1,3 +1,4 @@
+
 <div align="center">
     <img src="./public/smarter-bullets-title-small.png" style="width: 70%" alt="smarter-bullets-title">
 </div>
@@ -314,7 +315,31 @@ npm install && npm run start:dev
 ```bash
 npm install && npm start
 ```
+#### _Acceptance Testing_
 
+Acceptance tests are automated tests that validate the system's behavior against the end user's requirements. They are typically written in a language that is easy to understand by non-technical stakeholders and are executed against the system's UI.
+
+In this project, we use Cypress for acceptance testing. Cypress is a next generation front end testing tool built for the modern web. It provides a complete end-to-end testing experience by combining automatic waiting, real-time reloading, time-travel debugging, and more.
+
+To run the acceptance tests, you can use the following commands:
+
+```bash
+# this opens cypress with the UI
+npm run acceptance:open
+```
+
+```bash
+# this opens cypress headless
+npm run acceptance:run
+```
+
+#### _Testing_
+
+When testing the client or server in development, make sure you are in the correct directory (client or server) before running the following command to get hot-reload testing:
+
+```bash
+npm run test:dev
+```
 #### _Testing_
 
 When testing the client or server in development execute the following to get hot-reload testing:
@@ -335,4 +360,3 @@ npm run acceptance:run
 
 # Licensing
 
-_smarter_-bullets is licensed under the [MIT license](./LICENSE).
