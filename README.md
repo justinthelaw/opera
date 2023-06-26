@@ -70,7 +70,7 @@ The purpose of _smarter_-bullets is to develop a set of tools to automate the po
 
 ## Example Bullets
 
-Below are examples of UNCLASSIFIED Air and Space Force bullets:
+Below are examples of fake, UNCLASSIFIED Air and Space Force bullets:
 
 - Delivered enterprise network s/w cert; adv'd 3 docs thru 5 orgs--guaranteed vital rqmts s/w accessibility DAF-wide
 - Justin embraces challenges with vigor; #1 choice to tackle big problems--perfect fit for NRO--send to PDE 1st look!
@@ -82,9 +82,9 @@ The purpose of hard-forking this tool is as follows:
 
 1. Refactor the frontend codebase to modern TypeScript, and eliminate Create-React-App (CRA) overhead
 2. Provide more GitOps and open-source developer workflows and instructions
-3. Add OpenAI GPT4 prompt engineering to create a new "Bullet Forge" feature
+3. Add OpenAI API GPT3 prompt engineering to create a new "Bullet Forge" feature
 4. Revamp the UI/UX using modern Astro UXDS components and styling
-5. Re-architect to a client-server application to provide persistence and security
+5. Re-architect to a client-server application to provide persistence, security, and improvement insights
 
 # Application Usage
 
