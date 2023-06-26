@@ -1,5 +1,6 @@
 
 
+
 <div align="center">
     <img src="./public/smarter-bullets-title-small.png" style="width: 70%" alt="smarter-bullets-title">
 </div>
@@ -359,5 +360,4 @@ npm run acceptance:open
 npm run acceptance:run
 ```
 
-# Licensing
-
+_smarter_-bullets is licensed under the [MIT license](./LICENSE).
