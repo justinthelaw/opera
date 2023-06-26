@@ -110,15 +110,11 @@ The primary objective of this tool is to streamline the process of listing accom
 
 ## OpenAI GPT-3
 
-This application uses the OpenAI API's GPT-3 to assist in the generation of action-impact bullet statements. The fine-tuned model used is based on a fluctuating cost controller within the Smarter Bullets server. Future improvements will be made to improve the OpenAI GPT version and fine-tuning method being used, or to remove dependency on OpenAI altogether.
-
 The usage of the OpenAI API is documented on the [OpenAI API documentation website](https://platform.openai.com/docs) and within the Smarter Bullets server code.
 
 ### Fine Tuning
 
-Due to the limitations placed on users of OpenAI's API, the GPT-3 model is being used for its fine-tuning features. For more details on fine-tuning and best practices, please go to the aforementioned OpenAI API documentation page.
-
-To run your own fine-tuning, you can use the Jupyter Notebook within the model directory. Please note that the following can only be executed if the `openai` CLI tool and its dependencies have been installed on your device:
+To run your own fine-tuning, you can use the Jupyter Notebook within the model directory. Please note that the following can only be executed if Jupyter Notebook and the `openai` CLI tool and its dependencies have been installed on your device:
 
 #### Training Data
 
@@ -126,7 +122,7 @@ Example data that has been prepared for fine-tuning can be seen within this repo
 
 #### Open AI Models
 
-The models, in increasing cost and quality order, currently available for fine-tuning are as follows (as of Summer 2023): `davinci`, `curie`, `babbage`, `ada`. You can read more about these in the [OpenAI API models documentation](https://platform.openai.com/docs/models/gpt-3).
+The specific model used depends on the specific prompt or task required for Bullet Forging within the Smarter Bullets server. You can read more about these in the [OpenAI API models documentation](https://platform.openai.com/docs/models/gpt-3).
 
 
 ### API Key
