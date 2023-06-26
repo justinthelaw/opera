@@ -4,7 +4,7 @@
 <br/>
 <div align="center">
     
-[![smarter-bullets-pipeline](https://github.com/justinthelaw/smarter-bullets/actions/workflows/node.js.yml/badge.svg)](https://github.com/justinthelaw/smarter-bullets/actions)
+[![smarter-bullets-pipeline](https://github.com/justinthelaw/smarter-bullets/actions/workflows/smarter-bullets.yml/badge.svg)](https://github.com/justinthelaw/smarter-bullets/actions)
 [![smarter-bullets-vulnerabilities](https://snyk.io/test/github/justinthelaw/smarter-bullets/badge.svg)](https://app.snyk.io/org/justinthelaw/project/c94ab3f5-ba0e-4408-8680-a46f4dd68d78)
 
 </div>
