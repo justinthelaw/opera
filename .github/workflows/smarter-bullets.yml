@@ -6,7 +6,7 @@ on:
     branches: [ main ]
 
 jobs:
-  tests:
+  test:
     runs-on: ubuntu-latest
 
     strategy:
@@ -28,12 +28,18 @@ jobs:
     - name: lint:all
       run: npm run lint:all
 
-    - name: test:all
-      run: npm run test:all
+    - name: test:server
+      run: npm run test:server
+
+    - name: test:client
+      run: npm run test:client
+
+    - name: test:acceptance
+      run: npm run acceptance:run
 
   build:
     runs-on: ubuntu-latest
-    needs: [tests]
+    needs: [test]
 
     strategy:
       matrix:
