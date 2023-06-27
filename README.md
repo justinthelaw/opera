@@ -1,7 +1,9 @@
 <div align="center">
-    <img src="./public/smarter-bullets-title-small.png" style="width: 70%" alt="smarter-Bullets-title">
+    <img src="./public/smarter-bullets-title-small.png" style="width: 70%" alt="smarter-bullets-title">
 </div>
+
 <br/>
+
 <div align="center">
     
 [![smarter-bullets-pipeline](https://github.com/justinthelaw/smarter-bullets/actions/workflows/smarter-bullets.yml/badge.svg)](https://github.com/justinthelaw/smarter-bullets/actions)
@@ -9,17 +11,17 @@
 
 </div>
 
----
+<br/>
 
-This is a hard-fork of the original [pdf-Bullets](https://github.com/AF-VCD/pdf-Bullets) project, a web-application affectionately named the [**AIR FORCE BULL**et **SH**aping & **I**teration **T**ool](https://af-vcd.github.io/pdf-Bullets/), created and maintained by Christopher Kodama and the members of the Air Force Volunteer Cyber Depository (AF-VCD) group.
+This is a hard-fork of the original [pdf-bullets](https://github.com/AF-VCD/pdf-bullets) project, a web-application affectionately named the [**AIR FORCE BULL**et **SH**aping & **I**teration **T**ool](https://af-vcd.github.io/pdf-bullets/), created and maintained by Christopher Kodama and the members of the Air Force Volunteer Cyber Depository (AF-VCD) group.
 
-The purpose of _smarter_-Bullets is to develop a set of tools to automate the pointless aspects of Bullet-writing so that an officer and/or enlisted members can focus more on writing actual content rather than worry about irrelevant formatting.
+The purpose of _smarter_-bullets is to develop a set of tools to automate the pointless aspects of Bullet-writing so that an officer and/or enlisted members can focus more on writing actual content rather than worry about irrelevant formatting.
 
 # Table of Contents
 
 1. [Background](#background)
-    - [What are "Bullets"](#what-are-Bullets)
-    - [How are "Bullets" Formatted](#how-are-Bullets-formatted)
+    - [What are "Bullets"](#what-are-bullets)
+    - [How are "Bullets" Formatted](#how-are-bullets-formatted)
     - [Why the Hard Fork](#why-the-hard-fork)
 2. [Application Usage](#application-usage)
     - [Bullet Writing](#Bullet-writing)
@@ -295,7 +297,7 @@ chmod +x ./server/data/start:database
 3. To access the MongoDB container, execute the following:
 
 ```bash
-# get the docker container ID for smarter-Bullets mongodb
+# get the docker container ID for smarter-bullets mongodb
 docker ps -a
 # open mongo shell for container
 docker exec -it <CONTAINER_ID> mongosh
@@ -345,4 +347,4 @@ npm run acceptance:run
 
 # Licensing
 
-_smarter_-Bullets is licensed under the [MIT license](./LICENSE).
+_smarter_-bullets is licensed under the [MIT license](./LICENSE).
