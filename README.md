@@ -15,7 +15,7 @@
 
 This is a hard-fork of the original [pdf-bullets](https://github.com/AF-VCD/pdf-bullets) project, a web-application affectionately named the [**AIR FORCE BULL**et **SH**aping & **I**teration **T**ool](https://af-vcd.github.io/pdf-bullets/), created and maintained by Christopher Kodama and the members of the Air Force Volunteer Cyber Depository (AF-VCD) group.
 
-The purpose of _smarter_-bullets is to develop a set of tools to automate the pointless aspects of Bullet-writing so that an officer and/or enlisted members can focus more on writing actual content rather than worry about irrelevant formatting.
+The purpose of _smarter_-bullets is to develop a set of tools to automate the pointless aspects of Bullet-writing so that officer and/or enlisted members can focus more on writing actual content rather than worry about irrelevant formatting.
 
 # Table of Contents
 
@@ -61,8 +61,8 @@ Bullets follow a few formatting rules:
 - Each Bullet must be exactly one line, with the width of the line depending on the form (performance reports, award packages, etc).
 - Bullets generally adhere to the following formula, with some situational exceptions: `<ACTION>;<IMPACT>--<OUTCOME>`
 - Acronyms and abbreviations can be force-wide, organization, and/or commander-specific, with major inconsistencies in their abbreviation/acronym policies.
-- In Awards Packages, Enlisted Performance Reports (EPRs), and most other evaluation documents, the length of a Bullet must be exactly 202.321mm
-- In Officer Performance Reports (OPRs), the length of a Bullet must be exactly 201.041mm
+- In Awards Packages, Enlisted Performance Reports (EPRs), and most other evaluation documents, the length of a Bullet must be 202.321mm
+- In Officer Performance Reports (OPRs), the length of a Bullet must be 201.041mm
 - In the (failed) rollout of myEval 1.0, Bullets were based on a maximum string length of 200 characters
 
 Those Bullet formatting rules lead to the following:
@@ -82,7 +82,7 @@ Below are examples of fake/unclassified Air and Space Force Bullets:
 - Streamlined 3-ktr proposal rvw; resolved 277 elements in <5 wks--trailblazed $900M resilient POTUS/CCMD comms
 - Justin embraces challenges with vigor; #1 choice to tackle big problems--perfect fit for NRO--send to PDE 1st look!
 
-One non-obvious similarity amongst all 3 of these bullets is that they fit into the form perfectly - right up against the edge of the input. This is because the input area is within a PDF form renders characters differently depending on the types and encoding, like the space character in UTF-8 versus UTF-16.
+One non-obvious similarity amongst all 3 of these bullets is that they fit into the form perfectly - right up against the edge of the input. This is because the input area within the PDF form renders characters differently depending on the encoding, such as the space character in UTF-8 versus UTF-16.
 
 # Why the Hard Fork
 
