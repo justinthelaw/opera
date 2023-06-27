@@ -137,7 +137,7 @@ To run your own fine-tuning, you can use the Jupyter Notebook within the model d
 
 ### Training Data
 
-Example data that has been prepared for fine-tuning can be seen within this repository, but does not represent the full-set of data used to create Bullet Forge. This example data can be found within in the file: [model/example-data.jsonl](./model/example-data.jsonl). The [OpenAI API fine-tuning documentation](https://platform.openai.com/docs/guides/fine-tuning/preparing-your-dataset) can provide more details on the data preparation.
+Example data that has been prepared for fine-tuning can be seen within this repository, but does not represent the full-set of data used to create Bullet Forge. This example data can be found within in the file: [bullet-forge/example-data.jsonl](./bullet-forge/example-data.jsonl). The [OpenAI API fine-tuning documentation](https://platform.openai.com/docs/guides/fine-tuning/preparing-your-dataset) can provide more details on the data preparation.
 
 #### Open AI Models
 
