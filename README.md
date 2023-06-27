@@ -1,11 +1,11 @@
 <div align="center">
-    <img src="./public/smarter-Bullets-title-small.png" style="width: 70%" alt="smarter-Bullets-title">
+    <img src="./public/smarter-bullets-title-small.png" style="width: 70%" alt="smarter-Bullets-title">
 </div>
 <br/>
 <div align="center">
     
-[![smarter-Bullets-pipeline](https://github.com/justinthelaw/smarter-Bullets/actions/workflows/smarter-Bullets.yml/badge.svg)](https://github.com/justinthelaw/smarter-Bullets/actions)
-[![smarter-Bullets-vulnerabilities](https://snyk.io/test/github/justinthelaw/smarter-Bullets/badge.svg)](https://app.snyk.io/org/justinthelaw/project/c94ab3f5-ba0e-4408-8680-a46f4dd68d78)
+[![smarter-bullets-pipeline](https://github.com/justinthelaw/smarter-bullets/actions/workflows/smarter-bullets.yml/badge.svg)](https://github.com/justinthelaw/smarter-bullets/actions)
+[![smarter-bullets-vulnerabilities](https://snyk.io/test/github/justinthelaw/smarter-bullets/badge.svg)](https://app.snyk.io/org/justinthelaw/project/c94ab3f5-ba0e-4408-8680-a46f4dd68d78)
 
 </div>
 
