@@ -1,28 +1,30 @@
 <div align="center">
-    <img src="./public/smarter-bullets-title-small.png" style="width: 70%" alt="smarter-bullets-title">
+    <img src="./public/smarter-Bullets-title-small.png" style="width: 70%" alt="smarter-Bullets-title">
 </div>
 <br/>
 <div align="center">
     
-[![smarter-bullets-pipeline](https://github.com/justinthelaw/smarter-bullets/actions/workflows/smarter-bullets.yml/badge.svg)](https://github.com/justinthelaw/smarter-bullets/actions)
-[![smarter-bullets-vulnerabilities](https://snyk.io/test/github/justinthelaw/smarter-bullets/badge.svg)](https://app.snyk.io/org/justinthelaw/project/c94ab3f5-ba0e-4408-8680-a46f4dd68d78)
+[![smarter-Bullets-pipeline](https://github.com/justinthelaw/smarter-Bullets/actions/workflows/smarter-Bullets.yml/badge.svg)](https://github.com/justinthelaw/smarter-Bullets/actions)
+[![smarter-Bullets-vulnerabilities](https://snyk.io/test/github/justinthelaw/smarter-Bullets/badge.svg)](https://app.snyk.io/org/justinthelaw/project/c94ab3f5-ba0e-4408-8680-a46f4dd68d78)
 
 </div>
 
 ---
 
-This is a hard-fork of the original [pdf-bullets](https://github.com/AF-VCD/pdf-bullets) project, a web-application affectionately named the [**AIR FORCE BULL**et **SH**aping & **I**teration **T**ool](https://af-vcd.github.io/pdf-bullets/), created and maintained by Christopher Kodama and the members of the Air Force Volunteer Cyber Depository (AF-VCD) group.
+This is a hard-fork of the original [pdf-Bullets](https://github.com/AF-VCD/pdf-Bullets) project, a web-application affectionately named the [**AIR FORCE BULL**et **SH**aping & **I**teration **T**ool](https://af-vcd.github.io/pdf-Bullets/), created and maintained by Christopher Kodama and the members of the Air Force Volunteer Cyber Depository (AF-VCD) group.
+
+The purpose of _smarter_-Bullets is to develop a set of tools to automate the pointless aspects of Bullet-writing so that an officer and/or enlisted members can focus more on writing actual content rather than worry about irrelevant formatting.
 
 # Table of Contents
 
 1. [Background](#background)
-    - [What are "Bullets"](#what-are-bullets)
-    - [How are "Bullets" Formatted](#how-are-bullets-formatted)
+    - [What are "Bullets"](#what-are-Bullets)
+    - [How are "Bullets" Formatted](#how-are-Bullets-formatted)
     - [Why the Hard Fork](#why-the-hard-fork)
 2. [Application Usage](#application-usage)
-    - [Bullet Writing](#bullet-writing)
+    - [Bullet Writing](#Bullet-writing)
     - [Acronym List Imports](#acronym-list-imports)
-3. [Bullet Forge](#bullet-forge)
+3. [Bullet Forge](#Bullet-forge)
     - [OpenAI GPT-3](#open-ai-gpt-3)
         - [Fine Tuning](#fine-tuning)
         - [API Key](#api-key)
@@ -44,53 +46,57 @@ This is a hard-fork of the original [pdf-bullets](https://github.com/AF-VCD/pdf-
 
 ## What are "Bullets"
 
-One of the most pointless and time-consuming things that Air and Space Force officer and enlisted personnel do all the time is bullet-writing.
+One of the most pointless and time-consuming things that Air and Space Force officer and enlisted personnel do all the time is Bullet-writing.
 
-Air and Space Force personnel typically are required to write bullets for performance reports and award packages, and these bullets could mean the difference between the stagnation or advancement of an Airman or Guardian's career.
+Air and Space Force personnel are required to write Bullets for performance reports and award packages, and these Bullets could mean the difference between the stagnation or advancement of an Airman or Guardian's career.
 
-These bullets follow a few formatting rules:
-
--   Each bullet must be exactly one line, with the width of the line depending on the form (performance reports, award packages, etc).
--   Acronyms and abbreviations can be force-wide, organization, and/or commander-specific, with major inconsistencies in their abbreviation/acronym policies.
+Bullets are action-impact-outcome statements that follow specific formatting rules which, more often than not, hinder effective communication and/or embellish the accomplishments of competing officers and enlisted personnel.
 
 ## How are "Bullets" Formatted
 
-Those bullet formatting rules lead to the following:
+Bullets follow a few formatting rules:
+
+- Each Bullet must be exactly one line, with the width of the line depending on the form (performance reports, award packages, etc).
+- Bullets generally adhere to the following formula, with some situational exceptions: `<ACTION>;<IMPACT>--<OUTCOME>`
+- Acronyms and abbreviations can be force-wide, organization, and/or commander-specific, with major inconsistencies in their abbreviation/acronym policies.
+- In Awards Packages, Enlisted Performance Reports (EPRs), and most other evaluation documents, the length of a Bullet must be exactly 202.321mm
+- In Officer Performance Reports (OPRs), the length of a Bullet must be exactly 201.041mm
+- In the (failed) rollout of myEval 1.0, Bullets were based on a maximum string length of 200 characters
+
+Those Bullet formatting rules lead to the following:
 
 - Information compression is prioritized over legibility
 - Time is wasted on acronym and/or abbreviation revisions
-- Bullet "appearance" becomes highly valued; some examples of arbitrary bullet appearance rules:
+- Bullet "appearance" becomes highly valued; some examples of arbitrary Bullet appearance rules:
     - Any sort of repetition = bad
     - Bullets near flush with page boundaries = good
-- Ending bullets (push statements) are generic but need to be varied enough to catch attention
-
-In Awards Packages, Enlisted Performance Reports (EPRs), and most other evaluation documents, the length of a bullet must be exactly 202.321mm. Whereas in Officer Performance Reports (OPRs), the length of a bullet must be exactly 201.041mm. The goal of this application is to be adaptable enough to shift to any length and/or format (e.g., character based count from myEval v1.0).
-
-The purpose of _smarter_-bullets is to develop a set of tools to automate the pointless aspects of bullet-writing so that an officer and/or enlisted members can focus more on writing actual content rather than worry about irrelevant formatting.
+- Closing Bullets (push statements) are always generic but need to catch attention
 
 ## Example Bullets
 
-Below are examples of fake, UNCLASSIFIED Air and Space Force bullets:
+Below are examples of fake/unclassified Air and Space Force Bullets:
 
 - Delivered enterprise network s/w cert; adv'd 3 docs thru 5 orgs--guaranteed vital rqmts s/w accessibility DAF-wide
-- Justin embraces challenges with vigor; #1 choice to tackle big problems--perfect fit for NRO--send to PDE 1st look!
 - Streamlined 3-ktr proposal rvw; resolved 277 elements in <5 wks--trailblazed $900M resilient POTUS/CCMD comms
+- Justin embraces challenges with vigor; #1 choice to tackle big problems--perfect fit for NRO--send to PDE 1st look!
+
+One non-obvious similarity amongst all 3 of these bullets is that they fit into the form perfectly - right up against the edge of the input. This is because the input area is within a PDF form renders characters differently depending on the types and encoding, like the space character in UTF-8 versus UTF-16.
 
 # Why the Hard Fork
 
-The purpose of hard-forking this tool is as follows:
+The purpose of hard-forking this original tool is as follows:
 
-1. Refactor the frontend codebase to modern TypeScript, and eliminate Create-React-App (CRA) overhead
+1. Refactor the frontend codebase to modern TypeScript, and eliminate Create-React-App overhead
 2. Provide more GitOps and open-source developer workflows and instructions
-3. Add OpenAI API GPT3 prompt engineering to create a new "Bullet Forge" feature
-4. Revamp the UI/UX using modern Astro UXDS components and styling
+3. Add OpenAI API GPT3 base model fine-tuning to create a new [Bullet Forge](#bullet-forge) feature
+4. Revamp the UI/UX using modern components and design standards
 5. Re-architect to a client-server application to provide persistence, security, and improvement insights
 
 # Application Usage
 
 ## Bullet Writing
 
-The application provides instructions within the application for usage. The User Interface (UI) should be relatively easy to navigate. If the UI is not intuitive to you, then feedback can be submitted using the To-Be-Built feedback form or an Issue can be posted to this Github repository.
+The application provides instructions within the application for usage. The User Interface (UI) should be relatively easy to navigate. If the UI is not intuitive to you, then feedback can be submitted using the in-app feedback form or an Issue can be posted to this Github repository.
 
 ## Acronym List Imports
 
@@ -111,13 +117,13 @@ Will cause "United States Air Force Academy" to be abbreviated as "USAF Academy"
 
 # Bullet Forge
 
-Bullet Forge is a bullet generation tool that harnesses the power of Natural Language Processing (NLP) through OpenAI's GPT technologies, specifically Large Language Models (LLM).
+Bullet Forge is a Bullet generation tool that harnesses the power of Natural Language Processing (NLP) through OpenAI's GPT technologies, specifically Large Language Models (LLM).
 
 The primary objective of this tool is to streamline the process of listing accomplishments and achievements by:
 
-1. Offloading the cognitive and administrative burden of transforming factual information into effective bullets to the Smarter Bullets model
+1. Offloading the cognitive and administrative burden of transforming factual information into effective Bullets
 2. Offering suggestions to rephrase verbs, impacts, and outcomes to enhance variety and avoid repetition throughout the document
-3. Intelligently incorporating acronyms to optimize spacing and enhance the readability of bullets, while maintaining consistency across the document
+3. Intelligently incorporating acronyms to optimize spacing and enhance the readability of Bullets, while maintaining consistency across the document
 
 ## OpenAI GPT-3
 
@@ -138,9 +144,9 @@ The specific model used depends on the specific prompt or task required for Bull
 
 ### API Key
 
-The OpenAI API key is a repository secret that is used by the application in the production environment. When developing on your own, you will not have access to the fine-tuned models nor the OpenAI API account that is being used to generate bullets.
+The OpenAI API key is a repository secret that is used by the application in the production environment. When developing on your own, you will not have access to the fine-tuned models nor the OpenAI API account that is being used to generate Bullets.
 
-As an individual contributor to this repository, you are not required to touch the OpenAI API fine-tuning and modelling portions of the application. If you have issues with the bullets being generated by Bullet Forge, please refer to the [Contributing](#contributing) section.
+As an individual contributor to this repository, you are not required to touch the OpenAI API fine-tuning and modelling portions of the application. If you have issues with the Bullets being generated by Bullet Forge, please refer to the [Contributing](#contributing) section.
 
 # Contributing
 
@@ -163,6 +169,8 @@ When describing a pull request, please provide the following:
 For bugs, follow the [bug report template](./.github/ISSUE_TEMPLATE/bug_report.md) as closely as possible so that developers can reproduce and debug the issue.
 
 For feature requests, follow the [feature request template](./.github/ISSUE_TEMPLATE/feature_request.md) as closely as possible, providing detail (imagery, notes, etc.) as necessary to describe the desired end-state.
+
+For everything else in-between, just go with the "no template" option.
 
 ## Branching
 
@@ -287,7 +295,7 @@ chmod +x ./server/data/start:database
 3. To access the MongoDB container, execute the following:
 
 ```bash
-# get the docker container ID for smarter-bullets mongodb
+# get the docker container ID for smarter-Bullets mongodb
 docker ps -a
 # open mongo shell for container
 docker exec -it <CONTAINER_ID> mongosh
@@ -317,11 +325,13 @@ npm install && npm start
 
 #### _Testing_
 
-When testing the client or server in development execute the following to get hot-reload testing:
+When testing the client or server in development execute the following at the root of the `client/` or `server/` directories to get hot-reload testing:
 
 ```bash
 npm run test:dev
 ```
+
+To run acceptance / integration / cypress tests, you can execute one of the following:
 
 ```bash
 # this opens cypress with the UI
@@ -335,4 +345,4 @@ npm run acceptance:run
 
 # Licensing
 
-_smarter_-bullets is licensed under the [MIT license](./LICENSE).
+_smarter_-Bullets is licensed under the [MIT license](./LICENSE).

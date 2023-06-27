@@ -21,7 +21,7 @@ npm run stop:all && \
 
 # Start the database in the background
 npm run start:database &
-database_pid=$!
+DATABASE_PID=$!
 
 # Source the environment file for checking
 source ./config/.env.local && \
@@ -31,16 +31,16 @@ while ! nc -z localhost $MONGO_PORT; do echo "==> Waiting on Database..." && sle
 
 # Start the server with optional ":check" suffix
 npm run start:server${1:+:check} &
-server_pid=$!
+SERVER_PID=$!
 
 # Wait for the server to be accessible
 while ! nc -z localhost $SERVER_PORT; do echo "==> Waiting on Server..." && sleep 3; done
 
 # Start the client with optional ":check" suffix
 npm run start:client${1:+:check} &
-client_pid=$!
+CLIENT_PID=$!
 
 # Wait for processes to finish
-wait $database_pid
-wait $server_pid
-wait $client_pid
+wait $DATABASE_PID
+wait $SERVER_PID
+wait $CLIENT_PID
