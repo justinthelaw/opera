@@ -21,8 +21,10 @@ jupyter_core==5.3.1
 matplotlib-inline==0.1.6
 multidict==6.0.4
 nest-asyncio==1.5.6
+numpy==1.25.0
 openai==0.27.8
 packaging==23.1
+pandas==2.0.2
 parso==0.8.3
 pexpect==4.8.0
 pickleshare==0.7.5
@@ -33,6 +35,7 @@ ptyprocess==0.7.0
 pure-eval==0.2.2
 Pygments==2.15.1
 python-dateutil==2.8.2
+pytz==2023.3
 pyzmq==25.1.0
 requests==2.31.0
 six==1.16.0
@@ -40,6 +43,7 @@ stack-data==0.6.2
 tornado==6.3.2
 tqdm==4.65.0
 traitlets==5.9.0
+tzdata==2023.3
 urllib3==2.0.3
 wcwidth==0.2.6
 yarl==1.9.2
