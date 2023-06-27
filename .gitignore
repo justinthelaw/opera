@@ -39,3 +39,8 @@ downloads/
 
 # model
 bullet-forge.jsonl
+model/.venv/bin/
+model/.venv/include/
+model/.venv/lib
+model/.venv/share/
+model/.venv/pyvenv.cfg

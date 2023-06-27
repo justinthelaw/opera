@@ -131,7 +131,7 @@ The usage of the OpenAI API is documented on the [OpenAI API documentation websi
 
 ### Fine Tuning
 
-To run your own fine-tuning, you can use the Jupyter Notebook within the model directory. Please note that the notebook can only be executed if Jupyter Notebook, python, and the OpenAI CLI tool and its dependencies have been installed on your device.
+To run your own fine-tuning, you can use the Jupyter Notebook within the model directory. Please note that the notebook can only be executed if Jupyter Notebook, python, and the OpenAI CLI tool and its dependencies have been installed on your device. It is recommended that all the above dependencies are installed within a `venv` instance using the provided `requirements.txt` file.
 
 ### Training Data
 
