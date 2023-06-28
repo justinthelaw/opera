@@ -58,29 +58,29 @@ Bullets are action-impact-outcome statements that follow specific formatting rul
 
 Bullets follow a few formatting rules:
 
-- Each Bullet must be exactly one line, with the width of the line depending on the form (performance reports, award packages, etc).
-- Bullets generally adhere to the following formula, with some situational exceptions: `<ACTION>;<IMPACT>--<OUTCOME>`
-- Acronyms and abbreviations can be force-wide, organization, and/or commander-specific, with major inconsistencies in their abbreviation/acronym policies.
-- In Awards Packages, Enlisted Performance Reports (EPRs), and most other evaluation documents, the length of a Bullet must be 202.321mm
-- In Officer Performance Reports (OPRs), the length of a Bullet must be 201.041mm
-- In the (failed) rollout of myEval 1.0, Bullets were based on a maximum string length of 200 characters
+-   Each Bullet must be exactly one line, with the width of the line depending on the form (performance reports, award packages, etc).
+-   Bullets generally adhere to the following formula, with some situational exceptions: `<ACTION>;<IMPACT>--<OUTCOME>`
+-   Acronyms and abbreviations can be force-wide, organization, and/or commander-specific, with major inconsistencies in their abbreviation/acronym policies.
+-   In Awards Packages, Enlisted Performance Reports (EPRs), and most other evaluation documents, the length of a Bullet must be 202.321mm
+-   In Officer Performance Reports (OPRs), the length of a Bullet must be 201.041mm
+-   In the (failed) rollout of myEval 1.0, Bullets were based on a maximum string length of 200 characters
 
 Those Bullet formatting rules lead to the following:
 
-- Information compression is prioritized over legibility
-- Time is wasted on acronym and/or abbreviation revisions
-- Bullet "appearance" becomes highly valued; some examples of arbitrary Bullet appearance rules:
-    - Any sort of repetition = bad
-    - Bullets near flush with page boundaries = good
-- Closing Bullets (push statements) are always generic but need to catch attention
+-   Information compression is prioritized over legibility
+-   Time is wasted on acronym and/or abbreviation revisions
+-   Bullet "appearance" becomes highly valued; some examples of arbitrary Bullet appearance rules:
+    -   Any sort of repetition = bad
+    -   Bullets near flush with page boundaries = good
+-   Closing Bullets (push statements) are always generic but need to catch attention
 
 ## Example Bullets
 
 Below are examples of fake/unclassified Air and Space Force Bullets:
 
-- Delivered enterprise network s/w cert; adv'd 3 docs thru 5 orgs--guaranteed vital rqmts s/w accessibility DAF-wide
-- Streamlined 3-ktr proposal rvw; resolved 277 elements in <5 wks--trailblazed $900M resilient POTUS/CCMD comms
-- Justin embraces challenges with vigor; #1 choice to tackle big problems--perfect fit for NRO--send to PDE 1st look!
+-   Delivered enterprise network s/w cert; adv'd 3 docs thru 5 orgs--guaranteed vital rqmts s/w accessibility DAF-wide
+-   Streamlined 3-ktr proposal rvw; resolved 277 elements in <5 wks--trailblazed $900M resilient POTUS/CCMD comms
+-   Justin embraces challenges with vigor; #1 choice to tackle big problems--perfect fit for NRO--send to PDE 1st look!
 
 One non-obvious similarity amongst all 3 of these bullets is that they fit into the form perfectly - right up against the edge of the input. This is because the input area within the PDF form renders characters differently depending on the encoding, such as the space character in UTF-8 versus UTF-16.
 
@@ -142,7 +142,6 @@ Example data that has been prepared for fine-tuning can be seen within this repo
 #### Open AI Models
 
 The specific model used depends on the specific prompt or task required for Bullet Forging within the Smarter Bullets server. You can read more about these in the [OpenAI API models documentation](https://platform.openai.com/docs/models/gpt-3).
-
 
 ### API Key
 
@@ -227,9 +226,7 @@ Do the following prior to moving on to any further instructions below this secti
 3. Execute the following at the root of the repository:
 
 ```bash
-npm install
-# next line is for linting dependencies
-npx install-peerdeps --dev eslint-config-react-app
+npm run install:all
 ```
 
 ### Building
