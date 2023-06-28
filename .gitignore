@@ -30,8 +30,6 @@ debug.log
 .nyc_output
 .vscode
 
-archive/
-
 # acceptance
 videos/
 screenshots/

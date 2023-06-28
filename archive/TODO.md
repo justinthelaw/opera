@@ -1,0 +1,1 @@
+TODO: this folder contains legacy code that needs to be refactored into `client/` using TypeScript and a new (TBD) CSS/Component library.
