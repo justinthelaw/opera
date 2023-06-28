@@ -1,0 +1,8 @@
+{
+  "short_name": "Smarter Bullets",
+  "name": "An AI-enhanced web-tool that assists in writing Air and Space Force Bullets",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
