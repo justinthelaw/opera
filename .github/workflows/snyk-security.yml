@@ -1,0 +1,37 @@
+name: snyk-security-scanning
+
+on:
+  push:
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+jobs:
+  snyk:
+  
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
+      
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      - name: snyk:setup
+        uses: snyk/actions/setup@806182742461562b67788a64410098c9d9b96adb
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      - name: snyk:test
+        run: snyk code test --sarif > snyk-code.sarif # || true
+
+      - name: snyk:monitor
+        run: snyk monitor --all-projects
+
+      - name: snyk:results
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: snyk-code.sarif
