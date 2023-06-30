@@ -114,7 +114,14 @@ The specific model used depends on the specific prompt or task required for Bull
 
 To run your own fine-tuning, you can use the Jupyter Notebook within the model directory. Please note that the notebook can only be executed if Jupyter Notebook, python, and the OpenAI CLI tool and its dependencies have been installed on your device. It is recommended that all the above dependencies are installed within a `venv` instance using the provided `requirements.txt` file.
 
-Example data that has been prepared for fine-tuning can be seen within this repository, but does not represent the full-set of data used to create Bullet Forge. This example data can be found within in the file: [models/example-data.jsonl](./models/example-data.jsonl). The [OpenAI API fine-tuning documentation](https://platform.openai.com/docs/guides/fine-tuning/preparing-your-dataset) can provide more details on the data preparation.
+An example data format can be seen within this repository, but does not represent the data used to create Bullet Forge. The [OpenAI API fine-tuning documentation](https://platform.openai.com/docs/guides/fine-tuning/preparing-your-dataset) can provide more details on the data preparation.
+
+## Scraping
+
+Much of the test data was sourced from the contributors and the contributors' peers, but more data was required to build the fine-tuning data sets for Bullet Forge. Custom Python scripts were written to perform different levels of scraping on different bullet repositories that are publicly available. Some examples of website with different levels of scraping are as follows:
+
+1.  Level 1 (Simple HTML)
+    -   https://www.eprbullets.com/
 
 ## API Key
 

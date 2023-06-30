@@ -8,6 +8,7 @@
     "install:all": "npx install-peerdeps --dev eslint-config-react-app && cd ./client && npm install && cd ../server && npm install && cd ../acceptance && npm install",
     "start:all": "npm run stop:all && chmod +x scripts/start:all.sh && scripts/start:all.sh",
     "stop:all": "chmod +x scripts/stop:all.sh && scripts/stop:all.sh",
+    "test:scrapers": "cd scrapers && python3 $(find . -type f -iname '*.test.py')",
     "test:all": "npm run test:server && npm run test:client && npm run acceptance:run",
     "lint:all": "npm run lint:general && npm run lint:security",
     "build:all": "npm run build:server && npm run build:client && npm run build:integrate",
