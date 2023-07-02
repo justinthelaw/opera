@@ -113,22 +113,21 @@ The specific model used depends on the specific prompt or task required for Bull
 
 ## Fine Tuning
 
-To run your own fine-tuning, you can use the Jupyter Notebook within the model directory. Please note that the notebook can only be executed if Jupyter Notebook, python, and the OpenAI CLI tool and its dependencies have been installed on your device. It is recommended that all the above dependencies are installed within a `venv` instance using the provided `requirements.txt` file.
+To run your own fine-tuning, you can use the Jupyter Notebook within the `model/` directory. Please note that the notebook can only be executed if Jupyter Notebook, python, and the OpenAI CLI tool and its dependencies have been installed on your device. It is recommended that all the above dependencies are installed within a `venv` instance using the provided `requirements.txt` file.
 
 An example data format can be seen within this repository, but does not represent the data used to create Bullet Forge. The [OpenAI API fine-tuning documentation](https://platform.openai.com/docs/guides/fine-tuning/preparing-your-dataset) can provide more details on the data preparation.
 
 ## Scraping
 
-Much of the test data was sourced from the contributors and the contributors' peers, but more data was required to build the fine-tuning data sets for Bullet Forge. Custom Python scripts were written to perform different levels of scraping on different bullet repositories that are publicly available. Some examples of website with different levels of scraping are as follows:
+Much of the test data was sourced from the contributors and the contributors' peers, but more data was required to build the fine-tuning data sets for Bullet Forge. Custom Python scripts were written to perform scraping on different bullet repositories that are publicly available. Some examples of websites with open-source bullets include:
 
-1.  Level 1 (Simple HTML)
-    -   https://www.eprbullets.com/
+- http://www.eprbullets.com/
+- http://www.eprbulletsafsc.com/
+- http://www.airforcewriter.com/epr_bullets.htm
+- https://www.afeprbullets.com/
+- https://afbulletsafe.com/Display/Tag/EPR
 
-In order to run a scraper, execute the following within your Python `venv` instance and follow the prompts:
-
-```bash
-cd data && python3 bullet-scraper.py
-```
+You can run the scraper as part of the Jupyter Notebook series in the `model/` directory.
 
 ## API Key
 
