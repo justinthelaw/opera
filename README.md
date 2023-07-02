@@ -26,6 +26,7 @@ The purpose of _smarter_-bullets is to develop a set of tools to automate the po
 2. [Bullet Forge](#Bullet-forge)
     - [OpenAI GPT-3 Models](#open-ai-gpt-3)
     - [Fine Tuning](#fine-tuning)
+    - [Scraping](#scraping)
     - [API Key](#api-key)
 3. [Application Usage](#application-usage)
     - [Bullet Writing](#Bullet-writing)
@@ -114,7 +115,20 @@ The specific model used depends on the specific prompt or task required for Bull
 
 To run your own fine-tuning, you can use the Jupyter Notebook within the model directory. Please note that the notebook can only be executed if Jupyter Notebook, python, and the OpenAI CLI tool and its dependencies have been installed on your device. It is recommended that all the above dependencies are installed within a `venv` instance using the provided `requirements.txt` file.
 
-Example data that has been prepared for fine-tuning can be seen within this repository, but does not represent the full-set of data used to create Bullet Forge. This example data can be found within in the file: [models/example-data.jsonl](./models/example-data.jsonl). The [OpenAI API fine-tuning documentation](https://platform.openai.com/docs/guides/fine-tuning/preparing-your-dataset) can provide more details on the data preparation.
+An example data format can be seen within this repository, but does not represent the data used to create Bullet Forge. The [OpenAI API fine-tuning documentation](https://platform.openai.com/docs/guides/fine-tuning/preparing-your-dataset) can provide more details on the data preparation.
+
+## Scraping
+
+Much of the test data was sourced from the contributors and the contributors' peers, but more data was required to build the fine-tuning data sets for Bullet Forge. Custom Python scripts were written to perform different levels of scraping on different bullet repositories that are publicly available. Some examples of website with different levels of scraping are as follows:
+
+1.  Level 1 (Simple HTML)
+    -   https://www.eprbullets.com/
+
+In order to run a scraper, execute the following within your Python `venv` instance and follow the prompts:
+
+```bash
+cd data && python3 bullet-scraper.py
+```
 
 ## API Key
 
@@ -257,9 +271,9 @@ npm run start:server
 
 ```bash
 # set execution permissions to file
-chmod +x ./server/data/start:database
+chmod +x ./server/database/start:database
 # run docker command for configured mongodb image and container
-./server/data/start:database
+./server/database/start:database
 ```
 
 3. To access the MongoDB container, execute the following:
