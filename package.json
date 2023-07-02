@@ -13,7 +13,7 @@
     "build:all": "npm run build:server && npm run build:client && npm run build:integrate",
     "start:client": "cd ./client && npm start",
     "start:server": "cd ./server && npm run start:dev",
-    "start:database": "chmod +x ./server/data/start:database.sh && ./server/data/start:database.sh",
+    "start:database": "chmod +x ./server/database/start:database.sh && ./server/database/start:database.sh",
     "lint:general": "eslint ./ --ext '.ts,.tsx' --fix",
     "lint:security": "eslint --no-eslintrc --config security.eslintrc.yaml ./ --ext '.ts,.tsx --fix'",
     "test:client": "cd ./client && npm test",

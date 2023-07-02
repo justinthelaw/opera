@@ -26,6 +26,7 @@ The purpose of _smarter_-bullets is to develop a set of tools to automate the po
 2. [Bullet Forge](#Bullet-forge)
     - [OpenAI GPT-3 Models](#open-ai-gpt-3)
     - [Fine Tuning](#fine-tuning)
+    - [Scraping](#scraping)
     - [API Key](#api-key)
 3. [Application Usage](#application-usage)
     - [Bullet Writing](#Bullet-writing)
@@ -122,6 +123,12 @@ Much of the test data was sourced from the contributors and the contributors' pe
 
 1.  Level 1 (Simple HTML)
     -   https://www.eprbullets.com/
+
+In order to run a scraper, execute the following within your Python `venv` instance and follow the prompts:
+
+```bash
+cd data && python3 bullet-scraper.py
+```
 
 ## API Key
 
@@ -264,9 +271,9 @@ npm run start:server
 
 ```bash
 # set execution permissions to file
-chmod +x ./server/data/start:database
+chmod +x ./server/database/start:database
 # run docker command for configured mongodb image and container
-./server/data/start:database
+./server/database/start:database
 ```
 
 3. To access the MongoDB container, execute the following:

@@ -35,10 +35,12 @@ videos/
 screenshots/
 downloads/
 
-# model
-bullet-forge.jsonl
+# models
 .venv/bin/
 .venv/include/
 .venv/lib
 .venv/share/
 .venv/pyvenv.cfg
+
+# python
+__pycache__/
