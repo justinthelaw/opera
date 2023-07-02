@@ -3,6 +3,8 @@ import re
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
 from loguru import logger
+import asyncio
+import random
 
 # Track visited URLs to avoid duplicates
 visited_urls = set()
@@ -22,7 +24,15 @@ async def crawl_level_1(base_url, url, file_path):
 
         async with httpx.AsyncClient() as client:
             # Send an async GET request to fetch the web page content
-            response = await client.get(url)
+            for i in range(10):  # retry up to 10 times
+                try:
+                    response = await client.get(url, headers={"User-Agent": "Mozilla/5.0"})
+                    break  # if the request is successful, break the loop
+                except Exception as e:
+                    await asyncio.sleep(2 ** i)  # wait for an exponentially increasing amount of time
+            response.raise_for_status()
+            page_content = response.text
+            await asyncio.sleep(random.uniform(1, 3))  # introduce random delay between requests
             response.raise_for_status()
             page_content = response.text
 
@@ -55,3 +65,4 @@ async def crawl_level_1(base_url, url, file_path):
         logger.error(f"Received HTTP status code {e.response.status_code} for URL: {url}")
     except Exception as e:
         logger.error(f"A runtime error occurred: {e}")
+
