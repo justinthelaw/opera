@@ -33,7 +33,6 @@ async def crawl_level_1(base_url, url, file_path):
             response.raise_for_status()
             page_content = response.text
             await asyncio.sleep(random.uniform(1, 3))  # introduce random delay between requests
-            response.raise_for_status()
             page_content = response.text
 
         # Create BeautifulSoup object to parse the HTML content
