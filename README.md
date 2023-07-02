@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="./client/public/smarter-bullets-title.png" style="width: 50%" alt="smarter-bullets-title">
+    <img src="./client/public/smarter-bullets-title.png" style="width: 80%" alt="smarter-bullets-title">
 </div>
 
 <br/>
