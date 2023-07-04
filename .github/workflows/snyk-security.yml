@@ -1,9 +1,9 @@
-name: snyk-security
+name: snyk-security-scans
 
 on: push
 
 jobs:
-  security:
+  snyk:
     runs-on: ubuntu-latest
 
     steps:
