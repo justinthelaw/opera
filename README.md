@@ -66,7 +66,7 @@ One non-obvious similarity amongst all 3 of these bullets is that they fit into 
 
 # Bullet Forge
 
-For more more details, to include contributing, on the Bullet Forge machine learning strategy, please read the [Bullet Forge README](./models/README.md).
+For more more details, to include contributing, on the Bullet Forge machine learning strategy, please read the [Bullet Forge README](./models/bullet-forge.md).
 
 # Application Usage
 
@@ -199,7 +199,7 @@ npm run acceptance:run
 
 ## Pipelines
 
-To get context on the GitHub actions that run during a push or pull to a branch, please read the [Workflow README](./.github/README.md).
+To get context on the GitHub actions that run during a push or pull to a branch, please read the [Workflow README](./.github/workflow.md).
 
 # Licensing
 
