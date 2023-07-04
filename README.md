@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="./client/public/smarter-bullets-title.png" style="width: 80%" alt="smarter-bullets-title">
+    <img src="./public/smarter-bullets-title.png" style="width: 100%" alt="smarter-bullets-title">
 </div>
 
 <br/>
@@ -7,7 +7,7 @@
 <div align="center">
     
 [![smarter-bullets-pipeline](https://github.com/justinthelaw/smarter-bullets/actions/workflows/smarter-bullets.yml/badge.svg)](https://github.com/justinthelaw/smarter-bullets/actions)
-[![smarter-bullets-scanning](https://snyk.io/test/github/justinthelaw/smarter-bullets/badge.svg)](https://github.com/justinthelaw/smarter-bullets/security/code-scanning)
+[![snyk-security-scans](https://github.com/justinthelaw/smarter-bullets/actions/workflows/snyk-security.yml/badge.svg)](https://github.com/justinthelaw/smarter-bullets/actions/workflows/snyk-security.yml)
 
 </div>
 
@@ -66,7 +66,7 @@ One non-obvious similarity amongst all 3 of these bullets is that they fit into 
 
 # Bullet Forge
 
-For more more details, to include contributing, on the Bullet Forge machine learning strategy, please go to the [Bullet Forge README](./models/README.md).
+For more more details, to include contributing, on the Bullet Forge machine learning strategy, please read the [Bullet Forge README](./models/README.md).
 
 # Application Usage
 
@@ -196,6 +196,10 @@ npm run acceptance:open
 # you can change the browser within the acceptance/package.json
 npm run acceptance:run
 ```
+
+## Pipelines
+
+To get context on the GitHub actions that run during a push or pull to a branch, please read the [Workflow README](./.github/README.md).
 
 # Licensing
 

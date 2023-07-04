@@ -67,7 +67,7 @@ jobs:
                       server/
                   key: smarter-bullets-build-${{ hashFiles('**/package-lock.json') }}
                   restore-keys: |
-                      smarter-bullets-build-
+                      smarter-bullets-build-${{ hashFiles('**/package-lock.json') }}
 
     deploy:
         runs-on: ubuntu-latest
