@@ -2,6 +2,9 @@ name: smarter-bullets-pipeline
 
 on:
   push:
+    branches:
+      - '**'
+      - '!main'
   pull_request:
     branches: [ main ]
 
@@ -14,27 +17,27 @@ jobs:
         node-version: [20.x]
         
     steps:
-    - name: checkout:code
+    - name: Checkout Repository
       uses: actions/checkout@v3
 
-    - name: install:node@${{ matrix.node-version }}
+    - name: Install Node v${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: install:dependencies
+    - name: Install Dependencies
       run: npm run install:all && npm run env:copy
 
-    - name: lint:all
+    - name: Security and Code Lint
       run: npm run lint:all
 
-    - name: test:server
+    - name: Server Test
       run: npm run test:server
 
-    - name: test:client
+    - name: Client Test
       run: npm run test:client
 
-    - name: test:acceptance
+    - name: Integration Test
       run: npm run acceptance:run
 
   build:
@@ -46,34 +49,34 @@ jobs:
         node-version: [20.x]
         
     steps:
-    - name: checkout:code
+    - name: Checkout Repository
       uses: actions/checkout@v3
 
-    - name: install:node@${{ matrix.node-version }}
+    - name: Install Node v${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: install:dependencies
+    - name: Install Dependencies
       run: npm run install:all && npm run env:copy
 
-    - name: build:client
+    - name: Build Client
       run: npm run build:client
       
-    - name: build:server
+    - name: Build Server
       run: npm run build:server
 
-    - name: build:integrate
+    - name: Integrate Builds
       run: npm run build:integrate
 
-    - name: cache:artifacts
+    - name: Cache Build Artifacts
       uses: actions/cache@v3
       with:
         path: |
           server/
-        key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
+        key: smarter-bullets-build-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
-          ${{ runner.os }}-build-
+          smarter-bullets-build-
 
   deploy:
     runs-on: ubuntu-latest
@@ -84,19 +87,19 @@ jobs:
         node-version: [20.x]
 
     steps:
-    - name: install:node@${{ matrix.node-version }}
+    - name: Install Node v${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: restore:artifacts
+    - name: Restore Build Artifacts
       uses: actions/cache@v3
       with:
         path: |
           server/
-        key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
+        key: smarter-bullets-build-${{ hashFiles('**/package-lock.json') }}
 
-    - name: start:server
+    - name: List Build Artifacts
       run: ls -la server/build server/build/dist
 
         
