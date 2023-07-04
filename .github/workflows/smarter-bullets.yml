@@ -1,102 +1,90 @@
 name: smarter-bullets-pipeline
 
 on:
-  push:
-  pull_request:
-    branches: [ main ]
+    push:
+        branches:
+            - '**'
+            - '!main'
+    pull_request:
+        branches: [main]
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+    test:
+        runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [20.x]
-        
-    steps:
-    - name: checkout:code
-      uses: actions/checkout@v3
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v3
 
-    - name: install:node@${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
+            - name: Install Node v20.x
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 20.x
 
-    - name: install:dependencies
-      run: npm run install:all && npm run env:copy
+            - name: Install Dependencies
+              run: npm run install:all && npm run env:copy
 
-    - name: lint:all
-      run: npm run lint:all
+            - name: Security and Code Lint
+              run: npm run lint:all
 
-    - name: test:server
-      run: npm run test:server
+            - name: Server Test
+              run: npm run test:server
 
-    - name: test:client
-      run: npm run test:client
+            - name: Client Test
+              run: npm run test:client
 
-    - name: test:acceptance
-      run: npm run acceptance:run
+            - name: Integration Test
+              run: npm run acceptance:run
 
-  build:
-    runs-on: ubuntu-latest
-    needs: [test]
+    build:
+        runs-on: ubuntu-latest
+        needs: [test]
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v3
 
-    strategy:
-      matrix:
-        node-version: [20.x]
-        
-    steps:
-    - name: checkout:code
-      uses: actions/checkout@v3
+            - name: Install Node v20.x
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 20.x
 
-    - name: install:node@${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
+            - name: Install Dependencies
+              run: npm run install:all && npm run env:copy
 
-    - name: install:dependencies
-      run: npm run install:all && npm run env:copy
+            - name: Build Client
+              run: npm run build:client
 
-    - name: build:client
-      run: npm run build:client
-      
-    - name: build:server
-      run: npm run build:server
+            - name: Build Server
+              run: npm run build:server
 
-    - name: build:integrate
-      run: npm run build:integrate
+            - name: Integrate Builds
+              run: npm run build:integrate
 
-    - name: cache:artifacts
-      uses: actions/cache@v3
-      with:
-        path: |
-          server/
-        key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-build-
+            - name: Cache Build Artifacts
+              uses: actions/cache@v3
+              with:
+                  path: |
+                      server/
+                  key: smarter-bullets-build-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      smarter-bullets-build-${{ hashFiles('**/package-lock.json') }}
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: [build]
+    deploy:
+        runs-on: ubuntu-latest
+        needs: [build]
 
-    strategy:
-      matrix:
-        node-version: [20.x]
+        steps:
+            - name: Install Node v20.x
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 20.x
 
-    steps:
-    - name: install:node@${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
+            - name: Restore Build Artifacts
+              uses: actions/cache@v3
+              with:
+                  path: |
+                      server/
+                  key: smarter-bullets-build-${{ hashFiles('**/package-lock.json') }}
 
-    - name: restore:artifacts
-      uses: actions/cache@v3
-      with:
-        path: |
-          server/
-        key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
-
-    - name: start:server
-      run: ls -la server/build server/build/dist
-
-        
+            - name: List Build Artifacts
+              run: ls -la server/build server/build/dist
