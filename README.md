@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="./client/public/smarter-bullets-title.png" style="width: 80%" alt="smarter-bullets-title">
+    <img src="./public/smarter-bullets-title.png" style="width: 100%" alt="smarter-bullets-title">
 </div>
 
 <br/>
@@ -7,49 +7,28 @@
 <div align="center">
     
 [![smarter-bullets-pipeline](https://github.com/justinthelaw/smarter-bullets/actions/workflows/smarter-bullets.yml/badge.svg)](https://github.com/justinthelaw/smarter-bullets/actions)
-[![smarter-bullets-scanning](https://snyk.io/test/github/justinthelaw/smarter-bullets/badge.svg)](https://github.com/justinthelaw/smarter-bullets/security/code-scanning)
+[![snyk-security-scans](https://github.com/justinthelaw/smarter-bullets/actions/workflows/snyk-security.yml/badge.svg)](https://github.com/justinthelaw/smarter-bullets/actions/workflows/snyk-security.yml)
 
 </div>
 
 <br/>
 
-This is a hard-fork of the original [pdf-bullets](https://github.com/AF-VCD/pdf-bullets) project, a web-application affectionately named the [**AIR FORCE BULL**et **SH**aping & **I**teration **T**ool](https://af-vcd.github.io/pdf-bullets/), created and maintained by Christopher Kodama and the members of the Air Force Volunteer Cyber Depository (AF-VCD) group.
-
-The purpose of _smarter_-bullets is to develop a set of tools to automate the pointless aspects of Bullet-writing so that officer and/or enlisted members can focus more on writing actual content rather than worry about irrelevant formatting.
+The purpose of Smarter Bullets is to develop a set of tools to automate the pointless aspects of evaluation and award package-writing so that officer and enlisted members can focus more on writing actual content rather than worry about irrelevant formatting. The ultimate end goal would be to allow the end-user to provide some background information, and then type or speak a stream of consciousness, add documents (e.g., emails), etc. that contain their achievements for the package period, and Smarter Bullets handles everything else.
 
 # Table of Contents
 
 1. [Background](#background)
-    - [What are "Bullets"](#what-are-bullets)
-    - [How are "Bullets" Formatted](#how-are-bullets-formatted)
-    - [Why the Hard Fork](#why-the-hard-fork)
 2. [Bullet Forge](#Bullet-forge)
-    - [OpenAI GPT-3 Models](#open-ai-gpt-3)
-    - [Fine Tuning](#fine-tuning)
-    - [Scraping](#scraping)
-    - [API Key](#api-key)
 3. [Application Usage](#application-usage)
-    - [Bullet Writing](#Bullet-writing)
-    - [Acronym List Imports](#acronym-list-imports)
 4. [Contributing](#contributing)
-    - [Feedback Form](#feedback-form)
-    - [Pull Requests](#pull-requests)
-    - [Issues](#issues)
-    - [Branching](#branching)
-    - [Coding Conventions and Standards](#coding-conventions-and-standards)
-    - [Committing and Merging](#committing-and-merging)
-    - [Local Development](#local-development)
-        - [Client-Server](#client-server)
-        - [General](#general)
-        - [Root Directory Run](#root-directory-run)
-        - [Individual Directory Run](#individual-directory-run)
-5. [Licensing](#licensing)
+5. [Local Development](#local-development)
+6. [Licensing](#licensing)
 
 # Background
 
 ## What are "Bullets"
 
-One of the most pointless and time-consuming things that Air and Space Force officer and enlisted personnel do all the time is Bullet-writing.
+One of the most pointless and time-consuming things that Air and Space Force officer and enlisted personnel do all the time is Bullet writing.
 
 Air and Space Force personnel are required to write Bullets for performance reports and award packages, and these Bullets could mean the difference between the stagnation or advancement of an Airman or Guardian's career.
 
@@ -62,8 +41,8 @@ Bullets follow a few formatting rules:
 -   Each Bullet must be exactly one line, with the width of the line depending on the form (performance reports, award packages, etc).
 -   Bullets generally adhere to the following formula, with some situational exceptions: `<ACTION>;<IMPACT>--<OUTCOME>`
 -   Acronyms and abbreviations can be force-wide, organization, and/or commander-specific, with major inconsistencies in their abbreviation/acronym policies.
--   In Awards Packages, Enlisted Performance Reports (EPRs), and most other evaluation documents, the length of a Bullet must be 202.321mm
--   In Officer Performance Reports (OPRs), the length of a Bullet must be 201.041mm
+-   In Awards Packages, Enlisted Performance Reports (EPRs), and most other evaluation documents, the length of a Bullet must be ~202.321mm
+-   In Officer Performance Reports (OPRs), the length of a Bullet must be ~201.041mm
 -   In the (failed) rollout of myEval 1.0, Bullets were based on a maximum string length of 200 characters
 
 Those Bullet formatting rules lead to the following:
@@ -85,61 +64,15 @@ Below are examples of fake/unclassified Air and Space Force Bullets:
 
 One non-obvious similarity amongst all 3 of these bullets is that they fit into the form perfectly - right up against the edge of the input. This is because the input area within the PDF form renders characters differently depending on the encoding, such as the space character in UTF-8 versus UTF-16.
 
-# Why the Hard Fork
-
-The purpose of hard-forking this original tool is as follows:
-
-1. Refactor the frontend codebase to modern TypeScript, and eliminate Create-React-App overhead
-2. Provide more GitOps and open-source developer workflows and instructions
-3. Add OpenAI API GPT3 base model fine-tuning to create a new [Bullet Forge](#bullet-forge) feature
-4. Revamp the UI/UX using modern components and design standards
-5. Re-architect to a client-server application to provide persistence, security, and improvement insights
-
 # Bullet Forge
 
-Bullet Forge is a Bullet generation tool that harnesses the power of Natural Language Processing (NLP) through OpenAI's GPT technologies, specifically Large Language Models (LLM).
-
-The primary objective of this tool is to streamline the process of listing accomplishments and achievements by:
-
-1. Offloading the cognitive and administrative burden of transforming factual information into effective Bullets
-2. Offering suggestions to rephrase verbs, impacts, and outcomes to enhance variety and avoid repetition throughout the document
-3. Intelligently incorporating acronyms to optimize spacing and enhance the readability of Bullets, while maintaining consistency across the document
-
-## OpenAI GPT-3 Models
-
-The usage of the OpenAI API is documented on the [OpenAI API documentation website](https://platform.openai.com/docs) and within the Smarter Bullets server code.
-
-The specific model used depends on the specific prompt or task required for Bullet Forging within the Smarter Bullets server. You can read more about these in the [OpenAI API models documentation](https://platform.openai.com/docs/models/gpt-3).
-
-## Fine Tuning
-
-To run your own fine-tuning, you can use the Jupyter Notebook within the `model/` directory. Please note that the notebook can only be executed if Jupyter Notebook, python, and the OpenAI CLI tool and its dependencies have been installed on your device. It is recommended that all the above dependencies are installed within a `venv` instance using the provided `requirements.txt` file.
-
-An example data format can be seen within this repository, but does not represent the data used to create Bullet Forge. The [OpenAI API fine-tuning documentation](https://platform.openai.com/docs/guides/fine-tuning/preparing-your-dataset) can provide more details on the data preparation.
-
-## Scraping
-
-Much of the test data was sourced from the contributors and the contributors' peers, but more data was required to build the fine-tuning data sets for Bullet Forge. Custom Python scripts were written to perform scraping on different bullet repositories that are publicly available. Some examples of websites with open-source bullets include:
-
-- http://www.eprbullets.com/
-- http://www.eprbulletsafsc.com/
-- http://www.airforcewriter.com/epr_bullets.htm
-- https://www.afeprbullets.com/
-- https://afbulletsafe.com/Display/Tag/EPR
-
-You can run the scraper as part of the Jupyter Notebook series in the `model/` directory.
-
-## API Key
-
-The OpenAI API key is a repository secret that is used by the application in the production environment. When developing on your own, you will not have access to the fine-tuned models nor the OpenAI API account that is being used to generate Bullets.
-
-As an individual contributor to this repository, you are not required to touch the OpenAI API fine-tuning and modelling portions of the application. If you have issues with the Bullets being generated by Bullet Forge, please refer to the [Contributing](#contributing) section.
+For more more details, to include contributing, on the Bullet Forge machine learning strategy, please read the [Bullet Forge README](./models/bullet-forge.md).
 
 # Application Usage
 
 ## Bullet Writing
 
-The application provides instructions within the application for usage. The User Interface (UI) should be relatively easy to navigate. If the UI is not intuitive to you, then feedback can be submitted using the in-app feedback form or an Issue can be posted to this Github repository.
+The application provides instructions within the application for usage. The User Interface (UI) should be relatively easy to navigate. If the UI is not intuitive to you, then feedback can be submitted using the in-app feedback form or an Issue can be posted to this repository.
 
 ## Acronym List Imports
 
@@ -155,17 +88,11 @@ _CORRECT USAGE NOTE_: Sort the Excel sheet in DESCENDING ORDER. Due to the greed
 
 _EXAMPLE OF INCORRECT USAGE_:
 
-United States Air Force: USAF  
+United States Air Force: USAF
 United States Air Force Academy: USAFA  
 Will cause "United States Air Force Academy" to be abbreviated as "USAF Academy"
 
 # Contributing
-
-Below are some GitOps rules for contributing to this repository. As time moves forward, more formalized and refined pull request and issue templates will be established.
-
-## Feedback Form
-
-A feedback form is built into the live web application, and all users can submit feature requests or defect reports via that form. Users and developers can also submit issues through this Github repository.
 
 ## Pull Requests
 
@@ -222,24 +149,17 @@ Spaces are allowed within the description, e.g., `Feature(DSR): This revolves ar
 
 # Local Development
 
-After following the [General](#general) instructions, there are two options for developers to run the application:
-
-1. (RECOMMENDED) [Root Directory Run](#root-directory-run): running and installing using the NPM project at the root of the directory
-2. [Individual Directory Run](#individual-directory-run): going into each sub-directory to run each individual sub-stack/service
-
-### General
+## General
 
 Do the following prior to moving on to any further instructions below this section:
 
-1. At a minimum, have an IDE (VSCode), browser (Chrome), Docker Desktop, `git`, `node`, `npm`, and `python` installed
-2. Fork and/or clone this repository
+1. At a minimum, have an integrated development environment (e.g., VSCode), a browser (e.g., Google Chrome), Docker Desktop, `git`, `node`, `npm`, and `python3` installed
+2. Fork or clone this repository to your local development environment
 3. Go to the root `config/` directory and create a `.env.local` using the `.env.example` as a reference
 
-### Root Directory Run
+## Running
 
-There are two options to run the full-stack application from the root directory:
-
-1. (RECOMMENDED) To run each sub-stack in one terminal, execute the following:
+To run each sub-stack in one terminal, with integrated logs, execute the following:
 
 ```bash
 # installs all dependencies in the sub-stacks
@@ -248,90 +168,15 @@ npm run install:all
 npm run start:all
 ```
 
-2. To run each sub-stack in a new terminal, execute the following:
+## Building
 
-```bash
-# installs all dependencies in the sub-stacks
-npm run install:all
-# see database access instructions in individual directory run section
-npm run start:database
-# new terminal
-npm run start:client
-# new terminal
-npm run start:server
-```
-
-### Individual Directory Run
-
-#### _Database_
-
-1. Open a new terminal
-2. Execute the following to start a MongoDB database:
-
-```bash
-# set execution permissions to file
-chmod +x ./server/database/start:database
-# run docker command for configured mongodb image and container
-./server/database/start:database
-```
-
-3. To access the MongoDB container, execute the following:
-
-```bash
-# get the docker container ID for smarter-bullets mongodb
-docker ps -a
-# open mongo shell for container
-docker exec -it <CONTAINER_ID> mongosh
-```
-
-4. For more MongoDB commands, you can reference this guide: [MongoDB Cheat Sheet](https://www.mongodbtutorial.com/mongodb-cheat-sheet/)
-
-#### _Server_
-
-1. Open a new terminal
-2. Go to the `server/src/constants/` directory and ensure you are okay with defaults sans environment variable
-3. In `server/`, execute the following to start the server:
-
-```bash
-# npm run start:dev wraps a build-step that includes tsc build and nodemon for hot-reload
-npm install && npm run start:dev
-```
-
-#### _Client_
-
-1. Open a new terminal
-2. In `client/`, execute the following to start the client:
-
-```bash
-npm install && npm start
-```
-
-### Building
-
-The two options developers have for building the full-stack application in development mode is as follows:
-
-1. (RECOMMENDED) Use the automated process through the execution of the following commands at the root of this project:
+For building the full-stack application in development mode, use the automated process through the execution of the following commands at the root of this project:
 
 ```bash
 npm run build:all
 ```
 
-2. Build individual portions of the application and integrate through the execution of the following commands at the root of this project:
-
-```bash
-npm run build:client
-npm run build:server
-# moves client bundle and index over to server
-npm run build:integrate
-```
-
-**_NOTE_**: Client-Server Architecture
-
-The Fastify Server within the Server is the main server of both the Smarter Bullets Server and Client. As it currently stands, the production build of the application and the development environment have the Server serving a static `bundle.js` and `index.html` to the user's browser.
-
-In development, the Server watches and serves whatever client build resides within the `/server/build/dist` directory using nodemon. A new client can be built, integrated, and served by the Server using the instructions seen in the [Building](#building) section of this README.
-
-### _Testing_
+## Testing
 
 When testing the client or server in development execute the following at the root of the `client/` or `server/` directories to get hot-reload testing:
 
@@ -352,6 +197,22 @@ npm run acceptance:open
 npm run acceptance:run
 ```
 
+## Pipelines
+
+To get context on the GitHub actions that run during a push or pull to a branch, please read the [Workflow README](./.github/workflow.md).
+
 # Licensing
 
 _smarter_-bullets is licensed under the [MIT license](./LICENSE).
+
+## Why the Hard Fork
+
+This is a hard-fork of the original [pdf-bullets](https://github.com/AF-VCD/pdf-bullets) project, a web-application affectionately named the [**AIR FORCE BULL**et **SH**aping & **I**teration **T**ool](https://af-vcd.github.io/pdf-bullets/), created and maintained by Christopher Kodama and the members of the Air Force Volunteer Cyber Depository (AF-VCD) group.
+
+The purpose of hard-forking this original pdf-bullets tool is as follows:
+
+1. Refactor the frontend codebase to modern TypeScript, and eliminate Create-React-App overhead
+2. Provide more GitOps and open-source developer workflows and instructions
+3. Add OpenAI API GPT3 base model fine-tuning to create a new [Bullet Forge](#bullet-forge) feature
+4. Revamp the UI/UX using modern components and design standards
+5. Re-architect to a client-server application to provide persistence, security, and improvement insights
