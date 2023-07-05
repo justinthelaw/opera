@@ -7,7 +7,7 @@ def delete_file(file_path):
         if os.path.exists(file_path):
             os.remove(file_path)
             logger.warning(f"File '{file_path}' already existed and has been deleted")
-        logger.info(f"Printing all matches to file path: {file_path}")
+        logger.info(f"Printing all lines to file path: {file_path}")
     except Exception as e:
         logger.error(f"A runtime error occurred: {e}")
 

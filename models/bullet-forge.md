@@ -71,5 +71,9 @@ pip install -r requirements.txt
 4. To record any dependency changes, execute the following:
 
 ```bash
-pip freeze > requirements.txt
+pip freeze > models/requirements.txt
 ```
+
+## Jupyter Notebooks
+
+Please ensure all outputs and inputs you have provided to the Jupyter Notebooks are cleaned.

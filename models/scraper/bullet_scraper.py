@@ -31,4 +31,9 @@ async def bullet_scraper():
     logger.info("Gracefully shutting down Bullet Scraper.")
 
 
-asyncio.run(bullet_scraper())
+# Create the event loop and run the bullet scraper
+async def main():
+    await bullet_scraper()
+
+# Run the main function with the event loop
+asyncio.run(main())
