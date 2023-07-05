@@ -36,11 +36,8 @@ screenshots/
 downloads/
 
 # models
-.venv/bin/
-.venv/include/
-.venv/lib
-.venv/share/
-.venv/pyvenv.cfg
+.venv/
+private/
 
 # python
 __pycache__/
