@@ -10,7 +10,7 @@ This workflow sets up the automatic pull request generation for dependency bumps
 
 ## Snyk Security
 
-Scans the repository application code for potential vulnerabilities.
+Scans the repository application code and dependencies for potential vulnerabilities. Also does something similar to dependabot, and suggests version bumps to dependencies.
 
 ## Artifact Cache Cleanup
 
