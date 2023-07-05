@@ -45,11 +45,16 @@ def extra_clean_file(file_path, pattern):
         with open(file_path, "r") as file:
             lines = file.readlines()
             for line in lines:
+                # remove all empty lines and newline characters
                 line = line.strip()
                 line = line.replace("\n", "")
+                # add the dash to bullets missing it
                 if not line.startswith("-"):
                     line = "- " + line
-                if re.match(pattern, line):
+                # re-use the pattern with line length check
+                # 115 chars is a myEval 1.0 standard, and it is highly unlikely
+                # that a compliant / good bullet is less than <50 or >115 chars
+                if re.match(pattern, line) and 50 < len(line) <= 115:
                     clean_lines.append(line)
 
         # Write the filtered lines back to the file
