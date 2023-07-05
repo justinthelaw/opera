@@ -56,13 +56,13 @@ Those Bullet formatting rules lead to the following:
 
 ## Example Bullets
 
-Below are examples of fake/unclassified Air and Space Force Bullets:
+Below are examples of fake/unclassified Air and Space Force Bullets for an OPR:
 
 -   Delivered enterprise network s/w cert; adv'd 3 docs thru 5 orgs--guaranteed vital rqmts s/w accessibility DAF-wide
 -   Streamlined 3-ktr proposal rvw; resolved 277 elements in <5 wks--trailblazed $900M resilient POTUS/CCMD comms
 -   Justin embraces challenges with vigor; #1 choice to tackle big problems--perfect fit for NRO--send to PDE 1st look!
 
-One non-obvious similarity amongst all 3 of these bullets is that they fit into the form perfectly - right up against the edge of the input. This is because the input area within the PDF form renders characters differently depending on the encoding, such as the space character in UTF-8 versus UTF-16.
+One non-obvious similarity amongst all 3 of these bullets is that they fit into the form perfectly - right up against the edge of the field. This is because the input area within the PDF form renders characters differently depending on the encoding, such as the space character in UTF-8 versus UTF-16.
 
 # Bullet Forge
 
