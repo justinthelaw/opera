@@ -11,8 +11,6 @@
 
 </div>
 
-<br/>
-
 The purpose of Smarter Bullets is to develop a set of tools to automate the pointless aspects of evaluation and award package-writing so that officer and enlisted members can focus more on writing actual content rather than worry about irrelevant formatting. The ultimate end goal would be to allow the end-user to provide some background information, and then type or speak a stream of consciousness, add documents (e.g., emails), etc. that contain their achievements for the package period, and Smarter Bullets handles everything else.
 
 # Table of Contents
