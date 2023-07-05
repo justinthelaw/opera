@@ -1,6 +1,6 @@
 # Bullet Forge
 
-Bullet Forge is a Bullet generation tool that harnesses the power of Natural Language Processing (NLP) through OpenAI's GPT technologies, specifically Large Language Models (LLM). It has been trained using 44,000+ unique EPR, OPR, and Award package bullets across all Air and Space Force positions and ranks.
+Bullet Forge is a Bullet generation tool that harnesses the power of Natural Language Processing (NLP) through OpenAI's GPT technologies, specifically Large Language Models (LLM). It has been trained using 33,000+ unique EPR, OPR, and Award package bullets across all Air and Space Force positions and ranks.
 
 The primary objective of this tool is to streamline the process of listing accomplishments and achievements by:
 

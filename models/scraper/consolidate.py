@@ -61,7 +61,7 @@ def main():
     # Close the event loop
     loop.close()
 
-    # Remove duplicates
+    # Remove duplicate bullets
     remove_duplicates(output_filepath)
 
 
