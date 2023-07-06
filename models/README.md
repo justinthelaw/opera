@@ -22,15 +22,13 @@ An example data format can be seen within this repository, but does not represen
 
 ## Scraping
 
-Much of the test data was sourced from the contributors and the contributors' peers, but more data was required to build the fine-tuning data sets for Bullet Forge. Custom Python scripts were written to perform scraping on different bullet repositories that are publicly available. Some examples of websites with open-source bullets include:
+Some of the test data was sourced from the contributors and the contributors' peers, but much more data was required to build the fine-tuning data sets for Bullet Forge. Custom Python scripts were written to perform scraping on different bullet repositories that are publicly available. Some examples of websites with open-source bullets include:
 
 - http://www.eprbullets.com/
 - http://www.eprbulletsafsc.com/
 - http://www.airforcewriter.com/
 
-You can run the scraper as part of the Jupyter Notebook series in the `model/` directory.
-
-Some manual clean-up post scraping may be required. Generally speaking, the existing raw data should not need to be modified.
+You can run the scraper as part of the Jupyter Notebook series in the `model/` directory. Some manual clean-up post scraping may be required. Generally speaking, the existing raw data should not need to be modified. Overall, well over 100,000+ bullets were scraped and filtered down to the 33,000+ bullets used for training the model.
 
 ## API Key
 

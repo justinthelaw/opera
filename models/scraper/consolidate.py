@@ -3,7 +3,7 @@ import sys
 from loguru import logger
 from utils.file_utils import file_exists, remove_duplicates
 
-output_filepath = "data/training/consolidated_bullets.jsonl"
+output_filepath = "data/training/bullet_completions.jsonl"
 
 async def process_line(line):
     try:
@@ -11,7 +11,7 @@ async def process_line(line):
         line = line.replace('"', "'").strip()
         # Format into JSONL, fine-tuning format
         processed_line = (
-            f'{{"prompt": "<ADD THE FULL-FORM PARAGRAPH>", "completion": "{line}"}}\n'
+            f'{{"summary": "<ADD THE FULL-FORM PARAGRAPH>", "evaluation": "{line}"}}\n'
         )
         return processed_line
     except Exception as e:
