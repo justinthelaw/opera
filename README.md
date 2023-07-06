@@ -121,7 +121,7 @@ Use a dash, `-`, as the delimiter, e.g., `this-is-a-feature-branch`
 Prior to attempting a push to a branch or submitting of a merge request to a branch and/or main, run the check all command to ensure all pipeline steps will run locally:
 
 ```bash
-npm run check:all
+python manage.py check
 ```
 
 ## Committing and Merging
@@ -151,19 +151,16 @@ Spaces are allowed within the description, e.g., `Feature(DSR): This revolves ar
 
 Do the following prior to moving on to any further instructions below this section:
 
-1. At a minimum, have an integrated development environment (e.g., VSCode), a browser (e.g., Google Chrome), Docker Desktop, `git`, `node`, `npm`, and `python3` installed
+1. At a minimum, have an integrated development environment (e.g., VSCode), a browser (e.g., Google Chrome), Docker Desktop, `git`, `python3`, and `pip` installed
 2. Fork or clone this repository to your local development environment
 3. Go to the root `config/` directory and create a `.env.local` using the `.env.example` as a reference
 
 ## Running
 
-To run each sub-stack in one terminal, with integrated logs, execute the following:
+To run the Django server, execute the following:
 
 ```bash
-# installs all dependencies in the sub-stacks
-npm run install:all
-# starts all sub-stacks
-npm run start:all
+python manage.py runserver
 ```
 
 ## Building
@@ -176,10 +173,10 @@ npm run build:all
 
 ## Testing
 
-When testing the client or server in development execute the following at the root of the `client/` or `server/` directories to get hot-reload testing:
+When testing the Django server in development execute the following at the root of the `server/` directory to get hot-reload testing:
 
 ```bash
-npm run test:dev
+python manage.py test
 ```
 
 To run acceptance / integration / cypress tests, you can execute one of the following:
