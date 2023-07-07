@@ -64,7 +64,7 @@ One non-obvious similarity amongst all 3 of these bullets is that they fit into 
 
 # Bullet Forge
 
-For more more details, to include contributing, on the Bullet Forge machine learning strategy, please read the [Bullet Forge README](./models/README.md).
+For more more details, to include contributing, on the Bullet Forge machine learning strategy, please read the [Bullet Forge README](./forge/README.md).
 
 # Application Usage
 
@@ -211,6 +211,6 @@ The purpose of hard-forking this original pdf-bullets tool is as follows:
 
 1. Refactor the frontend codebase to modern TypeScript, and eliminate Create-React-App overhead
 2. Provide more GitOps and open-source developer workflows and instructions
-3. Add OpenAI API GPT3 base model fine-tuning to create a new [Bullet Forge](#bullet-forge) feature
+3. Add fine-tuned T5 base models to create a new [Bullet Forge](#bullet-forge) feature
 4. Revamp the UI/UX using modern components and design standards
 5. Re-architect to a client-server application to provide persistence, security, and improvement insights
