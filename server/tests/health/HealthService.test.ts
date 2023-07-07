@@ -44,12 +44,5 @@ describe('HealthService', () => {
 			await healthService.getRequestedServiceHealth('database')
 			expect(databaseHealthSpy).toHaveBeenCalledTimes(1)
 		})
-		it('should call the getOpenAiApiHealth method when given argument, "openai"', async () => {
-			const openAIAPIHealthSpy = jest.spyOn(healthService, 'getOpenAIHealth')
-			await healthService.getRequestedServiceHealth('openai')
-			await healthService.getRequestedServiceHealth('openaiapi')
-			await healthService.getRequestedServiceHealth('open-ai-api')
-			expect(openAIAPIHealthSpy).toHaveBeenCalledTimes(3)
-		})
 	})
 })

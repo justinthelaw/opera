@@ -38,6 +38,8 @@ downloads/
 # models
 .venv/
 private/
+*.bin
+*.model
 
 # python
 __pycache__/

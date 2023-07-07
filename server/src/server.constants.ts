@@ -1,17 +1,8 @@
 import dotenv from 'dotenv'
 
 dotenv.config({ path: '../config/.env.local' })
-export const {
-	MONGO_HOST,
-	MONGO_PORT,
-	CLIENT_HOST,
-	CLIENT_PORT,
-	API_VERSION,
-	API_HOST,
-	API_PORT,
-	NODE_ENV,
-	OPENAI_API_STATUS_URL
-} = process.env
+export const { MONGO_HOST, MONGO_PORT, CLIENT_HOST, CLIENT_PORT, API_VERSION, API_HOST, API_PORT, NODE_ENV } =
+	process.env
 
 export const ENV: string = NODE_ENV || 'development'
 export const HOST: string = API_HOST || 'localhost'

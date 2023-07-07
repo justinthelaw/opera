@@ -1,12 +1,5 @@
-import {
-	HealthFetch,
-	HealthResponse,
-	ServiceHealth,
-	OpenAIHealth,
-	OpenAIHealthComponentsArray,
-	PossibleHealthServices
-} from './HealthModels'
-import { OPENAI_API_STATUS_URL, DATABASE_URL, CLIENT_URL } from '../server.constants'
+import { HealthFetch, HealthResponse, ServiceHealth, PossibleHealthServices } from './HealthModels'
+import { DATABASE_URL, CLIENT_URL } from '../server.constants'
 import HealthCustomFetch from './health.fetch'
 import dateBuilder from '../utils/date.builder'
 import { baseServerHealth } from './health.constants'
@@ -29,11 +22,6 @@ export default class HealthService {
 			case 'database':
 				response = await this.getDatabaseHealth()
 				break
-			case 'openai':
-			case 'openaiapi':
-			case 'open-ai-api':
-				response = await this.getOpenAIHealth()
-				break
 			case 'server':
 			case 'api':
 				response = this.getServerHealth()
@@ -49,10 +37,9 @@ export default class HealthService {
 	}
 
 	async getThirdPartyServicesHealth(): Promise<ServiceHealth[]> {
-		const openAIHealth = await this.getOpenAIHealth()
 		const databaseHealth = await this.getDatabaseHealth()
 		const clientHealth = await this.getClientHealth()
-		return [clientHealth, databaseHealth, openAIHealth]
+		return [clientHealth, databaseHealth]
 	}
 
 	async getDatabaseHealth(): Promise<ServiceHealth> {
@@ -75,37 +62,5 @@ export default class HealthService {
 		}
 
 		return HealthCustomFetch(clientHealthFetch)
-	}
-
-	async getOpenAIHealth(): Promise<ServiceHealth> {
-		const name = 'OpenAI API'
-
-		const openAIHealthFetchHandler = async (response: any, serviceHealthResponse: ServiceHealth) => {
-			const json: OpenAIHealth = await response.json()
-			const components: OpenAIHealthComponentsArray = json.components
-			const component = components[0]
-			switch (component.status) {
-				case 'operational':
-					serviceHealthResponse.status = 'healthy'
-					break
-				case 'degraded_performance':
-				case 'partial_outage':
-					serviceHealthResponse.status = 'degraded'
-					break
-				default:
-					serviceHealthResponse.status = 'down'
-					break
-			}
-			serviceHealthResponse.timeStamp = dateBuilder(component.updated_at)
-			delete serviceHealthResponse.degradedReason
-		}
-
-		const openAIHealthFetch: HealthFetch = {
-			name: name,
-			endPoint: OPENAI_API_STATUS_URL as string,
-			fetchHandler: openAIHealthFetchHandler
-		}
-
-		return HealthCustomFetch(openAIHealthFetch)
 	}
 }
