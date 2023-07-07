@@ -34,7 +34,7 @@ Some of the test data was sourced from the contributors and the contributors' pe
 
 First, please follow the instructions in [Virtual Environments](#virtual-environments).
 
-To scrape, clean, and consolidate data, follow and use the [training data Jupyter Notebook](./notebooks/training_data.ipynb)
+To scrape, clean, and consolidate data, follow and use the [training data Jupyter Notebook](./notebooks/training_data.ipynb). The data within `data/training` is already prepared for fine-tuning and should not need further modifications. Contributors are welcome to add more data from other websites beyond those identified within the Jupyter Notebook.
 
 ## Virtual Environments
 
