@@ -24,7 +24,7 @@ describe('HealthService', () => {
 			const overallHealth = await healthService.getOverallHealth()
 			expect(overallHealth).toBeDefined()
 			expect(overallHealth).toHaveProperty('serviceStatuses')
-			expect(overallHealth.serviceStatuses?.length).toBe(3)
+			expect(overallHealth.serviceStatuses?.length).toBe(2)
 		})
 	})
 

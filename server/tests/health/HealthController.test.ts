@@ -23,7 +23,7 @@ describe('HealthController', () => {
 			const overallHealthResponse = await healthController.getOverallHealth()
 			expect(overallHealthResponse).toEqual({
 				...baseServerHealth,
-				serviceStatuses: Array(3).fill(undefined) as ServiceHealth[]
+				serviceStatuses: Array(2).fill(undefined) as ServiceHealth[]
 			} as HealthResponse)
 		})
 	})
