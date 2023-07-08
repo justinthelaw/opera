@@ -11,7 +11,9 @@
 
 </div>
 
-The purpose of Smarter Bullets is to develop a set of tools to automate the pointless aspects of evaluation and award package-writing so that officer and enlisted members can focus more on writing actual content rather than worry about irrelevant formatting. The ultimate end goal would be to allow the end-user to provide some background information, and then type or speak a stream of consciousness, add documents (e.g., emails), etc. that contain their achievements for the package period, and Smarter Bullets handles everything else.
+The purpose of Smarter Bullets is to develop a set of tools to automate the pointless aspects of evaluation and award package-writing so that officer and enlisted members can focus more on the achievements rather than worry about irrelevant formatting. The ultimate objective is to allow the end-user to type or speak a stream of consciousness about a member's achievements and let Smarter Bullets handle the rest.
+
+Bullet Forge is Smarter Bullets' narrative generation tool that harnesses the power of Natural Language Processing (NLP) through the use of the Text-To-Text Transfer Transformer (T5) base model. Bullet Forge is an API that is connected to a fine-tuned T5 model that has been trained using 33,000+ unique EPR, OPR, and Award package bullets, across all Air and Space Force positions and ranks, with semantically randomized initial inputs.
 
 # Table of Contents
 
