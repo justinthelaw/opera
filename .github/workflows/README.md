@@ -1,6 +1,6 @@
 # GitHub Actions
 
-## Smarter Bullets
+## Smarter Bullets Pipeline
 
 Lints, tests, builds, and deploys the Smarter Bullets full-stack application.
 
@@ -20,4 +20,8 @@ Cleans out all of the cached artifacts the pipelines use once a pull request has
 
 ## Bug Template
 
+For reporting application or developer environment defects.
+
 ## Feature Request
+
+For requesting new capabilities in any part of Smarter Bullets.

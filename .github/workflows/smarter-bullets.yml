@@ -1,12 +1,13 @@
 name: smarter-bullets-pipeline
 
 on:
-    push:
-        branches:
-            - '**'
-            - '!main'
-    pull_request:
-        branches: [main]
+  push:
+    branches:
+      - '*'
+      - '!main'
+  pull_request:
+    branches:
+      - main
 
 jobs:
     test:
