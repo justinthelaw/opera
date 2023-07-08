@@ -1,6 +1,6 @@
 # Bullet Forge
 
-Bullet Forge is a Bullet generation tool that harnesses the power of Natural Language Processing (NLP) the Text-To-Text Transfer Transformer (T5).
+Bullet Forge is Smarter Bullets' narrative generation tool that harnesses the power of Natural Language Processing (NLP) through the use of the Text-To-Text Transfer Transformer (T5) base model. Bullet Forge is an API that is connected to a fine-tuned T5 model that has been trained using 33,000+ unique EPR, OPR, and Award package bullets, across all Air and Space Force positions and ranks, with semantically randomized initial inputs.
 
 The primary objective of this tool is to streamline the process of listing accomplishments and achievements by:
 
