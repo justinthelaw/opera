@@ -43,7 +43,7 @@ Bullets follow a few formatting rules:
 -   Acronyms and abbreviations can be force-wide, organization, and/or commander-specific, with major inconsistencies in their abbreviation/acronym policies.
 -   In Awards Packages, Enlisted Performance Reports (EPRs), and most other evaluation documents, the length of a Bullet must be ~202.321mm
 -   In Officer Performance Reports (OPRs), the length of a Bullet must be ~201.041mm
--   In the (failed) rollout of myEval 1.0, Bullets were based on a maximum string length of 200 characters
+-   In the (failed) rollout of myEval 1.0, Bullets were based on a maximum string length of 115 characters
 
 Those Bullet formatting rules lead to the following:
 
