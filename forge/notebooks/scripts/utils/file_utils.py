@@ -12,7 +12,7 @@ async def jsonl_read(file_path, maximum_lines=0):
                 for line_number, line in enumerate(lines):
                     if line_number >= maximum_lines:
                         break
-                    data.append(line.strip())
+                    data.append(line)
             else:
                 for line in lines:
                     data.append(line)

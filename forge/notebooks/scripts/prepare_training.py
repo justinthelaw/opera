@@ -3,10 +3,10 @@ from transformers import T5Tokenizer
 
 
 # Reads in training data and performs tokenization and encoding
-async def read_and_encode(data):
+async def tokenize_and_encode(data):
     # Preprocess the training data using the T5 tokenizer
     tokenizer = T5Tokenizer.from_pretrained("t5-base", model_max_length=1024)
-    prepared_data = await tokenize_and_encode(data, tokenizer)
+    prepared_data = await encoder(data, tokenizer)
 
     if prepared_data == []:
         logger.error(
@@ -18,7 +18,7 @@ async def read_and_encode(data):
 
 
 # Tokenization and encoding
-async def tokenize_and_encode(training_data, tokenizer):
+async def encoder(training_data, tokenizer):
     prepared_data = []
     try:
         # Define the tokenization parameters
