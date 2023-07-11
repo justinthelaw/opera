@@ -12,10 +12,11 @@ The primary objective of this tool is to streamline the process of listing accom
 
 The usage of the T5 model is documented on the [T5 Hugging Face page](https://huggingface.co/docs/transformers/model_doc/t5) and within the Smarter Bullets `server/` and `forge/` code.
 
-To pull a new copy of the T5 base model, first follow the instructions in [Virtual Environments](#virtual-environments), then execute the following:
+To pull a new copy of a pre-trained T5 model, first follow the instructions in [Virtual Environments](#virtual-environments), then execute the following:
 
 ```bash
-python3 ./scripts/pull_model.py
+# MODEL_NAME can be copied off of the hugging face repositories
+python3 ./scripts/pull_model.py <MODEL_NAME>
 ```
 
 ## Fine Tuning
@@ -34,7 +35,7 @@ Some of the test data was sourced from the contributors and the contributors' pe
 
 First, please follow the instructions in [Virtual Environments](#virtual-environments).
 
-To scrape, clean, and consolidate data, follow and use the [training data Jupyter Notebook](./notebooks/training_data.ipynb). The data within `data/training` is already prepared for fine-tuning and should not need further modifications. Contributors are welcome to add more data from other websites beyond those identified within the Jupyter Notebook.
+To scrape, clean, and consolidate data, follow and use the [training data and model pulling Jupyter Notebook](./notebooks/prepare_data_model.ipynb). The data within `data/training` is already prepared for fine-tuning and should not need further modifications. Contributors are welcome to add more data from other websites beyond those identified within the Jupyter Notebook.
 
 ## Virtual Environments
 

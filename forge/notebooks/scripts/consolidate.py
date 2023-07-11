@@ -11,7 +11,7 @@ async def process_line(line):
         # Remove double quotes for JSONL
         line = line.replace('"', "'").strip()
         # Format into JSONL, fine-tuning format
-        processed_line = f'{{"summary": "<ADD PROMPT>", "evaluation": "{line}"}}\n'
+        processed_line = f'{{"summary": "Generate an [- <ACTION>;<IMPACT>--<OUTCOME>] evaluation bullet using the following information: <ADD PROMPT>", "evaluation": "{line}"}}\n'
         return processed_line
     except Exception as e:
         logger.error(f"Error processing line: {line} ({e})")
