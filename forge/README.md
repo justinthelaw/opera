@@ -38,9 +38,9 @@ To scrape, clean, and consolidate data, follow and use the [training data Jupyte
 
 ## Virtual Environments
 
-A best practice for developing in Python is using a virtual environment (venv). Within the root of this directory is a `requirements.txt` file for installing the dependencies required by `python3` to run the Jupyter Notebook contents.
+A best practice for developing in Python is using a virtual environment (venv). Within README's this directory is a `requirements.txt` file for installing the dependencies required by `python3` to run the Jupyter Notebook contents.
 
-To properly develop locally and contribute to Bullet Forge, please follow the [repository README](../README.md), and the following Bullet Forge development-specific instructions:
+To properly develop locally and contribute to Bullet Forge, please follow the contributing instructions in [repository README](../README.md), and also the following Bullet Forge development-specific instructions:
 
 1. To create the venv, execute the following:
 
@@ -51,25 +51,19 @@ python3 -m venv .venv
 2. To activate the venv, execute the following:
 
 ```bash
-# Windows-based OS
-\.venv\Scripts\activate
-```
-
-```bash
-# MacOS or UNIX-based OS
 source /.venv/bin/activate
 ```
 
 3. To install requirements into your venv, execute the following:
 
 ```bash
-pip install -r requirements.txt
+pip3 install -r forge/requirements.txt
 ```
 
 4. To record any dependency changes, execute the following:
 
 ```bash
-pip freeze > forge/requirements.txt
+pip3 freeze > forge/requirements.txt
 ```
 
 ## Jupyter Notebooks
