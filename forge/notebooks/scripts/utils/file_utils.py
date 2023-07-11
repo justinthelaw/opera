@@ -1,7 +1,7 @@
-import os
 import jsonlines
 from loguru import logger
 import re
+import os
 
 
 async def jsonl_read(file_path, maximum_lines=0):
@@ -23,44 +23,26 @@ async def jsonl_read(file_path, maximum_lines=0):
         raise
 
 
-# Warns for overwriting an existing file that already exists
 def file_exists(file_path):
-    try:
-        if os.path.exists(file_path):
-            logger.warning(f"File '{file_path}' already existed and will be skipped")
-            return True
-        logger.info(f"Printing all lines to file path: {file_path}")
-    except Exception as e:
-        logger.error(f"A runtime error occurred: {e}")
-        raise
-
+    if os.path.exists(file_path):
+        logger.warning(f"File '{file_path}' already exists and will be skipped")
+        return True
     logger.info(f"Printing all lines to file path: {file_path}")
     return False
 
 
-# Provides cleaning for scraped data
 def clean_file(file_path, pattern):
-    clean_lines = []
     try:
         logger.info("Cleaning up file...")
-        # Read the file and filter out empty lines
         with open(file_path, "r") as file:
             lines = file.readlines()
-            lines = [line.strip() for line in lines if line.strip()]
-            for line in lines:
-                # remove all empty lines and newline characters
-                line = line.strip()
-                line = line.replace("\n", "")
-                # add the dash to bullets missing it
-                if not line.startswith("-"):
-                    line = "- " + line
-                # re-use the pattern with line length check
-                # 115 chars is a myEval 1.0 standard, and it is highly unlikely
-                # that a good bullet is >115 chars or <50 chars
-                if re.match(pattern, line) and 50 < len(line) <= 115:
-                    clean_lines.append(line)
+            lines = [re.sub(r"\n", "", line.strip()) for line in lines if line.strip()]
+            clean_lines = [
+                "- " + line if not line.startswith("-") else line
+                for line in lines
+                if re.match(pattern, line) and 50 < len(line) <= 115
+            ]
 
-        # Write the filtered lines back to the file
         with open(file_path, "w") as file:
             file.write("\n".join(clean_lines))
 
@@ -71,15 +53,12 @@ def clean_file(file_path, pattern):
         raise
 
 
-# Removes duplicate entries in a file
 def remove_duplicates(file_path):
     try:
         logger.info("Cleaning up duplicates...")
         with open(file_path, "r") as file:
-            lines = file.readlines()
-            lines = list(set(lines))
+            lines = list(set(file.readlines()))
 
-        # Write the filtered lines back to the file
         with open(file_path, "w") as file:
             file.write("".join(lines))
 
