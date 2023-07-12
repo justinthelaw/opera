@@ -1,10 +1,9 @@
 from loguru import logger
-from transformers import T5Tokenizer
 from scripts.utils.file_utils import jsonl_read
 
 
 # Reads in training data and performs tokenization and encoding
-async def tokenize_and_encode(training_file, max_size):
+async def tokenize_and_encode(training_file, max_size, tokenizer):
     training_file_path = f"../data/training/{training_file}"
     data = await jsonl_read(training_file_path, max_size)
     if not data:
@@ -12,9 +11,7 @@ async def tokenize_and_encode(training_file, max_size):
             f"An error occurred during the reading of JSONL file: {training_file_path}"
         )
         raise ValueError("No training data available.")
-
-    # Preprocess the training data using the T5 tokenizer
-    tokenizer = T5Tokenizer.from_pretrained("t5-base", model_max_length=1024)
+    
     prepared_data = await encoder(data, tokenizer)
 
     # Ensure data has been processed
