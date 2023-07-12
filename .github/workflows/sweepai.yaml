@@ -1,0 +1,16 @@
+name: SweepAI Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  echo_message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo a message
+        run: echo "SweepAI workflow has been triggered"
