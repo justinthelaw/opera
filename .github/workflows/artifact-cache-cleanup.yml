@@ -1,4 +1,4 @@
-name: artifact-cache-cleanup
+name: Artifact Cache Clean-up
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - closed
 
 jobs:
-  cleanup:
+  Clean:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code

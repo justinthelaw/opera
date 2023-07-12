@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  snyk:
+  Scan:
     runs-on: ubuntu-latest
 
     steps:
