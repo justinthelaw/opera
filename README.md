@@ -13,7 +13,7 @@
 
 Smarter Bullets is a project focused on developing a set of tools to automate the pointless aspects of evaluation and award package-writing so that officer and enlisted members can focus more on the individual and the achievements, rather than worry about irrelevant formatting. The ultimate objective is to allow the end-user to type or speak a stream of consciousness about a member's accomplishments and let Smarter Bullets handle the rest.
 
-Bullet Forge is Smarter Bullets' narrative generation tool that harnesses the power of Natural Language Processing (NLP) through the use of the Text-To-Text Transfer Transformer (T5) base model. Bullet Forge is an API that is connected to a fine-tuned T5 model that has been trained using 33,000+ unique EPR, OPR, and Award packages and bullets, across all of the Air and Space Force's positions and ranks.
+Bullet Forge is Smarter Bullets' narrative generation tool that harnesses the power of Natural Language Processing (NLP) through the use of the Text-To-Text Transfer Transformer (T5) model variants. Bullet Forge is an API that is connected to a fine-tuned T5 model that has been trained using 33,000+ unique EPR, OPR, and Award packages and bullets, across all of the Air and Space Force's positions and ranks.
 
 # Table of Contents
 
