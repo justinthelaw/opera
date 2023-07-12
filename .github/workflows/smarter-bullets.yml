@@ -1,4 +1,4 @@
-name: smarter-bullets-pipeline
+name: Smarter Bullets Tests
 
 on:
   push:
@@ -7,82 +7,99 @@ on:
       - main
 
 jobs:
-    test:
-        runs-on: ubuntu-latest
+  test:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Checkout Repository
-              uses: actions/checkout@v3
+    # Checkout the repository
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-            - name: Install Node v20.x
-              uses: actions/setup-node@v3
-              with:
-                  node-version: 20.x
+    # Install Node v20.x
+      - name: Install Node v20.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
 
-            - name: Install Dependencies
-              run: npm run install:all && npm run env:copy
+    # Install all dependencies and copy environment variables
+      - name: Install Dependencies
+        run: npm run install:all && npm run env:copy
 
-            - name: Security and Code Lint
-              run: npm run lint:all
+    # Run security and code lint
+      - name: Security and Code Lint
+        run: npm run lint:all
 
-            - name: Server Test
-              run: npm run test:server
+    # Run server tests
+      - name: Server Test
+        run: npm run test:server
 
-            - name: Client Test
-              run: npm run test:client
+    # Run client tests
+      - name: Client Test
+        run: npm run test:client
 
-            - name: Integration Test
-              run: npm run acceptance:run
+    # Run integration tests
+      - name: Integration Test
+        run: npm run acceptance:run
 
-    build:
-        runs-on: ubuntu-latest
-        needs: [test]
-        steps:
-            - name: Checkout Repository
-              uses: actions/checkout@v3
+  build:
+    runs-on: ubuntu-latest
+    needs: [test]
+    steps:
+    # Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-            - name: Install Node v20.x
-              uses: actions/setup-node@v3
-              with:
-                  node-version: 20.x
+    # Install Node v20.x
+      - name: Install Node v20.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
 
-            - name: Install Dependencies
-              run: npm run install:all && npm run env:copy
+    # Install all dependencies and copy environment variables
+      - name: Install Dependencies
+        run: npm run install:all && npm run env:copy
 
-            - name: Build Client
-              run: npm run build:client
+    # Build client
+      - name: Build Client
+        run: npm run build:client
 
-            - name: Build Server
-              run: npm run build:server
+    # Build server
+      - name: Build Server
+        run: npm run build:server
 
-            - name: Integrate Builds
-              run: npm run build:integrate
+    # Integrate builds
+      - name: Integrate Builds
+        run: npm run build:integrate
 
-            - name: Cache Build Artifacts
-              uses: actions/cache@v3
-              with:
-                  path: |
-                      server/
-                  key: smarter-bullets-build-${{ hashFiles('**/package-lock.json') }}
-                  restore-keys: |
-                      smarter-bullets-build-${{ hashFiles('**/package-lock.json') }}
+    # Cache build artifacts
+      - name: Cache Build Artifacts
+        uses: actions/cache@v3
+        with:
+          path: |
+            server/
+          key: smarter-bullets-build-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            smarter-bullets-build-${{ hashFiles('**/package-lock.json') }}
 
-    deploy:
-        runs-on: ubuntu-latest
-        needs: [build]
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build]
 
-        steps:
-            - name: Install Node v20.x
-              uses: actions/setup-node@v3
-              with:
-                  node-version: 20.x
+    steps:
+    # Install Node v20.x
+      - name: Install Node v20.x
+        uses: actions/setup-node@v3
+        with:
+    # Restore build artifacts
+          node-version: 20.x
 
-            - name: Restore Build Artifacts
-              uses: actions/cache@v3
-              with:
-                  path: |
-                      server/
-                  key: smarter-bullets-build-${{ hashFiles('**/package-lock.json') }}
+      - name: Restore Build Artifacts
+        uses: actions/cache@v3
+        with:
+    # List build artifacts
+          path: |
+            server/
+          key: smarter-bullets-build-${{ hashFiles('**/package-lock.json') }}
 
-            - name: List Build Artifacts
-              run: ls -la server/build server/build/dist
+      - name: List Build Artifacts
+        run: ls -la server/build server/build/dist

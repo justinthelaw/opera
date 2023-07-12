@@ -7,6 +7,8 @@ def save_t5_model(model_name, output_path, max_length):
     try:
         logger.info("Starting T5 model saving...")
 
+        logger.info("Starting T5 model saving...")
+
         # Load the T5 model and tokenizer
         model = T5ForConditionalGeneration.from_pretrained(model_name)
         tokenizer = T5Tokenizer.from_pretrained(model_name, model_max_length=max_length)
@@ -16,7 +18,10 @@ def save_t5_model(model_name, output_path, max_length):
         tokenizer.save_pretrained(output_path)
 
         logger.success(f"Successfully saved T5 model to: {output_path}/{model_name}")
+
+        logger.success(f"Successfully saved T5 model to: {output_path}/{model_name}")
     except Exception as e:
+        logger.exception(f"An error occurred during saving the T5 model: {e}")
         logger.exception(f"An error occurred during saving the T5 model: {e}")
         raise
 

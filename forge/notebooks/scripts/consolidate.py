@@ -2,8 +2,10 @@ import asyncio
 import sys
 from loguru import logger
 from utils.file_utils import file_exists, remove_duplicates
+from utils.file_utils import file_exists, remove_duplicates
 
 output_filepath = "../data/training/bullet_evaluations.jsonl"
+
 
 
 async def process_line(line):
@@ -30,6 +32,7 @@ async def process_file(file_path):
         # Append to consolidated file
         with open(output_filepath, "a", newline="\n") as file:
             file.writelines(processed_lines)
+            file.writelines(processed_lines)
 
         logger.success(f"File added to consolidation: {file_path}")
     except Exception as e:
@@ -48,6 +51,7 @@ async def process_files(file_paths):
 
 
 def consolidate_files(file_paths):
+def consolidate_files(file_paths):
     # Create an asyncio event loop
     loop = asyncio.get_event_loop()
 
@@ -61,6 +65,13 @@ def consolidate_files(file_paths):
     remove_duplicates(output_filepath)
 
     logger.success(f"Consolidated, clean data has been output to: {output_filepath}")
+
+
+if __name__ == "__main__":
+    # Extract the file paths from command-line arguments
+    file_paths = sys.argv[1:]
+
+    consolidate_files(file_paths)
 
 
 if __name__ == "__main__":
