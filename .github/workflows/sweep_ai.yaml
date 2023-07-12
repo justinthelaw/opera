@@ -1,0 +1,14 @@
+# .github/workflows/sweep_ai.yaml
+
+# This is the Sweep AI bot configuration file. Each configuration below controls a different aspect of the bot's behavior.
+
+# Configuration 1: This configuration does X.
+configuration_1: value
+
+# Configuration 2: This configuration does Y.
+configuration_2: value
+
+# Configuration 3: This configuration does Z.
+configuration_3: value
+
+# Add more configurations as needed.
