@@ -1,0 +1,99 @@
+- Streamlined 3-ktr proposal rvw; resolved 277 elements in <5 wks--trailblazed $900M resilient POTUS/CCMD comms
+- Led SAE-directed space s/w modernization effort; major revamp of $800M JMS pgm--met AFSPC/CC DevOps vsn!
+- Executed $5M ktr agreement w/ KR; estab'd 3 product tms in 5-mos--rapidly addresses 614 AOC/CC top rqmt gaps!
+- Coord'd SMC-Kessel Run ktr action; executed $1.9M ktr award in 7-days--started new SSA cape dev <4-mos on job
+- Teamed w/ KR security; re-constructed ATO security process from 1-yr to 57-days--redux accreditation length 86%
+- Redefined rqmts process; conducted 100+ user-interviews, spent 200-hrs w/ users--delivered tools with user buy-in
+- Revolutionized CSpOC s/w delivery model; field'd 3 apps to ops avg 125-days vs. 5-yrs--redux avg field time 1600%
+- Shepherded $20M enterprise operations h/w platform; established <6 months--fostered uninterrupted multi-center op
+- Briefed senior leaders--CDRUSSPACECOM, AFSPC/CV, SMC/CC & SMC/CV--proved agility/success of DevOps model
+- Redefined AFSPC's ops acceptance process; OA'd 3 apps <11-mos/45+ updates--new features for 800+ users weekly
+- Led 1st USSF DevSecOps effort; revolutionized JMS & ESBMC2 enterprise--key to SMC Mission Team of Yr awd!
+- Established 5 product tms in <9-mos; scaled org w/ $10M of $70M budget--saved ACAT I pgms $60M reinvestment
+- Revolutionized AFSPC s/w delivery model; field'd 3 apps to ops avg 180-days vs. 5-yrs--redux avg field time 1600%
+- Built new cybersecurity process; 1st AFSPC-accredited platform & CI/CD model--new s/w vers to ops every 7-days!
+- Forged joint/coalition space C2 ops; supporting 950+ users/5 SpOCs/75 units--1st apps in-use for US/UK/CAN/AUS
+- Piloting USSF's 1st-ever s/w factory; continuously delivering s/w every 7 days to ops--smashing SECDEF priorities
+- Piloted USSF’s s/w factory; rapidly innovating & shifting space acq model--meets SAF/AQ & CSO DevSecOps vsn!
+- Coordinates critical program updates w/SAF/AQ & USSF senior mil & civ leadership--aligns rqmts & rapid delivery
+- Sr. AF s/w engineer for 1 geographically-separated tm; upholds security/testing/production stds--oversees $10M/yr
+- IDs/builds technical solutions from warfighter rqmnt--improves CSpOC lethality through modernizing space tasking
+- Handpicked for SAE-directed space s/w modernization effort; major revamp of $800M JMS pgm--“next Kessel Run”
+- Piloted new application security model; enabled continuous ATO approval process--slashed approval time over 300%
+- Forged new cybersecurity test model; automated ATO/DT/OT verification processes--10x increase in delivery speed
+- Redefined rqmts process; conducted ### user-interviews, spent ###-hrs downrange--delivered tools with user buy-in
+- Championing SAF/AQs s/w revolution; piloting sect 800/2020 NDAA--trailblazing USSF $150M+ Space C2 capes
+- Exceptional agile PM! Revolutionized USSF's s/w acq process--accelerated fielding cape to ops from 5-yrs to 6-mos
+- Drove s/w DevOps model ; OA'd 2 apps/deployed 46 updates to 1.1k users--cont delivering new capes every 17-days
+- Drove CSpOC rqmts prioritization task; ID’d top space tasking outcomes--redux 40 man-hrs/wk in ops inefficiencies
+- Built 5-tm portfolio roadmap; briefed CFSCC/CSpOC ldrs way ahead--addresses 2 msn critical gaps ASAP w/ <$6M
+- Supported 5 space C2 dev tms/60+ pers; continuously deploying s/w every 2-wks to ops--proved success of DevOps
+- Executed $10M JMS mod effort; delivered $2M s/w solution in 180 days--cape in users hands 180 days ahead sched
+- Estab'd unmatched s/w deployment tempo; 1st AFSPC app w/ continuous delivery--avg release cadence every 7 days!
+- Developed modern high interest event tracker; automated workflow by 3-hrs to 15-mins--incr'd tm efficiency by 92%
+- Redefined AFSPC’s agile ops acceptance process; replaced legacy app in <6-mos--deliver’d new cape 16x faster!
+- Coordinated CSpOC/18 SPCS ops transition; created 600+ user accounts--migrated largest SMC user-base in <4-wks
+- Directed 5-wk research sprint; administered 20+ interviews w/ CSpOC operators--validated top MAJCOM rqmts
+- Redefined rqmts process; conducted 20 user-interviews, spent 200-hrs w/ users--delivered tools with user buy-in
+- Replaced ineffective legacy s/w in 4-mos; cut 3-yr/$320M investment to <$2M--saved AF $318M in cost of delay
+- Collaborated w/ CSpOC operators at Vandenberg; sat w/ analysts 12 times over 5-mos--direct acq spt to msn daily
+- Handpicked s/w designer/top 5% of applicants; for new AF-cyber engagement for s/w dev project--CSAF #2/3 rqmt
+- Transformed CSpOC s/w dev model; fielded SSA cape to ops 57 days--increased prod 32x; integ 18 orgs/600+ users
+- Built cloud-compliant app; continuously delivered features/no downtime--diminished legacy outages by 40-hrs/mo!
+- Built CSpOC status of blue forces app; modernized sensor mx & downtime workflow--decr'd manual entries by 60%
+- Led wpn sys integration w/ STRATCOM; consolidated sensor status tools--slashed ops redundancies from 4 sys to 1
+- Delivered Space C2 enterprise capes; estab'd data flow b/w CSpOC & NSDC--meets USSF CSO interoperability vsn
+- Revolutionized CSpOC s/w delivery model; field'd DSR app to ops in 52-days vs. 5-yrs--redux avg field time 3200%
+- Executed $10M JMS mod effort; delivered $2M s/w solution in 180 days--cape in users hands 180 days ahead sched
+- Improv'd space EW request system in 6-mos; cut 3-yr/$320M investment to <$2M--saved AF $318M in cost of delay
+- Estab'd unmatched s/w deployment tempo; 2nd AFSPC app w/ continuous delivery--avg release cadence every 2-wks
+- Built RF deconfliction tool; streamlined comms b/w units, CSpOC & nat’l agencies--redux workflow 90-days to wks
+- Transform'd broken RF decon process; 1st unified tool for AOC, msn partners & units--achv’d 614 AOC/CC #5 rqmt
+- Developed crit 614 AOC strat tool; took from concept to ops in 52-days--1st ever AOC/CC authorized OA in 216-days
+- Implemented s/w continuous delivery model; deployed 11 new versions over 152-days--AFSPC/CV backed process!
+- Thwarted catastrophic CMI; purged classified information/restored ops <48-hrs--prevented sensitive data spillage
+- Thwarted catastrophic CMI; secured 234 backups/purged classified data/restored operations <48-hrs--lauded by SAE
+- Led CMI jt response team; secured 234+ backups, restored ops in less than 48h--set new security std DevSecOps
+- Pioneered SPOC/IC's 1st RFD process; est JWICS solution in 5-wks--boosted space warfighter capabilities by 200%
+- Pioneered SPOC/IC's 1st RFD digital process; est JWICS solution in 5-wks--boosted warfighter capabilities by 200%
+- Led inter-agency modernization effort; streamlined process w/JWICS solution--enabled data share across USG
+- Led inter-agency digital transformation; delivered JWICS solution in 5-wks--streamlined process f/14 DOD/IC orgs
+- Truly EPIC Speed! Forged SMC/CSpOC partnership; continuously deployed s/w to ops--increased throughput 46%
+- Shifting Space Acq paradigm; deployed operational s/w 10X to multiple COCOMs--achieved SECAF/CSAF priority
+- Implemented s/w continuous delivery model; deployed 10 new versions over 90-days--SAE backed process!
+- Modernized RF baseline; developed replacement for legacy algorithms & physics--1st enhancements to 25-yr old sys
+- Shepherded major EW ops s/w transition; 75+ users across SPOC/INDOPACOM/msn partners--"This is a godsend!
+- Agile champion; employed continuous testing w/ DT/OT community for waterfall V&V--10x incr in delivery speed
+- Pioneered SPOC/IC's digital RF cape; slashed DSR processing from 2-hrs to <5-mins--incr'd CSpOC efficiency 77%
+- Revolutionized CSpOC s/w delivery model; field'd ISR app to ops in 85-days vs. 5-yrs--redux avg field time 2200%
+- Transform'd SOI tasking process; automated workflow w/ units, CSpOC & NASIC--achv’d 614 AOC/ISRD #2 rqmt
+- Delivered radar optimization tool in <6-mos; cut 3-yr/$320M investment to <$2M--saved AF $318M in cost of delay
+- Estab'd unmatched s/w deployment tempo; 3rd AFSPC app w/ continuous delivery--avg release cadence every 2-wks
+- Replaced legacy ISR collection mgmt workflow; improv'd SOI efficiency by 65%--100% collection coverage weekly
+- Replaced legacy ISR collection mgmt workflow; ops accepted in <8-mos--improved SOI tasking efficiency by 280%
+- Continuously deployed s/w updates to ops; 13 releases/85+ features--new capes to ISRD every 2-wks despite COVID
+- Estab'd unmatched s/w deployment tempo; 3rd AFSPC app OA'd in <8-mos--delivering post-OA updates avg 9-days
+- Revolutionized CSpOC s/w delivery model; field'd SSR app to ops in 67-days vs. 5-yrs--redux avg field time 2300%
+- Developed modern space support request app; streamlined CSpOC to COCOM workflow--incr'd SSR tracking 100%
+- Reduced ops inefficiencies; optimized process for 400% incr in CSpOC workload--supporting 750+ SSRs/yr capacity
+- Built digital SSR tool; consolidated CSpOC, AOCs & tactical units workflow--redux comm loop from 72-hrs to <1-hr
+- Strengthened coalition space mission; fielded 2nd FVEY Space C2 app in <1-yr--provides direct UK/CAN SSR tool
+- Eliminated CSpOC manual workflow; slashed SSR process from 45-mins to 3-mins--saves warfighter 4-hrs/day!
+- Delivered 1st COCOM Space C2 app; 100+ users in AOCs worldwide--enables rapid space spt to air msns daily
+- Revolutionized CSpOC s/w delivery model; field'd SPD app to ops in 69-days vs. 5-yrs--redux avg field time 2280%
+- Reduced ops inefficiencies; optimized process for 400% incr in CSpOC workload--digitized CSTO workflow 100%
+- Improved space tasking mgmt sys in 6-mos; cut 3-yr/$320M investment to <$2M--saved AF $318M in cost of delay!
+- Reformed rqmts process; conducted 50+ interviews, spent 100-hrs w/ users--new & intuitive s/w training experience
+- Delivered 1st JADC2 jnt s/w factory win; seamlessly integrated CSTO/ATO data w/ KR in <1-mo--incr’d SDA for AOCs!
+- Transformed CSpOC ops! Influenced new CSTO CONOPs thru UCD/human factors--redux cognitive workload by 75%
+- Implemented CI/CD dev model; released s/w vers to field every 2-wks--new combat cape for CFSCC w/ zero downtime
+- Trained 23-mbrs within ESBMC2; taught industry agile best practices--1st organic s/w dev team for AFSPC & SMC!
+- Trained 6 ISRD-mbrs & 27+ tactical units; conducted 50+ interviews, spent 200-hrs w/ users--minimal OJT required!
+- Modernized C1D test/development domain; elim'd PII exposure/enabled 200 devs--improved ops availability 100%
+- Handpicked designer/top 5% of applicants; 1st-of-kind AFSPC engagement for s/w dev project--CSAF #2/3 rqmts
+- Continuously improved tool; dvlp'd 525 mock-ups/104 completed designs--71% time saved/users focused on combat
+- Enabled 3 SMC Galaxy members; enhanced industry agile/DevOps knowledge--spread new s/w expertise w/in SMC!
+- Onboarded cross-SMC personnel; GP/PK/EGS mbrs on tm for 6+ mos--rapid innovation & s/w skillsets back to SPO
+- Improved growing code base; refactored 5K lines of code in <3wk--incr'd app speed 42%/elim'd database corruption
+- Completed code base review; resolved 11 crit security patches--retained authority to operate on Space C2 platform
+- Reformed SPADOC mod effort; slashed sched 600% & saved $100M--hand picked for USSF CSO #1 JUON!
