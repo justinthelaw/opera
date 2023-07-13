@@ -40,6 +40,7 @@ downloads/
 *.bin
 *.model
 **/raw/*.txt
+!**/contributed.txt
 
 # python
 __pycache__/

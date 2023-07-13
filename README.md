@@ -13,7 +13,7 @@
 
 Smarter Bullets is a project focused on developing a set of tools to automate the pointless aspects of evaluation and award package-writing so that officer and enlisted members can focus more on the individual and the achievements, rather than worry about irrelevant formatting. The ultimate objective is to allow the end-user to type or speak a stream of consciousness about a member's accomplishments and let Smarter Bullets handle the rest.
 
-Bullet Forge is Smarter Bullets' narrative generation tool that harnesses the power of Natural Language Processing (NLP) through the use of the Text-To-Text Transfer Transformer (T5) base model. Bullet Forge is an API that is connected to a fine-tuned T5 model that has been trained using 33,000+ unique EPR, OPR, and Award packages and bullets, across all of the Air and Space Force's positions and ranks.
+Bullet Forge is Smarter Bullets' narrative generation tool that harnesses the power of Natural Language Processing (NLP) through distributed Hugging Face models. Bullet Forge is an API that is connected to a set of fine-tuned models that has been trained using 33,000+ unique EPR, OPR, and Award packages and bullets, across all of the Air and Space Force's positions and ranks.
 
 # Table of Contents
 
@@ -88,9 +88,9 @@ _CORRECT USAGE NOTE_: Sort the Excel sheet in DESCENDING ORDER. Due to the greed
 
 _EXAMPLE OF INCORRECT USAGE_:
 
-United States Air Force: USAF
-United States Air Force Academy: USAFA  
-Will cause "United States Air Force Academy" to be abbreviated as "USAF Academy"
+- United States Air Force: USAF
+- United States Air Force Academy: USAFA  
+- Will cause "United States Air Force Academy" to be abbreviated as "USAF Academy"
 
 # Contributing
 
@@ -120,12 +120,6 @@ Use a dash, `-`, as the delimiter, e.g., `this-is-a-feature-branch`
 
 ## Coding Conventions and Standards
 
-Prior to attempting a push to a branch or submitting of a merge request to a branch and/or main, run the check all command to ensure all pipeline steps will run locally:
-
-```bash
-npm run check:all
-```
-
 ## Committing and Merging
 
 When merging, we should squash all commits and follow the following commit message template:
@@ -149,13 +143,19 @@ Spaces are allowed within the description, e.g., `Feature(DSR): This revolves ar
 
 # Local Development
 
+Prior to attempting a push to a branch, run the check all command to ensure all tests pass locally:
+
+```bash
+npm run check:all
+```
+
 ## General
 
 Do the following prior to moving on to any further instructions below this section:
 
 1. At a minimum, have an integrated development environment (e.g., VSCode), a browser (e.g., Google Chrome), Docker Desktop, `git`, `node`, `npm`, and `python3` installed
 2. Fork or clone this repository to your local development environment
-3. Go to the root `config/` directory and create a `.env.local` using the `.env.example` as a reference
+3. Go to the [config/](./config/) directory and create a `.env.local` using the [.env.example](./config/.env.example) as a reference
 
 ## Running
 
@@ -199,7 +199,7 @@ npm run acceptance:run
 
 ## Pipelines
 
-To get context on the GitHub actions that run during a push or pull to a branch, please read the [Workflow README](./.github/workflows/README.md).
+To get context on the GitHub actions that run during a push or pull to a branch, please read the [GitHub Workflows README](./.github/workflows/README.md).
 
 # Licensing
 
