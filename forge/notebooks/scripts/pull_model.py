@@ -2,7 +2,7 @@ import sys
 from loguru import logger
 
 
-def save_t5_model(model_name, output_path, max_length):
+def save_model(model_name, output_path):
     try:
         logger.info("Starting model saving...")
 
@@ -25,4 +25,4 @@ if __name__ == "__main__":
 
     output_path = f"../models/{model_name}"
 
-    save_t5_model(model_name, output_path, max_length)
+    save_model(model_name, output_path, max_length)
