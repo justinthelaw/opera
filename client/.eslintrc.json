@@ -1,0 +1,20 @@
+/* eslint-env node */
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-type-checked",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": true,
+    "tsconfigRootDir": "__dirname"
+  },
+  "root": true,
+  "rules": {
+    // TODO: I think these have to be here because VSCode is ignoring Prettier
+    "prettier/prettier": ["error", { "tabWidth": 2, "useTabs": false }]
+  }
+}
