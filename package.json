@@ -4,18 +4,15 @@
   "author": "justinthelaw",
   "license": "MIT",
   "scripts": {
-    "check:all": "npm run install:all && npm run lint:all && npm run test:all && npm run build:all",
-    "install:all": "npx install-peerdeps --dev eslint-config-react-app && cd ./client && npm install && cd ../server && npm install && cd ../acceptance && npm install",
+    "check:all": "npm run install:all && cd ./client && npm run lint:all && cd .. && npm run test:all && npm run build:all",
+    "install:all": "cd ./client && npm install && cd ../server && npm install && cd ../acceptance && npm install",
     "start:all": "npm run stop:all && chmod +x scripts/start:all.sh && scripts/start:all.sh",
     "stop:all": "chmod +x scripts/stop:all.sh && scripts/stop:all.sh",
     "test:all": "npm run test:server && npm run test:client && npm run acceptance:run",
-    "lint:all": "npm run lint:general && npm run lint:security",
     "build:all": "npm run build:server && npm run build:client && npm run build:integrate",
     "start:client": "cd ./client && npm start",
     "start:server": "cd ./server && npm run start:dev",
     "start:database": "chmod +x ./server/database/start:database.sh && ./server/database/start:database.sh",
-    "lint:general": "eslint ./ --ext '.ts,.tsx' --fix",
-    "lint:security": "eslint --no-eslintrc --config security.eslintrc.yaml ./ --ext '.ts,.tsx --fix'",
     "test:client": "cd ./client && npm test",
     "test:server": "cd ./server && npm test",
     "acceptance:run": "chmod +x scripts/acceptance:run.sh && scripts/acceptance:run.sh",
@@ -24,16 +21,5 @@
     "build:server": "cd ./server && npm run build",
     "build:integrate": "cp -r ./client/dist ./server/build",
     "env:copy": "cp ./config/.env.example ./config/.env.local"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "devDependencies": {
-    "eslint": "^8.44.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-config-react-app": "^7.0.1",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.8",
-    "react": "^18.2.0"
   }
 }

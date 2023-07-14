@@ -27,7 +27,7 @@ jobs:
 
     # Run security and code lint
       - name: Security and Code Lint
-        run: npm run lint:all
+        run: cd ./client && npm run lint:all
 
     # Run server tests
       - name: Server Test
