@@ -8,7 +8,8 @@
     "cypress:run": "cypress run --config baseUrl='http://localhost:3000' --browser chrome"
   },
   "devDependencies": {
+    "@testing-library/cypress": "^8.0.2",
     "cypress": "^9.7.0",
-    "@testing-library/cypress": "^8.0.2"
+    "typescript": "^5.1.6"
   }
 }
