@@ -16,9 +16,9 @@ Cleans out all of the cached artifacts the pipelines use once a pull request has
 
 This workflow sets up the automatic pull request generation for dependency bumps, running checks to ensure the dependency doesn't break the application build.
 
-## [Sweep AI Bot](../sweep.yaml)
+## Sweep AI Bot
 
-This workflow provides configuration for Sweep AI bot's issue handling.
+This workflow provides configuration for Sweep AI bot's issue handling. **Note: The sweep.yaml file is now located in the root of the repository.**
 
 # Available Issues Templates
 
