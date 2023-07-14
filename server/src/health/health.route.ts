@@ -1,33 +1,25 @@
-import xss from 'xss'
-import { FastifyInstance, FastifyRequest } from 'fastify'
+from django.http import JsonResponse
+from django.views.decorators.http import require_http_methods
+from .HealthController import HealthController
+from .HealthModels import HealthResponse, PossibleHealthServices, RequestedServiceParams
 
-import HealthController from './HealthController'
-import { HealthResponse, PossibleHealthServices, RequestedServiceParams } from './HealthModels'
-import { server } from '..'
+health_controller = HealthController()
 
-const healthController = new HealthController()
+@require_http_methods(["GET"])
+def overall_health(request):
+    try:
+        result = health_controller.get_overall_health()
+        return JsonResponse(result, status=200)
+    except Exception as error:
+        # Log the error
+        return JsonResponse({}, status=500)
 
-const healthRoutes = async (app: FastifyInstance) => {
-	app.get('/', async (_, res) => {
-		try {
-			const result: HealthResponse = await healthController.getOverallHealth()
-			res.send(result).status(200)
-		} catch (error) {
-			server.log.error(error)
-			res.status(500)
-		}
-	})
-
-	app.get('/:service', async (req: FastifyRequest<{ Params: RequestedServiceParams }>, res) => {
-		try {
-			const sanitizeInput = xss(req.params.service) as PossibleHealthServices
-			const result: HealthResponse = await healthController.getRequestedServiceHealth(sanitizeInput)
-			res.send(result).status(200)
-		} catch (error) {
-			server.log.warn(error)
-			res.status(400).send(error)
-		}
-	})
-}
-
-export default healthRoutes
+@require_http_methods(["GET"])
+def requested_service_health(request, service):
+    try:
+        sanitize_input = service  # Apply any necessary sanitization
+        result = health_controller.get_requested_service_health(sanitize_input)
+        return JsonResponse(result, status=200)
+    except Exception as error:
+        # Log the error
+        return JsonResponse({}, status=400)
