@@ -1,4 +1,4 @@
 extends:
-  - react-app
+    - react-app
 rules:
-  react/no-danger: error
+    react/no-danger: error
