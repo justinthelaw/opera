@@ -1,10 +1,9 @@
-import os
 import sys
 import signal
 import asyncio
 from loguru import logger
 from utils.crawl import crawl
-from utils.file_utils import file_exists
+from utils.files import file_already_exists
 
 
 # Define a signal handler for Ctrl+C
@@ -26,7 +25,7 @@ pattern = r"^-?([\w\W\s]{0,255});?([\w\W\s]{0,255})--([\w\W\s]{0,255})$"
 async def bullet_scraper(base_url, file_path):
     logger.info("Bullet scraper starting up...")
 
-    if not file_exists(file_path):
+    if not file_already_exists(file_path):
         await crawl(base_url, base_url, file_path, pattern)
 
     logger.info(f"Output file now ready for viewing at: '{file_path}'")
@@ -38,10 +37,8 @@ if __name__ == "__main__":
     # Prompt the user to input a base URL and file path
     base_url = sys.argv[1]
 
-    filename = base_url[base_url.index("www.") + 4:base_url.index(".com")]
+    filename = base_url[base_url.index("www.") + 4 : base_url.index(".com")]
     file_path = f"../data/raw/{filename}.txt"
-
-    print(os.getcwd())
 
     loop = asyncio.get_event_loop()
     try:

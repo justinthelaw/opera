@@ -10,24 +10,13 @@ The primary objective of this tool is to streamline the process of listing accom
 
 ## Model Pulling
 
-The usage of the models is within the Jupyter Notebooks contained within the [notebooks/](./notebooks/) directory and implementation of the models is within the Smarter Bullets [server/](../server/) directory.
-
-To pull new copies of pre-trained models, first follow the instructions in [Virtual Environments](#virtual-environments), then execute the following:
-
-```bash
-# MODEL_NAME can be copied off of the hugging face repositories
-python3 ./scripts/pull_model.py <MODEL_NAME>
-```
+The usage of the models is within the Jupyter Notebooks contained within the _notebooks/_ directory and implementation of the models is within the Smarter Bullets _server/_ directory. Trained models are not uploaded to this repository due to size, and will be made available via a future Hugging Face checkpoint or as a separately hosted archive.
 
 ## Fine Tuning
 
 The Smarter Bullets fine-tuned models have been trained using 33,000+ unique EPR, OPR, and Award package bullets, across all Air and Space Force positions and ranks. A training, validation, and test data set are used to perform human-supervised training as well as manual and automatic inspection of model performance.
 
 First, please follow the instructions in [Virtual Environments](#virtual-environments). To run your fine tuning, follow and use the [fine tuning Jupyter Notebook](./notebooks/fine_tune_training.ipynb).
-
-### WandB
-
-[Weights and Biases](https://wandb.ai/) was used to collect runs and metrics to optimize the fine tuning of the Bullet Forge models. In order to run the [fine tuning Jupyter Notebook](./notebooks/fine_tune_training.ipynb), the user will need to create a Weights and Biases account and login when prompted by a block within the Jupyter Notebook.
 
 ### Scraping
 
@@ -39,7 +28,7 @@ Some of the data was sourced from the contributors and the contributors' peers, 
 
 First, please follow the instructions in [Virtual Environments](#virtual-environments).
 
-To scrape, clean, and consolidate data, follow and use the [training data and model pulling Jupyter Notebook](./notebooks/prepare_data_model.ipynb). The data within [data/training/](./data/training/) is already prepared for fine tuning and should not need further modifications. Contributors are welcome to add more data from other websites beyond those identified within this repository.
+To scrape, clean, and consolidate data, follow and use the [training data and model pulling Jupyter Notebook](./notebooks/prepare_data_model.ipynb). The data within _data/training/_ is already prepared for fine tuning and should not need further modifications. Contributors are welcome to add more data from other websites beyond those identified within this repository.
 
 ### Contributing Bullets
 

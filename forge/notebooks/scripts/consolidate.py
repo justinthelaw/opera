@@ -1,8 +1,8 @@
 import asyncio
 import sys
 from loguru import logger
-from utils.file_utils import file_exists, remove_duplicates
-from utils.file_utils import file_exists, remove_duplicates
+from utils.files import file_already_exists, remove_file_contents_duplicates
+from utils.files import file_already_exists, remove_file_contents_duplicates
 
 default_output_file_path = "../data/raw/consolidated_set.jsonl"
 
@@ -40,7 +40,7 @@ async def process_file(file_path, output_file_path):
 
 async def process_files(file_paths, output_file_path):
     try:
-        file_exists(output_file_path)
+        file_already_exists(output_file_path)
         # Process each file asynchronously
         if isinstance(file_paths, list):
             await asyncio.gather(*[process_file(file_path, output_file_path) for file_path in file_paths])
@@ -62,13 +62,14 @@ def consolidate_files(file_paths, output_file_path=default_output_file_path):
     loop.close()
 
     # Remove duplicate bullets
-    remove_duplicates(output_file_path)
+    remove_file_contents_duplicates(output_file_path)
 
     logger.success(f"Consolidated, clean data has been output to: {output_file_path}")
 
 
 if __name__ == "__main__":
+    output_file_path = sys.argv[1]
     # Extract the file paths from command-line arguments
-    file_paths = sys.argv[1:]
+    file_paths = sys.argv[2:]
 
     consolidate_files(file_paths)

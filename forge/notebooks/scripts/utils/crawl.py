@@ -8,7 +8,7 @@ from loguru import logger
 # Track visited URLs to avoid duplicates
 visited_urls = set()
 
-
+# Ensures url is extension of base url
 def has_base_url(base_url, url):
     parsed_base_url = urlparse(base_url)
     parsed_url = urlparse(url)

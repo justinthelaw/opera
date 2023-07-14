@@ -1,29 +1,9 @@
-import jsonlines
 from loguru import logger
 import re
 import os
 
 
-async def jsonl_read(file_path, maximum_lines=0):
-    try:
-        data = []
-        with jsonlines.open(file_path, mode="r") as lines:
-            if maximum_lines > 0:
-                for line_number, line in enumerate(lines):
-                    if line_number >= maximum_lines:
-                        break
-                    data.append(line)
-            else:
-                for line in lines:
-                    data.append(line)
-        return data
-
-    except Exception as e:
-        logger.error(f"A runtime error occurred: {e}")
-        raise
-
-
-def file_exists(file_path):
+def file_already_exists(file_path):
     if os.path.exists(file_path):
         logger.warning(f"File '{file_path}' already exists and will be skipped")
         return True
@@ -31,7 +11,7 @@ def file_exists(file_path):
     return False
 
 
-def clean_file(file_path, pattern):
+def clean_file_content(file_path, pattern):
     try:
         logger.info("Cleaning up file...")
         with open(file_path, "r") as file:
@@ -53,7 +33,7 @@ def clean_file(file_path, pattern):
         raise
 
 
-def remove_duplicates(file_path):
+def remove_file_contents_duplicates(file_path):
     try:
         logger.info("Cleaning up duplicates...")
         with open(file_path, "r") as file:

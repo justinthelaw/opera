@@ -1,6 +1,6 @@
 import sys
 from loguru import logger
-from .utils.file_utils import clean_file
+from utils.files import clean_file_content
 from scrape import pattern
 
 if __name__ == "__main__":
@@ -12,6 +12,6 @@ if __name__ == "__main__":
     logger.info(f"Performing extra cleaning on file: {dirty_file_path}")
 
     # Perform extra cleaning
-    clean_file(dirty_file_path, pattern)
+    clean_file_content(dirty_file_path, pattern)
 
     logger.success(f"Extra cleaning on file complete!")

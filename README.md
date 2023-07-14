@@ -211,7 +211,7 @@ This is a hard-fork of the original [pdf-bullets](https://github.com/AF-VCD/pdf-
 
 The purpose of hard-forking this original pdf-bullets tool is as follows:
 
-1. Refactor the frontend codebase to modern TypeScript, and eliminate Create-React-App overhead
+1. Refactor the frontend codebase to modern TypeScript, and eliminate React bootstrap (e.g., CRA) overhead
 2. Provide more GitOps and open-source developer workflows and instructions
 3. Add fine-tuned T5 pre-trained model(s) to create a new [Bullet Forge](#bullet-forge) feature
 4. Revamp the UI/UX using modern components and design standards

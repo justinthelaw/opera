@@ -38,7 +38,7 @@ downloads/
 # models
 .venv/
 *.bin
-*.model
+models/
 **/raw/*.txt
 !**/contributed.txt
 
