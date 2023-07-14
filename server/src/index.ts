@@ -1,37 +1,12 @@
-import { Server, IncomingMessage, ServerResponse } from 'http'
-import fastify, { FastifyInstance } from 'fastify'
-import fastifyStatic from '@fastify/static'
-import path from 'path'
+from django.core.management import execute_from_command_line
+from django.conf import settings
+import os
+import sys
 
-import LoggerConfigurationInterface from './logging/LoggerConfigurationModel'
-import { ENV, HOST, PORT } from './server.constants'
-import loggerConfiguration from './logging/logger.config'
-import healthRoutes from './health/health.route'
-import registerAPIRoute from './utils/register.api'
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'your_project.settings')
 
-export const server: FastifyInstance<Server, IncomingMessage, ServerResponse> = fastify({
-	logger: loggerConfiguration[ENV as keyof LoggerConfigurationInterface]
-})
+def main():
+    execute_from_command_line(sys.argv)
 
-server.register(fastifyStatic, {
-	root: path.join(__dirname, 'dist'),
-	prefix: '/'
-})
-
-registerAPIRoute(healthRoutes, '/health')
-
-export function start() {
-	try {
-		server.listen({ host: HOST, port: PORT }, function (err, address) {
-			if (err) {
-				server.log.error(err)
-			}
-			server.log.info(`Server is now listening on ${address}`)
-		})
-	} catch (error) {
-		server.log.error(error)
-		process.exit(1)
-	}
-}
-
-start()
+if __name__ == '__main__':
+    main()
