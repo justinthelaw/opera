@@ -8,6 +8,9 @@
         "start": "NODE_ENV=development webpack-dev-server --config webpack.config.js",
         "start:check": "NODE_ENV=development CHECK=true webpack-dev-server --config webpack.config.js",
         "build": "NODE_ENV=production webpack --config webpack.config.js",
+        "lint:all": "npm run lint:general && npm run lint:security",
+        "lint:general": "eslint ./ --ext '.ts,.tsx' --fix",
+        "lint:security": "eslint --no-eslintrc --config security.eslintrc.yaml ./ --ext '.ts,.tsx --fix'",
         "test": "jest",
         "test:dev": "jest --runInBand --watchAll --detectOpenHandles --verbose"
     },
