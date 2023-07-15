@@ -1,7 +1,8 @@
 import sys
 from loguru import logger
-from utils.files import clean_file_content
-from scrape import pattern
+
+from files import clean_file_content
+from bullet_patterns import BULLET_PATTERN
 
 if __name__ == "__main__":
     # Extract the file path
@@ -12,6 +13,6 @@ if __name__ == "__main__":
     logger.info(f"Performing extra cleaning on file: {dirty_file_path}")
 
     # Perform extra cleaning
-    clean_file_content(dirty_file_path, pattern)
+    clean_file_content(dirty_file_path, BULLET_PATTERN)
 
     logger.success(f"Extra cleaning on file complete!")

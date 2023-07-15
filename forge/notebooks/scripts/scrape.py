@@ -1,21 +1,17 @@
 import sys
-import signal
 import asyncio
 from loguru import logger
-from utils.crawl import crawl
-from utils.files import file_already_exists
 
-# This is the regex for a standard bullet pattern "-<ACTION>;<IMPACT>--<OUTCOME>"
-# The pattern is not all-encompassing - this hardcoded value can to be experimented with
-# to achieve maximum bullet capture
-pattern = r"^-?([\w\W\s]{0,255});?([\w\W\s]{0,255})--([\w\W\s]{0,255})$"
+from crawl import crawl
+from files import file_already_exists
+from bullet_patterns import BULLET_PATTERN
 
 
 async def bullet_scraper(base_url, file_path):
     logger.info("Bullet scraper starting up...")
 
     if not file_already_exists(file_path):
-        await crawl(base_url, base_url, file_path, pattern)
+        await crawl(base_url, base_url, file_path, BULLET_PATTERN)
 
     logger.info(f"Output file now ready for viewing at: '{file_path}'")
     logger.info("Gracefully shutting down Bullet Scraper.")

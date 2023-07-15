@@ -1,8 +1,9 @@
 import asyncio
 import sys
 from loguru import logger
-from utils.files import file_already_exists, remove_file_contents_duplicates
-from utils.files import file_already_exists, remove_file_contents_duplicates
+
+from files import file_already_exists, remove_file_contents_duplicates
+from files import file_already_exists, remove_file_contents_duplicates
 
 default_output_file_path = "../data/raw/consolidated_set.jsonl"
 

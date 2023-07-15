@@ -51,13 +51,13 @@ def remove_file_contents_duplicates(filepath):
         raise
 
 
-def load_jsonl_data(filepath, isDataFrame):
+def load_jsonl_data(filepath, prefix, isDataFrame):
     if isDataFrame:
         # Read in the JSONL training and validation data set
         data = pandas.read_json(filepath, lines=True)
 
         # Prepend T5's summarize task keyword to inputs
-        data["input"] = "summarize: " + data["input"]
+        data["input"] = prefix + data["input"]
 
         return data
 
