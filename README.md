@@ -13,7 +13,7 @@
 
 Smarter Bullets is a project focused on developing a set of tools to automate the pointless aspects of evaluation and award package-writing so that officer and enlisted members can focus more on the individual and the achievements, rather than worry about irrelevant formatting. The ultimate objective is to allow the end-user to type or speak a stream of consciousness about a member's accomplishments and let Smarter Bullets handle the rest.
 
-Bullet Forge is Smarter Bullets' narrative generation tool that harnesses the power of Natural Language Processing (NLP) through distributed Hugging Face models. Bullet Forge is an API that is connected to a set of fine-tuned models that has been trained using 33,000+ unique EPR, OPR, and Award packages and bullets, across all of the Air and Space Force's positions and ranks.
+Bullet Forge is Smarter Bullets' narrative generation tool that harnesses the power of Natural Language Processing (NLP) through the use of Large Language Models (LLM). Bullet Forge is an API that is connected to a fine-tuned model that has been trained using 33,000+ unique EPR, OPR, and Award packages and bullets, across all of the Air and Space Force's positions and ranks.
 
 # Table of Contents
 
@@ -155,7 +155,7 @@ Do the following prior to moving on to any further instructions below this secti
 
 1. At a minimum, have an integrated development environment (e.g., VSCode), a browser (e.g., Google Chrome), Docker Desktop, `git`, `node`, `npm`, and `python3` installed
 2. Fork or clone this repository to your local development environment
-3. Go to the [config/](./config/) directory and create a `.env.local` using the [.env.example](./config/.env.example) as a reference
+3. Go to the _config/_ directory and create a `.env.local` using the [.env.example](./config/.env.example) as a reference
 
 ## Running
 

@@ -5,20 +5,9 @@ from loguru import logger
 from utils.crawl import crawl
 from utils.files import file_already_exists
 
-
-# Define a signal handler for Ctrl+C
-def signal_handler(signal, frame):
-    logger.info("Gracefully shutting down...")
-    sys.exit(0)
-
-
-# Register the signal handler
-signal.signal(signal.SIGINT, signal_handler)
-
-
 # This is the regex for a standard bullet pattern "-<ACTION>;<IMPACT>--<OUTCOME>"
-# The pattern is not all-encompassing, and this hardcoded value needs to be experimented with
-# and changed manually for maximum bullet capture
+# The pattern is not all-encompassing - this hardcoded value can to be experimented with
+# to achieve maximum bullet capture
 pattern = r"^-?([\w\W\s]{0,255});?([\w\W\s]{0,255})--([\w\W\s]{0,255})$"
 
 
