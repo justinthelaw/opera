@@ -7,19 +7,16 @@
     "check:all": "npm run install:all && cd ./client && npm run lint:all && cd .. && npm run test:all && npm run build:all",
     "install:all": "cd ./client && npm install && cd ../server && npm install && cd ../acceptance && npm install",
     "start:all": "npm run stop:all && chmod +x scripts/start:all.sh && scripts/start:all.sh",
-    "stop:all": "chmod +x scripts/stop:all.sh && scripts/stop:all.sh",
     "test:all": "npm run test:server && npm run test:client && npm run acceptance:run",
     "build:all": "npm run build:server && npm run build:client && npm run build:integrate",
     "start:client": "cd ./client && npm start",
     "start:server": "cd ./server && npm run start:dev",
-    "start:database": "chmod +x ./server/database/start:database.sh && ./server/database/start:database.sh",
     "test:client": "cd ./client && npm test",
     "test:server": "cd ./server && npm test",
     "acceptance:run": "chmod +x scripts/acceptance:run.sh && scripts/acceptance:run.sh",
     "acceptance:open": "chmod +x scripts/acceptance:open.sh && scripts/acceptance:open.sh",
     "build:client": "cd ./client && npm run build",
     "build:server": "cd ./server && npm run build",
-    "build:integrate": "cp -r ./client/dist ./server/build",
-    "env:copy": "cp ./config/.env.example ./config/.env.local"
+    "build:integrate": "cp -r ./client/dist ./server/build"
   }
 }
