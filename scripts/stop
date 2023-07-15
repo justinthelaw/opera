@@ -1,0 +1,22 @@
+# Remove mentions of MongoDB and the database from README
+
+The following sections and content related to MongoDB and the database will be removed from the README file:
+
+- Background
+- What are "Bullets"
+- How are "Bullets" Formatted
+- Example Bullets
+- Bullet Forge
+- Acronym List Imports
+- Local Development
+  - General
+  - Running
+  - Building
+  - Testing
+  - Pipelines
+
+Why the Hard Fork section will be kept as it is not related to MongoDB or the database.
+
+Please review and merge this PR once the changes have been verified.
+
+Thank you!
