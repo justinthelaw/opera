@@ -5,24 +5,18 @@
 <br/>
 
 <div align="center">
-    
-[![smarter-bullets-pipeline](https://github.com/justinthelaw/smarter-bullets/actions/workflows/smarter-bullets.yml/badge.svg)](https://github.com/justinthelaw/smarter-bullets/actions)
-[![snyk-security-scans](https://github.com/justinthelaw/smarter-bullets/actions/workflows/snyk-security.yml/badge.svg)](https://github.com/justinthelaw/smarter-bullets/actions/workflows/snyk-security.yml)
-
+    [![smarter-bullets-pipeline](https://github.com/justinthelaw/smarter-bullets/actions/workflows/smarter-bullets.yml/badge.svg)](https://github.com/justinthelaw/smarter-bullets/actions)
+    [![snyk-security-scans](https://github.com/justinthelaw/smarter-bullets/actions/workflows/snyk-security.yml/badge.svg)](https://github.com/justinthelaw/smarter-bullets/actions)
 </div>
 
 Smarter Bullets is a project focused on developing a set of tools to automate the pointless aspects of evaluation and award package-writing so that officer and enlisted members can focus more on the individual and the achievements, rather than worry about irrelevant formatting. The ultimate objective is to allow the end-user to type or speak a stream of consciousness about a member's accomplishments and let Smarter Bullets handle the rest.
 
-Bullet Forge is Smarter Bullets' narrative generation tool that harnesses the power of Natural Language Processing (NLP) through the use of Large Language Models (LLM). Bullet Forge is an API that is connected to a fine-tuned model that has been trained using 33,000+ unique EPR, OPR, and Award packages and bullets, across all of the Air and Space Force's positions and ranks.
-
 # Table of Contents
 
 1. [Background](#background)
-2. [Bullet Forge](#Bullet-forge)
-3. [Application Usage](#application-usage)
-4. [Contributing](#contributing)
-5. [Local Development](#local-development)
-6. [Licensing](#licensing)
+2. [Application Usage](#application-usage)
+3. [Contributing](#contributing)
+4. [Local Development](#local-development)
 
 # Background
 
@@ -38,35 +32,21 @@ Bullets are action-impact-outcome statements that follow specific formatting rul
 
 Bullets follow a few formatting rules:
 
--   Each Bullet must be exactly one line, with the width of the line depending on the form (performance reports, award packages, etc).
--   Bullets generally adhere to the following formula, with some situational exceptions: `<ACTION>;<IMPACT>--<OUTCOME>`
--   Acronyms and abbreviations can be force-wide, organization, and/or commander-specific, with major inconsistencies in their abbreviation/acronym policies.
--   In Awards Packages, Enlisted Performance Reports (EPRs), and most other evaluation documents, the length of a Bullet must be ~202.321mm
--   In Officer Performance Reports (OPRs), the length of a Bullet must be ~201.041mm
--   In the (failed) rollout of myEval 1.0, Bullets were based on a maximum string length of 115 characters
+- Each Bullet must be exactly one line, with the width of the line depending on the form (performance reports, award packages, etc).
+- Bullets generally adhere to the following formula, with some situational exceptions: `<ACTION>;<IMPACT>--<OUTCOME>`
+- Acronyms and abbreviations can be force-wide, organization, and/or commander-specific, with major inconsistencies in their abbreviation/acronym policies.
+- In Awards Packages, Enlisted Performance Reports (EPRs), and most other evaluation documents, the length of a Bullet must be ~202.321mm
+- In Officer Performance Reports (OPRs), the length of a Bullet must be ~201.041mm
+- In the (failed) rollout of myEval 1.0, Bullets were based on a maximum string length of 115 characters
 
 Those Bullet formatting rules lead to the following:
 
--   Information compression is prioritized over legibility
--   Time is wasted on acronym and/or abbreviation revisions
--   Bullet "appearance" becomes highly valued; some examples of arbitrary Bullet appearance rules:
-    -   Any sort of repetition = bad
-    -   Bullets near flush with page boundaries = good
--   Closing Bullets (push statements) are always generic but need to catch attention
-
-## Example Bullets
-
-Below are examples of fake/unclassified Air and Space Force Bullets for an OPR:
-
--   Delivered enterprise network s/w cert; adv'd 3 docs thru 5 orgs--guaranteed vital rqmts s/w accessibility DAF-wide
--   Streamlined 3-ktr proposal rvw; resolved 277 elements in <5 wks--trailblazed $900M resilient POTUS/CCMD comms
--   Justin embraces challenges with vigor; #1 choice to tackle big problems--perfect fit for NRO--send to PDE 1st look!
-
-One non-obvious similarity amongst all 3 of these bullets is that they fit into the form perfectly - right up against the edge of the field. This is because the input area within the PDF form renders characters differently depending on the encoding, such as the space character in UTF-8 versus UTF-16.
-
-# Bullet Forge
-
-For more more details, to include contributing, on the Bullet Forge machine learning strategy, please read the [Bullet Forge README](./forge/README.md).
+- Information compression is prioritized over legibility
+- Time is wasted on acronym and/or abbreviation revisions
+- Bullet "appearance" becomes highly valued; some examples of arbitrary Bullet appearance rules:
+  - Any sort of repetition = bad
+  - Bullets near flush with page boundaries = good
+- Closing Bullets (push statements) are always generic but need to catch attention
 
 # Application Usage
 
@@ -114,7 +94,7 @@ For everything else in-between, just go with the "no template" option.
 
 When creating a branch, we like to follow the naming template:
 
-`<STATEMENT OF BRANCH PURPOSE>`
+<STATEMENT OF BRANCH PURPOSE>
 
 Use a dash, `-`, as the delimiter, e.g., `this-is-a-feature-branch`
 
@@ -124,7 +104,7 @@ Use a dash, `-`, as the delimiter, e.g., `this-is-a-feature-branch`
 
 When merging, we should squash all commits and follow the following commit message template:
 
-`<TYPE>(<OPTIONAL SCOPE>): <DESCRIPTION OF STORY>`
+<TYPE>(<OPTIONAL SCOPE>): <DESCRIPTION OF STORY>
 
 Spaces are allowed within the description, e.g., `Feature(DSR): This revolves around the scope of DSRs`
 
