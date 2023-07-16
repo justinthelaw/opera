@@ -23,7 +23,7 @@ export const tokenize = (sentence: string): string[] => {
 }
 
 export type Results = {
-    textLines: string
+    textLines: string[]
     fullWidth: number
     lines: number
     overflow: number

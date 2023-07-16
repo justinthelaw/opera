@@ -27,7 +27,7 @@ describe('optimize', () => {
 
     it('should return initial results as optimized if not over/underflowing', () => {
         const mockInitEvalResults: Results = {
-            textLines: mockRawBulletText,
+            textLines: [mockRawBulletText],
             fullWidth: 100,
             lines: 1,
             overflow: 0
@@ -45,12 +45,12 @@ describe('optimize', () => {
         const mockWorstCaseText =
             'Assisted 11 stranded motorists/police during blizzard; protected from freezing weather--ensured safe travel condition'
         const mockInitEvalResults: Results = {
-            textLines: mockRawBulletText,
+            textLines: [mockRawBulletText],
             fullWidth: 100,
             lines: 1,
             overflow: 1
         }
-        const mockWorstCaseResults: Results = { ...mockInitEvalResults, textLines: mockWorstCaseText, overflow: 2 }
+        const mockWorstCaseResults: Results = { ...mockInitEvalResults, textLines: [mockWorstCaseText], overflow: 2 }
         const mockEvalFcn = jest.fn((str: string) =>
             str === mockRawBulletText ? mockInitEvalResults : mockWorstCaseResults
         )
@@ -66,12 +66,12 @@ describe('optimize', () => {
         const mockWorstCaseText =
             'Assisted 11 stranded motorists/police during blizzard; protected from freezing weather--ensured safe travel condition'
         const mockInitEvalResults: Results = {
-            textLines: mockRawBulletText,
+            textLines: [mockRawBulletText],
             fullWidth: 100,
             lines: 1,
             overflow: -6
         }
-        const mockWorstCaseResults: Results = { ...mockInitEvalResults, textLines: mockWorstCaseText, overflow: -5 }
+        const mockWorstCaseResults: Results = { ...mockInitEvalResults, textLines: [mockWorstCaseText], overflow: -5 }
         const mockEvalFcn = jest.fn((str: string) =>
             str === mockRawBulletText ? mockInitEvalResults : mockWorstCaseResults
         )
@@ -83,7 +83,7 @@ describe('optimize', () => {
         expect(actualResults).toEqual(expectedResults)
     })
 
-    // TODO: is there any way to mock getRandomInt to ensure certain numbers?
+    // TODO: is there any way to mock getRandomInt to be deterministic?
     //  Otherwise, the while loop in optimize() seems untestable
     it.skip('should succeed if it cannot add any more larger spaces without overflowing', () => {
         const mockWorstCaseText =
@@ -96,14 +96,14 @@ describe('optimize', () => {
         console.log(mockRawBulletText.replaceAll(' ', ''))
 
         const mockInitEvalResults: Results = {
-            textLines: mockRawBulletText,
+            textLines: [mockRawBulletText],
             fullWidth: 100,
             lines: 1,
             overflow: -1
         }
-        const mockWorstCaseResults: Results = { ...mockInitEvalResults, textLines: mockWorstCaseText, overflow: 0 }
-        const mockNewResults: Results = { ...mockInitEvalResults, textLines: mockNewResultsText, overflow: 1 }
-        const mockPrevResults: Results = { ...mockInitEvalResults, textLines: mockPrevResultsText, overflow: 0 }
+        const mockWorstCaseResults: Results = { ...mockInitEvalResults, textLines: [mockWorstCaseText], overflow: 0 }
+        const mockNewResults: Results = { ...mockInitEvalResults, textLines: [mockNewResultsText], overflow: 1 }
+        const mockPrevResults: Results = { ...mockInitEvalResults, textLines: [mockPrevResultsText], overflow: 0 }
         const mockEvalFcn = jest.fn((str: string) => {
             if (str === mockRawBulletText) {
                 return mockInitEvalResults
