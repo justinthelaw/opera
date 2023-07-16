@@ -9,12 +9,6 @@ coverage
 # production
 build
 dist
-server/public/*.js
-server/public/*.html
-
-# database
-db/
-.mongodb
 
 # misc
 .DS_Store

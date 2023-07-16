@@ -29,10 +29,6 @@ jobs:
       - name: Security and Code Lint
         run: cd ./client && npm run lint:all
 
-    # Run server tests
-      - name: Server Test
-        run: npm run test:server
-
     # Run client tests
       - name: Client Test
         run: npm run test:client
@@ -63,20 +59,12 @@ jobs:
       - name: Build Client
         run: npm run build:client
 
-    # Build server
-      - name: Build Server
-        run: npm run build:server
-
-    # Integrate builds
-      - name: Integrate Builds
-        run: npm run build:integrate
-
     # Cache build artifacts
       - name: Cache Build Artifacts
         uses: actions/cache@v3
         with:
           path: |
-            server/
+            client/dist/
           key: smarter-bullets-build-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             smarter-bullets-build-${{ hashFiles('**/package-lock.json') }}
@@ -98,8 +86,5 @@ jobs:
         with:
     # List build artifacts
           path: |
-            server/
+            client/dist/
           key: smarter-bullets-build-${{ hashFiles('**/package-lock.json') }}
-
-      - name: List Build Artifacts
-        run: ls -la server/build server/build/dist
