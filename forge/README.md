@@ -10,7 +10,7 @@ The primary objective of this tool is to streamline the process of listing accom
 
 ## Model Pulling
 
-The usage of the models is within the Jupyter Notebooks contained within the _notebooks/_ directory and implementation of the models is within the Smarter Bullets _server/_ directory. Trained models are not uploaded to this repository due to size, and will be made available via a future Hugging Face checkpoint or as a separately hosted archive.
+The usage of the models is within the Jupyter Notebooks contained within the _notebooks/_ directory. Trained models are not uploaded to this repository due to size, and will be made available via a future Hugging Face checkpoint or as a separately hosted archive.
 
 ## Fine Tuning
 
