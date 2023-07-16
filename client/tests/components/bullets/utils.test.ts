@@ -1,4 +1,4 @@
-import { hashCode, optimize, Results } from '../../../src/components/bullets/utils'
+import { hashCode, optimize, renderBulletText, Results } from '../../../src/components/bullets/utils'
 import { STATUS } from '../../../src/const/const'
 
 describe('hashCode', () => {
@@ -122,4 +122,42 @@ describe('optimize', () => {
         expect(mockEvalFcn).toHaveBeenCalledTimes(3)
         expect(actualResults).toEqual(expectedResults)
     })
+})
+
+describe('renderBulletText', () => {
+    it('returns empty results if the given text is empty', () => {
+        const expectedResults: Results = { textLines: [], fullWidth: 0, lines: 0, overflow: -100 }
+
+        const actualResults: Results = renderBulletText('', jest.fn(), 100)
+
+        expect(actualResults).toEqual(expectedResults)
+    })
+
+    it('returns underflow results if width of the text is less than desired', () => {
+        const mockText = 'hello world'
+        const mockFullWidth = 50
+        const mockGetWidth = jest.fn(() => mockFullWidth)
+        const expectedResults: Results = { textLines: [mockText], fullWidth: mockFullWidth, lines: 1, overflow: -50 }
+
+        const actualResults: Results = renderBulletText(mockText, mockGetWidth, 100)
+
+        expect(actualResults).toEqual(expectedResults)
+    })
+
+    // TODO this test feels a bit contrived,
+    //      can we find a real example that causes the scenario under test?
+    //  although this might be caused by widths actually being pixel amounts
+    //  rather than how this test uses them as char counts
+    it('returns overflow results if text cannot be fit on a single line', () => {
+        const mockText = 'eleven char'
+        const mockFullWidth = 11
+        const mockGetWidth = jest.fn((str: string) => str.length)
+        const expectedResults: Results = { textLines: [mockText], fullWidth: mockFullWidth, lines: 1, overflow: 0 }
+
+        const actualResults: Results = renderBulletText(mockText, mockGetWidth, 11)
+
+        expect(actualResults).toEqual(expectedResults)
+    })
+
+    // TODO add more tests once we understand renderBulletText function better
 })
