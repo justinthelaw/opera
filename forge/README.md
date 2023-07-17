@@ -16,7 +16,7 @@ The usage of the models is within the Jupyter Notebooks contained within the _no
 
 The Smarter Bullets fine-tuned models have been trained using 33,000+ unique EPR, OPR, and Award package bullets, across all Air and Space Force positions and ranks. A training, validation, and test data set are used to perform human-supervised training as well as manual and automatic inspection of model performance.
 
-First, please follow the instructions in [Virtual Environments](#virtual-environments). To run your fine tuning, follow and use the [fine tuning Jupyter Notebook](./notebooks/fine_tune_training.ipynb).
+First, please follow the instructions in [Virtual Environments](#virtual-environments). To run your fine tuning, follow and use the [fine tuning Jupyter Notebook](./notebooks/fine_tuning.ipynb).
 
 ### Scraping
 
@@ -28,7 +28,7 @@ Some of the data was sourced from the contributors and the contributors' peers, 
 
 First, please follow the instructions in [Virtual Environments](#virtual-environments).
 
-To scrape, clean, and consolidate data, follow and use the [training data and model pulling Jupyter Notebook](./notebooks/prepare_data_model.ipynb). The data within _data/training/_ is already prepared for fine tuning and should not need further modifications. Contributors are welcome to add more data from other websites beyond those identified within this repository.
+To scrape, clean, and consolidate data, follow and use the [training data and model pulling Jupyter Notebook](./notebooks/prepare_data.ipynb). The data within _data/training/_ is already prepared for fine tuning and should not need further modifications. Contributors are welcome to add more data from other websites beyond those identified within this repository.
 
 ### Contributing Bullets
 
@@ -36,7 +36,7 @@ Unclassified bullets can be added to [contributed.txt](./data/raw/contributed.tx
 
 ## Virtual Environments
 
-A best practice for developing in Python is using a virtual environment (venv). Within README's this directory is a [requirements.txt](./requirements.txt) file for installing the dependencies required by `python3` to run the Jupyter Notebook contents.
+A best practice for developing in Python is using a virtual environment (venv). Within README's this directory is a [requirements.txt](../requirements.txt) file for installing the dependencies required by `python3` to run the Jupyter Notebook contents.
 
 To properly develop locally and contribute to Bullet Forge, please follow the contributing instructions in [repository README](../README.md), and also the following Bullet Forge development-specific instructions below at the root of the repository.
 
