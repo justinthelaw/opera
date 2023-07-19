@@ -36,29 +36,31 @@ Unclassified bullets can be added to [contributed.txt](./data/raw/contributed.tx
 
 ## Virtual Environments
 
-A best practice for developing in Python is using a virtual environment (venv). Within README's this directory is a [requirements.txt](../requirements.txt) file for installing the dependencies required by `python3` to run the Jupyter Notebook contents.
+A best practice for developing in Python is using a Virtual Environment (venv). Within this README's directory is a [requirements.txt](./requirements.txt) file for installing the dependencies required by `python3` to run the Jupyter Notebook contents.
 
-To properly develop locally and contribute to Bullet Forge, please follow the contributing instructions in [repository README](../README.md), and also the following Bullet Forge development-specific instructions below at the root of the repository.
+To properly develop locally and contribute to Bullet Forge, please follow the contributing instructions in [repository README](../README.md), and also the following Bullet Forge development-specific instructions below at the root of this directory.
 
-1. To create the venv, execute the following:
+1. Create the `.venv`, execute the following:
 
 ```bash
 python3 -m venv .venv
+# add execute permissions to the directory
+chmod +x .venv
 ```
 
-2. To activate the venv, execute the following:
+2. Activate the venv, execute the following:
 
 ```bash
 source .venv/bin/activate
 ```
 
-3. To install requirements into your venv, execute the following:
+3. Install requirements into your venv, execute the following:
 
 ```bash
 pip3 install -r requirements.txt
 ```
 
-4. To record any dependency changes, execute the following:
+4. Record any dependency changes, execute the following:
 
 ```bash
 pip3 freeze > requirements.txt
