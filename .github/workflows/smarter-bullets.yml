@@ -15,25 +15,25 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-    # Install Node v20.x
+      # Install Node v20.x
       - name: Install Node v20.x
         uses: actions/setup-node@v3
         with:
           node-version: 20.x
 
-    # Install all dependencies and copy environment variables
+      # Install all dependencies and copy environment variables
       - name: Install Dependencies
         run: npm run install:all && npm run env:copy
 
-    # Run security and code lint
+      # Run security and code lint
       - name: Security and Code Lint
         run: cd ./client && npm run lint:all
 
-    # Run client tests
+      # Run client tests
       - name: Client Test
         run: npm run test:client
 
-    # Run integration tests
+      # Run integration tests
       - name: Integration Test
         run: npm run acceptance:run
 
@@ -41,50 +41,48 @@ jobs:
     runs-on: ubuntu-latest
     needs: [Test]
     steps:
-    # Checkout the repository
+      # Checkout the repository
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-    # Install Node v20.x
+      # Install Node v20.x
       - name: Install Node v20.x
         uses: actions/setup-node@v3
         with:
           node-version: 20.x
 
-    # Install all dependencies and copy environment variables
+      # Install all dependencies and copy environment variables
       - name: Install Dependencies
         run: npm run install:all && npm run env:copy
 
-    # Build client
+      # Build client
       - name: Build Client
         run: npm run build:client
 
-    # Cache build artifacts
+      # Cache build artifacts
       - name: Cache Build Artifacts
         uses: actions/cache@v3
         with:
           path: |
             client/dist/
-          key: smarter-bullets-build-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            smarter-bullets-build-${{ hashFiles('**/package-lock.json') }}
+          key: smarter-bullets-build
 
   Deploy:
     runs-on: ubuntu-latest
     needs: [Build]
 
     steps:
-    # Install Node v20.x
+      # Install Node v20.x
       - name: Install Node v20.x
         uses: actions/setup-node@v3
         with:
-    # Restore build artifacts
+          # Restore build artifacts
           node-version: 20.x
 
       - name: Restore Build Artifacts
         uses: actions/cache@v3
         with:
-    # List build artifacts
+          # List build artifacts
           path: |
             client/dist/
-          key: smarter-bullets-build-${{ hashFiles('**/package-lock.json') }}
+          key: smarter-bullets-build
