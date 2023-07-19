@@ -2,8 +2,7 @@ name: Artifact Cache Clean-up
 
 on:
   pull_request:
-    types:
-      - closed
+  push:
 
 jobs:
   Clean:

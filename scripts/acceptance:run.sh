@@ -20,6 +20,8 @@ source ./config/.env.local && \
 # Wait for the CLIENT to be accessible
 while ! nc -z localhost $CLIENT_PORT; do echo "==> Waiting on Client..." && sleep 3; done
 
-cd acceptance && npm run cypress:run && \
+cd acceptance && npm run cypress:run && \ 
+
+cd ../ && npm run stop:all && \
 
 echo -ne "==> Acceptance tests complete!\n"
