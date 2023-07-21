@@ -20,7 +20,7 @@ def clean_file_content(filepath, pattern):
             lines = file.readlines()
             lines = [re.sub(r"\n", "", line.strip()) for line in lines if line.strip()]
             clean_lines = [
-                "- " + line if not line.startswith("-") else line
+                line if line.startswith("-") else "- " + line
                 for line in lines
                 if re.match(pattern, line) and 50 < len(line) <= 115
             ]

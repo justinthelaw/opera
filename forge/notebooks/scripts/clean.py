@@ -15,4 +15,4 @@ if __name__ == "__main__":
     # Perform extra cleaning
     clean_file_content(dirty_file_path, BULLET_PATTERN)
 
-    logger.success(f"Extra cleaning on file complete!")
+    logger.success("Extra cleaning on file complete!")

@@ -11,9 +11,7 @@ async def process_line(line):
     try:
         # Remove double quotes for JSONL
         line = line.replace('"', "'").strip()
-        # Format into JSONL, fine-tuning format
-        processed_line = f'{{"input": "<ADD DETAIL>", "output": "{line}"}}\n'
-        return processed_line
+        return f'{{"input": "<ADD DETAIL>", "output": "{line}"}}\n'
     except Exception as e:
         logger.error(f"Error processing line: {line} ({e})")
         raise
