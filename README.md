@@ -3,7 +3,7 @@
 <div align="center">
     
 [![test-pipeline](https://github.com/justinthelaw/opera/actions/workflows/test-pipeline.yml/badge.svg)](https://github.com/justinthelaw/opera/actions)
-[![security-scans](https://github.com/justinthelaw/opera/actions/workflows/snyk-security.yml/badge.svg)](https://github.com/justinthelaw/opera/actions/workflows/snyk-security.yml)
+[![security-scans](https://github.com/justinthelaw/opera/actions/workflows/security-scans.yml/badge.svg)](https://github.com/justinthelaw/opera/actions/workflows/snyk-security.yml)
 
 </div>
 
