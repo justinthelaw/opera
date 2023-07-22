@@ -1,15 +1,23 @@
 from fastapi import APIRouter
+
+from controllers.BaseController import BaseController
 from services.ForgeService import ForgeService
 from models.ForgeModel import Input, Output
 
-forge_router = APIRouter()
 forge_service = ForgeService()
 
 
-@forge_router.post("/generate", response_model=Output)
-async def generate(body: Input):
-    return forge_service.generate(body)
+class ForgeController(BaseController):
+    def __init__(self):
+        super().__init__()
+        self.forge_service = forge_service
+        self.register_routes()
 
-@forge_router.get("/generate")
-async def describe():
-    return forge_service.describe()
+    def register_routes(self):
+        @self.router.post("/generate", response_model=Output)
+        async def generate(body: Input) -> Output:
+            return self.forge_service.generate(body)
+
+        @self.router.get("/generate")
+        async def describe():
+            return self.forge_service.describe()

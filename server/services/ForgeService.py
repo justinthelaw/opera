@@ -37,6 +37,15 @@ class ForgeService:
         self.model = T5ForConditionalGeneration.from_pretrained(self.params["MODEL"])
 
     def generate(self, body: Input) -> Output:
+        """
+        The `generate` function takes an input body, encodes it using a tokenizer, and generates an output
+        using a pre-trained model.
+        
+        :param body: The `body` parameter represents the input text that you want to generate a response for
+        :type body: Input
+        :return: The `generate` method returns an instance of the `Output` class. The `output` attribute of
+        the `Output` class contains the generated text, which is the decoded output of the model.
+        """
         inputs = self.tokenizer.encode_plus(
             body.input,
             return_tensors="pt",
@@ -59,4 +68,8 @@ class ForgeService:
         )
 
     def describe(self):
+        """
+        The `describe` function returns the `params` attribute of the object.
+        :return: The `describe` method is returning the `params` attribute.
+        """
         return self.params

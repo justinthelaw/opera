@@ -8,7 +8,14 @@ source ./config/.env.local && \
 if nc -z localhost $CLIENT_PORT; then
     # Kill (gracefully, -15) the process using the client port
     kill -15 $(lsof -t -i :$CLIENT_PORT) >/dev/null 2>&1 && \
-    echo -ne "\r==> Smarter Bullets Client has gracefully stopped.\n"
+    echo -ne "\r==> Smarter Bullets client has gracefully stopped.\n"
+fi && \
+
+
+if nc -z localhost $SERVER_PORT; then
+    # Kill (gracefully, -15) the process using the client port
+    kill -15 $(lsof -t -i :$SERVER_PORT) >/dev/null 2>&1 && \
+    echo -ne "\r==> Smarter Bullets server has gracefully stopped.\n"
 fi && \
 
 echo -ne "\r==> Smarter Bullets has gracefully stopped.\n" && \

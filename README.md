@@ -170,10 +170,10 @@ npm run start:all
 
 ## Building
 
-For building the full-stack application in development mode, use the automated process through the execution of the following commands at the root of this project:
+For building the client in development mode, use the automated process through the execution of the following commands at the root of this project:
 
 ```bash
-npm run build:all
+npm run build:client
 ```
 
 ## Testing
