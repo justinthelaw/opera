@@ -3,9 +3,9 @@ import React from 'react'
 import Home from '../../src/pages/Home'
 
 describe('App', () => {
-    test('should render application title, smarter bullets', () => {
+    test('should render application title, opera', () => {
         const { getByText } = render(<Home />)
-        const appTitleElement = getByText(/smarter bullets/i)
+        const appTitleElement = getByText(/opera/i)
         expect(appTitleElement).toBeInTheDocument()
     })
 })

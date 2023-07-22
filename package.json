@@ -1,5 +1,5 @@
 {
-  "name": "smarter-bullets",
+  "name": "opera",
   "version": "1.0.0",
   "author": "justinthelaw",
   "license": "MIT",
@@ -8,7 +8,7 @@
     "start:all": "npm run stop:all && chmod +x scripts/start:all.sh && scripts/start:all.sh",
     "test:all": "npm run test:client && npm run acceptance:run",
     "stop:all": "chmod +x scripts/stop:all.sh && scripts/stop:all.sh",
-    "install:all": "npm run install:forge && npm run install:server && cd ./client && npm install && cd ../acceptance && npm install",
+    "install:all": "npm run install:forge && npm run install:server && npm run install:client",
     "start:client": "cd ./client && npm start",
     "start:server": "cd ./server && . .venv/bin/activate && uvicorn main:app --reload",
     "acceptance:run": "chmod +x scripts/acceptance:run.sh && scripts/acceptance:run.sh",
@@ -19,6 +19,7 @@
     "config:copy": "cp ./config/.env.example ./config/.env.local",
     "create:venv": "cd forge && python3 -m venv .venv && cp -r .venv ../server",
     "install:server": "cd ./server && . .venv/bin/activate && pip3 install -r requirements.txt",
-    "install:forge": "cd ./forge && . .venv/bin/activate && pip3 install -r requirements.txt"
+    "install:forge": "cd ./forge && . .venv/bin/activate && pip3 install -r requirements.txt",
+    "install:client": "cd ./client && npm install && cd ../acceptance && npm install"
   }
 }

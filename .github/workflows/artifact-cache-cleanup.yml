@@ -19,7 +19,7 @@ jobs:
           BRANCH="refs/pull/${{ github.event.pull_request.number }}/merge"
 
           echo "Fetching list of cache keys"
-          cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH | awk -F '\t' -v pattern="smarter-bullets-build" '$0 ~ pattern {print $1}')
+          cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH | awk -F '\t' -v pattern="opera-build" '$0 ~ pattern {print $1}')
 
           ## Setting this to not fail the workflow while deleting cache keys. 
           set +e

@@ -1,6 +1,6 @@
 from transformers import T5TokenizerFast, T5ForConditionalGeneration
 
-from models.ForgeModel import (
+from src.models.ForgeModel import (
     Input,
     Output,
     model,
