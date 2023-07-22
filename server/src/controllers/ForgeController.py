@@ -1,8 +1,6 @@
-from fastapi import APIRouter
-
-from controllers.BaseController import BaseController
-from services.ForgeService import ForgeService
-from models.ForgeModel import Input, Output
+from src.controllers.BaseController import BaseController
+from src.services.ForgeService import ForgeService
+from src.models.ForgeModel import Input, Output
 
 forge_service = ForgeService()
 
