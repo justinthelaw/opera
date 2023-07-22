@@ -1,6 +1,6 @@
-import unittest
-from server import main_function1, main_function2  # Replace with actual function names
-
+def example():
+    a = 4
+    
 class TestMain(unittest.TestCase):
     def test_main_function1(self):
         # Replace 'main_function1' with the actual function name and add your test code
