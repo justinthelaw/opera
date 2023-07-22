@@ -26,7 +26,7 @@ jobs:
         run: |
           cd forge
           python3 -m venv .venv
-          cp .venv ../server
+          cp -r .venv ../server
           source .venv/bin/activate
           pip3 install -r requirements.txt
           deactivate
