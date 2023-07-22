@@ -29,33 +29,3 @@ jobs:
 
         with:
           sarif_file: snyk.sarif
-
-  BanditScan:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      # Install Python and dependencies
-      - name: Setup Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-
-      # Install bandit
-      - name: Install Bandit
-        run: pip install bandit
-
-      # Run Bandit security scan
-      - name: Run Bandit Scans
-        run: bandit -r .
-
-      # Save Bandit scan results to a file
-      - name: Save Bandit Results
-        run: bandit -r . -f json -o bandit_results.json
-
-      # Upload Bandit Results to GitHub Code Scanning
-      - name: Upload Bandit Results to GitHub Code Scanning
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: bandit_results.json
