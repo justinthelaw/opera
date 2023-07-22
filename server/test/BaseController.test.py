@@ -6,13 +6,13 @@ class TestBaseController(unittest.TestCase):
         self.controller = BaseController()
 
     def test_method1(self):
-        # Replace 'method1' with the actual method name and add your test code
-        result = self.controller.method1(input)
+        # Test the 'method1' function in the 'BaseController' class
+        result = self.controller.method1()
         self.assertEqual(result, expected_output)
 
     def test_method2(self):
-        # Replace 'method2' with the actual method name and add your test code
-        result = self.controller.method2(input)
+        # Test the 'method2' function in the 'BaseController' class
+        result = self.controller.method2()
         self.assertEqual(result, expected_output)
 
     # Add more test methods as needed
