@@ -74,8 +74,6 @@ export const optimize = (
     while (finalOptimStatus === STATUS.NOT_OPT) {
         //don't select the first space after the dash- that would be noticeable and look wierd.
         // also don't select the last word, don't want to add a space after that.
-        console.log(optWords.join(''))
-
         const indexToReplace = getRandomInt(optWords.join(''), optWords.length - 1 - 1) + 1
 
         //merges two elements together, joined by the space
