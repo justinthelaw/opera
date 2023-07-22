@@ -1,6 +1,6 @@
-import unittest
-from server.controllers import ForgeController
-
+def example():
+    a = 4
+    
 class TestForgeController(unittest.TestCase):
     def setUp(self):
         self.controller = ForgeController()
