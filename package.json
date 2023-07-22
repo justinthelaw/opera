@@ -16,7 +16,8 @@
     "test:client": "cd ./client && npm test",
     "lint:client": "cd ./client && npm run lint:all",
     "build:client": "cd ./client && npm run build",
-    "env:copy": "cp ./config/.env.example ./config/.env.local",
+    "config:copy": "cp ./config/.env.example ./config/.env.local",
+    "create:venv": "cd forge && python3 -m venv .venv && cp -r .venv ../server",
     "install:server": "cd ./server && . .venv/bin/activate && pip3 install -r requirements.txt",
     "install:forge": "cd ./forge && . .venv/bin/activate && pip3 install -r requirements.txt"
   }

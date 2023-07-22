@@ -23,24 +23,11 @@ jobs:
 
       # Create Python .venv in forge/ and server/ directory
       - name: Create Python3 Virtual Environments
-        run: |
-          cd forge
-          python3 -m venv .venv
-
-          cp -r .venv ../server
-
-          . .venv/bin/activate
-          pip3 install -r requirements.txt
-          deactivate
-
-          cd ../server
-          . .venv/bin/activate
-          pip3 install -r requirements.txt
-          deactivate
+        run: npm run create:venv
 
       # Install all dependencies and copy environment variables
       - name: Install Dependencies
-        run: npm run install:all && npm run env:copy
+        run: npm run install:all && npm run config:copy
 
       # Run security and code lint
       - name: Security and Code Lint
@@ -70,24 +57,11 @@ jobs:
 
       # Create Python .venv in forge/ and server/ directory
       - name: Create Python3 Virtual Environments
-        run: |
-          cd forge
-          python3 -m venv .venv
-
-          cp -r .venv ../server
-
-          . .venv/bin/activate
-          pip3 install -r requirements.txt
-          deactivate
-
-          cd ../server
-          . .venv/bin/activate
-          pip3 install -r requirements.txt
-          deactivate
+        run: npm run 
 
       # Install all dependencies and copy environment variables
       - name: Install Dependencies
-        run: npm run install:all && npm run env:copy
+        run: npm run install:all && npm run config:copy
 
       # Build client
       - name: Build Client

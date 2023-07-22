@@ -162,6 +162,8 @@ Do the following prior to moving on to any further instructions below this secti
 To run each sub-stack in one terminal, with integrated logs, execute the following:
 
 ```bash
+# create python3 venv in forge and server
+npm run create:venv
 # installs all dependencies in the sub-stacks
 npm run install:all
 # starts all sub-stacks
