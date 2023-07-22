@@ -57,7 +57,7 @@ jobs:
 
       # Create Python .venv in forge/ and server/ directory
       - name: Create Python3 Virtual Environments
-        run: npm run 
+        run: npm run create:venv
 
       # Install all dependencies and copy environment variables
       - name: Install Dependencies
