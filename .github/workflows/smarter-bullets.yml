@@ -21,9 +21,13 @@ jobs:
         with:
           node-version: 20.x
 
+      # Create Python .venv in forge/ and server/ directory
+      - name: Create Python3 Virtual Environments
+        run: npm run create:venv
+
       # Install all dependencies and copy environment variables
       - name: Install Dependencies
-        run: npm run install:all && npm run env:copy
+        run: npm run install:all && npm run config:copy
 
       # Run security and code lint
       - name: Security and Code Lint
@@ -51,9 +55,13 @@ jobs:
         with:
           node-version: 20.x
 
+      # Create Python .venv in forge/ and server/ directory
+      - name: Create Python3 Virtual Environments
+        run: npm run 
+
       # Install all dependencies and copy environment variables
       - name: Install Dependencies
-        run: npm run install:all && npm run env:copy
+        run: npm run install:all && npm run config:copy
 
       # Build client
       - name: Build Client

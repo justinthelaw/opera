@@ -9,6 +9,7 @@ coverage
 # production
 build
 dist
+private
 
 # misc
 .DS_Store
@@ -32,8 +33,8 @@ downloads/
 
 # models
 .venv/
+venv/
 *.bin
-models/
 **/raw/*.txt
 !**/contributed.txt
 

@@ -18,8 +18,13 @@ npm run stop:all && \
 # Source the environment file for checking
 source ./config/.env.local && \
 
-# Start the client with optional ":check" suffix
+# Start the client
 npm run start:client &
 CLIENT_PID=$!
 
+# Start the server 
+npm run start:server &
+SERVER_PID=$!
+
 wait $CLIENT_PID
+wait $SERVER_PID

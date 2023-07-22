@@ -162,6 +162,8 @@ Do the following prior to moving on to any further instructions below this secti
 To run each sub-stack in one terminal, with integrated logs, execute the following:
 
 ```bash
+# create python3 venv in forge and server
+npm run create:venv
 # installs all dependencies in the sub-stacks
 npm run install:all
 # starts all sub-stacks
@@ -170,10 +172,10 @@ npm run start:all
 
 ## Building
 
-For building the full-stack application in development mode, use the automated process through the execution of the following commands at the root of this project:
+For building the client in development mode, use the automated process through the execution of the following commands at the root of this project:
 
 ```bash
-npm run build:all
+npm run build:client
 ```
 
 ## Testing
