@@ -10,14 +10,14 @@
     "stop:all": "chmod +x scripts/stop:all.sh && scripts/stop:all.sh",
     "install:all": "npm run install:forge && npm run install:server && cd ./client && npm install && cd ../acceptance && npm install",
     "start:client": "cd ./client && npm start",
-    "start:server": "cd ./server && source .venv/bin/activate && uvicorn main:app --reload",
+    "start:server": "cd ./server && . .venv/bin/activate && uvicorn main:app --reload",
     "acceptance:run": "chmod +x scripts/acceptance:run.sh && scripts/acceptance:run.sh",
     "acceptance:open": "chmod +x scripts/acceptance:open.sh && scripts/acceptance:open.sh",
     "test:client": "cd ./client && npm test",
     "lint:client": "cd ./client && npm run lint:all",
     "build:client": "cd ./client && npm run build",
     "env:copy": "cp ./config/.env.example ./config/.env.local",
-    "install:server": "cd ./server && source .venv/bin/activate && pip3 install -r requirements.txt",
-    "install:forge": "cd ./forge && source .venv/bin/activate && pip3 install -r requirements.txt"
+    "install:server": "cd ./server && . .venv/bin/activate && pip3 install -r requirements.txt",
+    "install:forge": "cd ./forge && . .venv/bin/activate && pip3 install -r requirements.txt"
   }
 }
