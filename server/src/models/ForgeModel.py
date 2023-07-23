@@ -2,6 +2,7 @@ from pydantic import BaseModel, validator
 from transformers import T5TokenizerFast
 
 max_input_token_length = 1024
+min_input_token_length = 1
 model = "google/flan-t5-small"
 
 
@@ -20,14 +21,14 @@ class Input(BaseModel):
         the `input` value that is being passed to the `max_token_length` function
         :return: The variable `v` is being returned.
         """
-        max_length = max_input_token_length
-        tokenizer = T5TokenizerFast.from_pretrained(
-            model, model_max_length=max_input_token_length
-        )
+        tokenizer = T5TokenizerFast.from_pretrained(model)
         tokenized_length = len(tokenizer.tokenize(v))
 
-        if tokenized_length > max_length:
-            raise ValueError(f"The maximum token length is {max_length}")
+        if tokenized_length > max_input_token_length:
+            raise ValueError(f"The maximum token length is {max_input_token_length}")
+
+        if tokenized_length < min_input_token_length:
+            raise ValueError(f"The minimum token length is {min_input_token_length}")
 
         return v
 
