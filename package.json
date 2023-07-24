@@ -16,7 +16,7 @@
     "test:client": "cd ./client && npm test",
     "lint:client": "cd ./client && npm run lint:all",
     "build:client": "cd ./client && npm run build",
-    "test:server": "cd server && && . .venv/bin/activate && python3 -m unittest discover -s src -p '*Test.py'",
+    "test:server": "cd server && . .venv/bin/activate && python3 -m unittest discover -s src -p '*Test.py'",
     "config:copy": "cp ./config/.env.example ./config/.env.local",
     "create:venv": "cd forge && python3 -m venv .venv && cp -r .venv ../server",
     "install:server": "cd ./server && . .venv/bin/activate && pip3 install -r requirements.txt",
