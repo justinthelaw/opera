@@ -6,7 +6,7 @@
   "scripts": {
     "check:all": "npm run install:all && npm run lint:client && npm run test:all",
     "start:all": "npm run stop:all && chmod +x scripts/start:all.sh && scripts/start:all.sh",
-    "test:all": "npm run test:client && npm run acceptance:run",
+    "test:all": "npm run test:client && npm run acceptance:run && npm run test:server",
     "stop:all": "chmod +x scripts/stop:all.sh && scripts/stop:all.sh",
     "install:all": "npm run install:forge && npm run install:server && npm run install:client",
     "start:client": "cd ./client && npm start",
@@ -16,6 +16,7 @@
     "test:client": "cd ./client && npm test",
     "lint:client": "cd ./client && npm run lint:all",
     "build:client": "cd ./client && npm run build",
+    "test:server": "cd server && python3 -m unittest discover -s src -p '*Test.py'",
     "config:copy": "cp ./config/.env.example ./config/.env.local",
     "create:venv": "cd forge && python3 -m venv .venv && cp -r .venv ../server",
     "install:server": "cd ./server && . .venv/bin/activate && pip3 install -r requirements.txt",

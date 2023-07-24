@@ -1,4 +1,4 @@
-name: Security Scans
+name: Snyk Security
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  Snyk:
+  Scan:
     runs-on: ubuntu-latest
 
     steps:

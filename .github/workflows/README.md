@@ -4,7 +4,7 @@
 
 Lints, tests, builds, and deploys the Opera full-stack application.
 
-## [Security Scans](./security-scans.yml)
+## [Snyk Security](./snyk-security.yml)
 
 Scans the repository application code and dependencies for potential vulnerabilities. Also does something similar to dependabot, and suggests version bumps to dependencies.
 
