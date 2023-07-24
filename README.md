@@ -3,7 +3,7 @@
 <div align="center">
     
 [![test-pipeline](https://github.com/justinthelaw/opera/actions/workflows/test-pipeline.yml/badge.svg)](https://github.com/justinthelaw/opera/actions)
-[![security-scans](https://github.com/justinthelaw/opera/actions/workflows/security-scans.yml/badge.svg)](https://github.com/justinthelaw/opera/actions/workflows/snyk-security.yml)
+[![snyk-security](https://github.com/justinthelaw/opera/actions/workflows/snyk-security.yml/badge.svg)](https://github.com/justinthelaw/opera/actions/workflows/snyk-security.yml)
 
 </div>
 
@@ -78,7 +78,7 @@ Below are HAF generated examples of unclassified Air and Space Force Narratives:
 
 - Capt Snuffy led a survey team of 33 MCA to establish an XAB in support of a PACAF ACE exercise across 4 countries and including 7 allies, culminating in 153 sorties and 334 training events completed. She also championed a critical organizational merger of the squadron’s maintenance and operations; results saved 360 maintenance workhours per week and increased sortie generation by 10%.
 
-- TSgt Snuffy led 4 instructors through Mission Ready Airmen course validation, generating 153 changes, eliminating 32 classroom hours, and enhancing course experience for 6 instructors and 70 students per year. Additionally, he facilitated a $15M facility renovation project, ensuring the CY22 schedule started on-time for 8 different courses spanning 11 AFSCs. 
+- TSgt Snuffy led 4 instructors through Mission Ready Airmen course validation, generating 153 changes, eliminating 32 classroom hours, and enhancing course experience for 6 instructors and 70 students per year. Additionally, he facilitated a $15M facility renovation project, ensuring the CY22 schedule started on-time for 8 different courses spanning 11 AFSCs.
 
 # The Forge
 

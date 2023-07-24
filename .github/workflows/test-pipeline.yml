@@ -37,9 +37,9 @@ jobs:
       - name: Client Test
         run: npm run test:client
 
-#       # Run server tests
-#       - name: Server Test
-#         run: npm run test:server
+      # Run server tests
+      - name: Server Test
+        run: npm run test:server
 
       # Run integration tests
       - name: Integration Test
