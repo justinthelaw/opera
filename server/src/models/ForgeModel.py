@@ -1,7 +1,7 @@
 from pydantic import BaseModel, validator
 from transformers import T5TokenizerFast
 
-max_input_token_length = 1024
+max_input_token_length = 512
 min_input_token_length = 1
 model = "google/flan-t5-small"
 
@@ -25,13 +25,25 @@ class Input(BaseModel):
         tokenized_length = len(tokenizer.tokenize(v))
 
         if tokenized_length > max_input_token_length:
-            raise ValueError(f"The maximum token length is {max_input_token_length}")
+            max_length_error = f"The maximum token length is {max_input_token_length}"
+            raise ValueError(max_length_error)
 
         if tokenized_length < min_input_token_length:
-            raise ValueError(f"The minimum token length is {min_input_token_length}")
+            min_length_error = f"The minimum token length is {min_input_token_length}"
+            raise ValueError(min_length_error)
 
         return v
 
 
 class Output(BaseModel):
     output: str
+
+
+class Describe(BaseModel):
+    MODEL: str
+    MAX_SOURCE_TEXT_LENGTH: int
+    MAX_TARGET_TEXT_LENGTH: int
+    NUM_BEAMS: int
+    TEMPERATURE: float
+    TOP_K: int
+    TOP_P: float

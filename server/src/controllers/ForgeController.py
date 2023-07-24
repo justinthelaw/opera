@@ -1,6 +1,6 @@
 from src.controllers.BaseController import BaseController
 from src.services.ForgeService import ForgeService
-from src.models.ForgeModel import Input, Output
+from src.models.ForgeModel import Input, Output, Describe
 
 forge_service = ForgeService()
 
@@ -33,10 +33,10 @@ class ForgeController(BaseController):
             return self.forge_service.generate(body)
 
         @self.router.get("/generate")
-        async def describe():
+        async def describe() -> Describe:
             """
             The function `describe()` returns the description of a service.
             :return: The `describe()` method of the `forge_service` object is being called and its return value
             is being returned.
             """
-            return {"output": self.forge_service.describe()}
+            return self.forge_service.describe()

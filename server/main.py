@@ -1,8 +1,11 @@
 from fastapi import FastAPI
+from transformers import logging
+
 from src.controllers.ForgeController import ForgeController
 
-# Instantiate Fast API
 app = FastAPI()
+
+logging.set_verbosity_error()
 
 
 @app.get("/")
@@ -16,8 +19,6 @@ def welcome():
     }
 
 
-# Instantiate each controller
 forge_routes = ForgeController().get_router()
 
-# Register routes
 app.include_router(forge_routes)
