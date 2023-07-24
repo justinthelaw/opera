@@ -73,4 +73,12 @@ class ForgeService:
         The `describe` function returns the `params` attribute of the object.
         :return: The `describe` method is returning the `params` attribute.
         """
-        return self.params
+        return Describe(
+            MODEL=self.params["MODEL"],
+            MAX_SOURCE_TEXT_LENGTH=self.params["MAX_SOURCE_TEXT_LENGTH"],
+            MAX_TARGET_TEXT_LENGTH=self.params["MAX_TARGET_TEXT_LENGTH"],
+            NUM_BEAMS=self.params["NUM_BEAMS"],
+            TEMPERATURE=self.params["TEMPERATURE"],
+            TOP_K=self.params["TOP_K"],
+            TOP_P=self.params["TOP_P"],
+        )
