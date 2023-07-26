@@ -1,9 +1,13 @@
+import os
 from transformers import T5TokenizerFast, T5ForConditionalGeneration
+
+
 from src.models.ForgeModel import (
     Input,
     Output,
     Describe,
     model,
+    tokenizer,
     max_input_token_length,
 )
 
@@ -14,25 +18,27 @@ class ForgeService:
         self.params = {
             # Name of the pre-trained model that will be fine-tuned
             "MODEL": model,
+            # Name of the base model's tokenizer
+            "TOKENIZER": tokenizer,
             # Maximum number of tokens from source text that model accepts
             "MAX_SOURCE_TEXT_LENGTH": max_input_token_length,
             # Maximum number of tokens from target text that model generates
             "MAX_TARGET_TEXT_LENGTH": 64,
             # Number of alternative sequences generated at each step
             # More beams improve results, but increase computation
-            "NUM_BEAMS": 5,
+            "NUM_BEAMS": 2,
             # Scales logits before soft-max to control randomness
             # Lower values (~0) make output more deterministic
-            "TEMPERATURE": 0.90,
+            "TEMPERATURE": 0.9,
             # Limits generated tokens to top K probabilities
             # Reduces chances of rare word predictions
-            "TOP_K": 10,
+            "TOP_K": 20,
             # Applies nucleus sampling, limiting token selection to a cumulative probability
             # Creates a balance between randomness and determinism
             "TOP_P": 0.10,
         }
         self.tokenizer = T5TokenizerFast.from_pretrained(
-            self.params["MODEL"], model_max_length=max_input_token_length
+            self.params["TOKENIZER"], model_max_length=max_input_token_length
         )
         self.model = T5ForConditionalGeneration.from_pretrained(self.params["MODEL"])
 
@@ -74,7 +80,8 @@ class ForgeService:
         :return: The `describe` method is returning the `params` attribute.
         """
         return Describe(
-            MODEL=self.params["MODEL"],
+            MODEL=os.path.basename(self.params["MODEL"]),
+            TOKENIZER=self.params["TOKENIZER"],
             MAX_SOURCE_TEXT_LENGTH=self.params["MAX_SOURCE_TEXT_LENGTH"],
             MAX_TARGET_TEXT_LENGTH=self.params["MAX_TARGET_TEXT_LENGTH"],
             NUM_BEAMS=self.params["NUM_BEAMS"],

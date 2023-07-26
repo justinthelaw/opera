@@ -82,7 +82,7 @@ Below are HAF generated examples of unclassified Air and Space Force Narratives:
 
 # The Forge
 
-For more more details, to include contributing, on the The Forge machine learning strategy, please read the [The Forge README](./forge/README.md).
+For more more details, to include contributing, on the The Forge machine learning strategy, please read the [The Forge README](forge/README.md).
 
 # Application Usage
 

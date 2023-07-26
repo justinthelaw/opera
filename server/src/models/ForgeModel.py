@@ -3,7 +3,8 @@ from transformers import T5TokenizerFast
 
 max_input_token_length = 512
 min_input_token_length = 1
-model = "google/flan-t5-small"
+model = "../forge/bullets/models/flan-t5-base"
+tokenizer = "google/flan-t5-base"
 
 
 class Input(BaseModel):
@@ -41,6 +42,7 @@ class Output(BaseModel):
 
 class Describe(BaseModel):
     MODEL: str
+    TOKENIZER: str
     MAX_SOURCE_TEXT_LENGTH: int
     MAX_TARGET_TEXT_LENGTH: int
     NUM_BEAMS: int
