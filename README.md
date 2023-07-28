@@ -170,13 +170,17 @@ Do the following prior to moving on to any further instructions below this secti
 
 1. At a minimum, have an integrated development environment (e.g., VSCode), a browser (e.g., Google Chrome), `git`, `node`, `npm`, and `python3` installed
 2. Fork or clone this repository to your local development environment
-3. Go to the _config/_ directory and create a `.env.local` using the [.env.example](./config/.env.example) as a reference
 
 ## Installing
 
 Execute the following at the root of the repository to install, test, and build everything required to run any part of the stack:
 
 ```bash
+# copies .env.example into a local version
+npm run config:copy
+# installs all dependencies in all stacks
+npm run install:all
+# runs through all linting, testing, and building
 npm run check:all
 ```
 

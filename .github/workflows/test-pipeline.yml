@@ -23,5 +23,15 @@ jobs:
 
       # See root package.json for more information
       # Runs install, test, configuration and build steps
-      - name: Install, Test and Build Opera
+      - name: Copy Configurations
+        run: npm run config:copy
+
+      # See root package.json for more information
+      # Runs install, test, configuration and build steps
+      - name: Install Dependencies
+        run: npm run install:all
+
+      # See root package.json for more information
+      # Runs install, test, configuration and build steps
+      - name: Test and Build
         run: npm run check:all
