@@ -174,7 +174,7 @@ Do the following prior to moving on to any further instructions below this secti
 
 ## Installing
 
-Execute the following at the root of the repository to install, test, and build everything required to run any part of the project:
+Execute the following at the root of the repository to install, test, and build everything required to run any part of the stack:
 
 ```bash
 npm run check:all
