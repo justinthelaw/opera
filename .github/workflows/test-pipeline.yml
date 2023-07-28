@@ -23,5 +23,5 @@ jobs:
 
       # See root package.json for more information
       # Runs install, test, configuration and build steps
-      - name: Install, Test and Build
+      - name: Install, Test and Build Opera
         run: npm run check:all

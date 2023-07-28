@@ -4,7 +4,7 @@
   "author": "justinthelaw",
   "license": "MIT",
   "scripts": {
-    "check:all": "npm run install:all && npm run lint:client & npm run test:all && npm run build:client",
+    "check:all": "npm run install:all && npm run lint:client && npm run test:all && npm run build:client",
     "install:all": "npm run create:venv && npm run install:forge && npm run install:server && npm run install:client",
     "start:all": "chmod +x scripts/start:all.sh && scripts/start:all.sh",
     "test:all": "npm run test:client && npm run acceptance:run && npm run test:server",
