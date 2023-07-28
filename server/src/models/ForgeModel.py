@@ -1,5 +1,5 @@
 from pydantic import BaseModel, validator
-from transformers import T5TokenizerFast
+from transformers import T5Tokenizer
 
 max_input_token_length = 512
 min_input_token_length = 1
@@ -22,7 +22,10 @@ class Input(BaseModel):
         the `input` value that is being passed to the `max_token_length` function
         :return: The variable `v` is being returned.
         """
-        tokenizer = T5TokenizerFast.from_pretrained(model)
+        tokenizer = T5Tokenizer.from_pretrained(
+            model,
+            legacy=False,
+        )
         tokenized_length = len(tokenizer.tokenize(v))
 
         if tokenized_length > max_input_token_length:

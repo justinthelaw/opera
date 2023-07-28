@@ -1,5 +1,5 @@
 import os
-from transformers import T5TokenizerFast, T5ForConditionalGeneration
+from transformers import T5Tokenizer, T5ForConditionalGeneration
 
 
 from src.models.ForgeModel import (
@@ -37,8 +37,10 @@ class ForgeService:
             # Creates a balance between randomness and determinism
             "TOP_P": 0.10,
         }
-        self.tokenizer = T5TokenizerFast.from_pretrained(
-            self.params["TOKENIZER"], model_max_length=max_input_token_length
+        self.tokenizer = T5Tokenizer.from_pretrained(
+            self.params["TOKENIZER"],
+            model_max_length=max_input_token_length,
+            legacy=False,
         )
         self.model = T5ForConditionalGeneration.from_pretrained(self.params["MODEL"])
 
@@ -53,7 +55,7 @@ class ForgeService:
         :return: The `generate` function returns an instance of the `Output` class. The `output` attribute
         of the `Output` instance contains the generated text, which is the decoded output of the model.
         """
-        inputs = self.tokenizer.encode_plus(
+        inputs = self.tokenizer.encode(
             body.input,
             return_tensors="pt",
             truncation=True,

@@ -20,7 +20,7 @@ fi && \
 
 if ! nc -z localhost $SERVER_PORT; then
     echo -ne "\r==> Opera has gracefully stopped.\n"
-fi && 
+fi && \
 
 # Exit the script with a success status
 exit 0
