@@ -21,26 +21,17 @@ jobs:
         with:
           node-version: 20.x
 
-      # Create Python .venv in forge/ and server/ directory
-      - name: Create Python3 Virtual Environments
-        run: npm run create:venv
+      # See root package.json for more information
+      # Runs install, test, configuration and build steps
+      - name: Copy Configurations
+        run: npm run config:copy
 
-      # Install all dependencies and copy environment variables
+      # See root package.json for more information
+      # Runs install, test, configuration and build steps
       - name: Install Dependencies
-        run: npm run install:all && npm run config:copy
+        run: npm run install:all
 
-      # Run security and code lint
-      - name: Code Lint
-        run: cd ./client && npm run lint:all
-
-      # Run client tests
-      - name: Client Test
-        run: npm run test:client
-
-      # Run server tests
-      - name: Server Test
-        run: npm run test:server
-
-      # Run integration tests
-      - name: Integration Test
-        run: npm run acceptance:run
+      # See root package.json for more information
+      # Runs install, test, configuration and build steps
+      - name: Test and Build
+        run: npm run check:all

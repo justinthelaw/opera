@@ -170,26 +170,24 @@ Do the following prior to moving on to any further instructions below this secti
 
 1. At a minimum, have an integrated development environment (e.g., VSCode), a browser (e.g., Google Chrome), `git`, `node`, `npm`, and `python3` installed
 2. Fork or clone this repository to your local development environment
-3. Go to the _config/_ directory and create a `.env.local` using the [.env.example](./config/.env.example) as a reference
 
 ## Installing
 
-Execute the following at the root of the repository to install everything required to run any part of the project:
+Execute the following at the root of the repository to install, test, and build everything required to run any part of the stack:
 
 ```bash
-# create python3 venv in forge and server
-npm run create:venv
-# installs all dependencies in the sub-stacks
+# copies .env.example into a local version
+npm run config:copy
+# installs all dependencies in all stacks
 npm run install:all
+# runs through all linting, testing, and building
+npm run check:all
 ```
 
 When adding new packages using `pip3` or `npm`, be sure to commit an updated _package.json_ or _requirements.txt_ in the correct directory. For `pip3` in particular, please execute the following:
 
 ```bash
-# activate the correct .venv
-source $INSERT_DIRECTORY/.venv/bin/activate
-# execute the following in the correct relative directory
-pip3 freeze > $INSERT_DIRECTORY/requirements.txt
+npm run freeze:all
 ```
 
 ## Running
@@ -227,10 +225,9 @@ npm run acceptance:open
 
 # Pushing
 
-Prior to attempting a push to a branch, run the check all command to ensure all tests pass locally:
+Prior to attempting a push to a branch, run the check all command again to ensure that all tests pass locally:
 
 ```bash
-# runs all tests and linting
 npm run check:all
 ```
 

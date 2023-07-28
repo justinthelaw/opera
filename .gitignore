@@ -34,7 +34,7 @@ downloads/
 # models
 .venv/
 venv/
-*.bin
+forge/**/models/
 **/raw/*.txt
 !**/contributed.txt
 

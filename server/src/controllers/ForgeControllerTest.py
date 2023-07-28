@@ -68,6 +68,7 @@ class ForgeControllerTest(unittest.TestCase):
     def test_generate_get(self, mock_forge_service):
         response_object = {
             "MODEL": "some_model",
+            "TOKENIZER": "some_tokenizer",
             "MAX_SOURCE_TEXT_LENGTH": max_input_token_length,
             "MAX_TARGET_TEXT_LENGTH": 0,
             "NUM_BEAMS": 0,
