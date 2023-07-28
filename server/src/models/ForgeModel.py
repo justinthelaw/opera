@@ -1,9 +1,10 @@
+import os
 from pydantic import BaseModel, validator
 from transformers import T5Tokenizer
 
 max_input_token_length = 512
 min_input_token_length = 1
-model = "../forge/bullets/models/flan-t5-base"
+model = os.getenv("BULLET_MODEL", "google/flan-t5-base")
 tokenizer = "google/flan-t5-base"
 
 
