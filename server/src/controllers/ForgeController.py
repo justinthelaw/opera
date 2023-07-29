@@ -1,4 +1,4 @@
-from constants import BaseController, ForgeService, Input, Output, Describe
+from constants import UPDATED_BaseController, UPDATED_ForgeService, UPDATED_Input, UPDATED_Output, UPDATED_Describe
 
 forge_service = ForgeService()
 
