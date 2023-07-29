@@ -1,15 +1,16 @@
 import os
-from transformers import T5Tokenizer, T5ForConditionalGeneration
-
-
-from src.models.ForgeModel import (
-    Input,
-    Output,
-    Describe,
+from transformers import T5ForConditionalGeneration
+from constants import (
     model,
     tokenizer,
     max_input_token_length,
+    MAX_TARGET_TEXT_LENGTH,
+    NUM_BEAMS,
+    TEMPERATURE,
+    TOP_K,
+    TOP_P,
 )
+from constants import T5Tokenizer
 
 
 class ForgeService:
@@ -23,19 +24,19 @@ class ForgeService:
             # Maximum number of tokens from source text that model accepts
             "MAX_SOURCE_TEXT_LENGTH": max_input_token_length,
             # Maximum number of tokens from target text that model generates
-            "MAX_TARGET_TEXT_LENGTH": 64,
+            "MAX_TARGET_TEXT_LENGTH": MAX_TARGET_TEXT_LENGTH,
             # Number of alternative sequences generated at each step
             # More beams improve results, but increase computation
-            "NUM_BEAMS": 2,
+            "NUM_BEAMS": NUM_BEAMS,
             # Scales logits before soft-max to control randomness
             # Lower values (~0) make output more deterministic
-            "TEMPERATURE": 0.9,
+            "TEMPERATURE": TEMPERATURE,
             # Limits generated tokens to top K probabilities
             # Reduces chances of rare word predictions
-            "TOP_K": 20,
+            "TOP_K": TOP_K,
             # Applies nucleus sampling, limiting token selection to a cumulative probability
             # Creates a balance between randomness and determinism
-            "TOP_P": 0.10,
+            "TOP_P": TOP_P,
         }
         self.tokenizer = T5Tokenizer.from_pretrained(
             self.params["TOKENIZER"],
