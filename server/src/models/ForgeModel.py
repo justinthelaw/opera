@@ -1,7 +1,7 @@
 import os
 from pydantic import BaseModel, validator
-from constants import max_input_token_length, min_input_token_length, model, tokenizer
-from constants import T5Tokenizer
+from constants import UPDATED_max_input_token_length, UPDATED_min_input_token_length, UPDATED_model, UPDATED_tokenizer
+from constants import UPDATED_T5Tokenizer
 
 class Input(BaseModel):
     input: str
