@@ -26,6 +26,7 @@
     "install:forge": "cd forge && . .venv/bin/activate && pip3 install -r requirements.txt && deactivate",
     "install:client": "cd client && npm install && cd ../acceptance && npm install",
     "freeze:server": "cd server && . .venv/bin/activate && pip3 freeze > requirements.txt && deactivate",
-    "freeze:forge": "cd forge && . .venv/bin/activate && pip3 freeze > requirements.txt && deactivate"
+    "freeze:forge": "cd forge && . .venv/bin/activate && pip3 freeze > requirements.txt && deactivate",
+    "install:acceptance": "cd acceptance && npm install"
   }
 }
