@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 from uvicorn import run
-from constants import CONSTANT_NAME
+from constants import UPDATED_CONSTANT_NAME
 
 load_dotenv("../config/.env.local")
 
