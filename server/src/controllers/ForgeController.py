@@ -1,6 +1,4 @@
-from src.controllers.BaseController import BaseController
-from src.services.ForgeService import ForgeService
-from src.models.ForgeModel import Input, Output, Describe
+from constants import BaseController, ForgeService, Input, Output, Describe
 
 forge_service = ForgeService()
 
