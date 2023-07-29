@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "check:all": "npm run lint:all && npm run test:all && npm run build:client",
-    "install:all": "npm run create:venv && npm run install:forge && npm run install:server && npm run install:client",
+    "install:all": "npm run create:venv && npm run install:forge && npm run install:server && npm run install:client && npm run install:acceptance",
     "start:all": "chmod +x scripts/start:all.sh && scripts/start:all.sh",
     "test:all": "npm run test:client && npm run acceptance:run && npm run test:server",
     "stop:all": "chmod +x scripts/stop:all.sh && scripts/stop:all.sh",
