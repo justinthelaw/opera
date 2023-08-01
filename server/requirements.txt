@@ -1,4 +1,4 @@
-absl-py==1.4.1
+absl-py==1.4.0
 annotated-types==0.5.0
 anyio==3.7.1
 appnope==0.1.3
