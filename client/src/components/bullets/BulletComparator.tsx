@@ -1,6 +1,6 @@
-import { CompositeDecorator, DraftEditorCommand, Editor, EditorState, RichUtils } from 'draft-js'
+import { CompositeDecorator, ContentBlock, DraftEditorCommand, Editor, EditorState, RichUtils } from 'draft-js'
 import 'draft-js/dist/Draft.css'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Bullet } from './Bullet'
 
 const DPI = 96
@@ -40,20 +40,6 @@ export const BulletComparator = ({
         return 'not-handled'
     }
 
-    const handleHighlightClick = (e: Event) => {
-        const yellowSpans = document.getElementsByClassName('yellow-highlight') as HTMLCollectionOf<HTMLElement>
-        const element = e.target as HTMLElement
-        for (const span of yellowSpans) {
-            if (element.innerText == span.outerText) {
-                if (span.style.background == 'yellow') {
-                    span.style.background = 'LawnGreen'
-                } else {
-                    span.style.background = 'yellow'
-                }
-            }
-        }
-    }
-
     // Editor callback that runs whenever edits or selection changes occur.
     const onChange = (newEditorState: EditorState) => {
         const oldContentState = editorState.getCurrentContent()
@@ -62,18 +48,18 @@ export const BulletComparator = ({
         if (oldContentState !== newContentState) {
             const contentState = newEditorState.getCurrentContent()
             if (enableHighlight === true) {
-                const bulletText = contentState.getPlainText()
-                const userInput = bulletText.split(/\s|;|--|\//)
-                const findDuplicates = (userInput: string[]) =>
+                const bulletText: string = contentState.getPlainText()
+                const userInput: string[] = bulletText.split(/\s|;|--|\//)
+                const findDuplicates = (userInput: string[]): string[] =>
                     userInput.filter((item, index) => userInput.indexOf(item) !== index && item.length > 1)
-                let duplicates = findDuplicates(userInput)
+                let duplicates: string[] = findDuplicates(userInput)
                 duplicates = [...new Set(duplicates)]
 
-                const Decorated = ({ children }) => {
+                const Decorated = ({ children }: { children: React.ReactNode }) => {
                     return (
                         <span
                             className={'yellow-highlight'}
-                            onClick={handleHighlightClick}
+                            onClick={() => handleHighlightClick}
                             style={{ background: 'yellow', cursor: 'pointer' }}
                         >
                             {children}
@@ -81,16 +67,39 @@ export const BulletComparator = ({
                     )
                 }
 
-                function findWithRegex(duplicates, contentBlock, callback) {
+                const handleHighlightClick = (e: Event) => {
+                    const yellowSpans = document.getElementsByClassName(
+                        'yellow-highlight'
+                    ) as HTMLCollectionOf<HTMLElement>
+                    const element = e.target as HTMLElement
+                    for (const span of yellowSpans) {
+                        if (element.innerText == span.outerText) {
+                            if (span.style.background == 'yellow') {
+                                span.style.background = 'LawnGreen'
+                            } else {
+                                span.style.background = 'yellow'
+                            }
+                        }
+                    }
+                }
+
+                const findWithRegex = (
+                    duplicates: string[],
+                    contentBlock: ContentBlock,
+                    callback: (start: number, end: number) => void
+                ) => {
                     const text = contentBlock.getText()
 
-                    duplicates.forEach((word) => {
-                        const matches = [...text.matchAll(word)]
-                        matches.forEach((match) => callback(match.index, match.index + match[0].length))
+                    duplicates.forEach((word: string) => {
+                        const regExp = new RegExp(word, 'g')
+                        const matches = [...text.matchAll(regExp)]
+                        matches.forEach((match) => {
+                            if (match.index) callback(match.index, match.index + match[0].length)
+                        })
                     })
                 }
 
-                function handleStrategy(contentBlock, callback) {
+                const handleStrategy = (contentBlock, callback) => {
                     findWithRegex(duplicates, contentBlock, callback)
                 }
 
