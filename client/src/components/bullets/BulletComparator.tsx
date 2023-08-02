@@ -155,7 +155,9 @@ export const BulletComparator = ({
 
     useEffect(() => {
         const newHeightMap = new Map()
-        for (const key of editorState.getCurrentContent().getBlockMap().keys()) {
+        const keys = editorState.getCurrentContent().getBlockMap().keys()
+        console.log(keys)
+        for (const key in keys) {
             const blockDiv = document.querySelector(`div[data-offset-key="${key}-0-0"]`)
             if (blockDiv) newHeightMap.set(key, blockDiv.getBoundingClientRect().height)
         }
