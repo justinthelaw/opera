@@ -11,7 +11,7 @@ type Props = {
     editorState: EditorState
     setEditorState: (state: EditorState) => void
     width: number
-    onSelect: () => void
+    onSelect: (selectedText: string) => void
     abbrReplacer: () => string
     enableOptim: boolean
     enableHighlight: boolean
@@ -67,7 +67,7 @@ export const BulletComparator = ({
                     )
                 }
 
-                const handleHighlightClick = (e: Event) => {
+                const handleHighlightClick = (e: MouseEvent) => {
                     const yellowSpans = document.getElementsByClassName(
                         'yellow-highlight'
                     ) as HTMLCollectionOf<HTMLElement>
@@ -99,7 +99,7 @@ export const BulletComparator = ({
                     })
                 }
 
-                const handleStrategy = (contentBlock, callback) => {
+                const handleStrategy = (contentBlock: ContentBlock, callback: (start: number, end: number) => void) => {
                     findWithRegex(duplicates, contentBlock, callback)
                 }
 
@@ -129,24 +129,26 @@ export const BulletComparator = ({
     }
 
     // This other bullet selection is for when things are selected on the optimized output
-    const onBulletSelect = (event) => {
-        const selection = window.getSelection().toString()
-        if (selection !== '') {
-            onSelect(selection)
+    const onBulletSelect = () => {
+        const selection = window.getSelection()
+        if (selection !== null) {
+            onSelect(selection.toString())
         }
     }
 
     // control-a selectability on bullet outputs
-    function selectOutput(e) {
-        if (e.ctrlKey && e.keyCode === 65) {
+    const selectOutput = (e: KeyboardEvent) => {
+        if (e.ctrlKey && e.code === 'KeyA') {
             e.preventDefault()
-            //console.log('control-a')
-            //console.log(this.outputRef.current)
-            if (e.target.id.match(new RegExp(bulletOutputID))) {
+            const element = e.target as HTMLElement
+            if (element.id.match(new RegExp(bulletOutputID))) {
                 const range = document.createRange()
-                range.selectNode(e.target)
-                window.getSelection().removeAllRanges()
-                window.getSelection().addRange(range)
+                range.selectNode(element)
+                const selection = window.getSelection()
+                if (selection !== null) {
+                    selection.removeAllRanges()
+                    selection.addRange(range)
+                }
             }
         }
     }
@@ -190,8 +192,8 @@ export const BulletComparator = ({
                     className='border'
                     id={bulletOutputID}
                     style={{ width: width + 1 + 'mm' }}
-                    onMouseUp={onBulletSelect}
-                    onKeyDown={selectOutput}
+                    onMouseUp={() => onBulletSelect}
+                    onKeyDown={() => selectOutput}
                     tabIndex='0'
                 >
                     {Array.from(editorState.getCurrentContent().getBlockMap(), ([key, block]) => {
@@ -214,7 +216,7 @@ export const BulletComparator = ({
     )
 }
 
-export const getSelectionInfo = (editorState) => {
+export const getSelectionInfo = (editorState: EditorState) => {
     // this block of code gets the selected text from the editor.
     const selectionState = editorState.getSelection()
     const anchorKey = selectionState.getAnchorKey()
@@ -232,7 +234,11 @@ export const getSelectionInfo = (editorState) => {
     }
 }
 
-export const findWithRegex = (regex, contentBlock, callback) => {
+export const findWithRegex = (
+    regex: RegExp,
+    contentBlock: ContentBlock,
+    callback: (start: number, end: number) => void
+) => {
     const text = contentBlock.getText()
     let matchArr, start, end
     while ((matchArr = regex.exec(text)) !== null) {
