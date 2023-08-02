@@ -156,6 +156,7 @@ export const BulletComparator = ({
     useEffect(() => {
         const newHeightMap = new Map()
         const keys = editorState.getCurrentContent().getBlockMap().keys()
+        // TODO remove this once we've confirmed the behavior is still just like pdf-bullets'
         console.log(keys)
         for (const key in keys) {
             const blockDiv = document.querySelector(`div[data-offset-key="${key}-0-0"]`)
