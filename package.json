@@ -11,7 +11,7 @@
     "stop:all": "chmod +x scripts/stop:all.sh && scripts/stop:all.sh",
     "freeze:all": "npm run freeze:forge && npm run freeze:server",
     "start:client": "cd client && npm start",
-    "start:server": "cd server && . .venv/bin/activate && python3 server.py",
+    "start:server": "cd server && . .venv/bin/activate && python3 main.py",
     "acceptance:run": "chmod +x scripts/acceptance:run.sh && scripts/acceptance:run.sh",
     "acceptance:open": "chmod +x scripts/acceptance:open.sh && scripts/acceptance:open.sh",
     "test:client": "cd client && npm test",
