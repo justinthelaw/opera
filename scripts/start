@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Start the client
+cd client && npm start &
+
+# Start the server
+cd server && . .venv/bin/activate && python3 main.py &
