@@ -8,7 +8,7 @@ TOKENIZER = os.getenv("BULLET_TOKENIZER", "google/flan-t5-base")
 # Maximum user token input for generation
 MAX_INPUT_TOKEN_LENGTH = 512
 # Minimum user token input for generation
-MIN_INPUT_TOKEN_LENGTH = 16
+MIN_INPUT_TOKEN_LENGTH = 1
 # Maximum length for Forge generation output
 MAX_OUTPUT_TOKEN_LENGTH = 64
 # Number of alternative sequences generated at each step

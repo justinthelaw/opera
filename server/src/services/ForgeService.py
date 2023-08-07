@@ -8,6 +8,7 @@ from src.constants.ForgeConstants import (
     TOKENIZER,
     MAX_INPUT_TOKEN_LENGTH,
     MAX_OUTPUT_TOKEN_LENGTH,
+    MIN_INPUT_TOKEN_LENGTH,
     TOP_K,
     TOP_P,
     TEMPERATURE,
@@ -35,7 +36,7 @@ class ForgeService:
         :return: The `generate` function returns an instance of the `Output` class. The `output` attribute
         of the `Output` instance contains the generated text, which is the decoded output of the model.
         """
-        inputs = self.tokenizer.encode(
+        inputs = self.tokenizer.encode_plus(
             body.input,
             return_tensors="pt",
             truncation=True,
@@ -64,7 +65,7 @@ class ForgeService:
         return Describe(
             MODEL=os.path.basename(MODEL),
             TOKENIZER=TOKENIZER,
-            MAX_INPUT_TOKEN_LENGTH=MAX_INPUT_TOKEN_LENGTH,
+            MIN_INPUT_TOKEN_LENGTH=MIN_INPUT_TOKEN_LENGTH,
             MAX_INPUT_TOKEN_LENGTH=MAX_INPUT_TOKEN_LENGTH,
             MAX_OUTPUT_TOKEN_LENGTH=MAX_OUTPUT_TOKEN_LENGTH,
             NUM_BEAMS=NUM_BEAMS,
