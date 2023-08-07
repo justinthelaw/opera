@@ -1,11 +1,19 @@
 from fastapi import FastAPI
 from transformers import logging
+from dotenv import load_dotenv
+from uvicorn import run
+import os
 
 from src.controllers.ForgeController import ForgeController
 
 app = FastAPI()
 
 logging.set_verbosity_error()
+
+load_dotenv("../config/.env.local")
+
+host = os.getenv("SERVER_HOST")
+port = int(os.getenv("SERVER_PORT"))
 
 
 @app.get("/")
@@ -22,3 +30,5 @@ def welcome():
 forge_routes = ForgeController().get_router()
 
 app.include_router(forge_routes)
+
+run("main:app", host=host, port=port)
