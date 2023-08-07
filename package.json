@@ -6,7 +6,7 @@
   "scripts": {
     "check:all": "npm run lint:all && npm run test:all && npm run build:client",
     "install:all": "npm run create:venv && npm run install:forge && npm run install:server && npm run install:client",
-    "start:all": "chmod +x scripts/start:all.sh && scripts/start:all.sh",
+    "start:all": "chmod +x scripts/start:all.sh && scripts/start:all.sh && cd server && . .venv/bin/activate && python3 main.py",
     "test:all": "npm run test:client && npm run test:server && npm run acceptance:run",
     "stop:all": "chmod +x scripts/stop:all.sh && scripts/stop:all.sh",
     "freeze:all": "npm run freeze:forge && npm run freeze:server",
