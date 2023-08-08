@@ -35,6 +35,8 @@ class ForgeControllerTest(unittest.TestCase):
         response_object = {"output": response_text}
         self.assertEqual(request.status_code, 200)
         self.assertEqual(request.json(), response_object)
+        self.assertEqual(request.headers["content-type"], "application/json")
+        self.assertTrue("date" in request.headers)
 
     @patch("src.controllers.ForgeController.forge_service")
     def test_generate_post_min_input(self, mock_forge_service):
@@ -49,6 +51,11 @@ class ForgeControllerTest(unittest.TestCase):
         expected_error_message = f"The minimum token length is {MIN_INPUT_TOKEN_LENGTH}"
         self.assertEqual(response.status_code, 422)
         self.assertTrue(expected_error_message in response.json()["detail"][0]["msg"])
+        
+        request_text = "a" * MIN_INPUT_TOKEN_LENGTH
+        request_object = {"input": request_text}
+        response = self.client.post("/generate", json=request_object)
+        self.assertEqual(response.status_code, 200)
 
     @patch("src.controllers.ForgeController.forge_service")
     def test_generate_post_max_input(self, mock_forge_service):
@@ -63,6 +70,11 @@ class ForgeControllerTest(unittest.TestCase):
         expected_error_message = f"The maximum token length is {MAX_INPUT_TOKEN_LENGTH}"
         self.assertEqual(response.status_code, 422)
         self.assertTrue(expected_error_message in response.json()["detail"][0]["msg"])
+        
+        request_text = "a" * MAX_INPUT_TOKEN_LENGTH
+        request_object = {"input": request_text}
+        response = self.client.post("/generate", json=request_object)
+        self.assertEqual(response.status_code, 200)
 
     @patch("src.controllers.ForgeController.forge_service")
     def test_generate_get(self, mock_forge_service):
@@ -88,6 +100,21 @@ class ForgeControllerTest(unittest.TestCase):
         self.assertEqual(response.json(), response_object)
 
         mock_forge_service.describe.assert_called_once()
+        
+        @patch("src.controllers.ForgeController.forge_service")
+        def test_generate_post_exception(self, mock_forge_service):
+        request_text = "hello world"
+        mock_forge_service.generate.side_effect = Exception("Test exception")
+        
+        self.forge_controller = ForgeController()
+        self.app.include_router(self.forge_controller.get_router())
+        
+        request_object = {"input": request_text}
+        response = self.client.post("/generate", json=request_object)
+        
+        self.assertEqual(response.status_code, 500)
+        self.assertTrue("detail" in response.json())
+        self.assertEqual(response.json()["detail"], "Test exception")
 
 
 if __name__ == "__main__":
