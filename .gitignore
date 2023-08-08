@@ -9,17 +9,13 @@ coverage
 # production
 build
 dist
-server/public/*.js
-server/public/*.html
-
-# database
-db/
-.mongodb
+private
 
 # misc
 .DS_Store
 .env.*local
 .idea
+archive/
 
 npm-debug.log*
 yarn-debug.log*
@@ -40,8 +36,8 @@ downloads/
 
 # models
 .venv/
-*.bin
-models/
+venv/
+forge/**/models/
 **/raw/*.txt
 !**/contributed.txt
 

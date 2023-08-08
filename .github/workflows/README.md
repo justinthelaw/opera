@@ -1,8 +1,8 @@
 # GitHub Actions, Configurations and Workflows
 
-## [Smarter Bullets Pipeline ](./smarter-bullets.yml)
+## [Test Pipeline](./test-pipeline.yml)
 
-Lints, tests, builds, and deploys the Smarter Bullets full-stack application.
+Lints, tests, builds, and deploys the Opera full-stack application.
 
 ## [Snyk Security](./snyk-security.yml)
 
@@ -28,4 +28,4 @@ For reporting application or developer environment defects.
 
 ## [Feature Request](../ISSUE_TEMPLATE/feature_request.md)
 
-For requesting new capabilities in any part of Smarter Bullets.
+For requesting new capabilities in any part of Opera.

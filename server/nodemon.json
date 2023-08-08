@@ -1,7 +1,0 @@
-{
-    "watch": ["src", "build/dist"],
-    "ext": "ts",
-    "ignore": ["src/**/*.test.ts"],
-    "exec": "npm start"
-  }
-  

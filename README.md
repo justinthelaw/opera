@@ -1,24 +1,22 @@
-<div align="center">
-    <img src="./public/smarter-bullets-title.png" style="width: 100%" alt="smarter-bullets-title">
-</div>
-
-<br/>
+# Opera: Optimized Performance and Evaluation Rhetoric AI
 
 <div align="center">
     
-[![smarter-bullets-pipeline](https://github.com/justinthelaw/smarter-bullets/actions/workflows/smarter-bullets.yml/badge.svg)](https://github.com/justinthelaw/smarter-bullets/actions)
-[![snyk-security-scans](https://github.com/justinthelaw/smarter-bullets/actions/workflows/snyk-security.yml/badge.svg)](https://github.com/justinthelaw/smarter-bullets/actions/workflows/snyk-security.yml)
+[![test-pipeline](https://github.com/justinthelaw/opera/actions/workflows/test-pipeline.yml/badge.svg)](https://github.com/justinthelaw/opera/actions)
+[![snyk-security](https://github.com/justinthelaw/opera/actions/workflows/snyk-security.yml/badge.svg)](https://github.com/justinthelaw/opera/actions/workflows/snyk-security.yml)
 
 </div>
 
-Smarter Bullets is a project focused on developing a set of tools to automate the pointless aspects of evaluation and award package-writing so that officer and enlisted members can focus more on the individual and the achievements, rather than worry about irrelevant formatting. The ultimate objective is to allow the end-user to type or speak a stream of consciousness about a member's accomplishments and let Smarter Bullets handle the rest.
+**_Opera_**: Latin word (plural of opus) meaning "work," "effort," or "service." Usually referring to an individual or group's skillful or creative work.
 
-Bullet Forge is Smarter Bullets' narrative generation tool that harnesses the power of Natural Language Processing (NLP) through the use of Large Language Models (LLM). Bullet Forge is an API that is connected to a fine-tuned model that has been trained using 33,000+ unique EPR, OPR, and Award packages and bullets, across all of the Air and Space Force's positions and ranks.
+Opera is a project focused on developing a set of tools to automate the pointless aspects of performance report and award writing so that officer and enlisted members can focus more on the individual and the achievements, rather than worry about irrelevant formatting. The ultimate objective is to allow the end-user to type or speak a stream of consciousness about a member's accomplishments and let Opera handle the rest.
+
+The Forge is Opera's narrative generation tool that harnesses the power of Natural Language Processing (NLP) through the use of Large Language Models (LLM). The Forge is an API that is connected to a fine-tuned model that has been trained using 33,000+ unique EPR, OPR, and Award packages, across all of the Air and Space Force's positions and ranks.
 
 # Table of Contents
 
 1. [Background](#background)
-2. [Bullet Forge](#Bullet-forge)
+2. [The Forge](#the-forge)
 3. [Application Usage](#application-usage)
 4. [Contributing](#contributing)
 5. [Local Development](#local-development)
@@ -26,51 +24,69 @@ Bullet Forge is Smarter Bullets' narrative generation tool that harnesses the po
 
 # Background
 
-## What are "Bullets"
+## What are "Bullets" and "Narratives"
 
-One of the most pointless and time-consuming things that Air and Space Force officer and enlisted personnel do all the time is Bullet writing.
+One of the most pointless and time-consuming things that Air and Space Force officer and enlisted personnel do all the time is Bullet and Narrative writing.
 
-Air and Space Force personnel are required to write Bullets for performance reports and award packages, and these Bullets could mean the difference between the stagnation or advancement of an Airman or Guardian's career.
+Air and Space Force personnel are required to write Bullets for performance reports, and these Bullets could mean the difference between the stagnation or advancement of an Airman or Guardian's career. Bullets are action-impact-outcome statements that follow specific formatting and acronym usage rules which, more often than not, hinder effective communication and/or embellish the accomplishments of competing officers and enlisted personnel. Bullets also must stay within one line on a standardized PDF form's input.
 
-Bullets are action-impact-outcome statements that follow specific formatting rules which, more often than not, hinder effective communication and/or embellish the accomplishments of competing officers and enlisted personnel.
+In more recent times, the Air and Space Force have begun transitioning over to Narratives for award packages, and eventually for performance reports. Narratives still follow the action and impact/outcome format, and are still hard to write on the fly. They still enforce the same-but-different formatting and acronym-usage limitations. Narratives are meant to be written as multiple sentences across 1-5 lines on a standardized PDF form's input.
 
 ## How are "Bullets" Formatted
 
 Bullets follow a few formatting rules:
 
--   Each Bullet must be exactly one line, with the width of the line depending on the form (performance reports, award packages, etc).
--   Bullets generally adhere to the following formula, with some situational exceptions: `<ACTION>;<IMPACT>--<OUTCOME>`
--   Acronyms and abbreviations can be force-wide, organization, and/or commander-specific, with major inconsistencies in their abbreviation/acronym policies.
--   In Awards Packages, Enlisted Performance Reports (EPRs), and most other evaluation documents, the length of a Bullet must be ~202.321mm
--   In Officer Performance Reports (OPRs), the length of a Bullet must be ~201.041mm
--   In the (failed) rollout of myEval 1.0, Bullets were based on a maximum string length of 115 characters
+- Each Bullet must be exactly one line, with the width of the line depending on the form (performance reports, award packages, etc).
+- Bullets generally adhere to the following formula, with some situational exceptions: `- [ACTION];[IMPACT]--[OUTCOME]`
+- Acronyms and abbreviations can be force-wide, organization, and/or commander-specific, with major inconsistencies in their abbreviation/acronym policies.
+- In Awards Packages, Enlisted Performance Reports (EPRs), and most other evaluation documents, the length of a Bullet must be ~202.321mm
+- In Officer Performance Reports (OPRs), the length of a Bullet must be ~201.041mm
+- In the failed rollout of the Air Force's myEval tool, Bullets were based on a maximum length of 115 characters
 
 Those Bullet formatting rules lead to the following:
 
--   Information compression is prioritized over legibility
--   Time is wasted on acronym and/or abbreviation revisions
--   Bullet "appearance" becomes highly valued; some examples of arbitrary Bullet appearance rules:
-    -   Any sort of repetition = bad
-    -   Bullets near flush with page boundaries = good
--   Closing Bullets (push statements) are always generic but need to catch attention
+- Information compression is prioritized over legibility
+- Time is wasted on acronym and/or abbreviation revisions
+- Bullet "appearance" becomes highly valued; some examples of arbitrary Bullet appearance rules:
+  - Any sort of repetition = bad
+  - Bullets near flush with page boundaries = good
+- Closing Bullets (push statements) are always generic but need to catch attention
 
 ## Example Bullets
 
-Below are examples of fake/unclassified Air and Space Force Bullets for an OPR:
+Below are examples of unclassified Air and Space Force Bullets:
 
--   Delivered enterprise network s/w cert; adv'd 3 docs thru 5 orgs--guaranteed vital rqmts s/w accessibility DAF-wide
--   Streamlined 3-ktr proposal rvw; resolved 277 elements in <5 wks--trailblazed $900M resilient POTUS/CCMD comms
--   Justin embraces challenges with vigor; #1 choice to tackle big problems--perfect fit for NRO--send to PDE 1st look!
+- Delivered enterprise network s/w cert; adv'd 3 docs thru 5 orgs--guaranteed vital rqmts s/w accessibility DAF-wide
+- Streamlined 3-ktr proposal rvw; resolved 277 elements in <5 wks--trailblazed $900M resilient POTUS/CCMD comms
+- Justin embraces challenges with vigor; #1 choice to tackle big problems--perfect fit for NRO--send to PDE 1st look!
 
 One non-obvious similarity amongst all 3 of these bullets is that they fit into the form perfectly - right up against the edge of the field. This is because the input area within the PDF form renders characters differently depending on the encoding, such as the space character in UTF-8 versus UTF-16.
 
-# Bullet Forge
+## How are "Narratives" Formatted
 
-For more more details, to include contributing, on the Bullet Forge machine learning strategy, please read the [Bullet Forge README](./forge/README.md).
+Narratives follow very vague guidance that is still evolving as this README was written. At the moment, stricter guidance on how they are to be written was delegated to lower level commands and units. The following are the only rules that are required of a narrative, where statements are synonymous with sentences:
+
+- Each statement must be standalone and can be used as a evaluation point regardless of the rest of the sentences
+- Each statement must be readable, using minimal acronyms and plain english
+- If acronyms are used, they must be on a Headquarters Air Force (HAF) approved list
+- The narrative and per-statement length will be announced by the awarding authority, but must fit in the AF1206
+- Whitespace at the end of statements in encouraged - there is no need to fill an entire line
+
+## Example Narratives
+
+Below are HAF generated examples of unclassified Air and Space Force Narratives:
+
+- Capt Snuffy led a survey team of 33 MCA to establish an XAB in support of a PACAF ACE exercise across 4 countries and including 7 allies, culminating in 153 sorties and 334 training events completed. She also championed a critical organizational merger of the squadron’s maintenance and operations; results saved 360 maintenance workhours per week and increased sortie generation by 10%.
+
+- TSgt Snuffy led 4 instructors through Mission Ready Airmen course validation, generating 153 changes, eliminating 32 classroom hours, and enhancing course experience for 6 instructors and 70 students per year. Additionally, he facilitated a $15M facility renovation project, ensuring the CY22 schedule started on-time for 8 different courses spanning 11 AFSCs.
+
+# The Forge
+
+For more more details, to include contributing, on the The Forge machine learning strategy, please read the [The Forge README](forge/README.md).
 
 # Application Usage
 
-## Bullet Writing
+## Bullet and Narrative Writing
 
 The application provides instructions within the application for usage. The User Interface (UI) should be relatively easy to navigate. If the UI is not intuitive to you, then feedback can be submitted using the in-app feedback form or an Issue can be posted to this repository.
 
@@ -88,9 +104,12 @@ _CORRECT USAGE NOTE_: Sort the Excel sheet in DESCENDING ORDER. Due to the greed
 
 _EXAMPLE OF INCORRECT USAGE_:
 
+Ordering the following acronyms:
+
 - United States Air Force: USAF
-- United States Air Force Academy: USAFA  
-- Will cause "United States Air Force Academy" to be abbreviated as "USAF Academy"
+- United States Air Force Academy: USAFA
+
+Will cause "United States Air Force Academy" to be abbreviated as "USAF Academy"
 
 # Contributing
 
@@ -143,58 +162,73 @@ Spaces are allowed within the description, e.g., `Feature(DSR): This revolves ar
 
 # Local Development
 
-Prior to attempting a push to a branch, run the check all command to ensure all tests pass locally:
-
-```bash
-npm run check:all
-```
+For best results, pleases read and follow the instructions under this header in order.
 
 ## General
 
 Do the following prior to moving on to any further instructions below this section:
 
-1. At a minimum, have an integrated development environment (e.g., VSCode), a browser (e.g., Google Chrome), Docker Desktop, `git`, `node`, `npm`, and `python3` installed
+1. At a minimum, have an integrated development environment (e.g., VSCode), a browser (e.g., Google Chrome), `git`, `node`, `npm`, and `python3` installed
 2. Fork or clone this repository to your local development environment
-3. Go to the _config/_ directory and create a `.env.local` using the [.env.example](./config/.env.example) as a reference
+
+## Installing
+
+Execute the following at the root of the repository to install, test, and build everything required to run any part of the stack:
+
+```bash
+# copies .env.example into a local version
+npm run config:copy
+# installs all dependencies in all stacks
+npm run install:all
+# runs through all linting, testing, and building
+npm run check:all
+```
+
+When adding new packages using `pip3` or `npm`, be sure to commit an updated _package.json_ or _requirements.txt_ in the correct directory. For `pip3` in particular, please execute the following:
+
+```bash
+npm run freeze:all
+```
 
 ## Running
 
 To run each sub-stack in one terminal, with integrated logs, execute the following:
 
 ```bash
-# installs all dependencies in the sub-stacks
-npm run install:all
 # starts all sub-stacks
 npm run start:all
 ```
 
 ## Building
 
-For building the full-stack application in development mode, use the automated process through the execution of the following commands at the root of this project:
+For building the client in development mode, use the automated process through the execution of the following commands at the root of this project:
 
 ```bash
-npm run build:all
+npm run build:client
 ```
 
 ## Testing
 
-When testing the client or server in development execute the following at the root of the `client/` or `server/` directories to get hot-reload testing:
+When testing in development execute the following at the root of the repository:
 
 ```bash
-npm run test:dev
+# this runs all the unit and acceptance tests
+npm run test:all
 ```
 
-To run acceptance / integration / cypress tests, you can execute one of the following:
+To run acceptance tests interactively in cypress, execute the following at the root of the repository:
 
 ```bash
 # this opens cypress with the UI
 npm run acceptance:open
 ```
 
+# Pushing
+
+Prior to attempting a push to a branch, run the check all command again to ensure that all tests pass locally:
+
 ```bash
-# this opens cypress headless with Chrome
-# you can change the browser within the acceptance/package.json
-npm run acceptance:run
+npm run check:all
 ```
 
 ## Pipelines
@@ -213,6 +247,6 @@ The purpose of hard-forking this original pdf-bullets tool is as follows:
 
 1. Refactor the frontend codebase to modern TypeScript, and eliminate React bootstrap (e.g., CRA) overhead
 2. Provide more GitOps and open-source developer workflows and instructions
-3. Add fine-tuned T5 pre-trained model(s) to create a new [Bullet Forge](#bullet-forge) feature
+3. Add fine-tuned T5 pre-trained model(s) to create a new [The Forge](#The-Forge) feature
 4. Revamp the UI/UX using modern components and design standards
 5. Re-architect to a client-server application to provide persistence, security, and improvement insights
