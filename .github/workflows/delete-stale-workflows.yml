@@ -1,5 +1,6 @@
 name: Delete Stale Workflows
 on:
+  push:
   workflow_dispatch:
     inputs:
       days:
