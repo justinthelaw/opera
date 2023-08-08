@@ -28,6 +28,9 @@ debug.log
 .nyc_output
 .vscode
 
+pdf-bullets/
+archive/
+
 # acceptance
 videos/
 screenshots/

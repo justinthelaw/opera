@@ -15,7 +15,7 @@
     "acceptance:run": "chmod +x scripts/acceptance:run.sh && scripts/acceptance:run.sh",
     "acceptance:open": "chmod +x scripts/acceptance:open.sh && scripts/acceptance:open.sh",
     "test:client": "cd client && npm test",
-    "test:server": "cd server && . .venv/bin/activate && python3 -m unittest discover -s src -p '*Test.py' && deactivate",
+    "test:server": "cd server && . .venv/bin/activate && python3 -m unittest discover -s tests -p '*Test.py' && deactivate",
     "lint:client": "cd client && npm run lint:all",
     "lint:acceptance": "cd acceptance && npm run lint:all",
     "lint:all": "npm run lint:client && npm run lint:acceptance",
@@ -27,5 +27,8 @@
     "install:client": "cd client && npm install && cd ../acceptance && npm install",
     "freeze:server": "cd server && . .venv/bin/activate && pip3 freeze > requirements.txt && deactivate",
     "freeze:forge": "cd forge && . .venv/bin/activate && pip3 freeze > requirements.txt && deactivate"
+  },
+  "dependencies": {
+    "@types/draft-js": "^0.11.12"
   }
 }
