@@ -1,11 +1,11 @@
-import os
 from pydantic import BaseModel, validator
 from transformers import T5Tokenizer
 
-max_input_token_length = 512
-min_input_token_length = 1
-model = os.getenv("BULLET_MODEL", "google/flan-t5-base")
-tokenizer = "google/flan-t5-base"
+from src.constants.ForgeConstants import (
+    MAX_INPUT_TOKEN_LENGTH,
+    MIN_INPUT_TOKEN_LENGTH,
+    TOKENIZER,
+)
 
 
 class Input(BaseModel):
@@ -24,17 +24,17 @@ class Input(BaseModel):
         :return: The variable `v` is being returned.
         """
         tokenizer = T5Tokenizer.from_pretrained(
-            model,
+            TOKENIZER,
             legacy=False,
         )
         tokenized_length = len(tokenizer.tokenize(v))
 
-        if tokenized_length > max_input_token_length:
-            max_length_error = f"The maximum token length is {max_input_token_length}"
+        if tokenized_length > MAX_INPUT_TOKEN_LENGTH:
+            max_length_error = f"The maximum token length is {MAX_INPUT_TOKEN_LENGTH}"
             raise ValueError(max_length_error)
 
-        if tokenized_length < min_input_token_length:
-            min_length_error = f"The minimum token length is {min_input_token_length}"
+        if tokenized_length < MIN_INPUT_TOKEN_LENGTH:
+            min_length_error = f"The minimum token length is {MIN_INPUT_TOKEN_LENGTH}"
             raise ValueError(min_length_error)
 
         return v
@@ -47,8 +47,9 @@ class Output(BaseModel):
 class Describe(BaseModel):
     MODEL: str
     TOKENIZER: str
-    MAX_SOURCE_TEXT_LENGTH: int
-    MAX_TARGET_TEXT_LENGTH: int
+    MIN_INPUT_TOKEN_LENGTH: int
+    MAX_INPUT_TOKEN_LENGTH: int
+    MAX_OUTPUT_TOKEN_LENGTH: int
     NUM_BEAMS: int
     TEMPERATURE: float
     TOP_K: int

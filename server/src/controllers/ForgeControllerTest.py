@@ -5,11 +5,11 @@ from fastapi import FastAPI
 
 from src.controllers.ForgeController import ForgeController
 from src.utils.generators import generate_random_string
-from src.models.ForgeModel import (
-    Input,
-    Output,
-    min_input_token_length,
-    max_input_token_length,
+from src.models.ForgeModel import Input, Output
+from src.constants.ForgeConstants import (
+    MIN_INPUT_TOKEN_LENGTH,
+    MAX_INPUT_TOKEN_LENGTH,
+    MAX_OUTPUT_TOKEN_LENGTH,
 )
 
 
@@ -20,8 +20,8 @@ class ForgeControllerTest(unittest.TestCase):
 
     @patch("src.controllers.ForgeController.forge_service")
     def test_generate_post(self, mock_forge_service):
-        request_text = "hello"
-        response_text = "world"
+        request_text = "hello world"
+        response_text = "hello world"
         mock_forge_service.generate.return_value = Output(output=response_text)
 
         self.forge_controller = ForgeController()
@@ -46,7 +46,7 @@ class ForgeControllerTest(unittest.TestCase):
         request_object = {"input": request_text}
         response = self.client.post("/generate", json=request_object)
 
-        expected_error_message = f"The minimum token length is {min_input_token_length}"
+        expected_error_message = f"The minimum token length is {MIN_INPUT_TOKEN_LENGTH}"
         self.assertEqual(response.status_code, 422)
         self.assertTrue(expected_error_message in response.json()["detail"][0]["msg"])
 
@@ -60,7 +60,7 @@ class ForgeControllerTest(unittest.TestCase):
         request_object = {"input": request_text}
         response = self.client.post("/generate", json=request_object)
 
-        expected_error_message = f"The maximum token length is {max_input_token_length}"
+        expected_error_message = f"The maximum token length is {MAX_INPUT_TOKEN_LENGTH}"
         self.assertEqual(response.status_code, 422)
         self.assertTrue(expected_error_message in response.json()["detail"][0]["msg"])
 
@@ -69,8 +69,9 @@ class ForgeControllerTest(unittest.TestCase):
         response_object = {
             "MODEL": "some_model",
             "TOKENIZER": "some_tokenizer",
-            "MAX_SOURCE_TEXT_LENGTH": max_input_token_length,
-            "MAX_TARGET_TEXT_LENGTH": 0,
+            "MIN_INPUT_TOKEN_LENGTH": MIN_INPUT_TOKEN_LENGTH,
+            "MAX_INPUT_TOKEN_LENGTH": MAX_INPUT_TOKEN_LENGTH,
+            "MAX_OUTPUT_TOKEN_LENGTH": MAX_OUTPUT_TOKEN_LENGTH,
             "NUM_BEAMS": 0,
             "TEMPERATURE": 0.1,
             "TOP_K": 0,

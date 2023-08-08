@@ -1,4 +1,4 @@
-name: Artifact Cache Clean-up
+name: Cache Clean-up
 
 on:
   pull_request:

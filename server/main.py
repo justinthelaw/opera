@@ -1,24 +1,11 @@
-from fastapi import FastAPI
-from transformers import logging
+import os
+from dotenv import load_dotenv
+from uvicorn import run
 
-from src.controllers.ForgeController import ForgeController
-
-app = FastAPI()
-
-logging.set_verbosity_error()
+load_dotenv("../config/.env.local")
 
 
-@app.get("/")
-def welcome():
-    """
-    The `welcome` function returns a welcome message for the The Forge API.
-    :return: a dictionary with a key "response" and a welcome message as the value
-    """
-    return {
-        "response": "Welcome to the The Forge API! This is the LLM server for the Opera web application."
-    }
+host = os.getenv("SERVER_HOST")
+port = int(os.getenv("SERVER_PORT"))
 
-
-forge_routes = ForgeController().get_router()
-
-app.include_router(forge_routes)
+run("server:app", host=host, port=port)
