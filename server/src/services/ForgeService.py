@@ -2,47 +2,28 @@ import os
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 
 
-from src.models.ForgeModel import (
-    Input,
-    Output,
-    Describe,
-    model,
-    tokenizer,
-    max_input_token_length,
+from src.models.ForgeModel import Input, Output, Describe
+from src.constants.ForgeConstants import (
+    MODEL,
+    TOKENIZER,
+    MAX_INPUT_TOKEN_LENGTH,
+    MAX_OUTPUT_TOKEN_LENGTH,
+    MIN_INPUT_TOKEN_LENGTH,
+    TOP_K,
+    TOP_P,
+    TEMPERATURE,
+    NUM_BEAMS,
 )
 
 
 class ForgeService:
     def __init__(self):
-        # Model generation parameter control object
-        self.params = {
-            # Name of the pre-trained model that will be fine-tuned
-            "MODEL": model,
-            # Name of the base model's tokenizer
-            "TOKENIZER": tokenizer,
-            # Maximum number of tokens from source text that model accepts
-            "MAX_SOURCE_TEXT_LENGTH": max_input_token_length,
-            # Maximum number of tokens from target text that model generates
-            "MAX_TARGET_TEXT_LENGTH": 64,
-            # Number of alternative sequences generated at each step
-            # More beams improve results, but increase computation
-            "NUM_BEAMS": 2,
-            # Scales logits before soft-max to control randomness
-            # Lower values (~0) make output more deterministic
-            "TEMPERATURE": 0.9,
-            # Limits generated tokens to top K probabilities
-            # Reduces chances of rare word predictions
-            "TOP_K": 20,
-            # Applies nucleus sampling, limiting token selection to a cumulative probability
-            # Creates a balance between randomness and determinism
-            "TOP_P": 0.10,
-        }
         self.tokenizer = T5Tokenizer.from_pretrained(
-            self.params["TOKENIZER"],
-            model_max_length=max_input_token_length,
+            TOKENIZER,
+            model_max_length=MAX_INPUT_TOKEN_LENGTH,
             legacy=False,
         )
-        self.model = T5ForConditionalGeneration.from_pretrained(self.params["MODEL"])
+        self.model = T5ForConditionalGeneration.from_pretrained(MODEL)
 
     def generate(self, body: Input):
         """
@@ -55,21 +36,21 @@ class ForgeService:
         :return: The `generate` function returns an instance of the `Output` class. The `output` attribute
         of the `Output` instance contains the generated text, which is the decoded output of the model.
         """
-        inputs = self.tokenizer.encode(
+        inputs = self.tokenizer.encode_plus(
             body.input,
             return_tensors="pt",
             truncation=True,
-            max_length=self.params["MAX_SOURCE_TEXT_LENGTH"],
+            max_length=MAX_INPUT_TOKEN_LENGTH,
         )
 
         outputs = self.model.generate(
             inputs["input_ids"],
             attention_mask=inputs["attention_mask"],
-            max_length=self.params["MAX_TARGET_TEXT_LENGTH"],
-            num_beams=self.params["NUM_BEAMS"],
-            temperature=self.params["TEMPERATURE"],
-            top_k=self.params["TOP_K"],
-            top_p=self.params["TOP_P"],
+            max_length=MAX_OUTPUT_TOKEN_LENGTH,
+            num_beams=NUM_BEAMS,
+            temperature=TEMPERATURE,
+            top_k=TOP_K,
+            top_p=TOP_P,
             early_stopping=True,
         )
         return Output(
@@ -82,12 +63,13 @@ class ForgeService:
         :return: The `describe` method is returning the `params` attribute.
         """
         return Describe(
-            MODEL=os.path.basename(self.params["MODEL"]),
-            TOKENIZER=self.params["TOKENIZER"],
-            MAX_SOURCE_TEXT_LENGTH=self.params["MAX_SOURCE_TEXT_LENGTH"],
-            MAX_TARGET_TEXT_LENGTH=self.params["MAX_TARGET_TEXT_LENGTH"],
-            NUM_BEAMS=self.params["NUM_BEAMS"],
-            TEMPERATURE=self.params["TEMPERATURE"],
-            TOP_K=self.params["TOP_K"],
-            TOP_P=self.params["TOP_P"],
+            MODEL=os.path.basename(MODEL),
+            TOKENIZER=TOKENIZER,
+            MIN_INPUT_TOKEN_LENGTH=MIN_INPUT_TOKEN_LENGTH,
+            MAX_INPUT_TOKEN_LENGTH=MAX_INPUT_TOKEN_LENGTH,
+            MAX_OUTPUT_TOKEN_LENGTH=MAX_OUTPUT_TOKEN_LENGTH,
+            NUM_BEAMS=NUM_BEAMS,
+            TEMPERATURE=TEMPERATURE,
+            TOP_K=TOP_K,
+            TOP_P=TOP_P,
         )

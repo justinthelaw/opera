@@ -14,7 +14,9 @@ The [Resources](./resources/) directory contains the PDF forms and other guidanc
 
 ## Model Pulling
 
-The usage of the models is within the Jupyter Notebooks contained within the _notebooks/_ directories. Trained models are not uploaded to this repository due to size, and will be made available via a future Hugging Face checkpoint or as a separately hosted archive.
+The usage of the models is within the Jupyter Notebooks contained within the _notebooks/_ directories. Models for Opera's Forge are not uploaded to this repository due to size, and will be made available via a future Hugging Face checkpoint or as a separately hosted archive.
+
+**_IMPORTANT NOTE_**: The [.env.example](../config/.env.example) contains a placeholder model for both the Narrative and Bullet versions of Opera's Forge in order to pass the acceptance and server tests within the pipeline. Only change the local model within your own _.env.local_, which is created during the execution of `npm run install:all`.
 
 ## Fine Tuning
 
