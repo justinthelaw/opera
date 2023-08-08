@@ -37,7 +37,7 @@ In more recent times, the Air and Space Force have begun transitioning over to N
 Bullets follow a few formatting rules:
 
 - Each Bullet must be exactly one line, with the width of the line depending on the form (performance reports, award packages, etc).
-- Bullets generally adhere to the following formula, with some situational exceptions: `[ACTION];[IMPACT]--[OUTCOME]`
+- Bullets generally adhere to the following formula, with some situational exceptions: `- [ACTION];[IMPACT]--[OUTCOME]`
 - Acronyms and abbreviations can be force-wide, organization, and/or commander-specific, with major inconsistencies in their abbreviation/acronym policies.
 - In Awards Packages, Enlisted Performance Reports (EPRs), and most other evaluation documents, the length of a Bullet must be ~202.321mm
 - In Officer Performance Reports (OPRs), the length of a Bullet must be ~201.041mm
