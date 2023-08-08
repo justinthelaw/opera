@@ -15,7 +15,9 @@ private
 .DS_Store
 .env.*local
 .idea
+
 archive/
+pdf-bullets/
 
 npm-debug.log*
 yarn-debug.log*
