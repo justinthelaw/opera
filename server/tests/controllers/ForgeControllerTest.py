@@ -4,7 +4,7 @@ from fastapi.testclient import TestClient
 from fastapi import FastAPI
 
 from src.controllers.ForgeController import ForgeController
-from src.utils.generators import generate_random_string
+from tests.utils.generators import generate_random_string
 from src.models.ForgeModel import Input, Output
 from src.constants.ForgeConstants import (
     MIN_INPUT_TOKEN_LENGTH,

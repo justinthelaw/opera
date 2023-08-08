@@ -12,7 +12,7 @@ type Props = {
     setEditorState: (state: EditorState) => void
     width: number
     onSelect: (selectedText: string) => void
-    abbrReplacer: () => string
+    abbrReplacer: (string: string) => string
     enableOptim: boolean
     enableHighlight: boolean
     onHighlightChange: () => void
@@ -30,7 +30,7 @@ export const BulletComparator = ({
 }: Props) => {
     const bulletOutputID = 'bulletOutput'
     const [heightMap, setHeightMap] = useState(new Map())
-    // Editor callback that adds rich text editor keybinds
+    // Editor callback that adds rich text editor keybindings
     const handleKeyCommand = (command: DraftEditorCommand, editorState: EditorState) => {
         const newState = RichUtils.handleKeyCommand(editorState, command)
         if (newState) {
@@ -94,7 +94,9 @@ export const BulletComparator = ({
                         const regExp = new RegExp(word, 'g')
                         const matches = [...text.matchAll(regExp)]
                         matches.forEach((match) => {
-                            if (match.index) callback(match.index, match.index + match[0].length)
+                            if (match.index) {
+                                callback(match.index, match.index + match[0].length)
+                            }
                         })
                     })
                 }
@@ -112,19 +114,25 @@ export const BulletComparator = ({
                     ])
 
                 const { selectedText } = getSelectionInfo(newEditorState)
-                if (onSelect && selectedText !== '') onSelect(selectedText)
+                if (onSelect && selectedText !== '') {
+                    onSelect(selectedText)
+                }
 
                 setEditorState(EditorState.set(newEditorState, { decorator: createDecorator() }))
             } else {
                 const { selectedText } = getSelectionInfo(newEditorState)
-                if (onSelect && selectedText !== '') onSelect(selectedText)
+                if (onSelect && selectedText !== '') {
+                    onSelect(selectedText)
+                }
 
                 setEditorState(EditorState.set(newEditorState, { decorator: null }))
             }
         } else {
             setEditorState(newEditorState)
             const { selectedText } = getSelectionInfo(newEditorState)
-            if (onSelect && selectedText !== '') onSelect(selectedText)
+            if (onSelect && selectedText !== '') {
+                onSelect(selectedText)
+            }
         }
     }
 
@@ -160,7 +168,9 @@ export const BulletComparator = ({
         console.log(keys)
         for (const key in keys) {
             const blockDiv = document.querySelector(`div[data-offset-key="${key}-0-0"]`)
-            if (blockDiv) newHeightMap.set(key, blockDiv.getBoundingClientRect().height)
+            if (blockDiv) {
+                newHeightMap.set(key, blockDiv.getBoundingClientRect().height)
+            }
         }
         setHeightMap(newHeightMap)
     }, [editorState])
@@ -169,11 +179,9 @@ export const BulletComparator = ({
         <div className='bullets columns is-multiline'>
             <div
                 className='column'
-                style={
-                    {
-                        // width: width + 'mm',
-                    }
-                }
+                style={{
+                    width: width + 'mm'
+                }}
             >
                 <h2 className='subtitle'>Input Bullets Here:</h2>
                 <div className='border' style={{ width: width + 1 + 'mm' }}>
@@ -184,8 +192,6 @@ export const BulletComparator = ({
                         stripPastedStyles={true}
                         spellCheck={true}
                         autoCorrect={'off'}
-                        enableHighlight={enableHighlight}
-                        onHighlightChange={onHighlightChange}
                     />
                 </div>
             </div>
@@ -197,19 +203,26 @@ export const BulletComparator = ({
                     style={{ width: width + 1 + 'mm' }}
                     onMouseUp={() => onBulletSelect}
                     onKeyDown={() => selectOutput}
-                    tabIndex='0'
+                    tabIndex={0}
                 >
-                    {Array.from(editorState.getCurrentContent().getBlockMap(), ([key, block]) => {
-                        let text = block.getText()
-                        if (abbrReplacer) text = abbrReplacer(text)
+                    {(
+                        editorState.getCurrentContent().getBlockMap().entrySeq().toArray() as [string, ContentBlock][]
+                    ).map(([key, block]) => {
+                        let text: string = block.getText()
+                        if (abbrReplacer) {
+                            text = abbrReplacer(text)
+                        }
 
                         return (
                             <Bullet
                                 key={key}
                                 text={text}
                                 widthPx={width * DPMM}
+                                // remove once heightMap's Map<any, any> type is resolved
+                                // eslint-disable-next-line
                                 height={heightMap.get(key)}
                                 enableOptim={enableOptim}
+                                onHighlight={onHighlightChange}
                             />
                         )
                     })}
