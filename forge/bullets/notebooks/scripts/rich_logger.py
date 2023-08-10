@@ -33,6 +33,18 @@ class TrainingTable:
         """
         return self.table
 
+    def get_epoch_loss(self):
+        """
+        The function extracts the epoch and loss values from the table.
+        :return: A list of tuples containing the epoch and loss values.
+        """
+        epoch_loss = []
+        for row in self.table.rows:
+            epoch = int(row.cells[0].value) - 1
+            loss = float(row.cells[1].value)
+            epoch_loss.append((epoch, loss))
+        return epoch_loss
+
     def get_epoch_refresh(self):
         """
         The function `get_epoch_refresh` returns the value of the `epoch_refresh` attribute.
