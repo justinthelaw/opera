@@ -77,6 +77,26 @@ class TrainingTable:
 # Define a rich console logger
 general_logger = Console(record=False)
 
+    def perform_validation(self, validation_data):
+        """
+        The function `perform_validation` performs a validation step using 15% of the training data.
+
+        :param validation_data: The validation data to be used for evaluating the model.
+        :return: The validation results.
+        """
+        # Perform validation step using 15% of the training data
+        # ...
+
+    def calculate_rouge_scores(self, validation_results):
+        """
+        The function `calculate_rouge_scores` calculates ROUGE scores based on the validation results.
+
+        :param validation_results: The validation results to calculate ROUGE scores.
+        :return: The calculated ROUGE scores.
+        """
+        # Calculate ROUGE scores
+        # ...
+
     def validate_model(self, validation_data):
         """
         The function `validate_model` performs a validation step using 15% of the training data and calculates ROUGE scores.
@@ -84,10 +104,10 @@ general_logger = Console(record=False)
         :param validation_data: The validation data to be used for evaluating the model.
         """
         # Perform validation step using 15% of the training data
-        validation_results = perform_validation(validation_data)
+        validation_results = self.perform_validation(validation_data)
 
         # Calculate ROUGE scores
-        rouge_scores = calculate_rouge_scores(validation_results)
+        rouge_scores = self.calculate_rouge_scores(validation_results)
 
         # Print or store the ROUGE scores
         print("ROUGE scores:", rouge_scores)
