@@ -54,6 +54,19 @@ class TrainingTable:
         live_refresher.update(training_table.get_table(), refresh=True)
         self.epoch_refresh = False
 
+    def get_epoch_loss(self):
+        """
+        The function `get_epoch_loss` extracts the epoch and loss values from the table.
+    
+        :return: A list of tuples containing the epoch and loss values.
+        """
+        epoch_loss = []
+        for row in self.table.rows[1:]:
+            epoch = int(row.cells[0].value) - 1
+            loss = float(row.cells[1].value)
+            epoch_loss.append((epoch, loss))
+        return epoch_loss
+    
     def switch_epoch_refresh(self):
         """
         The function `switch_epoch_refresh` sets the `epoch_refresh` attribute to `True`.
@@ -63,6 +76,21 @@ class TrainingTable:
 
 # Define a rich console logger
 general_logger = Console(record=False)
+
+    def validate_model(self, validation_data):
+        """
+        The function `validate_model` performs a validation step using 15% of the training data and calculates ROUGE scores.
+
+        :param validation_data: The validation data to be used for evaluating the model.
+        """
+        # Perform validation step using 15% of the training data
+        validation_results = perform_validation(validation_data)
+
+        # Calculate ROUGE scores
+        rouge_scores = calculate_rouge_scores(validation_results)
+
+        # Print or store the ROUGE scores
+        print("ROUGE scores:", rouge_scores)
 
 # Instantiate new training table
 training_table = TrainingTable()
