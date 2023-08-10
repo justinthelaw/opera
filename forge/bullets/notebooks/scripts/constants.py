@@ -9,4 +9,10 @@ bullet_pattern = r"^-?([\w\W\s]{0,255});?([\w\W\s]{0,255})--([\w\W\s]{0,255})$"
 Input prefix used for fine tuning the model to comprehend as a key word for
 bullet creation tasking
 """
-bullet_prompt_prefix = "Summarize in format: -[ACTION];[IMPACT]--[OUTCOME]: "
+bullet_prompt_prefix = "Create a performance statement:\n"
+
+"""
+Input prefix used for fine tuning the model to comprehend as a key word for
+bullet creation tasking
+"""
+bullet_data_creation_prefix = "Expand upon the following:\n"
