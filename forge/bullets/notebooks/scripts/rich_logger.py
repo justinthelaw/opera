@@ -11,6 +11,11 @@ class TrainingTable:
             title="Training Status",
         )
         self.epoch_refresh = True
+        self.progress_table = Table(
+            Column("Epoch", justify="left"),
+            Column("Loss Rate", justify="left"),
+            title="Training Progress",
+        )
 
     def add_row(self, epoch, loss):
         """
@@ -25,6 +30,7 @@ class TrainingTable:
         value, the better the model is
         """
         self.table.add_row(str(epoch + 1), str(loss))
+        self.progress_table.add_row(str(epoch + 1), str(loss))
 
     def get_table(self):
         """
@@ -59,6 +65,26 @@ class TrainingTable:
         The function `switch_epoch_refresh` sets the `epoch_refresh` attribute to `True`.
         """
         self.epoch_refresh = True
+    def update_progress_table(self, epoch, loss):
+        """
+        The function "update_progress_table" updates the progress table with the given epoch and loss values.
+
+        :param epoch: The epoch parameter represents the current epoch number. In machine learning, an epoch
+        refers to one complete pass through the entire training dataset. It is used to track the progress of
+        the training process
+        :param loss: The "loss" parameter represents the loss value for a particular epoch. Loss is a
+        measure of how well a machine learning model is performing on a given task. It quantifies the
+        difference between the predicted output of the model and the actual output. The lower the loss
+        value, the better the model is
+        """
+        self.progress_table.add_row(str(epoch + 1), str(loss))
+
+    def get_progress_table(self):
+        """
+        The function returns the value of the "progress_table" attribute.
+        :return: The `get_progress_table` method is returning the `progress_table` attribute.
+        """
+        return self.progress_table
 
 
 # Define a rich console logger
