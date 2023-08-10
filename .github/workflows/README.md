@@ -12,9 +12,9 @@ Scans the repository application code and dependencies for potential vulnerabili
 
 Cleans out all of the cached artifacts the pipelines use once a pull request has closed on a branch.
 
-## [Delte Stale Workflows](./delete-stale-workflows.yml)
+## [Delete Stale Workflows](./delete-stale-workflows.yml)
 
-Cleans out workflows older than 7 days old, keeping a minimum of 5 runs per workflow.
+Cleans out workflow runs older than 7 days old, keeping a minimum of 5 runs per workflow.
 
 ## [Dependabot](../dependabot.yml)
 
