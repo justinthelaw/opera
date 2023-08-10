@@ -1,5 +1,5 @@
 # Import necessary libraries
-from transformers import AutoModel, AutoTokenizer
+from transformers import AutoModel, AutoTokenizer, T5ForConditionalGeneration, Seq2SeqTrainingArguments, Trainer
 import torch
 from loguru import logger
 from rich import print
@@ -20,8 +20,26 @@ tokenizer.save_pretrained(directory_path)
 model.save_pretrained(directory_path)
 
 # Fine-tune the model
-# This is a placeholder for the fine-tuning process. The actual process will depend on the specific model and task.
-# For example, for a T5 model, you might use the T5ForConditionalGeneration class and a Seq2SeqTrainingArguments object.
-# You would then create a Trainer object with these and your training dataset, and call the train method.
-# For now, this is left as a task for the user.
+# Ask the user for the path to the training dataset
+dataset_path = input("What is the path to the training dataset?")
+# Load the training dataset from the specified file
+# This is a placeholder. The actual code will depend on the format of your dataset.
+training_dataset = torch.load(dataset_path)
+# Create a Seq2SeqTrainingArguments object
+training_args = Seq2SeqTrainingArguments(
+    output_dir="./results",
+    num_train_epochs=3,
+    per_device_train_batch_size=16,
+    per_device_eval_batch_size=64,
+    warmup_steps=500,
+    weight_decay=0.01,
+)
+# Create a Trainer object with the model, training arguments, and training dataset
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    train_dataset=training_dataset,
+)
+# Call the train method on the Trainer object to fine-tune the model
+trainer.train()
 print("Fine-tuning model...")
