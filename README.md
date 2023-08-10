@@ -237,7 +237,7 @@ To get context on the GitHub actions that run during a push or pull to a branch,
 
 # Licensing
 
-_smarter_-bullets is licensed under the [MIT license](./LICENSE).
+Opera and all its components are licensed under the [MIT license](./LICENSE).
 
 ## Why the Hard Fork
 
@@ -247,6 +247,6 @@ The purpose of hard-forking this original pdf-bullets tool is as follows:
 
 1. Refactor the frontend codebase to modern TypeScript, and eliminate React bootstrap (e.g., CRA) overhead
 2. Provide more GitOps and open-source developer workflows and instructions
-3. Add fine-tuned T5 pre-trained model(s) to create a new [The Forge](#The-Forge) feature
+3. Add fine-tuned T5x pre-trained model(s) to create a new [The Forge](#The-Forge) feature
 4. Revamp the UI/UX using modern components and design standards
 5. Re-architect to a client-server application to provide persistence, security, and improvement insights
