@@ -1,15 +1,6 @@
 import torch
-from transformers import AutoModelForSequenceClassification, AutoTokenizer, AutoConfig
+from transformers import AutoModelForSequenceClassification, AutoTokenizer, AutoConfig, TrainingArguments, Trainer
 import logging
-
-# Set up logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
-import torch
-from transformers import AutoModelForSequenceClassification, AutoTokenizer, AutoConfig
-import logging
-from transformers import TrainingArguments, Trainer
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -89,6 +80,10 @@ if __name__ == "__main__":
     # Define the train and validation datasets
     train_dataset = ...
     validation_dataset = ...
+    
+    # Define and assign values to the model_name and output_dir variables
+    model_name = "model_name"
+    output_dir = "output_dir"
     
     # Fine-tune the model
     fine_tune_model(model_name, train_dataset, validation_dataset, output_dir)
