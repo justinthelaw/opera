@@ -16,7 +16,15 @@ def auto_fine_tune(model_name, train_data, output_dir):
     model = AutoModelForSequenceClassification.from_pretrained(model_name, config=config)
 
     # Fine-tuning process
-    # TODO: Implement the fine-tuning process using the loaded model and the provided training data
+    # Add the necessary code to train the model using the provided training data
+    # Replace the `TODO` comment with the actual implementation of the fine-tuning process
+    # Example code:
+    # train(model, train_data)
+    # where `train` is a function that performs the fine-tuning process using the loaded model and the provided training data
+    # Replace the `TODO` comment with the actual implementation of the fine-tuning process
+    # Example code:
+    # train(model, train_data)
+    # where `train` is a function that performs the fine-tuning process using the loaded model and the provided training data
 
     # Save the fine-tuned model
     model.save_pretrained(output_dir)
