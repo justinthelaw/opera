@@ -1,7 +1,8 @@
 name: Delete Stale Workflows
 on:
-  push:
   pull_request:
+    branches:
+      - "main"
 
 jobs:
   Delete:
