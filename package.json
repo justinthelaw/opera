@@ -27,7 +27,7 @@
     "install:client": "cd client && npm install && cd ../acceptance && npm install",
     "freeze:server": "cd server && . .venv/bin/activate && pip3 freeze > requirements.txt && deactivate",
     "freeze:forge": "cd forge && . .venv/bin/activate && pip3 freeze > requirements.txt && deactivate",
-    "deploy:client": "echo 'Deploying client to GitHub pages'"
+    "deploy:client": "npm run build:client && echo 'Deploying client to GitHub pages'"
   },
   "dependencies": {
     "@types/draft-js": "^0.11.12"
