@@ -23,96 +23,96 @@ The Forge is Opera's narrative generation tool that harnesses the power of Natur
 5. [Local Development](#local-development)
 6. [Licensing](#licensing)
 
+# Opera: Optimized Performance and Evaluation Rhetoric AI
+
+<div align="center">
+    
+[![test-pipeline](https://github.com/justinthelaw/opera/actions/workflows/test-pipeline.yml/badge.svg)](https://github.com/justinthelaw/opera/actions)
+[![snyk-security](https://github.com/justinthelaw/opera/actions/workflows/snyk-security.yml/badge.svg)](https://github.com/justinthelaw/opera/actions/workflows/snyk-security.yml)
+[![CodeQL](https://github.com/justinthelaw/opera/actions/workflows/codeql.yml/badge.svg)](https://github.com/justinthelaw/opera/actions/workflows/codeql.yml)
+
+</div>
+
+**_Opera_**: Latin word (plural of opus) meaning "work," "effort," or "service." Usually referring to an individual or group's skillful or creative endeavors.
+
+Opera is a project focused on developing a set of tools to automate the pointless aspects of performance report and award writing so that officer and enlisted members can focus more on the individual and the achievements, rather than worry about irrelevant formatting. The ultimate objective is to allow the end-user to type or speak a stream of consciousness about a member's accomplishments and let Opera handle the rest.
+
+The Forge is Opera's narrative generation tool that harnesses the power of Natural Language Processing (NLP) through the use of Large Language Models (LLM). The Forge is an API that is connected to a fine-tuned model that has been trained using 33,000+ unique EPR, OPR, and Award packages, across all of the Air and Space Force's positions and ranks.
+
+# Table of Contents
+
+1. [Background](#background)
+2. [The Forge](#the-forge)
+3. [Application Usage](#application-usage)
+4. [Contributing](#contributing)
+5. [Local Development](#local-development)
+6. [Licensing](#licensing)
+7. [Manual Deployment](#manual-deployment)
+
 # Background
 
 ## What are "Bullets" and "Narratives"
 
-One of the most pointless and time-consuming things that Air and Space Force officer and enlisted personnel do all the time is Bullet and Narrative writing.
-
-Air and Space Force personnel are required to write Bullets for performance reports, and these Bullets could mean the difference between the stagnation or advancement of an Airman or Guardian's career. Bullets are action-impact-outcome statements that follow specific formatting and acronym usage rules which, more often than not, hinder effective communication and/or embellish the accomplishments of competing officers and enlisted personnel. Bullets also must stay within one line on a standardized PDF form's input.
-
-In more recent times, the Air and Space Force have begun transitioning over to Narratives for award packages, and eventually for performance reports. Narratives still follow the action and impact/outcome format, and are still hard to write on the fly. They still enforce the same-but-different formatting and acronym-usage limitations. Narratives are meant to be written as multiple sentences across 1-5 lines on a standardized PDF form's input.
+...
 
 ## How are "Bullets" Formatted
 
-Bullets follow a few formatting rules:
-
-- Each Bullet must be exactly one line, with the width of the line depending on the form (performance reports, award packages, etc).
-- Bullets generally adhere to the following formula, with some situational exceptions: `- [ACTION];[IMPACT]--[OUTCOME]`
-- Acronyms and abbreviations can be force-wide, organization, and/or commander-specific, with major inconsistencies in their abbreviation/acronym policies.
-- In Awards Packages, Enlisted Performance Reports (EPRs), and most other evaluation documents, the length of a Bullet must be ~202.321mm
-- In Officer Performance Reports (OPRs), the length of a Bullet must be ~201.041mm
-- In the failed rollout of the Air Force's myEval tool, Bullets were based on a maximum length of 115 characters
-
-Those Bullet formatting rules lead to the following:
-
-- Information compression is prioritized over legibility
-- Time is wasted on acronym and/or abbreviation revisions
-- Bullet "appearance" becomes highly valued; some examples of arbitrary Bullet appearance rules:
-  - Any sort of repetition = bad
-  - Bullets near flush with page boundaries = good
-- Closing Bullets (push statements) are always generic but need to catch attention
+...
 
 ## Example Bullets
 
-Below are examples of unclassified Air and Space Force Bullets:
-
-- Delivered enterprise network s/w cert; adv'd 3 docs thru 5 orgs--guaranteed vital rqmts s/w accessibility DAF-wide
-- Streamlined 3-ktr proposal rvw; resolved 277 elements in <5 wks--trailblazed $900M resilient POTUS/CCMD comms
-- Justin embraces challenges with vigor; #1 choice to tackle big problems--perfect fit for NRO--send to PDE 1st look!
-
-One non-obvious similarity amongst all 3 of these bullets is that they fit into the form perfectly - right up against the edge of the field. This is because the input area within the PDF form renders characters differently depending on the encoding, such as the space character in UTF-8 versus UTF-16.
+...
 
 ## How are "Narratives" Formatted
 
-Narratives follow very vague guidance that is still evolving as this README was written. At the moment, stricter guidance on how they are to be written was delegated to lower level commands and units. The following are the only rules that are required of a narrative, where statements are synonymous with sentences:
-
-- Each statement must be standalone and can be used as a evaluation point regardless of the rest of the sentences
-- Each statement must be readable, using minimal acronyms and plain english
-- If acronyms are used, they must be on a Headquarters Air Force (HAF) approved list
-- The narrative and per-statement length will be announced by the awarding authority, but must fit in the AF1206
-- Whitespace at the end of statements in encouraged - there is no need to fill an entire line
+...
 
 ## Example Narratives
 
-Below are HAF generated examples of unclassified Air and Space Force Narratives:
-
-- Capt Snuffy led a survey team of 33 MCA to establish an XAB in support of a PACAF ACE exercise across 4 countries and including 7 allies, culminating in 153 sorties and 334 training events completed. She also championed a critical organizational merger of the squadron’s maintenance and operations; results saved 360 maintenance workhours per week and increased sortie generation by 10%.
-
-- TSgt Snuffy led 4 instructors through Mission Ready Airmen course validation, generating 153 changes, eliminating 32 classroom hours, and enhancing course experience for 6 instructors and 70 students per year. Additionally, he facilitated a $15M facility renovation project, ensuring the CY22 schedule started on-time for 8 different courses spanning 11 AFSCs.
+...
 
 # The Forge
 
-For more more details, to include contributing, on the The Forge machine learning strategy, please read the [The Forge README](forge/README.md).
+...
 
 # Application Usage
 
-## Bullet and Narrative Writing
-
-The application provides instructions within the application for usage. The User Interface (UI) should be relatively easy to navigate. If the UI is not intuitive to you, then feedback can be submitted using the in-app feedback form or an Issue can be posted to this repository.
-
-## Acronym List Imports
-
-Note: When importing rules from a Excel (.xlsx) file containing acronym definition, the columns are:
-
-| COLUMN NUMBER | COLUMN DESCRIPTION                                                         | EXAMPLE VALUES                                     |
-| :------------ | :------------------------------------------------------------------------- | :------------------------------------------------- |
-| 1             | Enabled: Boolean value, indicates whether to activate an acronym-word pair | TRUE, FALSE                                        |
-| 2             | Word: String value that contains the full-form, un-abbreviated word        | "United States Space Force", "Command and Control" |
-| 3             | Acronym: String value that contains the short-form, abbreviated word       | "USSF", "C2"                                       |
-
-_CORRECT USAGE NOTE_: Sort the Excel sheet in DESCENDING ORDER. Due to the greedy nature of the replacement, the reverse sorted order is required to ensure proper compression of abbreviations.
-
-_EXAMPLE OF INCORRECT USAGE_:
-
-Ordering the following acronyms:
-
-- United States Air Force: USAF
-- United States Air Force Academy: USAFA
-
-Will cause "United States Air Force Academy" to be abbreviated as "USAF Academy"
+...
 
 # Contributing
+
+...
+
+# Local Development
+
+...
+
+# Pushing
+
+...
+
+## Pipelines
+
+...
+
+# Licensing
+
+...
+
+# Manual Deployment
+
+To manually trigger the deployment workflow, follow these steps:
+
+1. Go to the [Actions](https://github.com/justinthelaw/opera/actions) tab of the repository.
+2. Click on the "Workflows" dropdown menu.
+3. Select the "Deploy" workflow.
+4. Click on the "Run workflow" button.
+5. Choose the branch you want to deploy from the "Branch" dropdown menu.
+6. Click on the "Run workflow" button to start the deployment.
+
+Please note that only authorized users with the necessary permissions can manually trigger the deployment workflow.
+
+</old_file>
 
 ## Pull Requests
 
