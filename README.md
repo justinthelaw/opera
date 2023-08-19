@@ -101,15 +101,6 @@ The Forge is Opera's narrative generation tool that harnesses the power of Natur
 
 # Manual Deployment
 
-To manually trigger the deployment workflow, follow these steps:
-
-1. Go to the [Actions](https://github.com/justinthelaw/opera/actions) tab of the repository.
-2. Click on the "Workflows" dropdown menu.
-3. Select the "Deploy" workflow.
-4. Click on the "Run workflow" button.
-5. Choose the branch you want to deploy from the "Branch" dropdown menu.
-6. Click on the "Run workflow" button to start the deployment.
-
 Please note that only authorized users with the necessary permissions can manually trigger the deployment workflow.
 
 </old_file>
