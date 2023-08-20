@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "cypress:open": "cypress open --config baseUrl='http://localhost:3000'",
-    "cypress:run": "cypress run --config baseUrl='http://localhost:3000' --browser chrome",
+    "cypress:run": "cypress run --config baseUrl='http://localhost:3000'",
     "lint:all": "eslint ./ --ext '.ts,.tsx' --fix"
   },
   "devDependencies": {
