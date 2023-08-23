@@ -5,7 +5,7 @@ import Home from './pages/Home'
 const App: React.FC = () => {
     return (
         <React.Fragment>
-            <Router>
+            <Router basename="/opera">
                 <Routes>
                     <Route path='/' element={<Home />} />
                 </Routes>
