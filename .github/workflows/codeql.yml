@@ -1,6 +1,7 @@
 name: CodeQL Quality
 
 on:
+  push:
   pull_request:
     branches: 
       - main
