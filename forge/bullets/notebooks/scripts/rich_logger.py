@@ -67,7 +67,4 @@ general_logger = Console(record=False)
 # Instantiate new training table
 training_table = TrainingTable()
 
-# Generate new live logging instance
-live_refresher = Live(
-    training_table.get_table(), console=general_logger, auto_refresh=False
-)
+live_refresher = Live(training_table.get_table(), console=general_logger, auto_refresh=False)
