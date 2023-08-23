@@ -18,9 +18,7 @@ Pushes the built application source code to the production environment.
 
 ## [Cleanup Repository](./cleanup-repository.yml)
 
-Cleans out all of the cached artifacts the pipelines use once a pull request has closed on a branch.
-
-Cleans out workflow runs older than 7 days old, keeping a minimum of 5 runs per workflow.
+Cleans out all of the cached artifacts the pipelines use once a pull request has closed on a branch. Also deletes workflow runs older than 5 days old.
 
 ## [Dependabot](../dependabot.yml)
 
