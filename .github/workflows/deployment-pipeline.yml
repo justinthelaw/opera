@@ -36,12 +36,13 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v3
 
-      
+      - name: Build Opera
+        run: npm run build:client
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: '.'
+          path: './client/dist/'
 
       - name: Deploy to GitHub Pages
         id: deployment
