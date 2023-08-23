@@ -7,6 +7,10 @@ on:
       - main
   workflow_dispatch:
 
+concurrency:
+  group: "cleanup"
+  cancel-in-progress: true
+
 jobs:
   workflows:
     runs-on: ubuntu-latest

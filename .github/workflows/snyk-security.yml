@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+concurrency:
+  group: "security"
+  cancel-in-progress: true
+
 jobs:
   scan:
     runs-on: ubuntu-latest

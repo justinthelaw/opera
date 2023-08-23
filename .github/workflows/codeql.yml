@@ -1,9 +1,13 @@
-name: "CodeQL"
+name: CodeQL Quality
 
 on:
   pull_request:
     branches: 
       - main
+
+concurrency:
+  group: "quality"
+  cancel-in-progress: true
 
 jobs:
   analyze:

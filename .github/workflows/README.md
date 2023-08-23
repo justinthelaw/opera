@@ -8,11 +8,17 @@ Lints, tests, builds, and deploys the Opera full-stack application.
 
 Scans the repository application code and dependencies for potential vulnerabilities. Also does something similar to dependabot, and suggests version bumps to dependencies.
 
-## [Cache Cleanup](./cache-cleanup.yml)
+## [CodeQL Quality](./codeql.yml)
+
+Scans source code for quality and security issues.
+
+## [Deploy Application](./deploy-application.yml)
+
+Pushes the built application source code to the production environment.
+
+## [Cleanup Repository](./cleanup-repository.yml)
 
 Cleans out all of the cached artifacts the pipelines use once a pull request has closed on a branch.
-
-## [Delete Stale Workflows](./delete-stale-workflows.yml)
 
 Cleans out workflow runs older than 7 days old, keeping a minimum of 5 runs per workflow.
 
