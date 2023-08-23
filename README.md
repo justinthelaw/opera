@@ -5,6 +5,7 @@
 [![test-pipeline](https://github.com/justinthelaw/opera/actions/workflows/test-pipeline.yml/badge.svg)](https://github.com/justinthelaw/opera/actions)
 [![snyk-security](https://github.com/justinthelaw/opera/actions/workflows/snyk-security.yml/badge.svg)](https://github.com/justinthelaw/opera/actions/workflows/snyk-security.yml)
 [![codeql-quality](https://github.com/justinthelaw/opera/actions/workflows/codeql.yml/badge.svg)](https://github.com/justinthelaw/opera/actions/workflows/codeql.yml)
+[![deployment-pipeline](https://github.com/justinthelaw/opera/actions/workflows/deployment-pipeline.yml/badge.svg)](https://github.com/justinthelaw/opera/actions/workflows/deployment-pipeline.yml)
 
 </div>
 
