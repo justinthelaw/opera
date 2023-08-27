@@ -18,11 +18,21 @@ The usage of the models is within the Jupyter Notebooks contained within the _no
 
 **_IMPORTANT NOTE_**: The [.env.example](../config/.env.example) contains a placeholder model for both the Narrative and Bullet versions of Opera's Forge in order to pass the acceptance and server tests within the pipeline. Only change the local model within your own _.env.local_, which is created during the execution of `npm run install:all`.
 
+To pull models specific to the ones trained for Opera's Forge please go to the following Hugging Face repositories:
+
+1. [opera-bullet-interpreter](https://huggingface.co/justinthelaw/opera-bullet-interpreter)
+2. [opera-bullet-forge-summarization](#)
+3. [opera-bullet-forge-generator](#)
+4. [opera-narrative-forge-summarization](#)
+5. [opera-narrative-forge-generator](#)
+6. [opera-narrative-interpreter](#)
+
 ## Fine Tuning
 
 The Opera fine-tuned models have been trained using 33,000+ unique EPR, OPR, and Award packages, across all Air and Space Force positions and ranks. A training, validation, and test data set are used to perform human-supervised training as well as manual and inspection of model performance through ROGUE score.
 
 First, please follow the instructions in [Virtual Environments](#virtual-environments). To run your fine tuning, follow and use the fine tuning Jupyter Notebooks located within the directories.
+
 ### Scraping
 
 Some of the data was sourced from the contributors and the contributors' peers, but much more data was required to build the fine tuning data sets for The Forge. Custom Python scripts were written to perform scraping on different statement repositories that are publicly available. Some examples of websites with open-source bullets include:
