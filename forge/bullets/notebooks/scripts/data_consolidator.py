@@ -4,7 +4,7 @@ from loguru import logger
 
 from scripts.file_utils import file_exists, remove_duplicates, append_line_to_file
 
-default_output_file_path = "../data/raw/consolidated_set.jsonl"
+default_output_file_path = "../data/raw/raw_consolidated_set.jsonl"
 
 
 async def process_line(line):
