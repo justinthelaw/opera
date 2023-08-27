@@ -2,7 +2,7 @@ import os
 import asyncio
 from loguru import logger
 
-from scripts.file_utils import file_exists, remove_duplicates
+from scripts.file_utils import file_exists, remove_duplicates, append_line_to_file
 
 default_output_file_path = "../data/raw/consolidated_set.jsonl"
 
@@ -23,7 +23,7 @@ async def process_line(line):
         line = line.replace('"', "'").strip()
         return f'{{"input": "<ADD DETAIL>", "output": "{line}"}}\n'
     except Exception as e:
-        logger.error(f"Error processing line: {line} ({e})")
+        logger.error(f"Error processing line: {line}: {e}")
         raise
 
 
@@ -47,13 +47,11 @@ async def process_file(file_path, output_file_path):
         processed_lines = await asyncio.gather(*[process_line(line) for line in lines])
 
         # Append to consolidated file
-        with open(output_file_path, "a", newline="\n") as file:
-            file.writelines(processed_lines)
-            file.writelines(processed_lines)
+        append_line_to_file(output_file_path, processed_lines)
 
         logger.success(f"File added to consolidation: {file_path}")
     except Exception as e:
-        logger.error(f"Error processing file: {file_path} ({e})")
+        logger.error(f"Error processing file: {file_path}: {e}")
         raise
 
 

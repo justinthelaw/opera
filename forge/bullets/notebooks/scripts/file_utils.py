@@ -47,17 +47,18 @@ def batch_clean_files(base_directory_path, bullet_pattern):
 def clean_special_chars(line):
     """
     The function `clean_special_chars` removes special characters from a given string.
-    
+
     :param line: The `line` parameter is a string that represents a line of text that you want to clean
     by removing special characters
     :return: a modified version of the input line with special characters removed.
     """
     return re.sub(r'["\\/\b\f\n\r\t`]', "", line)
 
+
 def contains_unprintable_characters(line):
     """
     The function checks if a given string contains any unprintable characters.
-    
+
     :param line: The `line` parameter is a string that represents a line of text
     :return: a boolean value indicating whether the given line contains any unprintable characters.
     """
@@ -168,3 +169,24 @@ def load_jsonl_as_dataframe(filepath, prefix):
     data["input"] = prefix + data["input"]
 
     return data
+
+
+def append_line_to_file(filepath, line_of_data):
+    """
+    The function `append_line_to_file` appends a line of data to a file specified by the `filepath`
+    parameter.
+
+    :param filepath: The filepath parameter is a string that represents the path to the file where you
+    want to append the line of data
+    :param line_of_data: The `line_of_data` parameter is a string that represents the line of data that
+    you want to append to the file
+    """
+    try:
+        with open(filepath, "a") as file:
+            # Check if the data ends with a newline, if not add one
+            if not line_of_data.endswith("\n"):
+                line_of_data += "\n"
+            file.write(line_of_data)
+    except Exception as e:
+        logger.error(f"Error processing file: {filepath}, on line: {line_of_data}: {e}")
+        raise
