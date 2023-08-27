@@ -10,8 +10,7 @@ Input prefix used for fine tuning the model to comprehend as a key word for
 bullet creation tasking
 """
 bullet_prompt_prefix = (
-    "Using the following Air and Space Force bullet statement format, where square brackets surround a theme and "
-    + "special characters are always of the same exact order and type, "
+    "Using the following Air and Space Force bullet statement format, where special characters are always of the same exact order and type, "
     + "`- [ACTION]; [IMPACT]--[RESULT] `, write an Air and Space Force bullet statement from the following details: "
 )
 
@@ -19,7 +18,4 @@ bullet_prompt_prefix = (
 Input prefix used for fine tuning the model to comprehend as a key word for
 bullet creation tasking
 """
-bullet_data_creation_prefix = (
-    "Using upwards of 3 sentences, expand upon the following Air and Space Force bullet statement by "
-    + "spelling-out acronyms and adding additional context that is not already included in the Air and Space Force bullet statement: "
-)
+bullet_data_creation_prefix = "Using full sentences, expand upon the following Air and Space Force bullet statement by spelling-out acronyms and adding additional context: "
