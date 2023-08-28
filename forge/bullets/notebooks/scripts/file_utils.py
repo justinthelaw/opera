@@ -39,9 +39,15 @@ def batch_clean_files(base_directory_path, bullet_pattern):
     ]
 
     for dirty_file_path in file_paths:
-        logger.info(f"Performing extra cleaning on file: {dirty_file_path}")
-        clean_file(dirty_file_path, bullet_pattern)
-        logger.success("Extra cleaning on file complete!")
+        # Check if the file has a text file extension
+        valid_extensions = [".txt"]
+        file_extension = os.path.splitext(dirty_file_path)[1]
+        if file_extension not in valid_extensions:
+            logger.warning(f"Skipping non-text (.txt) file: {dirty_file_path}")
+        else:
+            logger.info(f"Performing extra cleaning on file: {dirty_file_path}")
+            clean_file(dirty_file_path, bullet_pattern)
+            logger.success("Extra cleaning on file complete!")
 
 
 def clean_special_chars(line):
@@ -65,13 +71,13 @@ def contains_unprintable_characters(line):
     return bool(re.search(r"[^\x20-\x7E]", line))
 
 
-def clean_file(filepath, pattern):
+def clean_file(file_path, pattern):
     """
     The `clean_file` function takes a file path and a pattern as input, reads the file, cleans it by
     removing extraneous new lines, special characters, and leading/ending whitespace, ensures each line
     starts with a bullet character, and writes the cleaned lines back to the file.
 
-    :param filepath: The `filepath` parameter is the path to the file that needs to be cleaned up. It
+    :param file_path: The `file_path` parameter is the path to the file that needs to be cleaned up. It
     should be a string representing the file's location on the file system.
     :param pattern: The `pattern` parameter is a regular expression pattern that is used to match and
     select specific lines in the file for cleaning.
@@ -80,7 +86,7 @@ def clean_file(filepath, pattern):
         logger.info("Cleaning up file...")
         clean_lines = []
 
-        with open(filepath, "r") as file:
+        with open(file_path, "r") as file:
             for line in file:
                 # Clean the line of special characters, new lines, and strip whitespace
                 cleaned_line = clean_special_chars(line).strip()
@@ -101,7 +107,7 @@ def clean_file(filepath, pattern):
                 if re.match(pattern, cleaned_line) and 50 < len(cleaned_line) <= 115:
                     clean_lines.append(cleaned_line)
 
-        with open(filepath, "w") as file:
+        with open(file_path, "w") as file:
             file.write("\n".join(clean_lines))
 
         logger.success("File cleaned!")
