@@ -5,7 +5,7 @@ export const defaultText: string =
 
 export const defaultWidth: number = 202.321
 
-type Abbreviation = {
+export type Abbreviation = {
     enabled: boolean
     value: string
     abbr: string
