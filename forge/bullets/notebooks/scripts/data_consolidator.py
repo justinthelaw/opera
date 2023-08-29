@@ -1,9 +1,10 @@
+import os
 import asyncio
 from loguru import logger
 
-from scripts.file_utils import file_exists, remove_duplicates
+from scripts.file_utils import file_exists, remove_duplicates, append_line_to_file
 
-default_output_file_path = "../data/raw/consolidated_set.jsonl"
+default_output_file_path = "../data/raw/raw_consolidated_set.jsonl"
 
 
 async def process_line(line):
@@ -22,7 +23,7 @@ async def process_line(line):
         line = line.replace('"', "'").strip()
         return f'{{"input": "<ADD DETAIL>", "output": "{line}"}}\n'
     except Exception as e:
-        logger.error(f"Error processing line: {line} ({e})")
+        logger.error(f"Error processing line: {line}: {e}")
         raise
 
 
@@ -46,13 +47,11 @@ async def process_file(file_path, output_file_path):
         processed_lines = await asyncio.gather(*[process_line(line) for line in lines])
 
         # Append to consolidated file
-        with open(output_file_path, "a", newline="\n") as file:
-            file.writelines(processed_lines)
-            file.writelines(processed_lines)
+        append_line_to_file(output_file_path, processed_lines)
 
         logger.success(f"File added to consolidation: {file_path}")
     except Exception as e:
-        logger.error(f"Error processing file: {file_path} ({e})")
+        logger.error(f"Error processing file: {file_path}: {e}")
         raise
 
 
@@ -79,22 +78,30 @@ async def process_files(file_paths, output_file_path):
         raise
 
 
-async def consolidate_files(file_paths, output_file_path=default_output_file_path):
+async def consolidate_files(base_directory_path, output_file_path=default_output_file_path):
     """
-    The `consolidate_files` function takes a list of file paths and an optional output file path,
-    processes the files asynchronously, removes duplicate bullets, and logs the success message with the
-    output file path.
-
-    :param file_paths: A list of file paths to the files that need to be consolidated
+    The function `consolidate_files` consolidates all files in a given directory and removes duplicate
+    bullets from the output file.
+    
+    :param base_directory_path: The base directory path is the path to the directory where the files
+    that need to be consolidated are located. This directory can contain subdirectories as well
     :param output_file_path: The `output_file_path` parameter is the path where the consolidated and
-    cleaned data will be saved. It is an optional parameter with a default value of
-    `default_output_file_path`. If no value is provided for `output_file_path`, the default value will
-    be used
+    cleaned data will be saved. If no `output_file_path` is provided, it will default to
+    `default_output_file_path`
     """
-    # Consolidate all provided files
-    await process_files(file_paths, output_file_path)
+    try:
+        # Get list of all file paths in base_directory_path
+        file_paths = [os.path.join(root, file) for root, _, files in os.walk(base_directory_path) for file in files]
+        
+        # Process each file
+        await process_files(file_paths, output_file_path)
 
-    # Remove duplicate bullets
-    remove_duplicates(output_file_path)
+        # Remove duplicate bullets
+        remove_duplicates(output_file_path)
 
-    logger.success(f"Consolidated, clean data has been output to: {output_file_path}")
+        logger.success(f"Consolidated, clean data has been output to: {output_file_path}")
+    
+    except Exception as e:
+        logger.error(f"Error in consolidate_files function: {e}")
+        raise
+

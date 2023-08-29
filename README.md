@@ -86,6 +86,8 @@ Below are HAF generated examples of unclassified Air and Space Force Narratives:
 
 For more more details, to include contributing, on the The Forge machine learning strategy, please read the [The Forge README](forge/README.md).
 
+You can also visit this [Hugging Face Repository page](https://huggingface.co/justinthelaw), for different Forge model details and instructions for pulling, inferencing, and further training.
+
 # Application Usage
 
 ## Bullet and Narrative Writing
