@@ -117,7 +117,7 @@ Will cause "United States Air Force Academy" to be abbreviated as "USAF Academy"
 
 # Contributing
 
-Do you have a burning question, or maybe you spotted a glaring issue in ghe code or new area of improvement? Join our [Discord Server](https://discord.gg/aJbE2xfQYC) to get the fastest response and join us in building Opera!
+Do you have a burning question, or maybe you spotted an issue or new area of improvement you'd like to discuss? If yes, please join our [Discord Server](https://discord.gg/aJbE2xfQYC)!
 
 ## Pull Requests
 
