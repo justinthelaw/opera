@@ -4,6 +4,7 @@ from loguru import logger
 
 from scripts.file_utils import file_exists, remove_duplicates, append_line_to_file
 
+# This is the output path for the consolidated file
 default_output_file_path = "../data/raw/raw_consolidated_set.jsonl"
 
 
