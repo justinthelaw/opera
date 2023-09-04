@@ -4,6 +4,7 @@
     "author": "justinthelaw",
     "license": "MIT",
     "main": "index.tsx",
+    "homepage": "https://justinthelaw.github.io/opera/",
     "scripts": {
         "start": "NODE_ENV=development webpack-dev-server --config webpack.config.js",
         "start:check": "NODE_ENV=development CHECK=true webpack-dev-server --config webpack.config.js",
@@ -15,13 +16,13 @@
         "test:dev": "jest --runInBand --watchAll --detectOpenHandles --verbose"
     },
     "dependencies": {
+        "@types/react": "^18.2.20",
         "@handsontable/react": "^13.0.0",
-        "@types/react": "^18.2.15",
         "@types/react-dom": "^18.2.7",
         "handsontable": "^13.0.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "react-router-dom": "^6.14.2"
+        "react-router-dom": "^6.15.0"
     },
     "devDependencies": {
         "@testing-library/jest-dom": "^5.16.5",

@@ -4,14 +4,16 @@
     
 [![test-pipeline](https://github.com/justinthelaw/opera/actions/workflows/test-pipeline.yml/badge.svg)](https://github.com/justinthelaw/opera/actions)
 [![snyk-security](https://github.com/justinthelaw/opera/actions/workflows/snyk-security.yml/badge.svg)](https://github.com/justinthelaw/opera/actions/workflows/snyk-security.yml)
+[![codeql-quality](https://github.com/justinthelaw/opera/actions/workflows/codeql.yml/badge.svg)](https://github.com/justinthelaw/opera/actions/workflows/codeql.yml)
+[![deployment-pipeline](https://github.com/justinthelaw/opera/actions/workflows/deployment-pipeline.yml/badge.svg)](https://github.com/justinthelaw/opera/actions/workflows/deployment-pipeline.yml)
 
 </div>
 
-**_Opera_**: Latin word (plural of opus) meaning "work," "effort," or "service." Usually referring to an individual or group's skillful or creative work.
+**_Opera_**: Latin word (plural of opus) meaning "work," "effort," or "service." Usually referring to an individual or group's skillful or creative endeavors.
 
 Opera is a project focused on developing a set of tools to automate the pointless aspects of performance report and award writing so that officer and enlisted members can focus more on the individual and the achievements, rather than worry about irrelevant formatting. The ultimate objective is to allow the end-user to type or speak a stream of consciousness about a member's accomplishments and let Opera handle the rest.
 
-The Forge is Opera's narrative generation tool that harnesses the power of Natural Language Processing (NLP) through the use of Large Language Models (LLM). The Forge is an API that is connected to a fine-tuned model that has been trained using 33,000+ unique EPR, OPR, and Award packages, across all of the Air and Space Force's positions and ranks.
+The Forge is Opera's narrative generation tool that harnesses the power of Natural Language Processing (NLP) through the use of Large Language Models (LLM). The Forge is an API that is connected to fine-tuned models that have been trained using 33,000+ unique EPR, OPR, and Award packages, across all of the Air and Space Force's positions and ranks.
 
 # Table of Contents
 
@@ -84,6 +86,8 @@ Below are HAF generated examples of unclassified Air and Space Force Narratives:
 
 For more more details, to include contributing, on the The Forge machine learning strategy, please read the [The Forge README](forge/README.md).
 
+You can also visit this [Hugging Face Repository page](https://huggingface.co/justinthelaw), for different Forge model details and instructions for pulling, inferencing, and further training.
+
 # Application Usage
 
 ## Bullet and Narrative Writing
@@ -112,6 +116,8 @@ Ordering the following acronyms:
 Will cause "United States Air Force Academy" to be abbreviated as "USAF Academy"
 
 # Contributing
+
+Do you have a burning question, or maybe you spotted an issue or new area of improvement that you'd like to discuss? If your answer is yes to any of these, then please join us in our [Discord Server](https://discord.gg/aJbE2xfQYC)!
 
 ## Pull Requests
 
@@ -237,7 +243,7 @@ To get context on the GitHub actions that run during a push or pull to a branch,
 
 # Licensing
 
-_smarter_-bullets is licensed under the [MIT license](./LICENSE).
+Opera and all its components are licensed under the [MIT license](./LICENSE).
 
 ## Why the Hard Fork
 
@@ -247,6 +253,16 @@ The purpose of hard-forking this original pdf-bullets tool is as follows:
 
 1. Refactor the frontend codebase to modern TypeScript, and eliminate React bootstrap (e.g., CRA) overhead
 2. Provide more GitOps and open-source developer workflows and instructions
-3. Add fine-tuned T5 pre-trained model(s) to create a new [The Forge](#The-Forge) feature
+3. Add fine-tuned T5x pre-trained model(s) to create a new [The Forge](#The-Forge) feature
 4. Revamp the UI/UX using modern components and design standards
 5. Re-architect to a client-server application to provide persistence, security, and improvement insights
+
+# Our Valued Contributors
+Below are the profiles, people and bot, of our contributors! Whether it be time, code, data, or support, these contributors were critical to the advancement of Opera's development.
+    
+[<img src="https://github.com/justinthelaw.png" width="60px;"/>](https://github.com/justinthelaw)
+[<img src="https://github.com/ananaso.png" width="60px;"/>](https://github.com/ananaso)
+[<img src="https://github.com/ckhordiasma.png" width="60px;"/>](https://github.com/ckhordiasma)
+[<img src="https://github.com/abbytran1996.png" width="60px;"/>](https://github.com/abbytran1996)
+[<img src="https://github.com/AFKrcher.png" width="60px;"/>](https://github.com/AFKrcher)
+[<img src="https://github.com/sweepai.png" width="60px;"/>](https://github.com/sweepai)

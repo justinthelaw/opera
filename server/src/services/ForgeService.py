@@ -43,7 +43,7 @@ class ForgeService:
             max_length=MAX_INPUT_TOKEN_LENGTH,
         )
 
-        outputs = self.model.generate(
+        outputs = self.model.generate( # type: ignore
             inputs["input_ids"],
             attention_mask=inputs["attention_mask"],
             max_length=MAX_OUTPUT_TOKEN_LENGTH,

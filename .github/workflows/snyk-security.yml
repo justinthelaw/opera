@@ -1,19 +1,23 @@
 name: Snyk Security
 
 on:
+  push:
   pull_request:
     branches:
       - main
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  Scan:
+  scan:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository
       - uses: actions/checkout@master
       - name: Run Snyk Scans
-        # Run Snyk Scans
+
         uses: snyk/actions/node@master
         continue-on-error: true
 
@@ -23,7 +27,6 @@ jobs:
         with:
           args: --sarif-file-output=snyk.sarif
 
-      # Upload Results to GitHub Code Scanning
       - name: Upload Results to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v2
 

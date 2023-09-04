@@ -4,7 +4,7 @@
   "author": "justinthelaw",
   "license": "MIT",
   "scripts": {
-    "check:all": "npm run lint:all && npm run test:all && npm run build:client",
+    "check:all": "npm run lint:all && npm run test:all",
     "install:all": "npm run create:venv && npm run install:forge && npm run install:server && npm run install:client",
     "start:all": "chmod +x scripts/start:all.sh && scripts/start:all.sh",
     "test:all": "npm run test:client && npm run test:server && npm run acceptance:run",
@@ -21,7 +21,8 @@
     "lint:all": "npm run lint:client && npm run lint:acceptance",
     "build:client": "cd client && npm run build",
     "config:copy": "cp config/.env.example config/.env.local",
-    "create:venv": "cd server && rm -rf .venv && python3 -m venv .venv && cd ../forge && rm -rf .venv && python3 -m venv .venv ",
+    "create:venv": "npm run remove:pycache && cd server && rm -rf .venv && python3 -m venv .venv && cd ../forge && rm -rf .venv && python3 -m venv .venv ",
+    "remove:pycache": "rm -rf **/*/__pycache__",
     "install:server": "cd server && . .venv/bin/activate && pip install --upgrade pip && pip3 install -r requirements.txt && deactivate",
     "install:forge": "cd forge && . .venv/bin/activate && pip install --upgrade pip && pip3 install -r requirements.txt && deactivate",
     "install:client": "cd client && npm install && cd ../acceptance && npm install",

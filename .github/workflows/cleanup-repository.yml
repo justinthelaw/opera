@@ -1,0 +1,60 @@
+name: Cleanup Repository
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+      
+  workflow_dispatch:
+
+concurrency:
+  group: "cleanup"
+  cancel-in-progress: true
+
+jobs:
+  workflows:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - name: Delete Stale Workflows
+        uses: Mattraks/delete-workflow-runs@v2.0.4
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 5
+          keep_minimum_runs: 0
+          delete_workflow_pattern: ${{ github.event.inputs.delete_workflow_pattern }}
+          delete_workflow_by_state_pattern: ${{ github.event.inputs.delete_workflow_by_state_pattern }}
+          delete_run_by_conclusion_pattern: ${{ github.event.inputs.delete_run_by_conclusion_pattern }}
+          dry_run: ${{ github.event.inputs.dry_run }}
+
+  caches:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Cleanup Artifact Cache
+        run: |
+          gh extension install actions/gh-actions-cache
+
+          REPO=${{ github.repository }}
+          BRANCH="refs/pull/${{ github.event.pull_request.number }}/merge"
+
+          echo "Fetching list of cache keys"
+          cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH | awk -F '\t' -v pattern="opera-build" '$0 ~ pattern {print $1}')
+
+          ## Setting this to not fail the workflow while deleting cache keys. 
+          set +e
+          echo "Deleting caches..."
+          for cacheKey in $cacheKeysForPR
+          do
+              gh actions-cache delete $cacheKey -R $REPO -B $BRANCH --confirm
+          done
+          echo "Done"
+
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
