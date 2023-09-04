@@ -6,6 +6,11 @@ from scripts.constants import max_input_token_length
 
 
 def select_model():
+    """
+    The function `select_model()` prompts the user to input the paths of a pre-trained model and
+    tokenizer, and returns these paths as a tuple.
+    :return: two values: `model_path` and `tokenizer_path`.
+    """
     # Path of the pre-trained model that will be used
     model_path = input(
         "Input a checkpoint model's Hugging Face repository or a relative path"
@@ -19,7 +24,18 @@ def select_model():
     return model_path, tokenizer_path
 
 
-def load_model(model_path, tokenizer_path):
+def load_model(model_path, tokenizer_path, device):
+    """
+    The function `load_model` loads a pre-trained model and tokenizer, sets the device to be used (GPU
+    or CPU), and optionally saves the model to the local environment.
+    
+    :param model_path: The `model_path` parameter is the path to the pre-trained model that you want to
+    load. It should be a string representing the file path where the model is stored on your system
+    :param tokenizer_path: The `tokenizer_path` parameter is the path to the directory where the
+    pre-trained tokenizer is saved. This tokenizer is used to convert text inputs into tokens that can
+    be processed by the model
+    :return: The function `load_model` returns two objects: `model` and `tokenizer`.
+    """
     # Load the pre-trained model and tokenizer
     logger.info(
         f"Instantiating tokenizer from {tokenizer_path}, and model from {model_path}"
@@ -31,8 +47,6 @@ def load_model(model_path, tokenizer_path):
     )
     input_model = T5ForConditionalGeneration.from_pretrained(f"{model_path}")
     logger.info(f"Loading {model_path}...")
-    # Set device to be used based on GPU availability
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     # Model is sent to device for use
     model = input_model.to(device)  # type: ignore
     logger.success("Instantiated target tokenizer and model")
@@ -49,6 +63,21 @@ def load_model(model_path, tokenizer_path):
 
 
 def optionally_save_model(model_path, tokenizer_path, tokenizer, input_model):
+    """
+    The function `optionally_save_model` downloads a tokenizer and a model from specified paths and
+    saves them in a local directory.
+    
+    :param model_path: The `model_path` parameter is the path where the model will be saved. It is a
+    string that specifies the location and name of the model file
+    :param tokenizer_path: The `tokenizer_path` parameter is the path where the tokenizer is located. It
+    is used to download the tokenizer from this path and save it to a local directory
+    :param tokenizer: The `tokenizer` parameter is an instance of a tokenizer class. It is used to
+    tokenize text data, which is an important step in natural language processing tasks such as text
+    classification or language generation. The tokenizer is responsible for breaking down the input text
+    into individual tokens or sub-words
+    :param input_model: The `input_model` parameter is the model that you want to save. It should be an
+    instance of a model class
+    """
     logger.info(
         f"Downloading tokenizer from {tokenizer_path}, and model from {model_path}"
     )

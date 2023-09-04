@@ -18,6 +18,15 @@ class CustomDataset(Dataset):
         return len(self.target_text)
 
     def __getitem__(self, index):
+        """
+        The `__getitem__` function takes an index as input and returns a dictionary containing the
+        encoded source and target texts for that index, along with their corresponding masks.
+        
+        :param index: The `index` parameter in the `__getitem__` method is used to specify the index of
+        the item you want to retrieve from the dataset. It is used to access the corresponding source
+        and target texts for that index
+        :return: The `__getitem__` method returns a dictionary with the following keys and values:
+        """
         source_text = str(self.source_text[index])
         target_text = str(self.target_text[index])
 

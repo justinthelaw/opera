@@ -32,6 +32,10 @@ def batch_clean_files(base_directory_path, bullet_pattern):
     to identify and remove bullet points from the text files. It is used in the `clean_file` function to
     perform the cleaning operation
     """
+    logger.info(
+        f"Performing extra cleaning on files in directory: {base_directory_path}"
+    )
+
     file_paths = [
         os.path.join(root, file)
         for root, _, files in os.walk(base_directory_path)
@@ -45,9 +49,9 @@ def batch_clean_files(base_directory_path, bullet_pattern):
         if file_extension not in valid_extensions:
             logger.warning(f"Skipping non-text (.txt) file: {dirty_file_path}")
         else:
-            logger.info(f"Performing extra cleaning on file: {dirty_file_path}")
             clean_file(dirty_file_path, bullet_pattern)
-            logger.success("Extra cleaning on file complete!")
+
+    logger.success("Extra cleaning on directory complete!")
 
 
 def clean_special_chars(line):
@@ -82,8 +86,10 @@ def clean_file(file_path, pattern):
     :param pattern: The `pattern` parameter is a regular expression pattern that is used to match and
     select specific lines in the file for cleaning.
     """
+
+    logger.info(f"Performing extra cleaning on file: {file_path}")
+
     try:
-        logger.info("Cleaning up file...")
         clean_lines = []
 
         with open(file_path, "r") as file:
@@ -110,7 +116,7 @@ def clean_file(file_path, pattern):
         with open(file_path, "w") as file:
             file.write("\n".join(clean_lines))
 
-        logger.success("File cleaned!")
+        logger.success("Extra cleaning on file complete!")
 
     except Exception as e:
         logger.error(f"A runtime error occurred: {e}")
