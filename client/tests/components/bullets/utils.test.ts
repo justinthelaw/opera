@@ -1,4 +1,11 @@
-import { hashCode, optimize, renderBulletText, Results, tokenize, adobeLineSplitFn } from '../../../src/components/bullets/utils'
+import {
+    adobeLineSplitFn,
+    hashCode,
+    optimize,
+    renderBulletText,
+    Results,
+    tokenize
+} from '../../../src/components/bullets/utils'
 import { STATUS } from '../../../src/const/const'
 
 describe('hashCode', () => {
@@ -125,37 +132,37 @@ describe('optimize', () => {
 })
 
 describe('tokenization tests', () => {
-    test("should split sentence into several pieces", () => {
-        const text = "hello world hello world";
-        const results = ["hello", "world", "hello", "world"];
-        expect(tokenize(text)).toEqual(results);
-    });
+    test('should split sentence into several pieces', () => {
+        const text = 'hello world hello world'
+        const results = ['hello', 'world', 'hello', 'world']
+        expect(tokenize(text)).toEqual(results)
+    })
 
-    test("should split sentence into several pieces even if there are several spaces", () => {
-        const text = "hello   world      hello  world";
-        const results = ["hello", "world", "hello", "world"];
-        expect(tokenize(text)).toEqual(results);
-    });
+    test('should split sentence into several pieces even if there are several spaces', () => {
+        const text = 'hello   world      hello  world'
+        const results = ['hello', 'world', 'hello', 'world']
+        expect(tokenize(text)).toEqual(results)
+    })
 
-    test("should split sentence into several pieces even if there unicode type spaces", () => {
-        const text = "hello\u2004world\u2006hello\u2009world";
-        const results = ["hello", "world", "hello", "world"];
-        expect(tokenize(text)).toEqual(results);
-    });
+    test('should split sentence into several pieces even if there unicode type spaces', () => {
+        const text = 'hello\u2004world\u2006hello\u2009world'
+        const results = ['hello', 'world', 'hello', 'world']
+        expect(tokenize(text)).toEqual(results)
+    })
 
-    test("should split sentence into several pieces even if there mixed unicode type spaces", () => {
-        const text = "hello\u2004\u2009 world \u2006\u2009hello \u2009world";
-        const results = ["hello", "world", "hello", "world"];
-        expect(tokenize(text)).toEqual(results);
-    });
-
+    test('should split sentence into several pieces even if there mixed unicode type spaces', () => {
+        const text = 'hello\u2004\u2009 world \u2006\u2009hello \u2009world'
+        const results = ['hello', 'world', 'hello', 'world']
+        expect(tokenize(text)).toEqual(results)
+    })
 })
 
-describe("adobe line splitting tests", () => {
-    test("Regex test: should split after one of the following: \u2004 \u2009 \u2006 \s ? / | - % ! " +
-        "but ONLY if immediately followed by: [a-zA-z] [0-9] + \ ", () => {
-
-            const splitFn = (text: string) => adobeLineSplitFn(text);
+describe('adobe line splitting tests', () => {
+    test(
+        'Regex test: should split after one of the following: \u2004 \u2009 \u2006 s ? / | - % ! ' +
+            'but ONLY if immediately followed by: [a-zA-z] [0-9] +  ',
+        () => {
+            const splitFn = (text: string) => adobeLineSplitFn(text)
 
             const tests = [
                 { test: '\u2004\u2004', ans: ['\u2004\u2004'] },
@@ -228,13 +235,12 @@ describe("adobe line splitting tests", () => {
                 { test: '!A', ans: ['!', 'A'] },
                 { test: '!9', ans: ['!', '9'] },
                 { test: '!+', ans: ['!', '+'] },
-                { test: '!\\', ans: ['!', '\\'] },
-
+                { test: '!\\', ans: ['!', '\\'] }
             ]
 
-            tests.forEach(({ test, ans }) => expect(splitFn(test)).toEqual(ans));
-
-        });
+            tests.forEach(({ test, ans }) => expect(splitFn(test)).toEqual(ans))
+        }
+    )
 })
 
 describe('renderBulletText', () => {
@@ -257,8 +263,8 @@ describe('renderBulletText', () => {
         expect(actualResults).toEqual(expectedResults)
     })
 
-    // TODO this test feels a bit contrived,
-    //      can we find a real example that causes the scenario under test?
+    // TODO: this test feels a bit contrived,
+    //  can we find a real example that causes the scenario under test?
     //  although this might be caused by widths actually being pixel amounts
     //  rather than how this test uses them as char counts
     it('returns overflow results if text cannot be fit on a single line', () => {

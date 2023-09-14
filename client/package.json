@@ -12,11 +12,11 @@
         "lint:all": "npm run lint:general && npm run lint:security",
         "lint:general": "eslint ./ --ext '.ts,.tsx' --fix",
         "lint:security": "eslint --no-eslintrc --config security.eslintrc.yaml ./ --ext '.ts,.tsx --fix'",
-        "test": "jest",
+        "test": "jest --silent",
         "test:dev": "jest --runInBand --watchAll --detectOpenHandles --verbose"
     },
     "dependencies": {
-        "@types/react": "^18.2.20",
+        "@types/react": "^18.2.21",
         "@handsontable/react": "^13.0.0",
         "@types/react-dom": "^18.2.7",
         "handsontable": "^13.0.0",

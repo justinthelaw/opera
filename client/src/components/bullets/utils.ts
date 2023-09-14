@@ -4,7 +4,9 @@ export const hashCode = (str: string): number => {
     let hash = 0
     let i, chr
 
-    if (str.length === 0) return hash
+    if (str.length === 0) {
+        return hash
+    }
 
     for (i = 0; i < str.length; i++) {
         chr = str.charCodeAt(i)
@@ -14,12 +16,12 @@ export const hashCode = (str: string): number => {
     return hash
 }
 
-  // Regex- split after one of the following: \u2004 \u2009 \u2006 \s ? / | - % !
-    // but ONLY if immediately followed by: [a-zA-z] [0-9] + \
-    export const adobeLineSplitFn = (text: string)=>{
-        const regex = /([\u2004\u2009\u2006\s?/|\-%!])(?=[a-zA-Z0-9+\\])/
-        return text.split(regex).filter(Boolean);
-      }
+// Regex- split after one of the following: \u2004 \u2009 \u2006 \s ? / | - % !
+// but ONLY if immediately followed by: [a-zA-z] [0-9] + \
+export const adobeLineSplitFn = (text: string) => {
+    const regex = /([\u2004\u2009\u2006\s?/|\-%!])(?=[a-zA-Z0-9+\\])/
+    return text.split(regex).filter(Boolean)
+}
 
 export const getRandomInt = (seed: string, max: number): number => {
     return Math.floor(Math.abs((Math.floor(9 * hashCode(seed) + 5) % 100000) / 100000) * Math.floor(max))
@@ -160,7 +162,7 @@ export const renderBulletText = (text: string, getWidth: (str: string) => number
 
         // Regex- split after one of the following: \u2004 \u2009 \u2006 \s ? / | - % !
         // but ONLY if immediately followed by: [a-zA-z] [0-9] + \
-        const textSplit = adobeLineSplitFn(text); 
+        const textSplit = adobeLineSplitFn(text)
 
         // check to make sure the first token is smaller than the desired width.
         //   This is usually true, unless the desired width is abnormally small, or the
@@ -175,7 +177,7 @@ export const renderBulletText = (text: string, getWidth: (str: string) => number
                     break
                 }
             }
-            const recursedText = textSplit.slice(answerIdx, textSplit.length).join('')
+            const recursedText = textSplit.slice(answerIdx).join('')
 
             if (recursedText === text) {
                 console.warn('Can\'t fit "' + text + '" on a single line\n', {
