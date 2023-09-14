@@ -12,7 +12,7 @@
         "lint:all": "npm run lint:general && npm run lint:security",
         "lint:general": "eslint ./ --ext '.ts,.tsx' --fix",
         "lint:security": "eslint --no-eslintrc --config security.eslintrc.yaml ./ --ext '.ts,.tsx --fix'",
-        "test": "jest",
+        "test": "jest --silent",
         "test:dev": "jest --runInBand --watchAll --detectOpenHandles --verbose"
     },
     "dependencies": {

@@ -64,7 +64,7 @@ export const AbbreviationTable = ({ data, setData }: Props) => {
                 }
             })
 
-            setData(newData ? newData : [])
+            setData(newData || [])
         }
     }
 
