@@ -11,7 +11,7 @@ default_output_file_path = "../data/raw/raw_consolidated_set.jsonl"
 async def process_line(line):
     """
     The `process_line` function takes a line of text, removes double quotes, and returns a formatted
-    JSONL string with the <ADD DETAIL> input line.
+    JSONL string with the <DETAIL> input line.
 
     :param line: The `line` parameter represents a single line of text that needs to be processed
     :return: a formatted string that represents a JSON object. The "input" field is set to "<ADD
@@ -22,7 +22,7 @@ async def process_line(line):
     try:
         # Remove double quotes for JSONL
         line = line.replace('"', "'").strip()
-        return f'{{"input": "<ADD DETAIL>", "output": "{line}"}}\n'
+        return f'{{"input": "<DETAIL>", "output": "{line}"}}\n'
     except Exception as e:
         logger.error(f"Error processing line: {line}: {e}")
         raise

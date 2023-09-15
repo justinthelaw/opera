@@ -24,17 +24,22 @@ def select_model():
     return model_path, tokenizer_path
 
 
-def load_model(model_path, tokenizer_path, device):
+def load_model(model_path, tokenizer_path, device, save_model=True):
     """
-    The function `load_model` loads a pre-trained model and tokenizer, sets the device to be used (GPU
-    or CPU), and optionally saves the model to the local environment.
+    The function `load_model` loads a pre-trained model and tokenizer, sends the model to a specified
+    device, and optionally saves the model to the local environment.
     
-    :param model_path: The `model_path` parameter is the path to the pre-trained model that you want to
-    load. It should be a string representing the file path where the model is stored on your system
+    :param model_path: The `model_path` parameter is the path to the directory where the pre-trained
+    model is saved. This directory should contain the model's configuration file, weights, and other
+    necessary files
     :param tokenizer_path: The `tokenizer_path` parameter is the path to the directory where the
-    pre-trained tokenizer is saved. This tokenizer is used to convert text inputs into tokens that can
-    be processed by the model
-    :return: The function `load_model` returns two objects: `model` and `tokenizer`.
+    tokenizer files are stored. These files are necessary for tokenizing the input text and preparing it
+    for the model
+    :param device: The "device" parameter specifies the device on which the model will be loaded and
+    run. It can be either "cpu" or "cuda" (for GPU acceleration)
+    :param save_model: A boolean flag indicating whether or not to save the loaded model to the local
+    environment, defaults to True (optional)
+    :return: the `model` and `tokenizer` objects.
     """
     # Load the pre-trained model and tokenizer
     logger.info(
@@ -51,13 +56,14 @@ def load_model(model_path, tokenizer_path, device):
     model = input_model.to(device)  # type: ignore
     logger.success("Instantiated target tokenizer and model")
 
-    save_model_decision = input(
-        'Would you like to save an instance this model to your local environment? Type "yes" or "no".'
-    )
-    save_model_boolean = save_model_decision.lower() == "yes"
+    if save_model:
+        save_model_decision = input(
+            'Would you like to save an instance this model to your local environment? Type "yes" or "no".'
+        )
+        save_model_boolean = save_model_decision.lower() == "yes"
 
-    if save_model_boolean:
-        optionally_save_model(model_path, tokenizer_path, tokenizer, input_model)
+        if save_model_boolean:
+            optionally_save_model(model_path, tokenizer_path, tokenizer, input_model)
 
     return model, tokenizer
 
