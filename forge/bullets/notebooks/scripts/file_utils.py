@@ -147,21 +147,34 @@ def remove_duplicates(filepath):
 
 def load_jsonl_data(filepath):
     """
-    The function `load_jsonl_data` loads data from a JSONL file and returns it as a list of JSON objects.
+    The function `load_jsonl_data` reads a file containing JSONL data, converts each line into a
+    dictionary, and stores them in an array.
 
-    :param filepath: The filepath parameter is the path to the JSONL file that you want to load the data
-    from
-    :return: The function `load_jsonl_data` returns a list of dictionaries
+    :param filepath: The `filepath` parameter is a string that represents the path to the JSONL file
+    that you want to load
+    :return: an array containing dictionaries, where each dictionary represents a JSON object from the
+    JSONL file.
     """
     jsonl_array = []
+    current_line = None
 
-    with open(filepath, "r") as file:
-        file_contents = file.readlines()
+    try:
+        with open(filepath, "r") as file:
+            file_contents = file.readlines()
 
-    for line in file_contents:
-        # Each json object is stored as an dict in an array
-        data = json.loads(line)
-        jsonl_array.append(data)
+        for index, line in enumerate(file_contents):
+            # In case there is a specific problem line
+            current_line = f"{index + 1}: {line}"
+            # Each json object is stored as an dict in an array
+            data = json.loads(line)
+            jsonl_array.append(data)
+
+    except Exception as e:
+        if current_line is None:
+            logger.error(f"A runtime error occurred: {e}")
+        else:
+            logger.error(f"A parsing error occurred on line {current_line}")
+        raise
 
     return jsonl_array
 

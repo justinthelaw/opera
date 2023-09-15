@@ -1,4 +1,5 @@
 from loguru import logger
+import torch
 
 from scripts.constants import *
 from scripts.file_utils import append_line_to_file, load_jsonl_data
@@ -48,29 +49,36 @@ def prompt(model, tokenizer, input_text):
         logger.error(f"An error occurred during generation: {e}")
 
 
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+
 def data_modification_prompt(
-    device, output_filepath, input_filepath, prompt_prefix, stop_at=1500
+    output_filepath,
+    input_filepath,
+    prompt_prefix,
+    modify_input=False,
+    stop_at=1500,
 ):
     """
-    The function `data_modification_prompt` takes in various parameters such as device, output and input
-    file paths, prompt prefix, and stop_at value, and performs data modification by loading a model,
-    preprocessing input data, generating output text using the model, and appending the modified data to
-    an output file.
+    The `data_modification_prompt` function takes an input file, modifies the input or output of each
+    JSON line based on a prompt prefix, and appends the modified data to an output file.
 
-    :param device: The `device` parameter specifies the device (e.g., "cpu" or "cuda") on which the
-    model will be loaded and run
-    :param output_filepath: The `output_filepath` parameter is the file path where the generated data
-    will be saved
+    :param output_filepath: The `output_filepath` parameter is the file path where the modified data
+    will be saved. It should be a string representing the file path, including the file name and
+    extension
     :param input_filepath: The `input_filepath` parameter is the file path to the input data file. This
-    file contains the data that will be used to generate modified data
-    :param prompt_prefix: The `prompt_prefix` parameter is a string that is added as a prefix to each
-    input text before generating the output text. It is used to provide context or instructions to the
+    file contains the data that will be used as input for the data modification process
+    :param prompt_prefix: The `prompt_prefix` parameter is a list of strings that will be prepended to
+    the input text before generating the output. It is used to provide context or instructions to the
     model
-    :param stop_at: The `stop_at` parameter is an optional parameter that specifies the maximum number
-    of lines of data to generate. If this parameter is not provided, the default value is set to 1500,
-    defaults to 1500 (optional)
+    :param modify_input: The `modify_input` parameter is a boolean flag that determines whether the
+    input or output of each JSON line should be modified. If `modify_input` is set to `True`, the input
+    text will be modified. If `modify_input` is set to `False`, the output text will be modified,
+    defaults to False (optional)
+    :param stop_at: The `stop_at` parameter is used to specify the maximum number of lines of data to
+    process. Once this limit is reached, the script will stop generating data and exit, defaults to 1500
+    (optional)
     """
-
     try:
         model_path, tokenizer_path = select_model()
         model, tokenizer = load_model(
@@ -86,9 +94,12 @@ def data_modification_prompt(
             if count == (maximum_lines_of_data - 1):
                 raise InterruptedError()
 
-            input_text = prompt_prefix + input_line["output"]
+            # Decision point to modify the input or output of the JSON line
+            input_text = prompt_prefix + (
+                input_line["input"] if modify_input else input_line["output"]
+            )
 
-            output_text = prompt(model, tokenizer, input_text)
+            output_text = prompt(model, tokenizer, input_text).replace('"', "'").strip()
 
             # input_text and output_text insert into data sets
             line_of_data = (
@@ -104,4 +115,4 @@ def data_modification_prompt(
     except InterruptedError:
         logger.success("Data generation complete! Stopping script...")
     except Exception as e:
-        logger.error(f"An error occurred during generation: {e.with_traceback}")
+        logger.error(f"An error occurred during generation: {e}")
