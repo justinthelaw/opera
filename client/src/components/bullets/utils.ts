@@ -23,8 +23,9 @@ export const adobeLineSplitFn = (text: string) => {
     return text.split(regex).filter(Boolean)
 }
 
-export const getRandomInt = (seed: string, max: number): number => {
-    return Math.floor(Math.abs((Math.floor(9 * hashCode(seed) + 5) % 100000) / 100000) * Math.floor(max))
+export const getRandomInt = (seed: string, max: number, rngSeed?: number): number => {
+    const rng = rngSeed ? new Math.seedrandom(rngSeed) : Math.random;
+    return Math.floor(Math.abs((Math.floor(9 * hashCode(seed) + 5) % 100000) / 100000) * Math.floor(max * rng()))
 }
 
 export const tokenize = (sentence: string): string[] => {
