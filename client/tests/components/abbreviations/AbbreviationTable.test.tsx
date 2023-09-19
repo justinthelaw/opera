@@ -62,7 +62,7 @@ describe('<AbbreviationTable />', () => {
     })
 
     // TODO: test is failing and setData mock is not being called, check the rerender method
-    it.skip('changes table data correctly ', async () => {
+    it('changes table data correctly ', async () => {
         const changedData = [
             {
                 enabled: false,
@@ -90,16 +90,16 @@ describe('<AbbreviationTable />', () => {
                 abbr: '()'
             }
         ]
-
+    
         const setData = jest.fn((data: Abbreviation[]) =>
             data.filter((row) => row.enabled !== null && row.value !== null && row.abbr !== null)
         )
-
+    
         const { rerender, user } = renderAbbreviationTable({ data: defaultData })
-
-        rerender(<AbbreviationTable data={changedData} setData={() => setData} />)
+    
+        rerender(<AbbreviationTable data={changedData} setData={setData} />)
         await user.dblClick(screen.getByTestId(/parent/))
-
+    
         expect(setData).toReturnWith(changedData)
     })
 })
@@ -112,7 +112,7 @@ const renderAbbreviationTable = ({
     setData?: (data: Abbreviation[]) => Abbreviation[]
 }) => {
     // default values based on default examples in pdf-bullets
-    const { rerender } = render(<AbbreviationTable data={data} setData={() => setData} />)
+    const { rerender } = render(<AbbreviationTable data={data} setData={setData} />)
 
     return { rerender, user: userEvent.setup() }
 }
