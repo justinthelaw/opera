@@ -90,18 +90,22 @@ describe('optimize', () => {
         expect(actualResults).toEqual(expectedResults)
     })
 
-    // TODO: is there any way to mock getRandomInt to be deterministic?
-    //  Otherwise, the while loop in optimize() seems untestable
-    it.skip('should succeed if it cannot add any more larger spaces without overflowing', () => {
+    // Mocking getRandomInt to be deterministic for the purpose of testing
+    jest.mock('../../../src/components/bullets/utils', () => ({
+        ...jest.requireActual('../../../src/components/bullets/utils'),
+        getRandomInt: jest.fn().mockReturnValue(1),
+    }))
+    
+    it('should succeed if it cannot add any more larger spaces without overflowing', () => {
         const mockWorstCaseText =
             'Assisted 11 stranded motorists/police during blizzard; protected from freezing weather--ensured safe travel condition'
         const mockNewResultsText =
             'Assisted 11 stranded motorists/police during blizzard; protected from freezing weather--ensured safe travel condition'
         const mockPrevResultsText =
             'Assisted 11 stranded motorists/police during blizzard; protected from freezing weather--ensured safe travel condition'
-
+    
         console.log(mockRawBulletText.replaceAll(' ', ''))
-
+    
         const mockInitEvalResults: Results = {
             textLines: [mockRawBulletText],
             fullWidth: 100,
@@ -123,9 +127,9 @@ describe('optimize', () => {
             }
         })
         const expectedResults = { status: STATUS.OPTIMIZED, rendering: mockPrevResults }
-
+    
         const actualResults = optimize(mockRawBulletText, mockEvalFcn)
-
+    
         expect(mockEvalFcn).toHaveBeenCalledTimes(3)
         expect(actualResults).toEqual(expectedResults)
     })
