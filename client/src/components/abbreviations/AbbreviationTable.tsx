@@ -63,8 +63,10 @@ export const AbbreviationTable = ({ data, setData }: Props) => {
                     abbr: row[2]
                 }
             })
-
+    
             setData(newData || [])
+        } else {
+            console.error('Update failed: Invalid source or table reference is null.')
         }
     }
 
