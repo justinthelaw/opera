@@ -1,9 +1,26 @@
 from loguru import logger
-import torch
 
 from scripts.constants import *
 from scripts.file_utils import append_line_to_file, load_jsonl_data
 from scripts.model_instantiation import load_model, select_model
+
+
+def select_prompt_type():
+    """
+    The `select_prompt_type` function requires user input in order to select the proper prefix for the prompt.
+
+    :return: the selected prompt prefix.
+    """
+    prompt_prefix_option = input(
+        "Type the number to choose a prompt prefix type: (1) Bullet Creation Training or (2) Bullet Interpretation Training"
+    )
+    prompt_prefix = (
+        bullet_data_creation_prefix
+        if prompt_prefix_option == "2"
+        else bullet_prompt_prefix
+    )
+
+    return prompt_prefix, prompt_prefix_option
 
 
 def prompt(model, tokenizer, input_text):
@@ -49,9 +66,6 @@ def prompt(model, tokenizer, input_text):
         logger.error(f"An error occurred during generation: {e}")
 
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-
 def data_modification_prompt(
     output_filepath,
     input_filepath,
@@ -80,10 +94,9 @@ def data_modification_prompt(
     (optional)
     """
     try:
+        # Model selection prompt for the user
         model_path, tokenizer_path = select_model()
-        model, tokenizer = load_model(
-            model_path, tokenizer_path, device, save_model=False
-        )
+        model, tokenizer = load_model(model_path, tokenizer_path, save_model=False)
 
         # Preprocess input
         inputs_array = load_jsonl_data(input_filepath)

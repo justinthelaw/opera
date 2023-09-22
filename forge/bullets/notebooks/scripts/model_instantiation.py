@@ -1,4 +1,3 @@
-import torch
 from loguru import logger
 from transformers import T5ForConditionalGeneration, T5Tokenizer
 
@@ -24,9 +23,9 @@ def select_model():
     return model_path, tokenizer_path
 
 
-def load_model(model_path, tokenizer_path, device, save_model=True):
+def load_model(model_path, tokenizer_path, save_model=True):
     """
-    The function `load_model` loads a pre-trained model and tokenizer, sends the model to a specified
+    The function `load_model` loads a pre-trained model and tokenizer, sends the model to the
     device, and optionally saves the model to the local environment.
     
     :param model_path: The `model_path` parameter is the path to the directory where the pre-trained
@@ -35,12 +34,12 @@ def load_model(model_path, tokenizer_path, device, save_model=True):
     :param tokenizer_path: The `tokenizer_path` parameter is the path to the directory where the
     tokenizer files are stored. These files are necessary for tokenizing the input text and preparing it
     for the model
-    :param device: The "device" parameter specifies the device on which the model will be loaded and
-    run. It can be either "cpu" or "cuda" (for GPU acceleration)
     :param save_model: A boolean flag indicating whether or not to save the loaded model to the local
     environment, defaults to True (optional)
     :return: the `model` and `tokenizer` objects.
     """
+
+    
     # Load the pre-trained model and tokenizer
     logger.info(
         f"Instantiating tokenizer from {tokenizer_path}, and model from {model_path}"
