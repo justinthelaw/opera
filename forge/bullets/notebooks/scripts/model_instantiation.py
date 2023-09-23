@@ -1,7 +1,7 @@
 from loguru import logger
 from transformers import T5ForConditionalGeneration, T5Tokenizer
 
-from scripts.constants import max_input_token_length
+from scripts.constants import *
 
 
 def select_model():

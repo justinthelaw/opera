@@ -96,7 +96,7 @@ def T5Trainer(
                 train(epoch, tokenizer, model, training_loader, optimizer, scheduler)
         logger.info(f"Saving fine-tuned  to {model_output_directory} ...")
         # Saving the model after training
-        save_trained_model()
+        save_trained_model(model, tokenizer, model_output_directory)
 
         # Evaluating validation dataset
         logger.info("Initiating validation...")
@@ -108,4 +108,4 @@ def T5Trainer(
         # Handle other unexpected errors
         logger.error(f"An unexpected error occurred during fine tuning: {str(e)}")
         # Save the model and any relevant data before exiting gracefully
-        save_trained_model()
+        save_trained_model(model, tokenizer, model_output_directory)
