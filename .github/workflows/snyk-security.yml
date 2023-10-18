@@ -1,7 +1,6 @@
 name: Snyk Security
 
 on:
-  push:
   pull_request:
     branches:
       - main
