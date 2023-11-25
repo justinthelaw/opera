@@ -9,11 +9,11 @@
 
 </div>
 
-**_Opera_**: Latin word (plural of opus) meaning "work," "effort," or "service." Usually referring to an individual or group's skillful or creative endeavors.
+**_Opera_**: Latin word (plural of opus) meaning "work," "effort," or "service." Usually referring to an individual or group's skillful or creative endeavors. Relative to this project, OPERA also stands for the "Optimized Performance and Evaluation Rhetoric AI."
 
-Opera is a project focused on developing a set of tools to automate the pointless aspects of performance report and award writing so that officer and enlisted members can focus more on the individual and the achievements, rather than worry about irrelevant formatting. The ultimate objective is to allow the end-user to type or speak a stream of consciousness about a member's accomplishments and let Opera handle the rest.
+Opera is a project focused on developing a set of tools to automate the pointless aspects of performance report and award writing so that officer and enlisted members can focus more on the individual and their achievements, rather than worrying about irrelevant formatting. The ultimate objective is to allow the end-user to input stream of consciousness about a member's accomplishments and let Opera handle the rest.
 
-The Forge is Opera's narrative generation tool that harnesses the power of Natural Language Processing (NLP) through the use of Large Language Models (LLM). The Forge is an API that is connected to fine-tuned models that have been trained using 33,000+ unique EPR, OPR, and Award packages, across all of the Air and Space Force's positions and ranks.
+The Forge is Opera's narrative generation tool that harnesses the power of Natural Language Processing (NLP) through the use of open-source Large Language Models (LLM). The Forge is an API that is connected to several fine-tuned models that have been trained using 33,000+ unique EPR, OPR, and Award packages, across all of the Air and Space Force's positions and ranks. Each model and part of the application specializes in a part of the overall process, to include pre-written bullet interpreting, accomplishment attention and comprehension, and bullet formation and creation.
 
 # Table of Contents
 

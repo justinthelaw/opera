@@ -30,6 +30,6 @@
     "freeze:forge": "cd forge && . .venv/bin/activate && pip3 freeze > requirements.txt && deactivate"
   },
   "dependencies": {
-    "@types/draft-js": "^0.11.12"
+    "@types/draft-js": "^0.11.15"
   }
 }
