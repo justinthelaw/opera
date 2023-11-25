@@ -4,10 +4,6 @@
 
 Lints, tests, builds, and deploys the Opera full-stack application.
 
-## [Snyk Security](./snyk-security.yml)
-
-Scans the repository application code and dependencies for potential vulnerabilities. Also does something similar to dependabot, and suggests version bumps to dependencies.
-
 ## [CodeQL Quality](./codeql.yml)
 
 Scans source code for quality and security issues.
@@ -24,13 +20,9 @@ Cleans out all of the cached artifacts the pipelines use once a pull request has
 
 This workflow sets up the automatic pull request generation for dependency bumps, running checks to ensure the dependency doesn't break the application build.
 
-## [Sweep AI Bot](../../sweep.yaml)
-
-This workflow provides configuration for Sweep AI bot's issue handling.
-
 # Available Issues Templates
 
-## [Bug Template](../ISSUE_TEMPLATE/bug_report.md)
+## [Bug Report](../ISSUE_TEMPLATE/bug_report.md)
 
 For reporting application or developer environment defects.
 
