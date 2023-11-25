@@ -53,7 +53,7 @@ Unclassified statements can be added to _contributed.txt_ files in each director
 
 A best practice for developing in Python is using a Virtual Environment (venv). Within this README's directory is a [requirements.txt](./requirements.txt) file for installing the dependencies required by `python3` to run the Jupyter Notebook contents.
 
-To properly develop locally and contribute to The Forge, please follow the contributing instructions in [repository README](../README.md).
+To properly develop locally and contribute to The Forge, please follow the contributing instructions in the [repository README](../README.md).
 
 ## Jupyter Notebooks
 

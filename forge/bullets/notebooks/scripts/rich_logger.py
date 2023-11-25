@@ -67,4 +67,5 @@ general_logger = Console(record=False)
 # Instantiate new training table
 training_table = TrainingTable()
 
+# Instantiate the table's live refreshing wrapper
 live_refresher = Live(training_table.get_table(), console=general_logger, auto_refresh=False)

@@ -32,6 +32,10 @@ def batch_clean_files(base_directory_path, bullet_pattern):
     to identify and remove bullet points from the text files. It is used in the `clean_file` function to
     perform the cleaning operation
     """
+    logger.info(
+        f"Performing extra cleaning on files in directory: {base_directory_path}"
+    )
+
     file_paths = [
         os.path.join(root, file)
         for root, _, files in os.walk(base_directory_path)
@@ -45,9 +49,9 @@ def batch_clean_files(base_directory_path, bullet_pattern):
         if file_extension not in valid_extensions:
             logger.warning(f"Skipping non-text (.txt) file: {dirty_file_path}")
         else:
-            logger.info(f"Performing extra cleaning on file: {dirty_file_path}")
             clean_file(dirty_file_path, bullet_pattern)
-            logger.success("Extra cleaning on file complete!")
+
+    logger.success("Extra cleaning on directory complete!")
 
 
 def clean_special_chars(line):
@@ -82,8 +86,10 @@ def clean_file(file_path, pattern):
     :param pattern: The `pattern` parameter is a regular expression pattern that is used to match and
     select specific lines in the file for cleaning.
     """
+
+    logger.info(f"Performing extra cleaning on file: {file_path}")
+
     try:
-        logger.info("Cleaning up file...")
         clean_lines = []
 
         with open(file_path, "r") as file:
@@ -110,7 +116,7 @@ def clean_file(file_path, pattern):
         with open(file_path, "w") as file:
             file.write("\n".join(clean_lines))
 
-        logger.success("File cleaned!")
+        logger.success("Extra cleaning on file complete!")
 
     except Exception as e:
         logger.error(f"A runtime error occurred: {e}")
@@ -141,21 +147,34 @@ def remove_duplicates(filepath):
 
 def load_jsonl_data(filepath):
     """
-    The function `load_jsonl_data` loads data from a JSONL file and returns it as a list of JSON objects.
+    The function `load_jsonl_data` reads a file containing JSONL data, converts each line into a
+    dictionary, and stores them in an array.
 
-    :param filepath: The filepath parameter is the path to the JSONL file that you want to load the data
-    from
-    :return: The function `load_jsonl_data` returns a list of dictionaries
+    :param filepath: The `filepath` parameter is a string that represents the path to the JSONL file
+    that you want to load
+    :return: an array containing dictionaries, where each dictionary represents a JSON object from the
+    JSONL file.
     """
     jsonl_array = []
+    current_line = None
 
-    with open(filepath, "r") as file:
-        file_contents = file.readlines()
+    try:
+        with open(filepath, "r") as file:
+            file_contents = file.readlines()
 
-    for line in file_contents:
-        # Each json object is stored as an dict in an array
-        data = json.loads(line)
-        jsonl_array.append(data)
+        for index, line in enumerate(file_contents):
+            # In case there is a specific problem line
+            current_line = f"{index + 1}: {line}"
+            # Each json object is stored as an dict in an array
+            data = json.loads(line)
+            jsonl_array.append(data)
+
+    except Exception as e:
+        if current_line is None:
+            logger.error(f"A runtime error occurred: {e}")
+        else:
+            logger.error(f"A parsing error occurred on line {current_line}")
+        raise
 
     return jsonl_array
 
