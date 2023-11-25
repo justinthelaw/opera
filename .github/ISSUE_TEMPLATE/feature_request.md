@@ -1,6 +1,6 @@
 ---
-name: Feature request
-about: Suggest an idea for this project
+name: Feature Request
+about: Suggest an a new idea or improvement for Opera!
 title: ''
 labels: ''
 assignees: ''
